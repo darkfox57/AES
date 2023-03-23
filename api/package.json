@@ -1,12 +1,14 @@
 {
-  "name": "api-rest",
+  "name": "sportiva",
   "version": "0.0.0",
   "description": "this project is test api-rest with express and mongodb",
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir build",
     "dev": "nodemon src/index.js --exec babel-node",
-    "start": "node bluid/index.js"
+    "start": "node bluid/index.js",
+    "format": "prettier --write .",
+    "lint": "eslint --fix . --ext .js,.jsx"
   },
   "author": "",
   "license": "MIT",
@@ -15,7 +17,14 @@
     "@babel/core": "^7.21.3",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
-    "nodemon": "^2.0.21"
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-config-prettier": "^8.8.0",
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.6"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

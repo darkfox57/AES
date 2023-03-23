@@ -1,10 +1,10 @@
-import Product from "../../database/Product.model";
+import Product from '../../database/Product.model'
 
 //obtienes todos los productos
 export const getAllProducts = () => {
-  const products = Product.find();
-  return products;
-};
+  const products = Product.find()
+  return products
+}
 
 //crea producto
 export const createProduct = async (name, category, price, imageURL) => {
@@ -13,26 +13,26 @@ export const createProduct = async (name, category, price, imageURL) => {
     category: category,
     price: price,
     imageURL: imageURL,
-  });
+  })
 
-  const result = await newproduct.save();
-  return result;
-};
+  const result = await newproduct.save()
+  return result
+}
 
 //trame un producto por id
 export const getProductById = (productId) => {
-  const result = Product.findById({ _id: productId });
-  return result;
-};
+  const result = Product.findById({ _id: productId })
+  return result
+}
 
 //actualizar producto
 export const updateProductById = (productId, body) => {
-  return console.log(body, productId);
+  return console.log(body, productId)
   /* const result = Product.findByIdAndUpdate({});
   return result; */
-};
+}
 
 //eliminar producto
 export const deleteProductById = (productId) => {
-  return `eliminado el producto ${productId}`;
-};
+  return `eliminado el producto ${productId}`
+}

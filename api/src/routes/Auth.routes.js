@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const authRoute = Router();
+const authRoute = Router()
 
-authRoute.get("/", (req, res) => {
-  res.status(200).json("respondiendo a auth");
-});
-export default authRoute;
+authRoute.get('/', (req, res) => {
+  res.status(200).json('respondiendo a auth')
+})
+export default authRoute

@@ -1,5 +1,5 @@
-import { searchProduct } from "../../controllers/products/search.controller";
-import * as productController from "../../controllers/products/product.controller";
+import { searchProduct } from '../../controllers/products/search.controller'
+import * as productController from '../../controllers/products/product.controller'
 
 /**
  * !TODO:
@@ -7,23 +7,23 @@ import * as productController from "../../controllers/products/product.controlle
  * ?http://localhost:3001/products?search=anymore
  */
 export const searchProductorAllProduct = async (req, res, next) => {
-  const { search } = req.query;
+  const { search } = req.query
 
   if (search) {
-    console.log("entramos en busqueda");
+    console.log('entramos en busqueda')
     try {
-      const a = searchProduct(search);
-      res.json(a);
+      const a = searchProduct(search)
+      res.json(a)
     } catch (error) {
-      next(error);
+      next(error)
     }
   }
 
-  console.log("entramos en llamada");
+  console.log('entramos en llamada')
   try {
-    const result = await productController.getAllProducts();
-    res.json(result);
+    const result = await productController.getAllProducts()
+    res.json(result)
   } catch (error) {
-    next(error);
+    next(error)
   }
-};
+}

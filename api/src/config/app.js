@@ -1,11 +1,11 @@
-import express from "express";
-import morgan from "morgan";
-import routes from "../routes/index";
+import express from 'express'
+import morgan from 'morgan'
+import routes from '../routes/index'
 
-const server = express();
+const server = express()
 
-server.use(morgan("dev"));
-server.use(express.json());
-server.use("/", routes);
+server.use(morgan('dev'))
+server.use(express.json())
+server.use('/', routes)
 
-export default server;
+export default server

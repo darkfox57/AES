@@ -1,11 +1,9 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const userRoute = Router();
+const userRoute = Router()
 
-userRoute.get("/", (req, res) => {
-  res.status(200).json("users root");
-});
+userRoute.get('/', (req, res) => {
+  res.status(200).json('users root')
+})
 
-
-
-export default userRoute;
+export default userRoute
