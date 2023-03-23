@@ -19,3 +19,5 @@ for run project exec
         - *routes => funciona como middleware para las rutas
         - *middleware => funciones de express para las peticiones
         - index.js => archivo raiz para levantar el servicio
+
+## Es importante que todos instalen las extensiones de prettier y esLint
