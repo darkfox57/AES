@@ -10,7 +10,7 @@ const Product = new Schema(
   {
     timestamps: true,
     versionKey: false,
-  };
+  }
 )
 
 export default model('Product', Product)
