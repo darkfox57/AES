@@ -21,7 +21,7 @@ border: none;
           background-color: transparent;
           color: var(--text-white);
           padding: 8px;
-          border: none;
+          border: none; 
           `
   }
  }};
