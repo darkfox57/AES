@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+//Hahber si asi funciona
+
 export const Slider_Stylizied = styled.section`
   background-image: url(${({ image }) => image});
   color: var(--text-white);

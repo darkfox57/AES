@@ -4,6 +4,8 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 import { Slider_Stylizied, Button_Stylizied } from './Slider.Styles'
 
+//Hahber si asi funciona
+
 export default function Slider({ data }) {
   let [idImage, setIdImage] = useState(0)
 
