@@ -4,7 +4,6 @@ import Header from './components/Header/Header'
 
 import Home from './pages/Home/Home'
 
-//Hahber si asi funciona
 function App() {
   return (
     <>
