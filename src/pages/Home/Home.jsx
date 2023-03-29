@@ -2,6 +2,7 @@ import React from 'react'
 
 import Slider from '../../components/Slider/Slider'
 import Actions from '../../components/Actions/Actions'
+import About_Home from '../../components/About_Home/About_Home'
 
 export default function Home() {
   return (
@@ -28,7 +29,8 @@ export default function Home() {
           },
         ]}
       />
-      <Actions></Actions>
+      <Actions />
+      <About_Home />
     </>
   )
 }
