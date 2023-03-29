@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ButtonStyle = styled.button`
-  border: none;
+border: none;
   ${({ type }) => {
     switch (type) {
       case 'primary':
@@ -16,6 +16,13 @@ export const ButtonStyle = styled.button`
          border: 1px var(--text-white) solid;
          opacity: 0.8;
          `
+      case 'link':
+        return `
+          background-color: transparent;
+          color: var(--text-white);
+          padding: 8px;
+          border: none; 
+          `
     }
   }};
   ${({ size }) => {
@@ -36,10 +43,14 @@ export const ButtonStyle = styled.button`
    padding: 12px 30px;
      `
     }
-  }}
+  }};
+transition: scale 0.5s ease-in-out;
 
   a {
     text-decoration: none;
     color: var(--text-white);
+  }
+  &:hover {
+   scale: 1.1;
   }
 `
