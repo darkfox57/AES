@@ -11,11 +11,15 @@ export const ButtonStyle = styled.button`
        `
       case 'secondary':
         return `
-    background-color: transparent;
+      background-color: transparent;
          color: var(--text-white);
          border: 1px var(--text-white) solid;
          opacity: 0.8;
          `
+      case 'link':
+        return `
+        color: var(--text-white);
+        `
     }
   }};
   ${({ size }) => {

@@ -1,6 +1,8 @@
 import React from 'react'
 import { FaAngellist, FaReact } from 'react-icons/fa'
 
+import Button from '../../utils/Button'
+
 import {
   ActionContainer,
   Donation_Action_Stylizied,
@@ -20,6 +22,7 @@ export default function Actions() {
             Apoya nuestras causas con una donación que nos va a ayudar a cumplir
             con todos los objetivos
           </p>
+          <Button type="link" link="/" text="Leer más" size="md"></Button>
         </div>
       </Donation_Action_Stylizied>
 
@@ -32,6 +35,7 @@ export default function Actions() {
           <p>
             Hay muchas formas en las que puedes contribuir a nuestras labores
           </p>
+          <Button type="link" link="/" text="Leer más" size="md"></Button>
         </div>
       </Involve_Action_Stylizied>
     </ActionContainer>
