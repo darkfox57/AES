@@ -8,6 +8,8 @@ import {
 
 import Button from '../../utils/Button'
 
+//Importo el micro-componente boton y le establecemos sus propiedades
+
 export default function About_Home() {
   return (
     <ComponentContainer>

@@ -11,7 +11,7 @@ export default function Home() {
         data={[
           {
             id: 0,
-            text: 'Bosque oscuro 1',
+            text: 'Formando una sólida cultura sanitaria en los adolescentes para crear una país saludable',
             image:
               'https://www.pabloyglesias.com/wp-content/uploads/2022/06/bosque-oscuro.jpg',
           },
