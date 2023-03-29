@@ -1,11 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
 
+import Home from './pages/Home/Home'
+
+//Hahber si asi funciona
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Home />} />
         <Route path="/acerca-de" />
         <Route path="/involucrate" />
         <Route path="/blog" />
