@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-import { Slider_Stylizied } from './Slider.Styles'
+import { Slider_Stylizied, BtnContainer } from './Slider.Styles'
 import ArrowButton from '../../utils/ArrowButton/ArrowButton'
+
+import Button from '../../utils/Button'
 
 //Importo los iconos, el slider estilizado (Slider_Stylizied) y el boton reutilizable que representa las flechas (ArrowButton)
 //Las dos funciones se encargan de sumar o restar el id del objeto de la imagen para mostrar ese en pantalla
@@ -26,7 +28,21 @@ export default function Slider({ data }) {
         arrow={<FaArrowLeft />}
         handleImage={handlePrevious}
       ></ArrowButton>
-      <p>{data[idImage].text}</p>
+
+      <div>
+        <h2>POR UN PERU SANO</h2>
+        <p>{data[idImage].text}</p>
+        <BtnContainer>
+          <Button type="primary" link="/" text="Donar ahora" size="md"></Button>
+          <Button
+            type="secondary"
+            link="/"
+            text="Contactenos"
+            size="md"
+          ></Button>
+        </BtnContainer>
+      </div>
+
       <ArrowButton
         arrow={<FaArrowRight />}
         handleImage={handleNext}
