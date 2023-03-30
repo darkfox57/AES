@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { Banner_Stylizied, PharaseContainer } from './Banner.Styles'
-export default function Banner() {
+
+export default function BannerCita() {
   return (
     <Banner_Stylizied>
       <PharaseContainer>
