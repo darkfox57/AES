@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
   width: max-content;
+  //border: 1px solid green;
 `
 export const ListNav = styled.ul`
   display: flex;
@@ -11,5 +12,9 @@ export const ListNav = styled.ul`
   li {
     list-style: none;
     cursor: pointer;
+  }
+  @media screen and (max-width: 1316px){
+    flex-direction: column;
+    row-gap: 50px;
   }
 `
