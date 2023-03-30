@@ -3,6 +3,8 @@ import React from 'react'
 import Slider from '../../components/Slider/Slider'
 import Actions from '../../components/Actions/Actions'
 import About_Home from '../../components/About_Home/About_Home'
+import Blog from '../../components/Blog/Blog'
+import SliderEventos from '../../components/SliderEventos/SliderEventos'
 
 export default function Home() {
   return (
@@ -31,6 +33,7 @@ export default function Home() {
       />
       <Actions />
       <About_Home />
+      <Blog/>
     </>
   )
 }
