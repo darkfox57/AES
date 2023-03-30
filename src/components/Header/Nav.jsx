@@ -15,6 +15,9 @@ const Nav = () => {
         <li>
           <Button type="primary" size="md" text="Haz una donación" link="/" />
         </li>
+        <li>
+          <Button type="primary" size="md" text="Login" link="/" />
+        </li>
       </ListNav>
     </NavContainer>
   )
