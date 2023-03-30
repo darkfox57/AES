@@ -33,7 +33,6 @@ export default function Home() {
       />
       <Actions />
       <About_Home />
-      <Blog/>
     </>
   )
 }
