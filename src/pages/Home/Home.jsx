@@ -1,10 +1,14 @@
 import React from 'react'
 
-import Slider from '../../components/Slider/Slider'
-import Actions from '../../components/Actions/Actions'
 import About_Home from '../../components/About_Home/About_Home'
+import Actions from '../../components/Actions/Actions'
+import BannerCita from '../../components/Banner_Cita/BannerCita'
 import Blog from '../../components/Blog/Blog'
+import Footer from '../../components/Footer/Footer'
+import Patrocinadores from '../../components/Patrocinadores/Patrocinadores'
+import Slider from '../../components/Slider/Slider'
 import SliderEventos from '../../components/SliderEventos/SliderEventos'
+import Talleres from '../../components/Talleres/Talleres'
 
 export default function Home() {
   return (
@@ -33,6 +37,12 @@ export default function Home() {
       />
       <Actions />
       <About_Home />
+      <Talleres />
+      <BannerCita />
+      <Blog />
+      <Patrocinadores />
+      <SliderEventos />
+      <Footer />
     </>
   )
 }

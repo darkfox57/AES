@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const FlexPrincipal = styled.div`
     display: flex;
-    justify-content: space-between;
-    width: 94%;
+    justify-content: space-around;
+    width: 100%;
 `
 
 export const ContainerInfoText = styled.div`

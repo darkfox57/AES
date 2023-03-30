@@ -14,7 +14,9 @@ padding: 20px;
   justify-content: space-between;
 `
 export const TopFecha = styled.div`
-
+span {
+  font-size: 0.8rem;
+}
 `
 export const BottomLugar = styled.div`
 display: flex;
@@ -23,8 +25,7 @@ row-gap: 10px;
  span{
     max-width: 250px;
  }
- button{
-    width: 100px;
-    height: 25px;
+ button {
+  max-width: 100px;
  }
 `

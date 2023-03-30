@@ -1,44 +1,40 @@
 import styled from 'styled-components'
 
 export const ActionContainer = styled.div`
-  height: 200px;
+  min-height: 200px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 0;
-  padding: 0 300px;
   margin-top: -100px;
+  @media (max-width: 768px){
+    margin-top:0;
+    padding: 0;
+    width: 100%;
+  };
 `
 
-export const Donation_Action_Stylizied = styled.div`
+export const Donation_Action_Content = styled.div`
   display: flex;
   align-items: center;
-
   position: relative;
-
   color: var(--text-white);
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBvPxRNnLoXNGtv2peztXhAv86vCIK4vqyLg&usqp=CAU');
   background-position: center;
   background-size: cover;
-
-  width: 50%;
+  max-width: 600px;
+  min-width: 400px;
+  padding: 30px;
+  gap: 20px;
   z-index: 10;
-
-  & > div:first-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 100%;
-    width: 30%;
+  svg {
+    align-self: center;
+    width: 150px;
     z-index: 30;
   }
 
-  & > div:nth-child(2) {
+  div {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    height: 100%;
+    flex-wrap: wrap;
     z-index: 30;
   }
 
@@ -58,36 +54,29 @@ export const Donation_Action_Stylizied = styled.div`
   }
 `
 
-export const Involve_Action_Stylizied = styled.div`
+export const Involve_Action_Content = styled.div`
   display: flex;
-  align-items: center;
-
+  align-items: flex-start;
   position: relative;
-
+  padding: 30px;
+  gap:20px;
   color: var(--text-white);
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE89HzoUhwxpCcX_V8ibS9wgoyVHWnI1g0Jw&usqp=CAU');
   background-position: center;
   background-size: cover;
-
-  width: 50%;
+  max-width: 600px;
+  min-width: 400px;
   z-index: 20;
 
-  & > div:first-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 100%;
-    width: 30%;
+  svg {
+    align-self: center;
+    width: 150px;
     z-index: 30;
   }
 
-  & > div:nth-child(2) {
+  div {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    height: 100%;
+    flex-wrap: wrap;
     z-index: 30;
   }
 

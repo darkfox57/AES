@@ -6,23 +6,18 @@ export const Slider_Stylizied = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   width: 100%;
-  min-height: 550px;
-  padding: 150px 0;
-
+  min-height: 100vh;
+  padding: 0 30px;
   text-align: center;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-image 1s ease-in-out;
   p {
     padding: 25px;
     max-width: 500px;
   }
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  transition: background-image 1s ease-in-out;
 `
 
 export const BtnContainer = styled.div`

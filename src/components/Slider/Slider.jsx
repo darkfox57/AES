@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-import { Slider_Stylizied, BtnContainer } from './Slider.Styles'
 import ArrowButton from '../../utils/ArrowButton/ArrowButton'
+import { BtnContainer, Slider_Stylizied } from './Slider.Styles'
 
 import Button from '../../utils/Button'
 
@@ -23,30 +23,19 @@ export default function Slider({ data }) {
   }
 
   return (
-    <Slider_Stylizied image={data[idImage].image}>
-      <ArrowButton
-        arrow={<FaArrowLeft />}
-        handleImage={handlePrevious}
-      ></ArrowButton>
-
-      <div>
-        <h2>POR UN PERU SANO</h2>
-        <p>{data[idImage].text}</p>
-        <BtnContainer>
-          <Button type="primary" link="/" text="Donar ahora" size="md"></Button>
-          <Button
-            type="secondary"
-            link="/"
-            text="Contactenos"
-            size="md"
-          ></Button>
-        </BtnContainer>
-      </div>
-
-      <ArrowButton
-        arrow={<FaArrowRight />}
-        handleImage={handleNext}
-      ></ArrowButton>
-    </Slider_Stylizied>
+    <>
+      <Slider_Stylizied image={data[idImage].image}>
+        <ArrowButton arrow={<FaArrowLeft />} handleImage={handlePrevious} />
+        <div>
+          <h2>POR UN PERU SANO</h2>
+          <p>{data[idImage].text}</p>
+          <BtnContainer>
+            <Button type="primary" link="/" text="Donar ahora" size="md" />
+            <Button type="secondary" link="/" text="Contactenos" size="md" />
+          </BtnContainer>
+        </div>
+        <ArrowButton arrow={<FaArrowRight />} handleImage={handleNext} />
+      </Slider_Stylizied>
+    </>
   )
 }

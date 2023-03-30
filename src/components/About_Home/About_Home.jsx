@@ -28,21 +28,24 @@ export default function About_Home() {
           ></img>
         </figure>
       </ImgContainer>
-
-      <InfoContainer>
-        <h2>
-          ¿QUIENES SOMOS <br />
-          <span>Y QUE HACEMOS?</span>
-        </h2>
-
-        <p>
-          Somos una organización sin fines de lucro creada por jóvenes
-          multidisciplinarios, quienes en trabajo conjunto con profesionales de
-          la salud buscan formar una sólida cultura sanitaria en los
-          adolescentes del Perú a través de talleres dinámicos
-        </p>
-        <Button type="secondary" link="/" text="Contáctenos" size="md"></Button>
-      </InfoContainer>
+      <InfoContent />
     </ComponentContainer>
   )
 }
+
+export const InfoContent = ({ size }) => (
+  <InfoContainer size={size}>
+    <h2>
+      ¿QUIENES SOMOS <br />
+      <span>Y QUE HACEMOS?</span>
+    </h2>
+
+    <p>
+      Somos una organización sin fines de lucro creada por jóvenes
+      multidisciplinarios, quienes en trabajo conjunto con profesionales de la
+      salud buscan formar una sólida cultura sanitaria en los adolescentes del
+      Perú a través de talleres dinámicos
+    </p>
+    <Button type="secondary" link="/" text="Contáctenos" size="md" />
+  </InfoContainer>
+)

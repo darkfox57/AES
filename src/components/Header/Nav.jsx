@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../../utils/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
 const Nav = () => {
@@ -12,7 +13,7 @@ const Nav = () => {
         <li>Más</li>
         <li>Contacto</li>
         <li>
-        ❤️
+          <Button type="primary" size="md" text="Haz una donación" link="/" />
         </li>
       </ListNav>
     </NavContainer>

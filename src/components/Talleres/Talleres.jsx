@@ -1,34 +1,42 @@
 import React from 'react'
+import { AiOutlineGift } from 'react-icons/ai'
+import { TbHeartHandshake, TbLifebuoy } from 'react-icons/tb'
 import CardTaller from './CardTaller'
 import { TallerContainer } from './Talleres.Styled'
-import { AiOutlineGift } from 'react-icons/ai';
-import {TbLifebuoy,TbHeartHandshake} from 'react-icons/tb';
-
 
 const events = [
   {
-    icon: <AiOutlineGift/>,
+    icon: <AiOutlineGift />,
     title: 'Cultura Sanitaria',
     parraf:
       'Una de nuestros objetivos es asegurarnos de que los talleres abarquen la salud de forma integral es decir incluyendo la salud mental',
   },
   {
-    icon: <TbHeartHandshake/>,
+    icon: <TbHeartHandshake />,
     title: 'Cultura Sanitaria',
     parraf:
       'Una de nuestros objetivos es asegurarnos de que los talleres abarquen la salud de forma integral es decir incluyendo la salud mental',
   },
   {
-    icon: <TbLifebuoy/>,
+    icon: <TbLifebuoy />,
     title: 'Cultura Sanitaria',
     parraf:
       'Una de nuestros objetivos es asegurarnos de que los talleres abarquen la salud de forma integral es decir incluyendo la salud mental',
   },
 ]
-export const Talleres = () => {
+const Talleres = () => {
   return (
-  <TallerContainer>
-    {events.map((e,index) => <CardTaller key={index} icon={e.icon} title={e.title} parraf={e.parraf} />)}
-  </TallerContainer>
+    <TallerContainer>
+      {events.map((e, index) => (
+        <CardTaller
+          key={index}
+          icon={e.icon}
+          title={e.title}
+          parraf={e.parraf}
+        />
+      ))}
+    </TallerContainer>
   )
 }
+
+export default Talleres

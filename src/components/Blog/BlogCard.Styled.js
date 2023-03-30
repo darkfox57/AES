@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const CardContainer = styled.div`
 width: 340px;
 height: 350px;
-border: 1px solid black;
+background-color: var(--main-white);
+z-index: 10;
 `
 export const ContainerImg = styled.div`
 background: black;
@@ -24,6 +25,8 @@ img{
     position: absolute;
     bottom: 5px;
     right: 5px;
+    font-size: 0.8rem;
+    padding: 5px 8px;
 }
 `
 export const ContainerInfo = styled.div`

@@ -4,7 +4,6 @@ export const CardContainer = styled.div`
 position: relative;
 width: 300px;
 height: 350px;
-border: 1px solid black;
 background: #f4f4f4;
 padding: 40px;
 overflow:hidden;
@@ -27,8 +26,12 @@ export const ContainerInfo = styled.div`
 display: flex;
 flex-direction: column;
 row-gap: 10px;
+& > p:nth-child(1) {
+ font-size: 1.5rem;
+ line-height: 1.6rem;
+}
 `
 export const ContainerIcon = styled.div`
-font-size: 4rem;
+font-size: 3rem;
 color: red;
 `
