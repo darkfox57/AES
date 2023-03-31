@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `
 
@@ -25,15 +25,23 @@ export const Requirement = styled.div`
   display: flex;
   flex-direction: column;
 
+  /* font-size: 0.8rem; */
+
   gap: 10px;
   & > input {
-    height: 35px;
+    height: 50px;
     padding: 0 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    background-color: rgba(200, 200, 200, 0.5);
   }
 
   & > textarea {
     padding: 6px 15px;
     font-family: 'Caviar Dreams', sans-serif;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    background-color: rgba(200, 200, 200, 0.5);
   }
 
   & > span {

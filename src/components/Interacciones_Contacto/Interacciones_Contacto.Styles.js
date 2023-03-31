@@ -5,10 +5,11 @@ export const Interaction_Styled = styled.div`
   display: flex;
   flex-direction: column;
 
-  border: 5px solid orange;
+  width: 300px;
+  height: 185px;
 
-  width: 265px;
-  height: 145px;
+  color: var(--text-white);
+  background-color: var(--main-dark);
 `
 
 export const TopContainer = styled.div`
@@ -21,6 +22,8 @@ export const TopContainer = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    color: #00baa3;
 
     width: 90px;
     height: 50px;
@@ -54,7 +57,7 @@ export const BottomContainer = styled.div`
 
     width: 70%;
 
-    padding-left: 10px;
+    padding-left: 35px;
     gap: 5px;
 
     label {
@@ -71,11 +74,14 @@ export const BottomContainer = styled.div`
 `
 
 export const Button_Styled = styled.div`
+  background-color: #00baa3;
+
   text-align: center;
-  line-height: 2.2rem;
-  width: 40px;
-  height: 40px;
-  background-color: green;
+  line-height: 2.55rem;
+
+  width: 45px;
+  height: 45px;
+
   z-index: 10;
   border-radius: 50%;
 
@@ -85,6 +91,7 @@ export const Button_Styled = styled.div`
 `
 
 export const ArrowIcon = styled(FaArrowRight)`
+  color: var(--text-white);
   vertical-align: middle;
   font-size: 20px;
 `
