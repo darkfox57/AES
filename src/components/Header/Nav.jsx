@@ -21,7 +21,12 @@ const Nav = () => {
           <Button type="primary" size="md" text="Haz una donación" link="/" />
         </li>
         <li>
-          <Button type="primary" size="md" text="Login" link="/" />
+          <Button
+            type="primary"
+            size="md"
+            text="Login"
+            link="/dashboard/login"
+          />
         </li>
       </ListNav>
     </NavContainer>
