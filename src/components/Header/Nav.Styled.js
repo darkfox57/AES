@@ -12,8 +12,12 @@ export const ListNav = styled.ul`
   li {
     list-style: none;
     cursor: pointer;
+    a {
+      text-decoration: none;
+      color: var(--text-white);
+    }
   }
-  @media screen and (max-width: 1316px){
+  @media screen and (max-width: 1316px) {
     flex-direction: column;
     row-gap: 50px;
   }

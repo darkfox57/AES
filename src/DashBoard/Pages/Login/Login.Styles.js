@@ -5,12 +5,7 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG7bL6Q_t2Flc60ajcsZaQGOIKnL8zvLHi3g&usqp=CAU');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  min-height: 100vh;
 `
 
 export const FormLogin = styled.form`
@@ -18,37 +13,42 @@ export const FormLogin = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background-color: rgba(0, 150, 150, 0.6);
-
-  color: var(--text-white);
+  /* color: var(--text-white); */
+  -webkit-box-shadow: 0 0 5px 1px #dddddd;
+  -moz-box-shadow: 0 0 5px 1px #dddddd;
+  box-shadow: 0 0 5px 1px #dddddd;
   gap: 15px;
-
-  padding: var(--section-padding);
-
-  & > div {
+  padding: 50px;
+  border-radius: 13px;
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     gap: 10px;
-    padding-bottom: 20px;
+    
   }
-
   img {
     width: 175px;
-    height: 100px;
+    height: auto;
   }
-
   input {
-    width: 225px;
+    padding: 8px 20px;
     text-align: center;
+    border: none;
+    -webkit-box-shadow: inset 1px 1px 10px 1.5px #dddddd;
+    -moz-box-shadow: inset 1px 1px 10px 1.5px #dddddd;
+    box-shadow: inset 1px 1px 10px 1.5px #dddddd;
+    border-radius: 8px;
+    &::placeholder {
+      color: #ccc;
+    }
   }
-
+  label {
+      font-size: 1rem;
+    }
   span {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
-
   @media screen and (max-width: 768px) {
     text-align: center;
   }
