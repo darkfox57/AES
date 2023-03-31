@@ -13,10 +13,18 @@ const Nav = () => {
         <li>
           <Link to={'/acerca-de'}>Acerca de</Link>
         </li>
-        <li>Involucrate</li>
-        <li>Blog</li>
-        <li>Más</li>
-        <li>Contacto</li>
+        <li>
+          <Link to={'/involucrate'}>Involucrate</Link>
+        </li>
+        <li>
+          <Link to={'/blog'}>Blog</Link>
+        </li>
+        <li>
+          <Link to={'/mas'}>Más</Link>
+        </li>
+        <li>
+          <Link to={'/contacto'}>Contacto</Link>
+        </li>
         <li>
           <Button type="primary" size="md" text="Haz una donación" link="/" />
         </li>
