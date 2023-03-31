@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from '../../utils/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
@@ -7,7 +8,7 @@ const Nav = () => {
     <NavContainer>
       <ListNav>
         <li>Home</li>
-        <li>Acerca de</li>
+        <li><Link to={"/acerca-de"}>Home</Link></li>
         <li>Involucrate</li>
         <li>Blog</li>
         <li>Más</li>

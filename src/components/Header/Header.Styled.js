@@ -64,6 +64,7 @@ export const HeaderGrid = styled.header`
 
 `
 export const Hamburguer = styled.header`
+  z-index:40;
   font-size: 1.6rem;
   position: fixed;
   right: 40px;
