@@ -1,9 +1,11 @@
 import React from 'react'
 import { PortadaContainer } from './Portada.Styled'
-import About from '../../assets/About.webp'
-const Portada = ({mision,titulo}) => {
+// recibe mision titulo principal arriba 
+// titulo el titulo grande 
+//y img fondo de portada
+const Portada = ({mision,titulo,img}) => {
   return (
-    <PortadaContainer Portada={About}>
+    <PortadaContainer Portada={img}>
       <div>
         <p>{mision}</p>
         <h1>{titulo} </h1>
