@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router'
 
 import Button from '../../../utils/Button'
 
-import logo from '../../../assets/logo-aes.png'
+import logo from '../../../assets/logo-pups-color.webp'
 
-import { LoginContainer, FormLogin } from './Login.Styles'
+import { FormLogin, LoginContainer } from './Login.Styles'
 
 export default function Login() {
   const [errorMessage, setErrorMessage] = useState('')
@@ -31,8 +31,8 @@ export default function Login() {
   return (
     <LoginContainer>
       <FormLogin onSubmit={handleSubmit(Login)}>
+        <img src={logo} alt="Logo AES" />
         <div>
-          <img src={logo} alt="Logo AES" />
           <span>
             POR UN PERU SANO - <em>Login</em>
           </span>
@@ -40,6 +40,7 @@ export default function Login() {
         <label>E-mail: </label>
         <input
           type="text"
+          placeholder="Ingresa tu correo"
           {...register('email', {
             required: true,
             pattern:
@@ -56,6 +57,7 @@ export default function Login() {
         <label>Contraseña:</label>
         <input
           type="text"
+          placeholder="Ingresa tu contraseña"
           {...register('password', {
             required: true,
           })}

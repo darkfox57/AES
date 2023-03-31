@@ -7,8 +7,12 @@ const Nav = () => {
   return (
     <NavContainer>
       <ListNav>
-        <li>Home</li>
-        <li><Link to={"/acerca-de"}>Home</Link></li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to={'/acerca-de'}>Acerca de</Link>
+        </li>
         <li>Involucrate</li>
         <li>Blog</li>
         <li>Más</li>
