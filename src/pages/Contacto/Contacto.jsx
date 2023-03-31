@@ -1,5 +1,49 @@
 import React from 'react'
+import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa'
+
+import { Contact_Styled, InteractionsContainer } from './Contacto.Styles'
+import Portada from '../../components/Portada/Portada'
+import Interacciones_Contacto from '../../components/Interacciones_Contacto/Interacciones_Contacto'
+import Form_Contacto from '../../components/Form_Contacto/Form_Contacto'
+import Footer from '../../components/Footer/Footer'
+import Ubicacion_Mapa from '../../components/Ubicacion_Mapa/Ubicacion_Mapa'
 
 export default function Contacto() {
-  return <div>Contacto</div>
+  return (
+    <Contact_Styled>
+      <Portada
+        titulo={'Acerca de PUPS'}
+        img={
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjgRB_hkfY-wt_QzRCs0fqhk3UqxB9IfKovA&usqp=CAU'
+        }
+      ></Portada>
+
+      <InteractionsContainer>
+        <Interacciones_Contacto
+          icon={<FaEnvelope size={25} />}
+          subTitle={'Escríbenos'}
+          details1={'info@webmail.com'}
+          details2={'jobs@webmail01.com'}
+        />
+
+        <Interacciones_Contacto
+          icon={<FaPhoneAlt size={25} />}
+          subTitle={'Llámanos'}
+          details1={'954812223'}
+          details2={'+(098) 098-098-765'}
+        />
+
+        <Interacciones_Contacto
+          icon={<FaMapMarkerAlt size={25} />}
+          subTitle={'Encuéntranos'}
+          details1={'Piura - Perú'}
+          details2={''}
+        />
+      </InteractionsContainer>
+
+      <Ubicacion_Mapa />
+      <Form_Contacto />
+      <Footer />
+    </Contact_Styled>
+  )
 }
