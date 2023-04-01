@@ -13,7 +13,6 @@ export const FormLogin = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* color: var(--text-white); */
   -webkit-box-shadow: 0 0 5px 1px #dddddd;
   -moz-box-shadow: 0 0 5px 1px #dddddd;
   box-shadow: 0 0 5px 1px #dddddd;

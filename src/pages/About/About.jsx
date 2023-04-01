@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import Patrocinadores from '../../components/Patrocinadores/Patrocinadores'
 import Portada from '../../components/Portada/Portada'
 import QuienesSomos from '../../components/QuienesSomos/QuienesSomos'
+
 const About = () => {
   return (
     <div>

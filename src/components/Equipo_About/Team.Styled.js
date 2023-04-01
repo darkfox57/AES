@@ -1,20 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const TeamFlex = styled.div`
- display: flex;
- flex-direction: column;
- row-gap: 50px;
- justify-content: center;
- align-items: center;
- background: #2ECC71;
- height: max-content;
- padding: 80px 0;
- .grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  justify-content: center;
+  align-items: center;
+  background: #2ecc71;
+  height: max-content;
+  padding: var(--section-padding);
+  margin-bottom: 150px;
+  .grid {
+    width: 100%;
     place-items: center;
-    width: 1400px;
-    //width: 80%;
     display: grid;
-    gap: 10px;
-    grid-template-columns:  repeat(auto-fit, minmax(min(310px, 100%), 1fr));
- }
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  }
 `

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
   width: max-content;
-  //border: 1px solid green;
 `
 export const ListNav = styled.ul`
   display: flex;
