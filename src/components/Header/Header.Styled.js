@@ -1,4 +1,4 @@
-import styled,{keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 const slideInAnimation = keyframes`
   from {
@@ -45,17 +45,14 @@ export const HeaderGrid = styled.header`
     width: auto;
   }
   @media screen and (max-width: 1316px) {
-   //display: ${({ visible }) => (visible ? 'flex' : 'none')};
   flex-direction: column;
   text-align: center;
-  //border:1px solid red;
   background: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   border: 1px solid rgba(0, 0, 0, 0.25);
   z-index: 40;
   width: 350px;
-  //padding: 50px 0;
   justify-content: space-evenly;
   height: 100vh;
   left: ${({ visible }) => (visible ? '0px' : '-350px')};

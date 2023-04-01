@@ -1,10 +1,14 @@
 import React from 'react'
 import Button from '../../utils/Button'
-import { GridQuienes, QuienesInfo, QuieneSomos } from './QuienesSomos.Styled'
+import {
+  GridQuienes,
+  QuienesInfo,
+  QuieneSomosContainer,
+} from './QuienesSomos.Styled'
 
 const QuienesSomos = () => {
   return (
-    <QuieneSomos>
+    <QuieneSomosContainer>
       <GridQuienes>
         <div>
           <img
@@ -15,7 +19,8 @@ const QuienesSomos = () => {
         <QuienesInfo>
           <p>Nuestro trabajo</p>
           <h2>
-            ¿Quiénes somos <br /><h2>y qué hacemos?</h2>
+            ¿Quiénes somos <br />
+            <span>y qué hacemos?</span>
           </h2>
           <p>
             Patrocinios Somos una organización sin fines de lucro creada por
@@ -24,11 +29,11 @@ const QuienesSomos = () => {
             en los adolescentes del Perú a través de talleres dinámicos.
           </p>
           <div>
-          <Button  type="primary"  text="Contáctenos" size="lg" />
+            <Button type="primary" text="Contáctenos" size="lg" />
           </div>
         </QuienesInfo>
       </GridQuienes>
-    </QuieneSomos>
+    </QuieneSomosContainer>
   )
 }
 

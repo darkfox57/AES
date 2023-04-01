@@ -24,6 +24,7 @@
  --main-white: #f5f5fa;
  --primary-blue: #4685B6;
  --section-padding: 75px 10%;
+ --body-font: 'Caviar Dreams', sans-serif;
 }
 
 html {
@@ -37,13 +38,17 @@ html {
  scroll-behavior: smooth;
 }
 
+input ::placeholder {
+ font-family: (--body-font);
+}
+
 body {
  margin: 0;
  padding: 0;
  color: var(--main-dark);
  background-color: var(--main-white);
  /* overflow-x: hidden; */
- font-family: 'Caviar Dreams', sans-serif;
+ font-family: var(--body-font);
  scroll-behavior: smooth;
 }
 

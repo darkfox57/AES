@@ -8,43 +8,50 @@ export const MainContainer = styled.div`
 `
 
 export const FormContainer = styled.form`
+width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
-
-  padding: 25px 200px;
-
+  padding: var(--section-padding);
   & > :nth-child(5) {
     flex-basis: 100%;
+  }
+  button {
+    align-self: center;
   }
 `
 
 export const Requirement = styled.div`
-  flex-basis: calc(50% - 1.5em);
   display: flex;
-  flex-direction: column;
-
-  /* font-size: 0.8rem; */
-
   gap: 10px;
-  & > input {
-    height: 50px;
-    padding: 0 15px;
+  flex-wrap: wrap;
+  .contact-text-area {
+    width: 100%;
+  }
+  div {  
+    flex: 1 0 calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  input {
+    padding: 12px 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    background-color: rgba(200, 200, 200, 0.5);
+    font-family: var(--body-font);
+    min-width: 300px;
+  }
+  textarea {
+    padding: 12px 15px;
+    font-family: var(--body-font);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     border: none;
     background-color: rgba(200, 200, 200, 0.5);
   }
-
-  & > textarea {
-    padding: 6px 15px;
-    font-family: 'Caviar Dreams', sans-serif;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    border: none;
-    background-color: rgba(200, 200, 200, 0.5);
-  }
-
-  & > span {
+  span {
     color: red;
     text-align: center;
   }

@@ -10,7 +10,6 @@ export const Patrocinadores_Styled = styled.div`
   padding: var(--section-padding);
   margin-top: -150px;
   min-height: 600px;
-  
   &::before {
     content: "";
     position: absolute;
