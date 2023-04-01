@@ -1,0 +1,57 @@
+{
+  "text": [
+    {
+      "label": "Nombre y apellidos",
+      "type": "text",
+      "name": "nombre"
+    },
+    {
+      "label": "Correo de contacto",
+      "type": "text",
+      "name": "correo"
+    },
+    {
+      "label": "Celular de contacto",
+      "type": "number",
+      "name": "celular"
+    }
+  ],
+  "seleccion": [
+    {
+      "label": "Paises",
+      "option": ["España", "Peru"],
+      "name": "pais"
+    },
+    {
+      "label": "Animes",
+      "option": ["Tokyo", "Japonanime"],
+      "name": "anime"
+    }
+  ],
+  "radius":  [
+    {
+      "label": "Salud Fisica",
+      "type": "radio",
+      "name": "cargo",
+      "value": "fisica"
+    },
+    {
+      "label": "Salud Mental",
+      "type": "radio",
+      "name": "cargo",
+      "value": "mental"
+    },
+    {
+      "label": "Salud Social",
+      "type": "radio",
+      "name": "cargo",
+      "value": "social"
+    },
+    {
+        "label": "Salud Medio ambiental",
+        "type": "radio",
+        "name": "cargo",
+        "value": "medioambiental"
+    }
+  ]
+}
