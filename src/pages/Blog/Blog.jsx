@@ -4,7 +4,7 @@ import blogimg from '../../assets/About.webp'
 import BlogCard from '../../components/Blog/BlogCard'
 import Footer from '../../components/Footer/Footer'
 import Portada from '../../components/Portada/Portada'
-import { getAllBlogs } from '../../redux/actions/actions'
+import { getAllBlogs } from '../../redux/actions/blog_actions'
 import { BlogBody } from './blog.styles'
 
 export default function Blog() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllBlogs } from '../../redux/actions/actions'
+import { getAllBlogs } from '../../redux/actions/blog_actions'
 import { BlogContainer, BlogList } from './Blog.Styled'
 import BlogCard from './BlogCard'
 
