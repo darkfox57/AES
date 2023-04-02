@@ -7,6 +7,8 @@ import FileInput from './FileInput'
 
 import Button from '../../utils/Button/Button'
 
+import { ModalWrapper, Form_Styled } from './Form_Especialistas.Styles'
+
 const Form_Especialistas = () => {
   const {
     register,
@@ -19,9 +21,10 @@ const Form_Especialistas = () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h2>Postulación de especialistas</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <ModalWrapper style={{ display: 'flex', flexDirection: 'column' }}>
+      <Form_Styled onSubmit={handleSubmit(onSubmit)}>
+        <h2>Postulación de especialistas</h2>
+
         {/**Texto dinamico */}
         {inputs.text.map((data, index) => (
           <TextInput
@@ -69,8 +72,8 @@ const Form_Especialistas = () => {
         <FileInput register={register} />
 
         <Button text="Enviar Formulario" type="primary" size="lg"></Button>
-      </form>
-    </div>
+      </Form_Styled>
+    </ModalWrapper>
   )
 }
 
