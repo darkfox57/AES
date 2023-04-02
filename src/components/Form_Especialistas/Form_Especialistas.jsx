@@ -64,6 +64,7 @@ const Form_Especialistas = () => {
               errors={errors}
             />
           ))}
+          {errors["cargo"]?.type === "required" && <p style={{color:"red"}}>Por favor eliga uno</p>}
         </div>
         <FileInput register={register} />
 
