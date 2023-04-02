@@ -15,7 +15,6 @@ export const TeamFlex = styled.div`
     place-items: center;
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
     grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   }
 `

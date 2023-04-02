@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllBlogs } from '../../redux/actions/actions'
 import { BlogContainer, BlogList } from './Blog.Styled'
 import BlogCard from './BlogCard'
 
@@ -34,8 +36,16 @@ const event = [
 ]
 const Blog = () => {
   // usamos un useHook perzonalizado para la paginacion tipo slider
+
+  const dispatch = useDispatch()
+  const posts = useSelector((state) => state.blogs)
+
+  useEffect(() => {
+    dispatch(getAllBlogs())
+  }, [dispatch])
+
   const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
-    usePagination(event, 3)
+    usePagination(posts, 3)
   return (
     <BlogContainer>
       <BlogHeader
@@ -45,8 +55,14 @@ const Blog = () => {
         PreviousPage={PreviousPage}
       />
       <BlogList>
-        {paginatedData.map((data, index) => (
-          <BlogCard key={index} text={data.text} fecha={data.fecha} />
+        {paginatedData.map((post) => (
+          <BlogCard
+            key={post._id}
+            image={post.image}
+            title={post.title}
+            status={post.status}
+            date={post.createdAt}
+          />
         ))}
       </BlogList>
     </BlogContainer>
