@@ -1,21 +1,20 @@
 import React from 'react'
 
-const pattern = {
-    correo: /^[a-z0-9](\.?[a-z0-9]){5,}@gmail\.com$/,
-    nombre: /^[A-Za-zÁ-ÿ\s]+$/
-}
 
-const TextInput = ({label, type,name,register,errors,value}) => {
+
+const TextInput = ({label, type,name,register,errors,value,required,pattern,maxLength}) => {
+  const Regex = new RegExp(pattern)
   return (
     <div>
  <label>{label}</label>
     <input value={value} type={type}  {...register(name,{
-        required:true,
-        maxLength:false,
-        pattern: pattern[name]
+        required: required,
+        maxLength:maxLength || false,
+        pattern: Regex
       })} />
        {errors[name]?.type === `required` && <p>{`El campo ${label} es requerido`}</p>}
-      {errors[name]?.type === `pattern` && <p>{`El formato del  ${label} es incorrecto`}</p>}
+       {errors[name]?.type === `maxLength` && <p>{`El campo ${label} debe tener 15 digitos maximo`}</p>}
+       {errors[name]?.type === `pattern` && <p>{`El formato del  ${label} es incorrecto`}</p>}
     </div>
   )
 }

@@ -1,10 +1,12 @@
 import React from 'react'
 
-const SelectInput = ({register,label, option,name,errors}) => {
+const SelectInput = ({register,label, option,name,errors,required}) => {
   return (
     <div>
         <label>{label}</label>
-       <select {...register(name)}>
+       <select {...register(name,{
+        required:required
+       })}>
           <option value={'es'}>Seleciona</option>
           {option.map((el, index) => (
             <option key={index} value={el}>

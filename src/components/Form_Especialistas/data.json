@@ -3,29 +3,37 @@
     {
       "label": "Nombre y apellidos",
       "type": "text",
-      "name": "nombre"
+      "name": "nombre",
+      "required": true,
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$"
     },
     {
       "label": "Correo de contacto",
       "type": "text",
-      "name": "correo"
+      "name": "correo",
+      "required": true,
+      "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
     },
     {
       "label": "Celular de contacto",
       "type": "number",
-      "name": "celular"
+      "name": "celular",
+      "required": true,
+      "maxLength": 15
     }
   ],
   "seleccion": [
     {
       "label": "Paises",
       "option": ["España", "Peru"],
-      "name": "pais"
+      "name": "pais",
+      "required": true
     },
     {
       "label": "Animes",
       "option": ["Tokyo", "Japonanime"],
-      "name": "anime"
+      "name": "anime",
+      "required": true
     }
   ],
   "radius":  [
@@ -33,25 +41,29 @@
       "label": "Salud Fisica",
       "type": "radio",
       "name": "cargo",
-      "value": "fisica"
+      "value": "fisica",
+      "required": true
     },
     {
       "label": "Salud Mental",
       "type": "radio",
       "name": "cargo",
-      "value": "mental"
+      "value": "mental",
+      "required": true
     },
     {
       "label": "Salud Social",
       "type": "radio",
       "name": "cargo",
-      "value": "social"
+      "value": "social",
+      "required": true
     },
     {
         "label": "Salud Medio ambiental",
         "type": "radio",
         "name": "cargo",
-        "value": "medioambiental"
+        "value": "medioambiental",
+        "required": true
     }
   ]
 }

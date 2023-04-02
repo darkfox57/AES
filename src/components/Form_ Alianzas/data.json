@@ -1,0 +1,82 @@
+{
+    "text" : [{
+        "label": "Nombre de la organización",
+        "type": "text",
+        "name": "nombreOrganizacion"
+    },
+
+    {
+        "label": "¿Cuál es la labor de la organización?",
+        "type": "text",
+        "name": "laborOrganizacion"
+    },
+
+    {
+        "label": "Correo de contacto",
+        "type": "text",
+        "name": "correoOrganizacion"
+    },
+
+    {
+        "label": "Nombres y apellidos de quien inscribe",
+        "type": "text",
+        "name": "NombreCompleto"
+    },
+
+    {
+        "label": "Celular de contacto",
+        "type": "text",
+        "name": "celular"
+    },
+    {
+        "label": "Cargo dentro de la organización",
+        "type": "text",
+        "name": "cargoOrganizacion"
+    },
+    {
+        "label": "Número de voluntarios a quienes estaría dirigido el taller",
+        "type": "number",
+        "name": "celular"
+      },
+      {
+        "label": "Redes sociales de la organización",
+        "type": "text",
+        "name": "celular"
+      }
+    ],
+
+    "seleccion": [
+        {
+            "label": "Ciudad",
+            "option": ["Lima", "Arequipa", "Trujillo"],
+            "name": "ciudad"
+        }
+    ],
+
+    "radius": [
+            {
+              "label": "Salud Fisica",
+              "type": "radio",
+              "name": "cargo",
+              "value": "fisica"
+            },
+            {
+              "label": "Salud Mental",
+              "type": "radio",
+              "name": "cargo",
+              "value": "mental"
+            },
+            {
+              "label": "Salud Social",
+              "type": "radio",
+              "name": "cargo",
+              "value": "social"
+            },
+            {
+                "label": "Salud Medio ambiental",
+                "type": "radio",
+                "name": "cargo",
+                "value": "medioambiental"
+            }
+        ]
+}
