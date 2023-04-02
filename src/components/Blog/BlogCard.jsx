@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsShare } from 'react-icons/bs'
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 import { CardContainer, ContainerImg, ContainerInfo } from './BlogCard.Styled'
 const Img =
   'https://revistarecursoshumanos.com/wp-content/uploads/2016/08/atención-cliente_2015.jpg'

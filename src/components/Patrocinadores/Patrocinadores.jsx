@@ -2,7 +2,7 @@ import React from 'react'
 
 import logoSponsor from '../../assets/Logo_Sponsor.png'
 import mapa from '../../assets/mapa-ong-pup.svg'
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 import { Logos_Container, Patrocinadores_Styled } from './Patrocinadores.Styles'
 
 const linkLogos = [logoSponsor, logoSponsor, logoSponsor]

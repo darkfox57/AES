@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 import { BottomLugar, CardContainer, TopFecha } from './CardEventos.Styled'
 
 const CardEventos = ({ fecha, lugar, topFecha }) => {
