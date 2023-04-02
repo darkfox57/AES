@@ -38,11 +38,11 @@ const Blog = () => {
   // usamos un useHook perzonalizado para la paginacion tipo slider
 
   const dispatch = useDispatch()
-  const posts = useSelector((state) => state.blogs)
+  const posts = useSelector((state) => state.blog.blogs)
 
   useEffect(() => {
     dispatch(getAllBlogs())
-  }, [dispatch])
+  }, [])
 
   const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
     usePagination(posts, 3)

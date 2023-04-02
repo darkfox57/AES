@@ -1,7 +1,10 @@
-import { applyMiddleware, createStore } from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../reducer/reducer'
+import { configureStore } from '@reduxjs/toolkit';
+import BlogReducer from '../reducer/blog_reducer';
+import EventReducer from '../reducer/event_reducer';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
-
-export default store
+export default configureStore({
+ reducer: {
+  blog: BlogReducer,
+  event: EventReducer
+ },
+});
