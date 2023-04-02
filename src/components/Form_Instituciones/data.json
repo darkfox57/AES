@@ -1,67 +1,68 @@
 {
-    "text" : [{
-        "label": "Nombre de la institucion",
-        "type": "text",
-        "name": "nombreEmpresa"
+  "text": [
+    {
+      "label": "Nombre de la institucion",
+      "type": "text",
+      "name": "nombreEmpresa"
     },
 
     {
-        "label": "Correo de contacto",
-        "type": "text",
-        "name": "correo"
+      "label": "Correo de contacto",
+      "type": "text",
+      "name": "correo"
     },
 
     {
-        "label": "Nombre completo del inscriptor",
-        "type": "text",
-        "name": "nombreInscriptor"
+      "label": "Nombre completo del inscriptor",
+      "type": "text",
+      "name": "nombreInscriptor"
     },
 
     {
-        "label": "Cargo dentro de la institucion",
-        "type": "text",
-        "name": "cargo"
+      "label": "Cargo dentro de la institucion",
+      "type": "text",
+      "name": "cargo"
     },
 
     {
-        "label": "Celular de contacto",
-        "type": "text",
-        "name": "celular"
+      "label": "Celular de contacto",
+      "type": "text",
+      "name": "celular"
     }
-    ],
+  ],
 
-    "seleccion": [
-        {
-            "label": "Ciudad",
-            "option": ["Lima", "Arequipa", "Trujillo"],
-            "name": "ciudad"
-        }
-    ],
+  "seleccion": [
+    {
+      "label": "Ciudad",
+      "option": ["Lima", "Arequipa", "Trujillo"],
+      "name": "ciudad"
+    }
+  ],
 
-    "radius": [
-            {
-              "label": "Salud Fisica",
-              "type": "radio",
-              "name": "cargo",
-              "value": "fisica"
-            },
-            {
-              "label": "Salud Mental",
-              "type": "radio",
-              "name": "cargo",
-              "value": "mental"
-            },
-            {
-              "label": "Salud Social",
-              "type": "radio",
-              "name": "cargo",
-              "value": "social"
-            },
-            {
-                "label": "Salud Medio ambiental",
-                "type": "radio",
-                "name": "cargo",
-                "value": "medioambiental"
-            }
-        ]
+  "radius": [
+    {
+      "label": "Salud Fisica",
+      "type": "radio",
+      "name": "cargo",
+      "value": "fisica"
+    },
+    {
+      "label": "Salud Mental",
+      "type": "radio",
+      "name": "cargo",
+      "value": "mental"
+    },
+    {
+      "label": "Salud Social",
+      "type": "radio",
+      "name": "cargo",
+      "value": "social"
+    },
+    {
+      "label": "Salud Medio ambiental",
+      "type": "radio",
+      "name": "cargo",
+      "value": "medioambiental"
+    }
+  ]
 }

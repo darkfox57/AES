@@ -32,6 +32,9 @@ const Form_Especialistas = () => {
             label={data.label}
             type={data.type}
             errors={errors}
+            required={data.required}
+            maxLength={data.maxLength}
+            pattern={data.pattern}
           />
         ))}
         {/**seleccion dinamica*/}
@@ -41,7 +44,9 @@ const Form_Especialistas = () => {
           name={data.name}
           label={data.label}
           errors={errors}
+          required={data.required}
           option={data.option} />
+          
         ))}
 
         {/**Texto raidus */}
@@ -55,6 +60,7 @@ const Form_Especialistas = () => {
           value={data.value}
           label={data.label}
           type={data.type}
+          required={data.required}
           errors={errors}
         />
         ))}
