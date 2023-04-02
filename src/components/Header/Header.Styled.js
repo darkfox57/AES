@@ -55,6 +55,7 @@ export const HeaderGrid = styled.header`
   width: 350px;
   justify-content: space-evenly;
   height: 100vh;
+  z-index: 200;
   left: ${({ visible }) => (visible ? '0px' : '-350px')};
   animation: ${props => (props.visible ? slideInAnimation : slideOutAnimation)} 0.3s ease-in-out;
 }
@@ -64,10 +65,26 @@ export const Hamburguer = styled.header`
   z-index:40;
   font-size: 1.6rem;
   position: fixed;
-  right: 40px;
-  top: 40px;
+  right: 20px;
+  top: 20px;
   color: white;
   display: none;
+  ${({ scrolled }) =>
+    scrolled &&
+    `
+    top: 0;
+    right: 0;
+    padding: 10px 20px;;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  z-index: 100;
+  svg {
+    float: right;
+  }
+  `}
   @media screen and (max-width: 1316px) {
     display: block;
   }

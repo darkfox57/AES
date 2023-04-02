@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import logo from '../../assets/logo-aes.png'
 import { Hamburguer, HeaderGrid } from './Header.Styled'
-import { GiHamburgerMenu } from 'react-icons/gi';
 
 import Nav from './Nav'
 
@@ -18,21 +18,21 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-  const handleHamburgue = ()=>{
+  const handleHamburgue = () => {
     !visible ? setVisible(true) : setVisible(false)
   }
   return (
     <>
-    <Hamburguer>
-      <GiHamburgerMenu onClick={handleHamburgue}/>
-    </Hamburguer>
-    <HeaderGrid scrolled={scrolled} visible={visible} >
-      <img
-        src={logo}
-        alt="Por un Perú Sano - organización sin fines de lucro"
-      />
-      <Nav />
-    </HeaderGrid>
+      <Hamburguer scrolled={scrolled}>
+        <GiHamburgerMenu onClick={handleHamburgue} />
+      </Hamburguer>
+      <HeaderGrid scrolled={scrolled} visible={visible}>
+        <img
+          src={logo}
+          alt="Por un Perú Sano - organización sin fines de lucro"
+        />
+        <Nav />
+      </HeaderGrid>
     </>
   )
 }
