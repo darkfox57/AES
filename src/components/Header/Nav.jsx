@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
 const Nav = () => {

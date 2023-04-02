@@ -19,6 +19,7 @@
       "type": "number",
       "name": "celular",
       "required": true,
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
       "maxLength": 15
     }
   ],

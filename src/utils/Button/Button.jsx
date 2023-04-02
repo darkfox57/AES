@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ButtonStyle } from './button.styles'
+import { ButtonStyle } from './Button.styles'
 
 // se necesitan 4 argumentos que son los que se estan pasando por props
 

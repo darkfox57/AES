@@ -4,7 +4,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import ArrowButton from '../../utils/ArrowButton/ArrowButton'
 import { BtnContainer, Slider_Stylizied } from './Slider.Styles'
 
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 
 //Importo los iconos, el slider estilizado (Slider_Stylizied) y el boton reutilizable que representa las flechas (ArrowButton)
 //Las dos funciones se encargan de sumar o restar el id del objeto de la imagen para mostrar ese en pantalla

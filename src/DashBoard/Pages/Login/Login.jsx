@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 
-import Button from '../../../utils/Button'
+import Button from '../../../utils/Button/Button'
 
 import logo from '../../../assets/logo-pups-color.webp'
 

@@ -2,36 +2,49 @@
     "text" : [{
         "label": "Nombre de la organización",
         "type": "text",
-        "name": "nombreOrganizacion"
+        "name": "nombreOrganizacion",
+        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+        "required": true
     },
 
     {
         "label": "¿Cuál es la labor de la organización?",
         "type": "text",
-        "name": "laborOrganizacion"
+        "name": "laborOrganizacion",
+        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+        "required": true
     },
 
     {
         "label": "Correo de contacto",
         "type": "text",
-        "name": "correoOrganizacion"
+        "name": "correoOrganizacion",
+        "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+        "required": true
     },
 
     {
         "label": "Nombres y apellidos de quien inscribe",
         "type": "text",
-        "name": "NombreCompleto"
+        "name": "NombreCompleto",
+        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+        "required": true
     },
 
     {
         "label": "Celular de contacto",
         "type": "text",
-        "name": "celular"
+        "name": "celular",
+        "required": true,
+        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+        "maxLength": 15
     },
     {
         "label": "Cargo dentro de la organización",
         "type": "text",
-        "name": "cargoOrganizacion"
+        "name": "cargoOrganizacion",
+        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+        "required": true
     },
     {
         "label": "Número de voluntarios a quienes estaría dirigido el taller",
@@ -41,7 +54,9 @@
       {
         "label": "Redes sociales de la organización",
         "type": "text",
-        "name": "celular"
+        "name": "celular",
+        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+        "required": true
       }
     ],
 
@@ -58,25 +73,29 @@
               "label": "Salud Fisica",
               "type": "radio",
               "name": "cargo",
-              "value": "fisica"
+              "value": "fisica",
+              "required": true
             },
             {
               "label": "Salud Mental",
               "type": "radio",
               "name": "cargo",
-              "value": "mental"
+              "value": "mental",
+              "required": true
             },
             {
               "label": "Salud Social",
               "type": "radio",
               "name": "cargo",
-              "value": "social"
+              "value": "social",
+              "required": true
             },
             {
                 "label": "Salud Medio ambiental",
                 "type": "radio",
                 "name": "cargo",
-                "value": "medioambiental"
+                "value": "medioambiental",
+                "required": true
             }
         ]
 }

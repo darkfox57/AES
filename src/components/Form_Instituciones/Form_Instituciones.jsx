@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-import TextInput from '../Form_Especialistas/TextInput'
-import SelectInput from '../Form_Especialistas/SelectInput'
-import Button from '../../utils/Button'
+import TextInput from '../../utils/TextInput/TextInput'
+import SelectInput from '../../utils/SelectInput/SelectInput'
+import Button from '../../utils/Button/Button'
 
 import info from './data.json'
 
@@ -34,6 +34,9 @@ export default function Form_Instituciones() {
             name={data.name}
             label={data.label}
             type={data.type}
+            required={data.required}
+            maxLength={data.maxLength}
+            pattern={data.pattern}
             errors={errors}
           />
         ))}
@@ -45,8 +48,9 @@ export default function Form_Instituciones() {
             register={register}
             name={data.name}
             label={data.label}
-            errors={errors}
             option={data.option}
+            required={data.required}
+            errors={errors}
           />
         ))}
 
@@ -62,6 +66,7 @@ export default function Form_Instituciones() {
               value={data.value}
               label={data.label}
               type={data.type}
+              required={data.required}
               errors={errors}
             />
           ))}

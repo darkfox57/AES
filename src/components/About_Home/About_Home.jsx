@@ -6,7 +6,7 @@ import {
   InfoContainer,
 } from './About_Home.Styles'
 
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 
 //Importo el micro-componente boton y le establecemos sus propiedades
 

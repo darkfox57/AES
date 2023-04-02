@@ -3,31 +3,42 @@
     {
       "label": "Nombre de la institucion",
       "type": "text",
-      "name": "nombreEmpresa"
+      "name": "nombreEmpresa",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
     },
 
     {
       "label": "Correo de contacto",
       "type": "text",
-      "name": "correo"
+      "name": "correo",
+      "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+      "required": true
     },
 
     {
       "label": "Nombre completo del inscriptor",
       "type": "text",
-      "name": "nombreInscriptor"
+      "name": "nombreInscriptor",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
     },
 
     {
       "label": "Cargo dentro de la institucion",
       "type": "text",
-      "name": "cargo"
+      "name": "cargo",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
     },
 
     {
       "label": "Celular de contacto",
       "type": "text",
-      "name": "celular"
+      "name": "celular",
+      "maxLength": 15,
+      "pattern": "^[0-9]+$",
+      "required": true
     }
   ],
 
@@ -35,7 +46,8 @@
     {
       "label": "Ciudad",
       "option": ["Lima", "Arequipa", "Trujillo"],
-      "name": "ciudad"
+      "name": "ciudad",
+      "required": true
     }
   ],
 
@@ -44,25 +56,29 @@
       "label": "Salud Fisica",
       "type": "radio",
       "name": "cargo",
-      "value": "fisica"
+      "value": "fisica",
+      "required": true
     },
     {
       "label": "Salud Mental",
       "type": "radio",
       "name": "cargo",
-      "value": "mental"
+      "value": "mental",
+      "required": true
     },
     {
       "label": "Salud Social",
       "type": "radio",
       "name": "cargo",
-      "value": "social"
+      "value": "social",
+      "required": true
     },
     {
       "label": "Salud Medio ambiental",
       "type": "radio",
       "name": "cargo",
-      "value": "medioambiental"
+      "value": "medioambiental",
+      "required": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaAngellist, FaReact } from 'react-icons/fa'
 
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 
 import {
   ActionContainer,

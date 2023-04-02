@@ -7,7 +7,7 @@ import {
 
 import { useForm } from 'react-hook-form'
 
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 
 export default function Form_Contacto() {
   const {

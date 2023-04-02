@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../utils/Button'
+import Button from '../../utils/Button/Button'
 import CardTeam from './CardTeam'
 import { TeamFlex } from './Team.Styled'
 const data = [
@@ -27,7 +27,7 @@ const data = [
 const Team = () => {
   return (
     <TeamFlex>
-      <div className='grid'>
+      <div className="grid">
         {data.map((team, index) => (
           <CardTeam
             key={index}
@@ -37,7 +37,7 @@ const Team = () => {
           />
         ))}
       </div>
-      <Button size="lg" type="primary" text={"Contactanos"} />
+      <Button size="lg" type="primary" text={'Contactanos'} />
     </TeamFlex>
   )
 }
