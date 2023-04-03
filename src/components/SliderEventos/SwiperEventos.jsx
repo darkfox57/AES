@@ -1,78 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CardEventos from './CardEventos'
 import { EventoContainer } from './SliderEventos.Styled'
-//aqui
 import { Swiper, SwiperSlide } from 'swiper/react';
-//autopaly
-import SwiperCore, { Autoplay,Pagination,Navigation } from 'swiper';
-//css
+import SwiperCore, { Autoplay,Navigation } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllEvents } from '../../redux/actions/event_actions';
 
 SwiperCore.use([Autoplay]);
-SwiperCore.use([Pagination]);
 SwiperCore.use([Navigation]);
 
-const eventos = [
-  {
-    id: 1,
-    fecha: '24 Abril de 2023',
-    topFecha: 'Subasta anual',
-    lugar: '🎁M12/A Miranda Hall Town Hal Street New York, United States',
-  },
-  {
-    id: 2,
-    fecha: '24 Abril de 2023',
-    topFecha: 'Subasta anual',
-    lugar: '🎁M12/A Miranda Hall Town Hal Street New York, United States',
-  },
-  {
-    id: 3,
-    fecha: '24 Abril de 2023',
-    topFecha: 'Subasta anual',
-    lugar: '🎁M12/A Miranda Hall Town Hal Street New York, United States',
-  },
-  {
-    id: 4,
-    fecha: '24 Abril de 2023',
-    topFecha: 'Subasta Miranda',
-    lugar: '🎁M12/A Miranda Hall Town Hal Street New York, United States',
-  },
-  {
-    id: 5,
-    fecha: '24 Abril de 2023',
-    topFecha: 'Subasta Semanal',
-    lugar: '🎁M12/A Miranda Hall Town Hal Street New York, United States',
-  },
-]
-
 const SwiperEventos = () => {
+  const dispatch = useDispatch();
+  const Events = useSelector((state) => state.event.events);
+  
+  useEffect(() => {
+    dispatch(getAllEvents());
+  }, []);
+  
+  if (!Events.length) {
+    return <p>Cargando eventos...</p>
+  }
+
   return (
     <EventoContainer>
       <Swiper
-       autoplay={{
-        delay: 5000,
-        disableOnInteraction: false
-      }}
-      loop={true}
-      navigation
-      spaceBetween={20}// gap
-      slidesPerView={3}
-      centeredSlides={true}
-      //onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-      //onSwiper={(swiper) => console.log(swiper)}
-    >
-        {eventos.map((data) => (
-          <SwiperSlide className='swiper-card' key={data.id}>
-          <CardEventos
-            topFecha={data.topFecha}
-            lugar={data.lugar}
-            fecha={data.fecha}
-          />
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false
+        }}
+        loop={true}
+        navigation
+        spaceBetween={20}
+        slidesPerView={3}
+        //centeredSlides={true}
+        //onSlideChange={(swiper) => console.log(swiper)}
+      >
+        {Events.map((data) => (
+          <SwiperSlide className='swiper-card' key={data._id}>
+            <CardEventos
+              title={data.title}
+              lugar={data.location}
+              fecha={data.date}
+            />
           </SwiperSlide>
         ))}
-        </Swiper>
+      </Swiper>
     </EventoContainer>
-  )
-}
+  );
+};
 
-export default SwiperEventos
+export default SwiperEventos;
