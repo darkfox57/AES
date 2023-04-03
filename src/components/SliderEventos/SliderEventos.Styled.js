@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const EventoContainer = styled.div`
   display: flex;
@@ -9,13 +9,13 @@ export const EventoContainer = styled.div`
   gap: 50px;
   & > div:first-child {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     width: 100%;
   }
-`
-
-export const FlexSliderContainer = styled.div`
+  .swiper-card{
     display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
+    justify-content: center;
+    align-items: center;
+  }
 `
