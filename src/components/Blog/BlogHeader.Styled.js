@@ -8,8 +8,6 @@ export const FlexPrincipal = styled.div`
 
 export const ContainerInfoText = styled.div`
   margin-bottom: 20px;
+  text-align:center;
 `
-export const FlexButtom = styled.div`
-  display: flex;
-  gap: 25;
-`
+

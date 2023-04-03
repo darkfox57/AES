@@ -9,9 +9,16 @@ export const BlogContainer = styled.div`
   gap: 30px;
   width: 100%;
   padding: var(--section-padding);
+  .xd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .swiper-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
-export const BlogList = styled.div`
-display: flex;
-flex-wrap: wrap;
-gap: 15px;
-`
+
