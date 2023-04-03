@@ -27,7 +27,7 @@
     {
       "label": "Cargo dentro de la institucion",
       "type": "text",
-      "name": "cargo",
+      "name": "puesto",
       "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
       "required": true
     },

@@ -30,7 +30,7 @@ export default function Actions() {
           <p>
             Hay muchas formas en las que puedes contribuir a nuestras labores
           </p>
-          <Button type="link" link="/" text="Leer más" size="md" />
+          <Button type="link" link="/involucrate" text="Leer más" size="md" />
         </div>
       </Involve_Action_Content>
     </ActionContainer>

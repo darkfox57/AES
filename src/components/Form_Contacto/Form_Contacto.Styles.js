@@ -8,18 +8,19 @@ export const MainContainer = styled.div`
 `
 
 export const FormContainer = styled.form`
-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
+
   gap: 50px;
   padding: var(--section-padding);
   & > :nth-child(5) {
     flex-basis: 100%;
   }
-  button {
-    align-self: center;
+  & > div:last-of-type {
+    text-align: center;
   }
 `
 
@@ -30,7 +31,7 @@ export const Requirement = styled.div`
   .contact-text-area {
     width: 100%;
   }
-  div {  
+  div {
     flex: 1 0 calc(50% - 10px);
     display: flex;
     flex-direction: column;

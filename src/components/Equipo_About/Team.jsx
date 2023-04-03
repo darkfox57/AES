@@ -37,7 +37,7 @@ const Team = () => {
           />
         ))}
       </div>
-      <Button size="lg" type="primary" text={'Contactanos'} />
+      <Button size="lg" type="primary" text={'Contactanos'} link="/contacto" />
     </TeamFlex>
   )
 }
