@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
@@ -23,9 +23,13 @@ const img =
 export default function Involucrate() {
   const [form, setForm] = useState('')
 
-  const handleForm = (evento) => {
-    setForm(evento.target.name)
-  }
+  const handleForm = useCallback(
+    (evento) => {
+      evento.preventDefault()
+      setForm(evento.target.name)
+    },
+    [setForm]
+  )
 
   return (
     <>
@@ -106,7 +110,7 @@ export default function Involucrate() {
           </Card_Contact>
         </Card_Container>
 
-        {form && <ShowForm isOpen={true} formToShow={form} />}
+        {form && <ShowForm formToShow={form} />}
       </Involucrate_Container>
     </>
   )
