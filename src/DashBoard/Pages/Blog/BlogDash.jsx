@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllBlogs } from '../../../redux/actions/blog_actions'
+import Button from '../../../utils/Button/Button'
 import BlogCard from '../../Components/BlogCard/BlogCard'
 import { BlogList } from './blog.styles'
 
@@ -14,6 +15,12 @@ export default function BlogDash() {
   return (
     <>
       <h2>Blog</h2>
+      <Button
+        type="primary"
+        link="/dashboard/add-blog"
+        text="Crear nuevo articulo"
+        size="md"
+      />
       <BlogList>
         {posts.map((post) => (
           <BlogCard

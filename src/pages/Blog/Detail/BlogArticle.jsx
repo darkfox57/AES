@@ -9,9 +9,10 @@ import { BlogDetailBody } from './blogdetail.styles'
 
 export default function BlogArticle() {
   const { slug } = useParams()
+
   const dispatch = useDispatch()
   const postBlog = useSelector((state) => state.blog.blog)
-  const post = postBlog[0]
+  const post = postBlog
 
   useEffect(() => {
     dispatch(getBlog(slug))
@@ -29,7 +30,11 @@ export default function BlogArticle() {
           })}
         </span>
         <h2>{post?.title}</h2>
-        <p>{post?.description}</p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: post?.description,
+          }}
+        ></div>
       </BlogDetailBody>
       <Blog />
       <Footer />
