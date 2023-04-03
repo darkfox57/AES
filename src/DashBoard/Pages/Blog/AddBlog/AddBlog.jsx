@@ -1,15 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../../utils/Button/Button'
 import TextInput from '../../../../utils/TextInput/TextInput'
 //forms react
 import { useForm } from 'react-hook-form'
 import FileInput from '../../../../components/Form_Especialistas/FileInput'
+import { addBlog, getCategories } from '../../../../redux/actions/blog_actions'
 
 export default function AddBlog() {
-  const [postContent, setPostContent] = useState('')
+  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.blog.categories)
+  const estado = useSelector((state) => state.blog.status)
 
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [dispatch])
+
+  const [postContent, setPostContent] = useState('')
+  const [reqMessage, setReqMessage] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
   const {
     register,
     handleSubmit,
@@ -17,62 +28,74 @@ export default function AddBlog() {
   } = useForm()
 
   const handleData = (data) => {
-    data.description = postContent // agregamos la descripcion
-    console.log(data)
-    // Aquí puedes enviar el contenido del post al servidor
+    data.description = postContent
+    const file = data.archivo[0]
+    const imgUrl = file
+      ? URL.createObjectURL(file)
+      : 'https://blog.oxfamintermon.org/wp-content/uploads/2014/11/ONG-copia-e1415635063990.jpg'
+    setImageUrl(imgUrl)
+
+    const formData = {
+      title: data.name,
+      description: data.description,
+      image: imageUrl,
+      category: data.category,
+      status: 'active',
+    }
+
+    dispatch(addBlog(formData))
+    estado === 'succeeded'
+      ? setReqMessage('Creado Correctamente')
+      : setReqMessage(estado)
+    console.log(estado)
   }
-  // descipciones - imagen - nombre y categorias chexbox de un array de objetos category.name - titulo
-  const categorias = [
-    {
-      name: 'salud',
-    },
-    {
-      name: 'fisica',
-    },
-    {
-      name: 'mental',
-    },
-  ]
+
   //*arreglar el scroll al cambiar la pagina para Andres **/
   return (
     <>
       <h2>Crear Articulo de Blog</h2>
       <form onSubmit={handleSubmit(handleData)}>
-        <label>
-          Descripción:
-          <ReactQuill
-            value={postContent}
-            onChange={(value) => setPostContent(value)}
-          />
-        </label>
         {/**Input Nombre */}
         <TextInput
           label="Nombre"
           type="text"
-          name="nombre"
+          name="name"
           register={register}
           errors={errors}
           required={true}
           pattern="^[A-Za-zÁ-ÿ\s]+$"
         />
-        {/**Categoria map checkbox */}
-        {categorias.map((category, index) => (
-          <TextInput
-            key={index}
-            type="checkbox"
-            register={register}
-            label={category.name}
-            value={category.name}
-            name={'categoria'}
-            errors={errors}
-            required={true}
+        {/**Input Description */}
+        <label>
+          Descripción:
+          <ReactQuill
+            name="description"
+            value={postContent}
+            onChange={(value) => setPostContent(value)}
           />
+        </label>
+        {/**Categoria map checkbox */}
+        {categories.map((category, index) => (
+          <label key={category._id}>
+            <TextInput
+              type="checkbox"
+              register={register}
+              value={category.name}
+              name={'category'}
+              errors={errors}
+              required={false}
+            />
+            {category.name}
+          </label>
         ))}
         {/**Categoria error  */}
-        {errors.categoria?.type === `required` && <p>Seleccione alguna categoria por favor</p>}
+        {errors.categoria?.type === `required` && (
+          <p>Seleccione alguna categoria por favor</p>
+        )}
         {/**Imagen  updale */}
-        <FileInput register={register} />
+        <FileInput register={register} name="image" />
         <button type="submit">Publicar</button>
+        <span>{reqMessage}</span>
       </form>
     </>
   )
