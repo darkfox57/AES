@@ -1,16 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { BsShare } from 'react-icons/bs'
 import Button from '../../utils/Button/Button'
 import { CardContainer, ContainerImg, ContainerInfo } from './BlogCard.Styled'
+
 const Img =
   'https://revistarecursoshumanos.com/wp-content/uploads/2016/08/atención-cliente_2015.jpg'
-const BlogCard = ({ image, title, date, status, id }) => {
+const BlogCard = ({ image, title, date, status, id, slug }) => {
   return (
     <>
-      {status !== 'active' && (
+      <Link to={`/blog/${slug}`}>
         <CardContainer>
           <ContainerImg>
-            <img src={image} alt="empresa" />
+            <img src={image} alt={title} />
             <div className="fecha">
               <span>
                 {new Date(date).toLocaleString('es-ES', {
@@ -29,7 +32,7 @@ const BlogCard = ({ image, title, date, status, id }) => {
             </div>
           </ContainerInfo>
         </CardContainer>
-      )}
+      </Link>
     </>
   )
 }

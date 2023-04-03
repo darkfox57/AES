@@ -10,7 +10,7 @@ export const getAllBlogs = createAsyncThunk('blogs/getAll', async () => {
 
 export const getBlog = createAsyncThunk('blogs/getOne', async (slug) => {
   const response = await axios.get(
-    `https://projectaes-production.up.railway.app/blogs?slug=${slug}`
+    `https://projectaes-production.up.railway.app/blogs/search?slug=${slug}`
   )
   return response.data
 })

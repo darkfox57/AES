@@ -5,6 +5,7 @@ import Login from './DashBoard/Pages/Login/Login'
 import Header from './components/Header/Header'
 import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
+import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
 import Involucrate from './pages/Involucrate/Involucrate'
 import Mas from './pages/Mas/Mas'
@@ -22,7 +23,7 @@ function App() {
         <Route path="/acerca-de" element={<About />} />
         <Route path="/involucrate" element={<Involucrate />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog:slug" />
+        <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/mas" element={<Mas />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<Dashboard />} />
