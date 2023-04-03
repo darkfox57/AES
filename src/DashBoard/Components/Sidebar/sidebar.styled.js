@@ -15,7 +15,9 @@ nav {
  flex-direction: column;
  width: 100%;
  list-style: none;
- li {
+ li a {
+  text-decoration: none;
+  color: var(--text-dark);
   display: flex;
   gap: 10px;
   align-items: center;

@@ -11,6 +11,7 @@ export const BlogContainer = styled.div`
   padding: var(--section-padding);
   .xd{
     display: flex;
+    gap: 20;
     justify-content: center;
     align-items: center;
     width: 100%;
