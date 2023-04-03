@@ -1,19 +1,20 @@
 import React from 'react'
 
-import About_Home from '../../components/About_Home/About_Home'
+import About_Home from '../../components/Swiper_Home_Portada/About_Home'
 import Actions from '../../components/Actions/Actions'
 import BannerCita from '../../components/Banner_Cita/BannerCita'
 import Blog from '../../components/Blog/Blog'
 import Footer from '../../components/Footer/Footer'
 import Patrocinadores from '../../components/Patrocinadores/Patrocinadores'
-import Slider from '../../components/Slider/Slider'
+//import Slider from '../../components/Slider/Slider'
 import SliderEventos from '../../components/SliderEventos/SliderEventos'
 import Talleres from '../../components/Talleres/Talleres'
+import HomeSlider from '../../components/Swiper_Home_Portada/HomeSlider'
 
 export default function Home() {
   return (
     <>
-      <Slider
+      {/*<Slider
         data={[
           {
             id: 0,
@@ -34,7 +35,8 @@ export default function Home() {
               'https://img3.wallspic.com/previews/3/5/6/4/2/124653/124653-bosque_oscuro-x750.jpg',
           },
         ]}
-      />
+      />*/}
+      <HomeSlider/>
       <Actions />
       <About_Home />
       <Talleres />
@@ -43,6 +45,7 @@ export default function Home() {
       <Patrocinadores />
       <SliderEventos />
       <Footer />
+      
     </>
   )
 }

@@ -1,0 +1,24 @@
+import styled from 'styled-components'
+
+export const TextMainContainer = styled.div`
+  text-align: center;
+  color: white;
+  position: absolute;
+  z-index: 40;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  display: flex;
+  flex-direction:column;
+  gap: 5px 0;
+  p{
+    margin-bottom:10px
+  }
+`
+export const FlexButtom = styled.div`
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap:20px
+`
