@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import usePagination from '../../Hooks/usePagination'
 import { getAllBlogs } from '../../redux/actions/blog_actions'
 import { BlogContainer, BlogList } from './Blog.Styled'
 import BlogCard from './BlogCard'
-
-import usePagination from '../../Hooks/usePagination'
 import BlogHeader from './BlogHeader'
 
 const Blog = () => {
@@ -35,6 +35,7 @@ const Blog = () => {
             title={post.title}
             status={post.status}
             date={post.createdAt}
+            slug={post.slug}
           />
         ))}
       </BlogList>

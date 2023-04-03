@@ -26,6 +26,7 @@ export default function Blog() {
             title={post.title}
             status={post.status}
             date={post.createdAt}
+            slug={post.slug}
           />
         ))}
       </BlogBody>
