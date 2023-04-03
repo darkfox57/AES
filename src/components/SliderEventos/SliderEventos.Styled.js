@@ -17,5 +17,6 @@ export const EventoContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 400px;
   }
 `
