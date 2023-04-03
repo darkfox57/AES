@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function Mas() {
+export default function Faqs() {
   return <div>Mas</div>
 }
