@@ -10,13 +10,13 @@ import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
 import Involucrate from './pages/Involucrate/Involucrate'
-import Mas from './pages/Mas/Mas'
+import Faqs from './pages/FAQs/Faqs'
 
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 
 import Home from './pages/Home/Home'
-import axios from "axios"
-axios.defaults.baseURL = "https://projectaes-production.up.railway.app"
+import axios from 'axios'
+axios.defaults.baseURL = 'https://projectaes-production.up.railway.app'
 
 function App() {
   const location = useLocation()
@@ -30,7 +30,7 @@ function App() {
         <Route path="/involucrate" element={<Involucrate />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
-        <Route path="/mas" element={<Mas />} />
+        <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
           <Route path="" element={<Dashboard />} />
