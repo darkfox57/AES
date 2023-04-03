@@ -10,8 +10,10 @@ import { ButtonStyle } from './Button.styles'
 
 export default function Button({ type, link, text, size }) {
   return (
-    <ButtonStyle type={type} size={size}>
-      <Link to={link}>{text}</Link>
-    </ButtonStyle>
+    <Link to={link}>
+      <ButtonStyle type={type} size={size}>
+        {text}
+      </ButtonStyle>
+    </Link>
   )
 }

@@ -1,6 +1,8 @@
 import React from 'react'
+import { Outlet } from 'react-router'
 import Header from '../DashBoard/Components/Header/Header.jsx'
 import Sidebar from '../DashBoard/Components/Sidebar/Sidebar.jsx'
+import Dashboard from '../DashBoard/Pages/Dashboard/Dashboard.jsx'
 import {
   DashBoardLayoutContainer,
   HeaderContainer,
@@ -8,7 +10,7 @@ import {
   SidebarContainer,
 } from './dashLayout.styles.js'
 
-export default function DashLayout({ children }) {
+export default function DashLayout() {
   return (
     <>
       <DashBoardLayoutContainer>
@@ -18,7 +20,9 @@ export default function DashLayout({ children }) {
         <HeaderContainer>
           <Header />
         </HeaderContainer>
-        <MainContainer>{children}</MainContainer>
+        <MainContainer>
+          <Outlet />
+        </MainContainer>
       </DashBoardLayoutContainer>
     </>
   )

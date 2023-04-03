@@ -9,6 +9,7 @@ import {
   IoNewspaperOutline,
   IoSpeedometerOutline,
 } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
 import logo from '../../../assets/logo-pups-color.webp'
 import { ProfileMiniature, SideBarContent } from './sidebar.styled'
 
@@ -29,52 +30,68 @@ export default function Sidebar() {
         </ProfileMiniature>
         <nav>
           <li>
-            <i>
-              <IoSpeedometerOutline />
-            </i>
-            Dashboard
+            <Link to="/dashboard/">
+              <i>
+                <IoSpeedometerOutline />
+              </i>
+              Dashboard
+            </Link>
           </li>
           <li>
-            <i>
-              <IoHeartOutline />
-            </i>
-            Involucrate
+            <Link to="/dashboard/">
+              <i>
+                <IoHeartOutline />
+              </i>
+              Involucrate
+            </Link>
           </li>
           <li>
-            <i>
-              <IoMailUnreadOutline />
-            </i>
-            Mensajes
+            <Link to="/dashboard/">
+              <i>
+                <IoMailUnreadOutline />
+              </i>
+              Mensajes
+            </Link>
           </li>
           <li>
-            <i>
-              <IoEarOutline />
-            </i>
-            Suscripciones
+            <Link to="/dashboard/">
+              <i>
+                <IoEarOutline />
+              </i>
+              Suscripciones
+            </Link>
           </li>
           <li>
-            <i>
-              <IoNewspaperOutline />
-            </i>
-            Blogs
+            <Link to="/dashboard/blog">
+              <i>
+                <IoNewspaperOutline />
+              </i>
+              Blogs
+            </Link>
           </li>
           <li>
-            <i>
-              <IoCalendarOutline />
-            </i>
-            Eventos
+            <Link to="/dashboard/">
+              <i>
+                <IoCalendarOutline />
+              </i>
+              Eventos
+            </Link>
           </li>
           <li>
-            <i>
-              <IoImageOutline />
-            </i>
-            Banner Principal
+            <Link to="/dashboard/">
+              <i>
+                <IoImageOutline />
+              </i>
+              Banner Principal
+            </Link>
           </li>
           <li>
-            <i>
-              <IoBuildOutline />
-            </i>
-            Configuración
+            <Link to="/dashboard/">
+              <i>
+                <IoBuildOutline />
+              </i>
+              Configuración
+            </Link>
           </li>
         </nav>
       </SideBarContent>

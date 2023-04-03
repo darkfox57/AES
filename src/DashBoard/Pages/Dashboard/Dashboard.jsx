@@ -4,7 +4,7 @@ import { DashBoardBody } from './dashboard.styles'
 
 export default function Dashboard() {
   return (
-    <DashLayout>
+    <>
       <h3>DashBoard</h3>
       <DashBoardBody>
         <div>Involucrate</div>
@@ -14,6 +14,6 @@ export default function Dashboard() {
         <div>Eventos</div>
         <div>Banner Principal</div>
       </DashBoardBody>
-    </DashLayout>
+    </>
   )
 }
