@@ -2,12 +2,12 @@ import React from 'react'
 import Button from '../../utils/Button/Button'
 import { BottomLugar, CardContainer, TopFecha } from './CardEventos.Styled'
 
-const CardEventos = ({ fecha, lugar, topFecha }) => {
+const CardEventos = ({ fecha, lugar, title }) => {
   return (
     <CardContainer>
       <TopFecha>
         <span>{fecha}</span>
-        <h4>{topFecha}</h4>
+        <h4>{title}</h4>
       </TopFecha>
       <BottomLugar>
         <span>{lugar}</span>

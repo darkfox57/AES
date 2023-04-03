@@ -15,6 +15,8 @@ import Mas from './pages/Mas/Mas'
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 
 import Home from './pages/Home/Home'
+import axios from "axios"
+axios.defaults.baseURL = "https://projectaes-production.up.railway.app"
 
 function App() {
   const location = useLocation()

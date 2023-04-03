@@ -25,6 +25,9 @@ const Blog = () => {
     dispatch(getAllBlogs())
   }, [])
 
+  if (!posts.length) {
+    return <p>Cargando eventos...</p>
+  }
   return (
     <BlogContainer>
       <BlogHeader />

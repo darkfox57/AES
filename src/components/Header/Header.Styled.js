@@ -45,6 +45,7 @@ export const HeaderGrid = styled.header`
     width: auto;
   }
   @media screen and (max-width: 1316px) {
+    
   flex-direction: column;
   text-align: center;
   background: rgba(0, 0, 0, 0.5);
@@ -54,7 +55,7 @@ export const HeaderGrid = styled.header`
   z-index: 40;
   width: 350px;
   justify-content: space-evenly;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 200;
   left: ${({ visible }) => (visible ? '0px' : '-350px')};
   animation: ${props => (props.visible ? slideInAnimation : slideOutAnimation)} 0.3s ease-in-out;
