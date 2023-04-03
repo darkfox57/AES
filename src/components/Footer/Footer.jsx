@@ -1,5 +1,5 @@
 import React from 'react'
-import { InfoContent } from '../About_Home/About_Home'
+import { InfoContent } from '../Swiper_Home_Portada/About_Home'
 import Contacto from './Contacto'
 import Donacion from './Donacion'
 import {
