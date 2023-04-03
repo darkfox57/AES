@@ -29,7 +29,12 @@ const QuienesSomos = () => {
             en los adolescentes del Perú a través de talleres dinámicos.
           </p>
           <div>
-            <Button type="primary" text="Contáctenos" size="lg" />
+            <Button
+              type="primary"
+              text="Contáctenos"
+              size="lg"
+              link="/contacto"
+            />
           </div>
         </QuienesInfo>
       </GridQuienes>

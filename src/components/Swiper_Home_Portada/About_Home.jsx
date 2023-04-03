@@ -46,6 +46,6 @@ export const InfoContent = ({ size }) => (
       salud buscan formar una sólida cultura sanitaria en los adolescentes del
       Perú a través de talleres dinámicos
     </p>
-    <Button type="secondary" link="/" text="Contáctenos" size="md" />
+    <Button type="secondary" link="/contacto" text="Contáctenos" size="md" />
   </InfoContainer>
 )

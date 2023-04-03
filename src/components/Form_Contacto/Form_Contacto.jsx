@@ -112,7 +112,9 @@ export default function Form_Contacto() {
           </div>
         </Requirement>
 
-        <Button type="primary" text="Enviar" size="lg" link=""></Button>
+        <div>
+          <Button type="primary" text="Enviar" size="lg" link=""></Button>
+        </div>
       </FormContainer>
     </MainContainer>
   )

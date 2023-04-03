@@ -33,8 +33,8 @@ const Nav = () => {
           </Link>
         </li>
         <li>
-          <Link to={'/mas'} onClick={handleClick}>
-            Más
+          <Link to={'/faqs'} onClick={handleClick}>
+            FAQ's
           </Link>
         </li>
         <li>
@@ -44,14 +44,6 @@ const Nav = () => {
         </li>
         <li>
           <Button type="primary" size="md" text="Haz una donación" link="/" />
-        </li>
-        <li>
-          <Button
-            type="primary"
-            size="md"
-            text="Login"
-            link="/dashboard/login"
-          />
         </li>
       </ListNav>
     </NavContainer>

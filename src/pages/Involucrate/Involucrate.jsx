@@ -33,7 +33,7 @@ export default function Involucrate() {
 
   return (
     <>
-      <Portada titulo={'Dale con el corazon'} img={img} />
+      <Portada titulo={'Toma accion con AES'} img={img} />
 
       <Involucrate_Container>
         <Card_Container>

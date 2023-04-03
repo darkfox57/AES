@@ -10,7 +10,7 @@
     {
         "label": "¿Cuál es la labor de la organización?",
         "type": "text",
-        "name": "laborOrganizacion",
+        "name": "mision",
         "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
         "required": true
     },
@@ -18,7 +18,7 @@
     {
         "label": "Correo de contacto",
         "type": "text",
-        "name": "correoOrganizacion",
+        "name": "correo",
         "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
         "required": true
     },
@@ -26,7 +26,7 @@
     {
         "label": "Nombres y apellidos de quien inscribe",
         "type": "text",
-        "name": "NombreCompleto",
+        "name": "nombreCompleto",
         "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
         "required": true
     },
@@ -42,14 +42,14 @@
     {
         "label": "Cargo dentro de la organización",
         "type": "text",
-        "name": "cargoOrganizacion",
+        "name": "puesto",
         "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
         "required": true
     },
     {
         "label": "Número de voluntarios a quienes estaría dirigido el taller",
         "type": "number",
-        "name": "celular"
+        "name": "cantIntegrantes"
       },
       {
         "label": "Redes sociales de la organización",

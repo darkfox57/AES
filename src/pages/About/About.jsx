@@ -9,7 +9,7 @@ import QuienesSomos from '../../components/QuienesSomos/QuienesSomos'
 const About = () => {
   return (
     <div>
-      <Portada titulo={'Acerca de PUP'} img={aboutimg} />
+      <Portada titulo={'Acerca de AES'} img={aboutimg} />
       <QuienesSomos />
       <Team />
       <Patrocinadores />

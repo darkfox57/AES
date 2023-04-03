@@ -10,7 +10,7 @@ const linkLogos = [logoSponsor, logoSponsor, logoSponsor]
 export default function Patrocinadores() {
   return (
     <Patrocinadores_Styled image={mapa}>
-      <Button type="primary" link="/" text="Patrocinios" size="md" />
+      <Button type="primary" link="/acerca-de" text="Patrocinios" size="md" />
       <Logos_Container>
         {linkLogos.slice(0, 7).map((logo, index) => (
           <img key={index} src={logo}></img>

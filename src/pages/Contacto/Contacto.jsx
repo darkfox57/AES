@@ -12,7 +12,7 @@ export default function Contacto() {
   return (
     <Contact_Styled>
       <Portada
-        titulo={'Acerca de PUPS'}
+        titulo={'Contacta con AES'}
         img={
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjgRB_hkfY-wt_QzRCs0fqhk3UqxB9IfKovA&usqp=CAU'
         }
