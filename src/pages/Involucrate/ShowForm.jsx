@@ -9,9 +9,13 @@ import Form_Alianzas from '../../components/Form_ Alianzas/Form_Alianzas'
 export default function ShowForm({ formToShow }) {
   return (
     <>
-      {formToShow === 'Form_Especialistas' && <Form_Especialistas />}
-      {formToShow === 'Form_Instituciones' && <Form_Instituciones />}
-      {formToShow === 'Form_Alianzas' && <Form_Alianzas />}
+      {formToShow === 'Form_Especialistas' && (
+        <Form_Especialistas isOpen={true} />
+      )}
+      {formToShow === 'Form_Instituciones' && (
+        <Form_Instituciones isOpen={true} />
+      )}
+      {formToShow === 'Form_Alianzas' && <Form_Alianzas isOpen={true} />}
     </>
   )
 }
