@@ -53,7 +53,7 @@ const HomeSlider = () => {
       spaceBetween={0}// gap
       slidesPerView={1}
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-      onSwiper={(swiper) => console.log(swiper)}
+      //onSwiper={(swiper) => console.log(swiper)}
     >
     {images.map((image)=> <SwiperSlide className='slider' key={image.id}><img src={image.img} alt="portada" /></SwiperSlide>)}
     </Swiper>
