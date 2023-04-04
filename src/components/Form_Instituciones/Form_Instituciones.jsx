@@ -54,19 +54,6 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
             />
           ))}
 
-          {/**Datos para los selectores */}
-          {info.seleccion.map((data, index) => (
-            <SelectInput
-              key={index}
-              register={register}
-              name={data.name}
-              label={data.label}
-              option={data.option}
-              required={data.required}
-              errors={errors}
-            />
-          ))}
-
           <div>
             <h4>¿En qué area de salud desearía dictar el taller?</h4>
 
