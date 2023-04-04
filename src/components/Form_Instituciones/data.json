@@ -17,6 +17,14 @@
     },
 
     {
+      "label": "Ciudad",
+      "name": "ciudad",
+      "type": "text",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
+    },
+
+    {
       "label": "Nombre completo del inscriptor",
       "type": "text",
       "name": "nombreInscriptor",
@@ -38,15 +46,6 @@
       "name": "celular",
       "maxLength": 15,
       "pattern": "^[0-9]+$",
-      "required": true
-    }
-  ],
-
-  "seleccion": [
-    {
-      "label": "Ciudad",
-      "option": ["Lima", "Arequipa", "Trujillo"],
-      "name": "ciudad",
       "required": true
     }
   ],
