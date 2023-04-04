@@ -7,7 +7,7 @@ export default function SwiperInfo({ text }) {
   return (
     <>
       <TextMainContainer>
-        <h2>POR UN PERU SANO</h2>
+        <h2>ASOCIACION DE EDUCACION SANITARIA</h2>
         <p>{text} </p>
         <FlexButtom>
           <Button type="primary" link="/" text="Donar ahora" size="md" />

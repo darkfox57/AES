@@ -6,7 +6,6 @@ import Portada from '../../components/Portada/Portada'
 import Interacciones_Contacto from '../../components/Interacciones_Contacto/Interacciones_Contacto'
 import Form_Contacto from '../../components/Form_Contacto/Form_Contacto'
 import Footer from '../../components/Footer/Footer'
-import Ubicacion_Mapa from '../../components/Ubicacion_Mapa/Ubicacion_Mapa'
 
 export default function Contacto() {
   return (
@@ -41,7 +40,6 @@ export default function Contacto() {
         />
       </InteractionsContainer>
 
-      <Ubicacion_Mapa />
       <Form_Contacto />
       <Footer />
     </Contact_Styled>
