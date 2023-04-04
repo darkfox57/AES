@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
+import Button from '../../utils/Button/Button'
 
 import {
   Involucrate_Container,
   Card_Container,
   Card_Contact,
-  Button_Styled,
 } from './Involucrate.Styles'
 
 const img =
@@ -41,9 +41,19 @@ export default function Involucrate() {
               una sociedad sana tanto física como mentalmente.
             </p>
 
-            <Button_Styled name="Form_Especialistas" onClick={handleForm}>
-              Rellenar Formulario
-            </Button_Styled>
+            {/* <Button
+              type="secondary"
+              size="lg"
+              text="Contactenos"
+              name="Form_Especialistas"
+              onClick={handleForm}
+            ></Button> */}
+
+            <button
+              name="Form_Especialistas"
+              onClick={handleForm}
+              style={{ height: '50px', width: '50px' }}
+            ></button>
           </Card_Contact>
 
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwM04418DHJtKAtm7_QGgdfJo_B_ZTmxzoUg&usqp=CAU">
@@ -55,9 +65,19 @@ export default function Involucrate() {
               hacemos y cómo puede brindar apoyo.
             </p>
 
-            <Button_Styled name="Form_Instituciones" onClick={handleForm}>
-              Rellenar Formulario
-            </Button_Styled>
+            {/* <Button
+              type="secondary"
+              size="lg"
+              text="Contactenos"
+              name="Form_Instituciones"
+              onClick={() => handleForm}
+            ></Button> */}
+
+            <button
+              name="Form_Instituciones"
+              onClick={handleForm}
+              style={{ height: '50px', width: '50px' }}
+            ></button>
           </Card_Contact>
 
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQoWn8xV5mi4gEGF7d2U19ZQkxywsqxDGY_A&usqp=CAU">
@@ -68,9 +88,19 @@ export default function Involucrate() {
               una reunión con nosotros.
             </p>
 
-            <Button_Styled name="Form_Alianzas" onClick={handleForm}>
-              Rellenar Formulario
-            </Button_Styled>
+            {/* <Button
+              type="secondary"
+              size="lg"
+              text="Contactenos"
+              name="Form_Alianzas"
+              onClick={() => handleForm}
+            ></Button> */}
+
+            <button
+              name="Form_Alianzas"
+              onClick={handleForm}
+              style={{ height: '50px', width: '50px' }}
+            ></button>
           </Card_Contact>
         </Card_Container>
 

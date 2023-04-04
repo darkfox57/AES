@@ -21,15 +21,22 @@
       "required": true,
       "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
       "maxLength": 15
-    },
+    }
+  ],
+  "seleccion": [
     {
-      "label": "Pais",
+      "label": "Paises",
       "option": ["España", "Peru"],
       "name": "pais",
       "required": true
+    },
+    {
+      "label": "Animes",
+      "option": ["Tokyo", "Japonanime"],
+      "name": "anime",
+      "required": true
     }
   ],
-
   "radius":  [
     {
       "label": "Salud Fisica",

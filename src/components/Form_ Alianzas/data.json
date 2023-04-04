@@ -57,13 +57,14 @@
         "name": "celular",
         "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
         "required": true
-      },
-      {
-        "label": "Ciudad",
-        "type": "text",
-        "name": "ciudad",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
+      }
+    ],
+
+    "seleccion": [
+        {
+            "label": "Ciudad",
+            "option": ["Lima", "Arequipa", "Trujillo"],
+            "name": "ciudad"
         }
     ],
 

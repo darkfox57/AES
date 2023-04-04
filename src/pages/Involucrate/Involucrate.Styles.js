@@ -58,20 +58,3 @@ export const Card_Contact = styled.div`
     width: 100%;
   }
 `
-
-export const Button_Styled = styled.button`
-  padding: 12px 22px;
-
-  background-color: transparent;
-  border-radius: 10px;
-  color: var(--text-white);
-  border: 1px var(--text-white) solid;
-  opacity: 0.8;
-
-  transition: scale 0.5s ease-in-out;
-
-  :hover {
-    cursor: pointer;
-    scale: 1.1;
-  }
-`

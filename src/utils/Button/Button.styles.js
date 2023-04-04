@@ -51,7 +51,6 @@ export const ButtonStyle = styled.button`
     color: var(--text-white);
   }
   &:hover {
-    cursor: pointer;
     scale: 1.1;
   }
 `

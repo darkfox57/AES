@@ -53,6 +53,18 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
               pattern={data.pattern}
             />
           ))}
+          {/**seleccion dinamica*/}
+          {inputs.seleccion.map((data, index) => (
+            <SelectInput
+              key={index}
+              register={register}
+              name={data.name}
+              label={data.label}
+              errors={errors}
+              required={data.required}
+              option={data.option}
+            />
+          ))}
 
           {/**Texto raidus */}
           <div>
