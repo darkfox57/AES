@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
@@ -15,21 +15,15 @@ const img =
 
 //Cada form tiene una card con titulo, parrafo y boton con el fin de presentar cada inscripcion
 //el estado local representa el formulario que va a renderizarse como ventana modal
-
 //el 'Button' esta comentado porque con ese microcomponente no funciona el 'onClick'
-
 //'formToShow' es el componente que renderiza el formulario en base al estado local
 
 export default function Involucrate() {
   const [form, setForm] = useState('')
 
-  const handleForm = useCallback(
-    (evento) => {
-      evento.preventDefault()
-      setForm(evento.target.name)
-    },
-    [setForm]
-  )
+  const handleForm = (evento) => {
+    setForm(evento.target.name)
+  }
 
   return (
     <>
@@ -110,7 +104,8 @@ export default function Involucrate() {
           </Card_Contact>
         </Card_Container>
 
-        {form && <ShowForm formToShow={form} />}
+        {/** Enviamos a todos los forms la funcion paa actualizar el estado 'form' */}
+        {form && <ShowForm formToShow={form} updateForm={handleForm} />}
       </Involucrate_Container>
     </>
   )

@@ -12,10 +12,10 @@ import info from './data.json'
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import Form_Styled from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
-//Reutilize los componentes que creo emma anteriormente
-//Creo un nuevo data.json para tenerlo de referencia y completar campos
+//desestructuramos ambas props recibidas en showForm
+//en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
 
-export default function Form_Instituciones({ isOpen }) {
+export default function Form_Instituciones({ isOpen, setMainForm }) {
   const {
     register,
     handleSubmit,
@@ -31,6 +31,7 @@ export default function Form_Instituciones({ isOpen }) {
   const closeModal = (event) => {
     event.preventDefault()
     setModal(false)
+    setMainForm(event)
   }
 
   return (
