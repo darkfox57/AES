@@ -7,6 +7,6 @@ export const getAllEvents = createAsyncThunk('events/getAll', async () => {
 })
 
 export const getEvent = createAsyncThunk('events/getOne', async (slug) => {
-  const response = await axios.get(`/?slug=${slug}`)
+  const response = await axios.get(`/event?title=${slug}`)//TITLE POR AHORA DESPUES SLUG
   return response.data
 })

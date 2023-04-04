@@ -16,6 +16,7 @@ import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 
 import Home from './pages/Home/Home'
 import axios from 'axios'
+import EventoForm from './components/EventoArticleForm/EventoForm'
 axios.defaults.baseURL = 'https://projectaes-production.up.railway.app'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/involucrate" element={<Involucrate />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/evento/:slug" element={<EventoForm/>} /> 
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
