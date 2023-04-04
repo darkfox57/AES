@@ -12,6 +12,7 @@ const Form_Styled = styled.form`
   border-radius: 12px;
 
   padding: 20px 12px;
+  margin: 0 auto;
 
   position: relative;
 `

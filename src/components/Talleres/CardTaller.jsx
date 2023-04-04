@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../utils/Button/Button'
+
 import {
   CardContainer,
   CenterCard,
@@ -15,9 +15,6 @@ const CardTaller = ({ icon, title, parraf }) => {
           <p>{title}</p>
           <p>{parraf}</p>
         </ContainerInfo>
-        <div>
-          <Button type={'secondary'} size={'sm'} text={'Readme'} link={'/'} />
-        </div>
       </CenterCard>
     </CardContainer>
   )
