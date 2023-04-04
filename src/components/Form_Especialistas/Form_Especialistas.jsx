@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import inputs from './data.json'
 import TextInput from '../../utils/TextInput/TextInput'
@@ -11,7 +11,10 @@ import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import Form_Styled from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 
-const Form_Especialistas = ({ isOpen }) => {
+//desestructuramos ambas props recibidas en showForm
+//en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
+
+const Form_Especialistas = ({ isOpen, setMainForm }) => {
   const {
     register,
     handleSubmit,
@@ -27,6 +30,7 @@ const Form_Especialistas = ({ isOpen }) => {
   const closeModal = (event) => {
     event.preventDefault()
     setModal(false)
+    setMainForm(event)
   }
 
   return (
@@ -84,7 +88,9 @@ const Form_Especialistas = ({ isOpen }) => {
           <FileInput register={register} />
 
           <Button text="Enviar Formulario" type="primary" size="lg"></Button>
-          <CloseButton onClick={closeModal}>X</CloseButton>
+          <CloseButton onClick={closeModal} name="">
+            X
+          </CloseButton>
         </Form_Styled>
       </Desenfoque>
     )

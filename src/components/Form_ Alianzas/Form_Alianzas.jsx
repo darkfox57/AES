@@ -11,7 +11,10 @@ import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import Form_Styled from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 
-const Form_Alianzas = ({ isOpen }) => {
+//desestructuramos ambas props recibidas en showForm
+//en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
+
+const Form_Alianzas = ({ isOpen, setMainForm }) => {
   const {
     register,
     handleSubmit,
@@ -27,6 +30,7 @@ const Form_Alianzas = ({ isOpen }) => {
   const closeModal = (event) => {
     event.preventDefault()
     setModal(false)
+    setMainForm(event)
   }
 
   return (
