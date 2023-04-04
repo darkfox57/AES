@@ -39,6 +39,8 @@ const SwiperEventos = () => {
         {Events.map((data) => (
           <SwiperSlide className='swiper-card' key={data._id}>
             <CardEventos
+             img={data.frontpage}
+             slug={data.slug}
               title={data.title}
               lugar={data.location}
               fecha={data.date}
