@@ -1,0 +1,84 @@
+{
+  "text": [
+    {
+      "label": "Nombre de la institucion",
+      "type": "text",
+      "name": "nombreEmpresa",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
+    },
+
+    {
+      "label": "Correo de contacto",
+      "type": "text",
+      "name": "correo",
+      "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+      "required": true
+    },
+
+    {
+      "label": "Nombre completo del inscriptor",
+      "type": "text",
+      "name": "nombreInscriptor",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
+    },
+
+    {
+      "label": "Cargo dentro de la institucion",
+      "type": "text",
+      "name": "puesto",
+      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "required": true
+    },
+
+    {
+      "label": "Celular de contacto",
+      "type": "text",
+      "name": "celular",
+      "maxLength": 15,
+      "pattern": "^[0-9]+$",
+      "required": true
+    }
+  ],
+
+  "seleccion": [
+    {
+      "label": "Ciudad",
+      "option": ["Lima", "Arequipa", "Trujillo"],
+      "name": "ciudad",
+      "required": true
+    }
+  ],
+
+  "radius": [
+    {
+      "label": "Salud Fisica",
+      "type": "radio",
+      "name": "cargo",
+      "value": "fisica",
+      "required": true
+    },
+    {
+      "label": "Salud Mental",
+      "type": "radio",
+      "name": "cargo",
+      "value": "mental",
+      "required": true
+    },
+    {
+      "label": "Salud Social",
+      "type": "radio",
+      "name": "cargo",
+      "value": "social",
+      "required": true
+    },
+    {
+      "label": "Salud Medio ambiental",
+      "type": "radio",
+      "name": "cargo",
+      "value": "medioambiental",
+      "required": true
+    }
+  ]
+}

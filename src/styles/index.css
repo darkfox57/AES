@@ -1,3 +1,20 @@
+@font-face {
+ font-family: 'Caviar Dreams';
+ src: url('./fonts/CaviarDreams.ttf') format('truetype'),
+  url('./fonts/CaviarDreams_Bold.ttf') format('truetype'),
+  url('./fonts/CaviarDreams_Italic.ttf') format('truetype'),
+  url('./fonts/CaviarDreams_BoldItalic.ttf') format('truetype');
+ font-weight: normal;
+ font-style: normal;
+}
+
+@font-face {
+ font-family: 'Bebas Neue';
+ src: url('https://fonts.gstatic.com/s/bebasneue/v2/JTURjIg1_i6t8kCHKm45_epG3g.ttf') format('truetype');
+ font-weight: normal;
+ font-style: normal;
+}
+
 :root {
  --main-color: #13263F;
  --secondary-color: #1F3667;
@@ -5,6 +22,13 @@
  --text-white: #f5f5fa;
  --main-dark: #13131a;
  --main-white: #f5f5fa;
+ --primary-blue: #4685B6;
+ --section-padding: 75px 10%;
+ --body-font: 'Caviar Dreams', sans-serif;
+}
+
+html {
+ font-size: 17px;
 }
 
 * {
@@ -14,12 +38,18 @@
  scroll-behavior: smooth;
 }
 
+input ::placeholder {
+ font-family: (--body-font);
+}
+
 body {
  margin: 0;
  padding: 0;
  color: var(--main-dark);
  background-color: var(--main-white);
- overflow-x: hidden;
+ /* overflow-x: hidden; */
+ font-family: var(--body-font);
+ scroll-behavior: smooth;
 }
 
 img {
@@ -32,13 +62,14 @@ a {
 }
 
 p {
- font-size: 1.2rem;
+ font-size: 1rem;
  line-height: 1.4rem;
 }
 
 h1,
 h2 {
  font-weight: 400;
+ font-family: 'Bebas Neue', sans-serif;
 }
 
 h3,
@@ -46,6 +77,23 @@ h4,
 h5,
 h6 {
  font-weight: 400;
+ font-family: 'Bebas Neue', sans-serif;
+}
+
+h1 {
+ font-size: 3.5rem;
+}
+
+h2 {
+ font-size: 3rem;
+}
+
+h3 {
+ font-size: 2rem;
+}
+
+h4 {
+ font-size: 1.5rem;
 }
 
 li {
