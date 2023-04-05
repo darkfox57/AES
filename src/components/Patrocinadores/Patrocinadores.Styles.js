@@ -8,10 +8,9 @@ export const Patrocinadores_Styled = styled.div`
   position: relative;
   gap: 60px;
   padding: var(--section-padding);
-  margin-top: -150px;
   min-height: 600px;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
