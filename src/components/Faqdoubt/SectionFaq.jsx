@@ -1,0 +1,37 @@
+import React from 'react';
+import { AnimatedSpan, SectionFaqContainer } from './SectionFaq.Styled';
+
+const SectionFaq = ({ title, details, index, visibleIndex, setVisibleIndex }) => {
+    
+  const handleView = () => {
+    if (visibleIndex === index) {
+      // Si se hace clic en el span actualmente visible, lo cerramos
+      setVisibleIndex(null);
+    } else {
+      // Si se hace clic en un nuevo span, lo abrimos y cerramos el anterior
+      setVisibleIndex(index);
+    }
+  }
+
+  return (
+    <SectionFaqContainer >
+      <div className='title'>
+        <h3>{title}</h3>
+        <button onClick={handleView}>❤️</button>
+      </div>
+      
+      {/*visibleIndex === index && (
+        // Mostrar los detalles solo si el índice del span es igual al visibleIndex
+        <AnimatedSpan visible={visibleIndex === index}>
+          <p>{details}</p>
+        </AnimatedSpan>
+      )*/}
+      <AnimatedSpan visible={visibleIndex === index}>
+        <p>{details}</p>
+      </AnimatedSpan>
+    </SectionFaqContainer>
+  )
+}
+
+export default SectionFaq
+
