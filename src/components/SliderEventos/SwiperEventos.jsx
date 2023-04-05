@@ -32,7 +32,7 @@ const SwiperEventos = () => {
         loop={true}
         navigation
         spaceBetween={20}
-        slidesPerView={3}
+        slidesPerView={4}
         //centeredSlides={true}
         //onSlideChange={(swiper) => console.log(swiper)}
       >

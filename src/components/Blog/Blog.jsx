@@ -40,7 +40,7 @@ const Blog = () => {
         loop={true}
         navigation
         spaceBetween={20} // gap
-        slidesPerView={3}
+        slidesPerView={4}
         centeredSlides={true}
         //onSwiper={(swiper) => console.log(swiper)}
       >
