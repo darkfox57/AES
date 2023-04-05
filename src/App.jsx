@@ -9,15 +9,15 @@ import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
-import Involucrate from './pages/Involucrate/Involucrate'
 import Faqs from './pages/FAQs/Faqs'
+import Involucrate from './pages/Involucrate/Involucrate'
 
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 
-import Home from './pages/Home/Home'
 import axios from 'axios'
 import EventoForm from './components/EventoArticleForm/EventoForm'
-axios.defaults.baseURL = 'https://projectaes-production.up.railway.app'
+import Home from './pages/Home/Home'
+axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
 function App() {
   const location = useLocation()
@@ -31,7 +31,7 @@ function App() {
         <Route path="/involucrate" element={<Involucrate />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
-        <Route path="/evento/:slug" element={<EventoForm/>} /> 
+        <Route path="/evento/:slug" element={<EventoForm />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
