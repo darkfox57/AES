@@ -9,7 +9,6 @@ export const TeamFlex = styled.div`
   background: #2ecc71;
   height: max-content;
   padding: var(--section-padding);
-  margin-bottom: 150px;
   .grid {
     width: 100%;
     place-items: center;
