@@ -23,6 +23,13 @@ export const FlexInfo = styled.section`
 `
 export const TextEvent = styled.section`
   width: 100%;
+  p::first-letter {
+  font-size: 4rem;
+  text-transform: uppercase;
+  float: left;
+  margin: 8px 5px 12px 0px;
+}  
+ 
 `
 export const BlockDetail = styled.section`
   height: max-content; 

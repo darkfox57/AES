@@ -17,6 +17,7 @@ import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import axios from 'axios'
 import EventoForm from './components/EventoArticleForm/EventoForm'
 import Home from './pages/Home/Home'
+import ProximoEvent from './components/ProximoEvento/ProximoEvent'
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/evento/:slug" element={<EventoForm />} />
+        <Route path="/proximos-eventos" element={<ProximoEvent />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
