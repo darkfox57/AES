@@ -19,17 +19,19 @@
       "type": "number",
       "name": "celular",
       "required": true,
-      "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
+      "pattern": "^[0-9]+$",
       "maxLength": 15
-    },
-    {
-      "label": "Pais",
-      "option": ["España", "Peru"],
-      "name": "pais",
-      "required": true
     }
   ],
 
+  "seleccion": [
+    {
+      "label": "Pais",
+      "name": "pais",
+      "type": "select",
+      "required": true
+    }
+  ],
   "radius":  [
     {
       "label": "Salud Fisica",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { useDispatch } from 'react-redux'
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
 
@@ -9,6 +9,8 @@ import {
   Card_Contact,
   Button_Styled,
 } from './Involucrate.Styles'
+
+import { getAllCountries } from '../../redux/actions/form_actions'
 
 const img =
   'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
@@ -20,6 +22,11 @@ const img =
 
 export default function Involucrate() {
   const [form, setForm] = useState('')
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllCountries())
+  }, [])
 
   const handleForm = (evento) => {
     setForm(evento.target.name)
