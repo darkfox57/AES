@@ -33,7 +33,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/evento/:slug" element={<EventoForm />} />
-        <Route path="/proximos-eventos" element={<ProximoEvent />} />
+        <Route path="/proximos-eventos/:id" element={<ProximoEvent />}/>
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>

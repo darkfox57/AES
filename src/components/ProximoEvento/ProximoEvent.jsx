@@ -5,14 +5,15 @@ import Footer from '../Footer/Footer'
 import FilterProximos from './FilterProximos'
 import CardProximos from './CardProximos'
 import { getAllEvents } from '../../redux/actions/event_actions'
-
+import BtnPaginado from '../BtnPaginado/BtnPaginado'
+import usePagination from '../../Hooks/usePagination'
 const ProximoEvent = () => {
   const Events = useSelector((state) => state.event.events)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllEvents())
   }, [])
-
+  const {currentPage,totalPages,paginatedData,NextPage,PreviousPage,pageNumbers,goToPage} = usePagination(Events,3)
   const imgprueba =
     'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
   return (
@@ -29,7 +30,7 @@ const ProximoEvent = () => {
         }}
       >
         <FilterProximos />
-        {Events.map((event) => (
+        {paginatedData.map((event) => (
           <CardProximos
             key={event._id}
             description={event.description}
@@ -40,6 +41,7 @@ const ProximoEvent = () => {
           />
         ))}
       </div>
+      <BtnPaginado goToPage={goToPage} pageNumbers={pageNumbers}  />
       <Footer />
     </>
   )
