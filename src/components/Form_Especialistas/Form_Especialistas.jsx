@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Select from 'react-select'
 import inputs from './data.json'
 
 import TextInput from '../../utils/TextInput/TextInput'
@@ -23,17 +24,25 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm()
 
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.form.countries)
 
+  const options = countries.map((country) => {
+    return { value: country.name, label: country.name }
+  })
+
   const [modal, setModal] = useState(isOpen)
 
   const onSubmit = (data) => {
-    console.log(data)
-    dispatch(addFormSpecialist(data))
+    const formData = {
+      ...data,
+      pais: data.pais.value,
+    }
+    dispatch(addFormSpecialist(formData))
   }
 
   const closeModal = (event) => {
@@ -65,19 +74,25 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           ))}
 
           {/**Texto seleccion */}
-          {inputs.seleccion.map((data, index) => (
-            <label key={index}>
-              <SelectInput
-                register={register}
-                name={data.name}
-                type={data.type}
-                label={data.label}
-                required={data.required}
-                errors={errors}
+          <Controller
+            name="pais"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={options}
+                isSearchable
+                placeholder="Seleccione un país"
               />
-              {data.label}
-            </label>
-          ))}
+            )}
+          />
+          {errors.pais?.type === `required` && (
+            <p>{`El campo Pais es requerido`}</p>
+          )}
+          {errors.pais?.type === `pattern` && (
+            <p>{`El formato del campo Pais es incorrecto`}</p>
+          )}
 
           {/**Texto raidus */}
           <div>
