@@ -25,24 +25,19 @@ const EventoForm = () => {
   return (
     <EventoArticleForm>
       <Portada titulo={Evento?.title} img={Evento?.frontpage} />
-      {/*<div className='xd'>
-      <span>{Evento?.date} </span>
-      <h1>{Evento?.title}</h1>
-  <p>{Evento?.description}</p>
-      <Form/>
-      </div>*/}
       <SectionEvent>
         <figure>
           <img src={imgprueba} alt={Evento?.title} />
         </figure>
         <FlexInfo>
           <TextEvent>
+            
             <p>{Evento?.description + lorem}</p>
           </TextEvent>
           <BlockEvento Evento={Evento} />
         </FlexInfo>
+        <Form/>
       </SectionEvent>
-      <Form/>
       <Footer/>
     </EventoArticleForm>
   )
