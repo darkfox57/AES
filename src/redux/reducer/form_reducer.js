@@ -4,10 +4,12 @@ import {
   addFormInstitution,
   addFormAlliance,
   getAllForms,
+  getAllCountries,
 } from '../actions/form_actions'
 
 const initialState = {
   forms: [],
+  countries: [],
   error: null,
 }
 
@@ -42,6 +44,22 @@ const formSlice = createSlice({
         state.forms = action.payload
       })
       .addCase(getAllForms.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
+      .addCase(getAllCountries.fulfilled, (state, action) => {
+        state.countries = [...action.payload].sort((a, b) => {
+          if (a.name < b.name) {
+            return -1
+          }
+          if (a.name > b.name) {
+            return 1
+          }
+          return 0
+        })
+      })
+
+      .addCase(getAllCountries.rejected, (state, action) => {
         state.error = action.error.message
       })
   },

@@ -1,3 +1,4 @@
+
 import { configureStore } from '@reduxjs/toolkit';
 import AccountReducer from '../reducer/account_reducer';
 import BlogReducer from '../reducer/blog_reducer';
@@ -8,6 +9,8 @@ export default configureStore({
  reducer: {
   blog: BlogReducer,
   event: EventReducer,
+  form: FormReducer,
   account: AccountReducer
  },
 });
+
