@@ -1,76 +1,73 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
-
-import Button from '../../../utils/Button/Button'
-
 import logo from '../../../assets/logo-pups-color.webp'
+import { login } from '../../../redux/actions/account_actions'
+import Button from '../../../utils/Button/Button'
 
 import { FormLogin, LoginContainer } from './Login.Styles'
 
 export default function Login() {
-  const [errorMessage, setErrorMessage] = useState('')
-
+  const dispatch = useDispatch()
+  const estado = useSelector((state) => state.account.status)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
 
-  const navigate = useNavigate()
-
-  const email = 'maxi@gmail.com'
-  const password = '1234'
-
-  const Login = (data) => {
-    if (email === data.email && password === data.password)
-      navigate('/dashboard')
-    else setErrorMessage('El usuario y/o contraseña no coinciden')
+  const handleData = (data) => {
+    dispatch(login(data))
   }
 
   return (
-    <LoginContainer>
-      <FormLogin onSubmit={handleSubmit(Login)}>
-        <img src={logo} alt="Logo AES" />
-        <div>
-          <span>
-            POR UN PERU SANO - <em>Login</em>
-          </span>
-        </div>
-        <label>E-mail: </label>
-        <input
-          type="text"
-          placeholder="Ingresa tu correo"
-          {...register('email', {
-            required: true,
-            pattern:
-              /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
-          })}
-        />
-        {errors.email?.type === 'required' && (
-          <span>El campo 'E-mail' es obligatorio de completar</span>
-        )}
-        {errors.email?.type === 'pattern' && (
-          <span>El formato del campo E-mail es incorrecto</span>
-        )}
+    console.log(estado),
+    (
+      <LoginContainer>
+        <FormLogin onSubmit={handleSubmit(handleData)}>
+          <img src={logo} alt="Logo AES" />
+          <div>
+            <span>
+              POR UN PERU SANO - <em>Login</em>
+            </span>
+          </div>
+          <label htmlFor="email">E-mail: </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Ingresa tu correo"
+            {...register('email', {
+              required: true,
+              pattern:
+                /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
+            })}
+          />
 
-        <label>Contraseña:</label>
-        <input
-          type="text"
-          placeholder="Ingresa tu contraseña"
-          {...register('password', {
-            required: true,
-          })}
-        />
+          {errors.email && (
+            <span>El campo 'E-mail' es obligatorio de completar.</span>
+          )}
+          {errors.email?.type === 'pattern' && (
+            <span>Necesitas ingresar un email valido.</span>
+          )}
 
-        {errors.password?.type === 'required' && (
-          <span>El campo 'Contraseña' es obligatorio de completar</span>
-        )}
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Ingresa tu contraseña"
+            {...register('password', {
+              required: true,
+            })}
+          />
 
-        <Button type="primary" size="md" text="Login"></Button>
-
-        {errorMessage && <span>{errorMessage}</span>}
-      </FormLogin>
-    </LoginContainer>
+          {errors.password && (
+            <span>El campo 'Contraseña' es obligatorio de completar</span>
+          )}
+          <span>{estado.data}</span>
+          <input type="submit" />
+        </FormLogin>
+      </LoginContainer>
+    )
   )
 }
