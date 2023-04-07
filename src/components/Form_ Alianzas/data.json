@@ -1,100 +1,20 @@
 {
-    "text" : [{
-        "label": "Nombre de la organización",
-        "type": "text",
-        "name": "nombreOrganizacion",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
-    },
-
+  "radius": [
     {
-        "label": "¿Cuál es la labor de la organización?",
-        "type": "text",
-        "name": "mision",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
-    },
-
-    {
-        "label": "Correo de contacto",
-        "type": "text",
-        "name": "correo",
-        "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
-        "required": true
-    },
-
-    {
-        "label": "Nombres y apellidos de quien inscribe",
-        "type": "text",
-        "name": "nombreCompleto",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
-    },
-
-    {
-        "label": "Celular de contacto",
-        "type": "text",
-        "name": "celular",
-        "required": true,
-        "pattern": "^[0-9]+$",
-        "maxLength": 15
+      "label": "Salud Fisica",
+      "value": "Fisica"
     },
     {
-        "label": "Cargo dentro de la organización",
-        "type": "text",
-        "name": "puesto",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
+      "label": "Salud Mental",
+      "value": "Mental"
     },
     {
-        "label": "Número de voluntarios a quienes estaría dirigido el taller",
-        "type": "number",
-        "name": "cantIntegrantes"
-      },
-      {
-        "label": "Redes sociales de la organización",
-        "type": "text",
-        "name": "celular",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
-      },
-      {
-        "label": "Ciudad",
-        "type": "text",
-        "name": "ciudad",
-        "pattern": "^[A-Za-zÁ-ÿ\\s]+$",
-        "required": true
-        }
-    ],
-
-    "radius": [
-            {
-              "label": "Salud Fisica",
-              "type": "radio",
-              "name": "cargo",
-              "value": "fisica",
-              "required": true
-            },
-            {
-              "label": "Salud Mental",
-              "type": "radio",
-              "name": "cargo",
-              "value": "mental",
-              "required": true
-            },
-            {
-              "label": "Salud Social",
-              "type": "radio",
-              "name": "cargo",
-              "value": "social",
-              "required": true
-            },
-            {
-                "label": "Salud Medio ambiental",
-                "type": "radio",
-                "name": "cargo",
-                "value": "medioambiental",
-                "required": true
-            }
-        ]
+      "label": "Salud Social",
+      "value": "Social"
+    },
+    {
+      "label": "Salud Medio ambiental",
+      "value": "Medioambiental"
+    }
+  ]
 }

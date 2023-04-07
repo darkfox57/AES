@@ -1,65 +1,20 @@
 {
-  "text": [
-    {
-      "label": "Nombre y apellidos",
-      "type": "text",
-      "name": "nombre",
-      "required": true,
-      "pattern": "^[A-Za-zÁ-ÿ\\s]+$"
-    },
-    {
-      "label": "Correo de contacto",
-      "type": "text",
-      "name": "correo",
-      "required": true,
-      "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
-    },
-    {
-      "label": "Celular de contacto",
-      "type": "number",
-      "name": "celular",
-      "required": true,
-      "pattern": "^[0-9]+$",
-      "maxLength": 15
-    }
-  ],
-
-  "seleccion": [
-    {
-      "label": "Pais",
-      "name": "pais",
-      "type": "select",
-      "required": true
-    }
-  ],
   "radius":  [
     {
       "label": "Salud Fisica",
-      "type": "radio",
-      "name": "cargo",
-      "value": "fisica",
-      "required": true
+      "value": "Fisica"
     },
     {
       "label": "Salud Mental",
-      "type": "radio",
-      "name": "cargo",
-      "value": "mental",
-      "required": true
+      "value": "Mental"
     },
     {
       "label": "Salud Social",
-      "type": "radio",
-      "name": "cargo",
-      "value": "social",
-      "required": true
+      "value": "Social"
     },
     {
-        "label": "Salud Medio ambiental",
-        "type": "radio",
-        "name": "cargo",
-        "value": "medioambiental",
-        "required": true
+      "label": "Salud Medio ambiental",
+      "value": "Medioambiental"
     }
   ]
 }
