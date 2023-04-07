@@ -3,8 +3,19 @@ import styled from "styled-components";
 export const BlogBody = styled.section`
     width: 100%;
     padding: var(--section-padding);
-    place-items: center;
+    place-content: center;
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    grid-template-columns: min-content 400px;
+`
+
+export const GridCardBlog = styled.div`
+display:grid;
+gap:20px;
+`
+export const ContainerMenuBlog = styled.div`
+display: flex;
+flex-direction: column;
+row-gap: 50px;
+//height:500px;
 `

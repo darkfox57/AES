@@ -19,6 +19,7 @@ const ProximoEvent = () => {
   return (
     <>
       <Portada titulo="Próximos eventos" img={imgprueba} />
+      //**styled pasarlo xd */
       <div
         style={{
           gap: '50px',
@@ -41,7 +42,7 @@ const ProximoEvent = () => {
           />
         ))}
       </div>
-      <BtnPaginado goToPage={goToPage} pageNumbers={pageNumbers}  />
+      <BtnPaginado goToPage={goToPage} path={"proximos-eventos"} pageNumbers={pageNumbers}  />
       <Footer />
     </>
   )
