@@ -21,21 +21,23 @@ import { addFormSpecialist } from '../../redux/actions/form_actions'
 //en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
 
 const Form_Especialistas = ({ isOpen, setMainForm }) => {
+  const [modal, setModal] = useState(isOpen)
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm()
-
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.form.countries)
+
+  const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
+  const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
+  const regexNumeros = new RegExp('^[0-9]+$')
 
   const options = countries.map((country) => {
     return { value: country.name, label: country.name }
   })
-
-  const [modal, setModal] = useState(isOpen)
 
   const onSubmit = (data) => {
     const formData = {
@@ -57,60 +59,68 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
         <Form_Styled onSubmit={handleSubmit(onSubmit)}>
           <h2>Postulación de especialistas</h2>
 
-          {/**Texto dinamico */}
-          {inputs.text.map((data, index) => (
-            <label key={index}>
-              <TextInput
-                register={register}
-                name={data.name}
-                type={data.type}
-                errors={errors}
-                required={data.required}
-                maxLength={data.maxLength}
-                pattern={data.pattern}
-              />
-              {data.label}
-            </label>
-          ))}
-
-          {/**Texto seleccion */}
-          <Controller
-            name="pais"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Select
-                {...field}
-                options={options}
-                isSearchable
-                placeholder="Seleccione un país"
-              />
-            )}
+          {/**"Campo Nombre (Texto)"*/}
+          <TextInput
+            register={register}
+            label="Nombre Completo: "
+            name="nombre"
+            type="text"
+            errors={errors}
+            required={true}
+            pattern={regexLetras}
           />
-          {errors.pais?.type === `required` && (
-            <p>{`El campo Pais es requerido`}</p>
-          )}
-          {errors.pais?.type === `pattern` && (
-            <p>{`El formato del campo Pais es incorrecto`}</p>
-          )}
 
-          {/**Texto raidus */}
+          {/**Campo Correo (Texto) */}
+
+          <TextInput
+            register={register}
+            label="Correo de Contacto: "
+            name="correo"
+            type="text"
+            errors={errors}
+            required={true}
+            pattern={regexMail}
+          />
+
+          {/**Campo Celular (Texto) */}
+          <TextInput
+            register={register}
+            label="Celular de Contacto: "
+            name="celular"
+            type="text"
+            maxLength={15}
+            errors={errors}
+            required={true}
+            pattern={regexNumeros}
+          />
+
+          {/**Campo Paises (Seleccion) */}
+          <SelectInput
+            Controller={Controller}
+            Select={Select}
+            control={control}
+            options={options}
+            label="Seleccione su pais: "
+            required={true}
+            errors={errors}
+          />
+
+          {/**Campo Talleres (RadioButton) */}
           <div>
-            <h4>¿En qué area de salud desearía dictar el taller?</h4>
+            <label>¿En qué area de salud desearía dictar el taller?</label>
             {inputs.radius.map((data, index) => (
-              <label key={index}>
-                <TextInput
-                  register={register}
-                  name={data.name}
-                  value={data.value}
-                  type={data.type}
-                  required={data.required}
-                  errors={errors}
-                />
-                {data.label}
-              </label>
+              <TextInput
+                key={index}
+                register={register}
+                name="taller"
+                type="radio"
+                label={data.label}
+                value={data.value}
+                required={true}
+                errors={errors}
+              />
             ))}
-            {errors['cargo']?.type === 'required' && (
+            {errors['taller']?.type === 'required' && (
               <p style={{ color: 'red' }}>Por favor eliga uno</p>
             )}
           </div>
@@ -119,12 +129,13 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
 
           <button
             type="submit"
-            style={{ height: '50px', width: '50px' }}
+            style={{ height: '50px', width: '150px' }}
             value="Especialista"
             {...register('origen')}
           >
-            Enviar Fomrulario
+            Enviar Formulario
           </button>
+
           <CloseButton onClick={closeModal} name="">
             X
           </CloseButton>

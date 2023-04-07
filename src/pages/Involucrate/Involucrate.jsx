@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
-
+import Footer from '../../components/Footer/Footer'
 import {
   Involucrate_Container,
   Card_Container,
@@ -84,6 +84,8 @@ export default function Involucrate() {
         {/** Enviamos a todos los forms la funcion paa actualizar el estado 'form' */}
         {form && <ShowForm formToShow={form} updateForm={handleForm} />}
       </Involucrate_Container>
+
+      <Footer />
     </>
   )
 }

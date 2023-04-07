@@ -10,28 +10,40 @@ const TextInput = ({
   required,
   pattern,
   maxLength,
+  subname,
+  placeholder,
 }) => {
+  // subname = 'soyunObjeto'
   const Regex = new RegExp(pattern)
+  const propForm = subname ? `${subname}.${name}` : name
+
   return (
     <div>
       <label>{label}</label>
       <input
         value={value}
         type={type}
-        {...register(name, {
+        {...register(propForm, {
           required: required,
           maxLength: maxLength || false,
           pattern: Regex,
         })}
+        placeholder={placeholder}
       />
-      {errors[name]?.type === `required` &&
-        type !== 'radio' &&
-        type !== 'checkbox' && <p>{`El campo ${label} es requerido`}</p>}
+      {errors[name]?.type === `required` && type !== 'radio' && (
+        <p>{`El campo ${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        } es requerido`}</p>
+      )}
       {errors[name]?.type === `maxLength` && (
-        <p>{`El campo ${label} debe tener 15 digitos maximo`}</p>
+        <p>{`El campo ${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        } debe tener 15 digitos maximo`}</p>
       )}
       {errors[name]?.type === `pattern` && (
-        <p>{`El formato del  ${label} es incorrecto`}</p>
+        <p>{`El formato del  ${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        } es incorrecto`}</p>
       )}
     </div>
   )
