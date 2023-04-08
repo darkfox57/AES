@@ -6,6 +6,7 @@ justify-content: center;
 align-items: center;
 padding: 30px 0;
 gap: 20px;
+height: max-content;
 `
 
 export const Btnpage = styled.button`
