@@ -2,6 +2,7 @@ import React from 'react'
 import { InfoContent } from '../Swiper_Home_Portada/About_Home'
 import Contacto from './Contacto'
 import Donacion from './Donacion'
+import NewestBlogs from '../LastBlogs/NewestBlogs'
 import {
   FooterContainer,
   FooterContent,
@@ -28,6 +29,8 @@ export default function Footer() {
         </FooterMenu>
         <LastBlogs>
           <h4>Ultimas Entradas del blog</h4>
+          <br />
+          <NewestBlogs />
         </LastBlogs>
       </FooterContent>
       <span>Copyright Por un Perú sano - {new Date().getFullYear()}</span>
