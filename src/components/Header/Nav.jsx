@@ -18,7 +18,7 @@ const Nav = () => {
           <NavLink
             to="/"
             onClick={handleClick}
-            className={({ isActive }) => isActive && 'current'}
+            className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Home
           </NavLink>
@@ -27,7 +27,7 @@ const Nav = () => {
           <NavLink
             to={'/acerca-de'}
             onClick={handleClick}
-            className={({ isActive }) => isActive && 'current'}
+            className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Acerca de
           </NavLink>
@@ -36,7 +36,7 @@ const Nav = () => {
           <NavLink
             to={'/involucrate'}
             onClick={handleClick}
-            className={({ isActive }) => isActive && 'current'}
+            className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Involucrate
           </NavLink>
@@ -45,7 +45,7 @@ const Nav = () => {
           <NavLink
             to={'/blog'}
             onClick={handleClick}
-            className={({ isActive }) => isActive && 'current'}
+            className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Blog
           </NavLink>
@@ -54,7 +54,7 @@ const Nav = () => {
           <NavLink
             to={'/faqs'}
             onClick={handleClick}
-            className={({ isActive }) => isActive && 'current'}
+            className={({ isActive }) => (isActive ? 'current' : '')}
           >
             FAQ's
           </NavLink>
@@ -63,7 +63,7 @@ const Nav = () => {
           <NavLink
             to={'/contacto'}
             onClick={handleClick}
-            className={({ isActive }) => isActive && 'current'}
+            className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Contacto
           </NavLink>
