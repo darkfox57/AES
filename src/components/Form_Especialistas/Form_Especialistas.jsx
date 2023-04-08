@@ -44,6 +44,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
       ...data,
       pais: data.pais.value,
     }
+    console.log(formData)
     dispatch(addFormSpecialist(formData))
   }
 
@@ -130,7 +131,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           <button
             type="submit"
             style={{ height: '50px', width: '150px' }}
-            value="Especialista"
+            value="Especialistas"
             {...register('origen')}
           >
             Enviar Formulario

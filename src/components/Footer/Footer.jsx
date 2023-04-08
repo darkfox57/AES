@@ -33,6 +33,7 @@ export default function Footer() {
           <NewestBlogs />
         </LastBlogs>
       </FooterContent>
+      <br />
       <span>Copyright Por un Perú sano - {new Date().getFullYear()}</span>
     </FooterContainer>
   )
