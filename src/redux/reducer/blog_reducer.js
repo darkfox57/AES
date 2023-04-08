@@ -3,6 +3,7 @@ import {
   addBlog,
   getAllBlogs,
   getBlog,
+  getBlogTitle,
   getCategories,
 } from '../actions/blog_actions'
 
@@ -32,6 +33,13 @@ const blogSlice = createSlice({
         state.blog = action.payload
       })
       .addCase(getBlog.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
+      .addCase(getBlogTitle.fulfilled, (state, action) => {
+        state.blogs = action.payload
+      })
+      .addCase(getBlogTitle.rejected, (state, action) => {
         state.error = action.error.message
       })
 

@@ -47,14 +47,14 @@ export default function Blog() {
               description={post.description}
             />
           ))}
-          <BtnPaginado pageNumbers={pageNumbers} goToPage={goToPage} />
+          <BtnPaginado PreviousPage={PreviousPage} posts={posts} NextPage={NextPage} pageNumbers={pageNumbers} goToPage={goToPage} />
         </GridCardBlog>
         <ContainerMenuBlog>
           <SearchBlog />
-          <NoticiaDestacada />
-          <Categorias />
-          <SiguenosRedes />
-          <EtiquetasPopular />
+          <NoticiaDestacada/>
+          <Categorias/>
+          <SiguenosRedes/>
+          <EtiquetasPopular/>
         </ContainerMenuBlog>
       </BlogBody>
       <Footer />

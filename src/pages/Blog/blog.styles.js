@@ -12,6 +12,7 @@ export const BlogBody = styled.section`
 export const GridCardBlog = styled.div`
 display:grid;
 gap:20px;
+height: max-content;
 `
 export const ContainerMenuBlog = styled.div`
 display: flex;

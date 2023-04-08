@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const BlogPageCardContainer = styled.div`
   border: 1px solid black;
+  height: max-content;
   .portada {
     width: 700px;
     height: 400px;
