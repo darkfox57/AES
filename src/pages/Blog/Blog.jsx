@@ -51,10 +51,10 @@ export default function Blog() {
         </GridCardBlog>
         <ContainerMenuBlog>
           <SearchBlog />
-          <NoticiaDestacada/>
-          <Categorias/>
-          <SiguenosRedes/>
-          <EtiquetasPopular/>
+          <NoticiaDestacada />
+          <Categorias />
+          <SiguenosRedes />
+          <EtiquetasPopular />
         </ContainerMenuBlog>
       </BlogBody>
       <Footer />

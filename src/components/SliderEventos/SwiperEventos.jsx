@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react'
 import CardEventos from './CardEventos'
 import { EventoContainer } from './SliderEventos.Styled'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay,Navigation } from 'swiper';
-import 'swiper/swiper-bundle.min.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllEvents } from '../../redux/actions/event_actions';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Autoplay, Navigation } from 'swiper'
+import 'swiper/swiper-bundle.min.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllEvents } from '../../redux/actions/event_actions'
 
-SwiperCore.use([Autoplay]);
-SwiperCore.use([Navigation]);
+SwiperCore.use([Autoplay])
+SwiperCore.use([Navigation])
 
 const SwiperEventos = () => {
-  const dispatch = useDispatch();
-  const Events = useSelector((state) => state.event.events);
-  
+  const dispatch = useDispatch()
+  const Events = useSelector((state) => state.event.events)
+
   useEffect(() => {
-    dispatch(getAllEvents());
-  }, []);
-  
+    dispatch(getAllEvents())
+  }, [])
+
   if (!Events.length) {
     return <p>Cargando eventos...</p>
   }
@@ -27,7 +27,7 @@ const SwiperEventos = () => {
       <Swiper
         autoplay={{
           delay: 5000,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         }}
         loop={true}
         navigation
@@ -37,10 +37,10 @@ const SwiperEventos = () => {
         //onSlideChange={(swiper) => console.log(swiper)}
       >
         {Events.map((data) => (
-          <SwiperSlide className='swiper-card' key={data._id}>
+          <SwiperSlide className="swiper-card" key={data._id}>
             <CardEventos
-             img={data.frontpage}
-             slug={data.slug}
+              img={data.frontpage}
+              slug={data.slug}
               title={data.title}
               lugar={data.location}
               fecha={data.date}
@@ -49,7 +49,7 @@ const SwiperEventos = () => {
         ))}
       </Swiper>
     </EventoContainer>
-  );
-};
+  )
+}
 
-export default SwiperEventos;
+export default SwiperEventos

@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
 import TextInput from '../../utils/TextInput/TextInput'
-import SelectInput from '../../utils/SelectInput/SelectInput'
 
 import Button from '../../utils/Button/Button'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
