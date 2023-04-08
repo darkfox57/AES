@@ -1,5 +1,6 @@
-import React from 'react'
-import { Route, Routes, useLocation } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { Route, Routes, useLocation, useNavigate } from 'react-router'
+import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
 import Dashboard from './DashBoard/Pages/Dashboard/Dashboard'
 import Login from './DashBoard/Pages/Login/Login'
@@ -11,20 +12,33 @@ import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
 import Faqs from './pages/FAQs/Faqs'
 import Involucrate from './pages/Involucrate/Involucrate'
-
-import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
+import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 import EventoForm from './components/EventoArticleForm/EventoForm'
-import Home from './pages/Home/Home'
 import ProximoEvent from './components/ProximoEvento/ProximoEvent'
+import Home from './pages/Home/Home'
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
 function App() {
   const location = useLocation()
+  const estado = useSelector((state) => state.account.status)
+  const navigate = useNavigate()
+  const token = localStorage.getItem('access_token')
+  useEffect(() => {
+    if (!token && location.pathname.includes('dashboard')) navigate('/login')
+    if (token && location.pathname.includes('login')) navigate('/dashboard')
+  }, [token])
+
   return (
     <>
-      {location.pathname.includes('dashboard') ? '' : <Header />}
+      {location.pathname.includes('dashboard') ||
+      location.pathname === '/login' ? (
+        ''
+      ) : (
+        <Header />
+      )}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,7 +47,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/evento/:slug" element={<EventoForm />} />
-        <Route path="/proximos-eventos/:id" element={<ProximoEvent />}/>
+        <Route path="/proximos-eventos/:id" element={<ProximoEvent />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
@@ -41,7 +55,7 @@ function App() {
           <Route path="blog" element={<BlogDash />} />
           <Route path="add-blog" element={<AddBlog />} />
         </Route>
-        <Route path="/dashboard/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   )

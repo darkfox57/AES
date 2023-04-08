@@ -9,7 +9,7 @@ import {
   IoNewspaperOutline,
   IoSpeedometerOutline,
 } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../../../assets/logo-pups-color.webp'
 import { ProfileMiniature, SideBarContent } from './sidebar.styled'
 
@@ -30,68 +30,92 @@ export default function Sidebar() {
         </ProfileMiniature>
         <nav>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoSpeedometerOutline />
               </i>
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoHeartOutline />
               </i>
               Involucrate
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoMailUnreadOutline />
               </i>
               Mensajes
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoEarOutline />
               </i>
               Suscripciones
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/blog">
+            <NavLink
+              to="/dashboard/blog"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoNewspaperOutline />
               </i>
               Blogs
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoCalendarOutline />
               </i>
               Eventos
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoImageOutline />
               </i>
               Banner Principal
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/">
+            <NavLink
+              to="/dashboard/"
+              className={({ isActive }) => isActive && 'current'}
+            >
               <i>
                 <IoBuildOutline />
               </i>
               Configuración
-            </Link>
+            </NavLink>
           </li>
         </nav>
       </SideBarContent>

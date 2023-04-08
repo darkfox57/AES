@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
 const Nav = () => {
+  const token = localStorage.getItem('access_token')
+
   const handleClick = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -13,37 +15,64 @@ const Nav = () => {
     <NavContainer>
       <ListNav>
         <li>
-          <Link to="/" onClick={handleClick}>
+          <NavLink
+            to="/"
+            onClick={handleClick}
+            className={({ isActive }) => isActive && 'current'}
+          >
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to={'/acerca-de'} onClick={handleClick}>
+          <NavLink
+            to={'/acerca-de'}
+            onClick={handleClick}
+            className={({ isActive }) => isActive && 'current'}
+          >
             Acerca de
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to={'/involucrate'} onClick={handleClick}>
+          <NavLink
+            to={'/involucrate'}
+            onClick={handleClick}
+            className={({ isActive }) => isActive && 'current'}
+          >
             Involucrate
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to={'/blog'} onClick={handleClick}>
+          <NavLink
+            to={'/blog'}
+            onClick={handleClick}
+            className={({ isActive }) => isActive && 'current'}
+          >
             Blog
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to={'/faqs'} onClick={handleClick}>
+          <NavLink
+            to={'/faqs'}
+            onClick={handleClick}
+            className={({ isActive }) => isActive && 'current'}
+          >
             FAQ's
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to={'/contacto'} onClick={handleClick}>
+          <NavLink
+            to={'/contacto'}
+            onClick={handleClick}
+            className={({ isActive }) => isActive && 'current'}
+          >
             Contacto
-          </Link>
+          </NavLink>
         </li>
         <li>
           <Button type="primary" size="md" text="Haz una donación" link="/" />
+          {token && (
+            <Button type="secondary" size="md" text="Admin" link="/dashboard" />
+          )}
         </li>
       </ListNav>
     </NavContainer>
