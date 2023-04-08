@@ -44,7 +44,6 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
       ...data,
       pais: data.pais.value,
     }
-    console.log(formData)
     dispatch(addFormSpecialist(formData))
   }
 

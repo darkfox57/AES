@@ -31,7 +31,6 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
   const regexNumeros = new RegExp('^[0-9]+$')
 
   const Submit = (data) => {
-    console.log(data)
     dispatch(addFormInstitution(data))
   }
 

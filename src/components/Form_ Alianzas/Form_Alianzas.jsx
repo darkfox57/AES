@@ -30,7 +30,6 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
   const regexNumeros = new RegExp('^[0-9]+$')
 
   const Submit = (data) => {
-    console.log(data)
     dispatch(addFormAlliance(data))
   }
 
