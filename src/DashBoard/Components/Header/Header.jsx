@@ -1,13 +1,16 @@
 import React from 'react'
 import {
   IoCaretDownOutline,
+  IoLogOutOutline,
   IoMailUnreadOutline,
   IoNotificationsOutline,
   IoSearchOutline,
 } from 'react-icons/io5'
-import { HeaderNotifications, ProfileMiniature } from './header.styles'
+import { useNavigate } from 'react-router'
+import { HeaderNotifications, LogOut, ProfileMiniature } from './header.styles'
 
 export default function Header() {
+  const navigate = useNavigate()
   return (
     <>
       <HeaderNotifications>
@@ -30,6 +33,14 @@ export default function Header() {
         <i>
           <IoCaretDownOutline />
         </i>
+        <LogOut
+          onClick={() => {
+            localStorage.removeItem('access_token')
+            navigate('/login')
+          }}
+        >
+          <IoLogOutOutline />
+        </LogOut>
       </ProfileMiniature>
     </>
   )

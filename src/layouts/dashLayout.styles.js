@@ -6,7 +6,7 @@ export const DashBoardLayoutContainer = styled.section`
     'sidebar header header'
     'sidebar main main'
     'sidebar main main';
-  grid-template-columns: 300px 1fr 1fr;
+  grid-template-columns: 250px 1fr 1fr;
   grid-template-rows: auto auto auto;
   overflow: hidden;
 
@@ -21,6 +21,7 @@ export const SidebarContainer = styled.div`
   position: fixed;
   z-index: 10;
   background-color: var(--main-white);
+  max-width: 250px;
 `
 
 export const HeaderContainer = styled.div`
@@ -32,7 +33,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px 15px 380px;
+  padding: 15px 30px 15px 280px;
   -webkit-box-shadow: -1px 1px 10px 1.5px #dddddd;
   -moz-box-shadow: -1px 1px 10px 1.5px #dddddd;
   box-shadow: -1px 1px 10px 1.5px #dddddd;
@@ -41,7 +42,7 @@ export const HeaderContainer = styled.div`
 
 export const MainContainer = styled.div`
   grid-area: main;
-  padding: 105px 75px;
+  padding: 105px 30px;
   height: 100%;
   scroll-behavior: smooth;
   display: flex;

@@ -15,6 +15,10 @@ nav {
  flex-direction: column;
  width: 100%;
  list-style: none;
+ li .current {
+  background-color: #fb6373;
+   color: var(--text-white);
+ }
  li a {
   text-decoration: none;
   color: var(--text-dark);
@@ -41,7 +45,7 @@ export const ProfileMiniature = styled.div`
   padding: 0 30px;
   img {
    border-radius: 13px;
-   width: 100px;
+   width: 80px;
   }
   div {
    display: flex;
