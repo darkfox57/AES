@@ -32,13 +32,10 @@ export const ListNav = styled.ul`
       text-decoration: none;
       color: var(--text-white);
       padding: 5px 12px;
-    }
-    .current {
       position: relative;
-      z-index: 10;
       &::before {
         content: '';
-        width: 100%;
+        width: 0;
         background-color: var(--primary-blue);
         opacity: 0.8;
         position: absolute;
@@ -46,11 +43,18 @@ export const ListNav = styled.ul`
         left: 0;
         height: 50%;
         z-index: -1;
-        animation: ${slideIn} 0.5s forwards;
+        transition: width 0.5s ease-in-out;
+      }
+      &:hover::before{
+        width: 100%;
       }
     }
-    a:not(.current) {
-      animation: ${slideOut} 0.5s forwards;
+    .current {
+      position: relative;
+      z-index: 10;
+      &::before {
+        width: 100%;
+      }
     }
   }
   @media screen and (max-width: 1316px) {
