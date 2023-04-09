@@ -71,7 +71,6 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           />
 
           {/**Campo Correo (Texto) */}
-
           <TextInput
             register={register}
             label="Correo de Contacto: "

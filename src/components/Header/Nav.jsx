@@ -47,7 +47,16 @@ const Nav = () => {
             onClick={handleClick}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
-            Blog
+            Blogs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={'/evento'}
+            onClick={handleClick}
+            className={({ isActive }) => (isActive ? 'current' : '')}
+          >
+            Eventos
           </NavLink>
         </li>
         <li>

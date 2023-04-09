@@ -9,6 +9,7 @@ import DashLayout from './layouts/DashLayout'
 import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
+import Evento from './pages/Evento/Evento'
 import Contacto from './pages/Contacto/Contacto'
 import Faqs from './pages/FAQs/Faqs'
 import Involucrate from './pages/Involucrate/Involucrate'
@@ -17,7 +18,6 @@ import { isLoggedIn } from './utils/Auth/isLoggedIn'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import EventoForm from './components/EventoArticleForm/EventoForm'
-import ProximoEvent from './components/ProximoEvento/ProximoEvent'
 import Home from './pages/Home/Home'
 import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
@@ -54,7 +54,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/evento/:slug" element={<EventoForm />} />
-        <Route path="/proximos-eventos/:id" element={<ProximoEvent />} />
+        <Route path="/evento" element={<Evento />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
