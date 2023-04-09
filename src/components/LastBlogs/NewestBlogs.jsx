@@ -14,9 +14,7 @@ export default function NewestBlogs() {
     .reverse()
     .slice(0, 3)
 
-  useEffect(() => {
-    dispatch(getAllBlogs())
-  }, [])
+
 
   return (
     <LastBlogsContainer>

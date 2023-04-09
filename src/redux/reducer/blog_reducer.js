@@ -57,6 +57,7 @@ const blogSlice = createSlice({
       .addCase(getCategories.rejected, (state, action) => {
         state.error = action.error.message
       })
+
   },
 })
 

@@ -15,14 +15,16 @@ import Involucrate from './pages/Involucrate/Involucrate'
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import EventoForm from './components/EventoArticleForm/EventoForm'
 import ProximoEvent from './components/ProximoEvento/ProximoEvent'
 import Home from './pages/Home/Home'
+import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
 function App() {
   const location = useLocation()
+  const dispatch = useDispatch()
   const estado = useSelector((state) => state.account.status)
   const navigate = useNavigate()
   const token = localStorage.getItem('access_token')
@@ -30,6 +32,11 @@ function App() {
     if (!token && location.pathname.includes('dashboard')) navigate('/login')
     if (token && location.pathname.includes('login')) navigate('/dashboard')
   }, [token])
+
+  useEffect(() => {
+    dispatch(getAllBlogs())
+    dispatch(getCategories())
+  }, [])
 
   return (
     <>

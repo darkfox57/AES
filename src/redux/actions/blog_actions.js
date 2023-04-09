@@ -13,14 +13,13 @@ export const getBlog = createAsyncThunk('blogs/getBlog', async (slug) => {
 
 export const getBlogTitle = createAsyncThunk('blogs/getBlogTitle', async (title) => {
   const response = await axios.get(`/blogs?search=${title}`)
-  console.log(response.data);
   return response.data
 })
 
 export const getCategories = createAsyncThunk(
   'categories/getCategories',
   async () => {
-    const response = await axios.get('/categoryBlogs/')
+    const response = await axios.get('/category')
     return response.data
   }
 )

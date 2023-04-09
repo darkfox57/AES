@@ -18,12 +18,12 @@ SwiperCore.use([Navigation])
 const Blog = () => {
   // usamos un useHook perzonalizado para la paginacion tipo slider
 
-  const dispatch = useDispatch()
+  //const dispatch = useDispatch()
   const posts = useSelector((state) => state.blog.blogs)
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(getAllBlogs())
-  }, [])
+  }, [])*/
 
   if (!posts.length) {
     return <p>Cargando eventos...</p>
