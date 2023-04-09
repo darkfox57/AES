@@ -17,7 +17,7 @@ export default function BlogDash() {
       <h2>Blog</h2>
       <Button
         type="primary"
-        link="/dashboard/add-blog"
+        link="/dashboard/blog/add-blog"
         text="Crear nuevo articulo"
         size="md"
       />

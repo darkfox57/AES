@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router'
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
+import EditBlog from './DashBoard/Pages/Blog/EditBlog/EditBlog'
 import Dashboard from './DashBoard/Pages/Dashboard/Dashboard'
 import Login from './DashBoard/Pages/Login/Login'
 import Header from './components/Header/Header'
@@ -27,11 +28,11 @@ function App() {
   const dispatch = useDispatch()
   const estado = useSelector((state) => state.account.status)
   const navigate = useNavigate()
-  // const token = localStorage.getItem('access_token')
-  // useEffect(() => {
-  //   if (!token && location.pathname.includes('dashboard')) navigate('/login')
-  //   if (token && location.pathname.includes('login')) navigate('/dashboard')
-  // }, [token])
+  const token = localStorage.getItem('access_token')
+  useEffect(() => {
+    if (!token && location.pathname.includes('dashboard')) navigate('/login')
+    if (token && location.pathname.includes('login')) navigate('/dashboard')
+  }, [token])
 
   useEffect(() => {
     dispatch(getAllBlogs())
@@ -60,7 +61,8 @@ function App() {
         <Route path="/dashboard" element={<DashLayout />}>
           <Route path="" element={<Dashboard />} />
           <Route path="blog" element={<BlogDash />} />
-          <Route path="add-blog" element={<AddBlog />} />
+          <Route path="blog/add-blog" element={<AddBlog />} />
+          <Route path="blog/edit/:slug" element={<EditBlog />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
