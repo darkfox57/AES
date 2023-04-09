@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import {  useSelector } from 'react-redux'
 import blogimg from '../../assets/About.webp'
 //import BlogCard from '../../components/Blog/BlogCard'
 import Footer from '../../components/Footer/Footer'
 import Portada from '../../components/Portada/Portada'
-import { getAllBlogs } from '../../redux/actions/blog_actions'
+//import { getAllBlogs, getCategories } from '../../redux/actions/blog_actions'
 import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
 import BlogCardPage from '../../components/BlogCardPage/BlogCardPage'
 import SearchBlog from '../../components/MenuBlogPage/Search/SearchBlog'
@@ -14,13 +14,17 @@ import NoticiaDestacada from '../../components/MenuBlogPage/Noticia/NoticiaDesta
 import Categorias from '../../components/MenuBlogPage/Categoria/Categorias'
 import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
 import EtiquetasPopular from '../../components/MenuBlogPage/Etiquetas/EtiquetasPopular'
-export default function Blog() {
-  const dispatch = useDispatch()
-  const posts = useSelector((state) => state.blog.blogs)
 
-  useEffect(() => {
+export default function Blog() {
+  ///const dispatch = useDispatch()
+  const posts = useSelector((state) => state.blog.blogs)
+  const category = useSelector((state) => state.blog.categories)
+
+  /*useEffect(() => {
     dispatch(getAllBlogs())
-  }, [dispatch])
+    dispatch(getCategories())
+  },[])*/
+  
   const {
     currentPage,
     totalPages,
@@ -32,6 +36,7 @@ export default function Blog() {
   } = usePagination(posts, 8)
 
   return (
+    console.log(posts),
     <>
       <Portada img={blogimg} titulo="Blog" />
       <BlogBody>
@@ -52,12 +57,12 @@ export default function Blog() {
         <ContainerMenuBlog>
           <SearchBlog />
           <NoticiaDestacada/>
-          <Categorias/>
+          <Categorias category={category} posts={posts} />
           <SiguenosRedes/>
           <EtiquetasPopular/>
         </ContainerMenuBlog>
       </BlogBody>
-      <Footer />
+      <Footer/>
     </>
   )
 }

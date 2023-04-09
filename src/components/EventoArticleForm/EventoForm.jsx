@@ -36,7 +36,6 @@ const EventoForm = () => {
           </TextEvent>
           <BlockEvento Evento={Evento} />
         </FlexInfo>
-        <Form/>
       </SectionEvent>
       <Footer/>
     </EventoArticleForm>
