@@ -1,5 +1,5 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React,{useEffect} from 'react'
+import { useSelector,useDispatch } from 'react-redux'
 import blogimg from '../../assets/About.webp'
 //import BlogCard from '../../components/Blog/BlogCard'
 import Footer from '../../components/Footer/Footer'
@@ -15,17 +15,18 @@ import SearchBlog from '../../components/MenuBlogPage/Search/SearchBlog'
 import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
 import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
 import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
+import { getTags } from '../../redux/actions/blog_actions'
 
 export default function Blog() {
-  ///const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const posts = useSelector((state) => state.blog.blogs)
   const category = useSelector((state) => state.blog.categories)
+  const tags = useSelector(state=> state.blog.tags)
 
-  /*useEffect(() => {
-    dispatch(getAllBlogs())
-    dispatch(getCategories())
-  },[])*/
-
+  useEffect(() => {
+    dispatch(getTags())
+  },[])
+console.log(tags);
   const {
     currentPage,
     totalPages,
@@ -39,10 +40,11 @@ export default function Blog() {
   return (
     <>
       <Portada img={blogimg} titulo="Blog" />
-      <div>
-        <SelectOrder/>
-      </div>
+      
       <BlogBody>
+        <div className='filtroOrder'>
+        <SelectOrder/>
+       </div>
         <GridCardBlog>
           {paginatedData
             .filter((post) => post.status)
@@ -51,9 +53,8 @@ export default function Blog() {
                 key={post._id}
                 img={post.image}
                 title={post.title}
-                status={post.status}
+                tags={post.tags}
                 date={post.createdAt}
-                slug={post.slug}
                 description={post.description}
               />
             ))}
@@ -70,7 +71,7 @@ export default function Blog() {
           <NoticiaDestacada />
           <Categorias category={category} posts={posts} />
           <SiguenosRedes />
-          <EtiquetasPopular />
+          <EtiquetasPopular tags={tags} />
         </ContainerMenuBlog>
       </BlogBody>
       <Footer />

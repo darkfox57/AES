@@ -38,8 +38,8 @@ const SelectOrder = () => {
 
       <select name="fecha" value={dateOrder} onChange={handleDateOrderChange}>
       <option value="" defaultValue disabled >Fecha</option >
-        <option  value="asc">asendente</option >
-        <option value="desc">descente</option >
+        <option  value="asc">Asendente</option >
+        <option value="desc">Descente</option >
       </select>
     </>
   )

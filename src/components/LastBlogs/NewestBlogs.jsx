@@ -9,8 +9,7 @@ import { getAllBlogs } from '../../redux/actions/blog_actions'
 export default function NewestBlogs() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const blogs = useSelector((state) => state.blog.blogs)
-    .map((blog) => blog)
+  const blogs = useSelector((state) => state.blog.copyblogs).map((blog) => blog)
     .reverse()
     .slice(0, 3)
 

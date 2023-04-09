@@ -1,7 +1,7 @@
 import React from 'react'
 import { BlogPageCardContainer, ContainerInfo, ContainerSpan } from './BlogCardPage.Styled'
 
-const BlogCardPage = ({img,title,status,date,slug,description}) => {
+const BlogCardPage = ({img,title,date,description,tags}) => {
     const Newdate = new Date(date);
     return (
     <BlogPageCardContainer img={img} >
@@ -20,7 +20,9 @@ const BlogCardPage = ({img,title,status,date,slug,description}) => {
         {description}
       </p>
       <ContainerSpan>
-        <span className='img'><img src={img} alt="img" /> by Hearman</span>
+        <div>
+          {tags.map(tag =>  <button key={tag} className='img'>{tag.name}</button>)}
+        </div>
         <span>Readmore</span>
       </ContainerSpan>
       </ContainerInfo>
