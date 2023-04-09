@@ -4,6 +4,7 @@ import {
   deleteBlog,
   editBlog,
   filterCategory,
+  filterTags,
   getAllBlogs,
   getBlog,
   getBlogTitle,
@@ -83,12 +84,18 @@ const blogSlice = createSlice({
     })
 
     .addCase(filterCategory.fulfilled, (state, action) => {
-        const blogCategory = state.copyblogs.filter((blogg) =>
-          blogg.categories.some((category) => category.name === action.payload)
+        const blogCategory = state.copyblogs.filter((blog) =>
+          blog.categories.some((category) => category.name === action.payload)
         )
         state.blogs = blogCategory
       })
 
+      .addCase(filterTags.fulfilled, (state, action) => {
+        const blogTag= state.copyblogs.filter((blog) =>
+        blog.tags.some((tag) => tag.name === action.payload)
+        )
+        state.blogs = blogTag
+      })
       .addCase(OrderBlog.fulfilled, (state, action) => {
         const sortOptions = {
           title: {

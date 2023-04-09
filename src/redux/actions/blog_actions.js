@@ -30,7 +30,7 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (formData) => {
 })
 
 export const getTags = createAsyncThunk('blogs/getTagBlog', async () => {
-  const response = await axios.get('/tags', formData)
+  const response = await axios.get('/tags')
   return response.data
 })
 
@@ -40,6 +40,9 @@ export const filterCategory = createAsyncThunk('blogs/filterCategory', async (ca
 
 export const OrderBlog = createAsyncThunk('blogs/OrderBlog', async (type) => {
   return type
+})
+export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
+  return tag
 })
 
 export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {

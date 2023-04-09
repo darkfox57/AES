@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const BlogPageCardContainer = styled.div`
-  border: 1px solid black;
+  border: 1px solid #d7d7d7;
   height: max-content;
   .portada {
     width: 700px;
@@ -28,24 +28,28 @@ export const ContainerInfo = styled.div`
     /* Mostrar solo las primeras 4 líneas */
     -webkit-line-clamp: 6;
     /* Agregar los puntos suspensivos */
-    position: relative;
   }
 `
 export const ContainerSpan = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  div{
+    display: flex;
+    gap: 10px;
+    button{
+      cursor: pointer;
+      text-transform: capitalize;
+      background: #ff5151;
+      border: none;
+      color: white;
+      padding: 4px 10px;
+    }
+  }
   span{
     display: flex;
    justify-content: center;
    align-items: center;
    gap: 10px;
-  }
-  img {
-    object-fit: cover;
-    object-position: center;
-    border-radius: 550px;
-    width: 50px;
-    height: 50px;
   }
 `

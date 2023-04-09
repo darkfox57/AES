@@ -1,12 +1,20 @@
 import React from 'react'
 import { EtiquetaContainer, GridEtiquetaBtn } from './Etiquetas.Styled'
-const etiquetas = ["salud","causas","niños","educacion","noticias","eventos","instituciones","patrocinadores"]
-const EtiquetasPopular = () => {
+import { useDispatch } from 'react-redux'
+import { filterTags } from '../../../redux/actions/blog_actions'
+
+const EtiquetasPopular = ({tags}) => {
+  const dispatch = useDispatch()
+
+  const handleTag = (tag)=>{
+    dispatch(filterTags(tag))
+  }
+
   return (
     <EtiquetaContainer>
       <h4>Etiquetas populares</h4>
       <GridEtiquetaBtn>
-        {etiquetas.map((el,i)=> <button key={i}>{el}</button> )}
+        {tags.map((tag,i)=> <button onClick={()=> handleTag(tag.name)} key={i}>{tag.name}</button> )}
       </GridEtiquetaBtn>
     </EtiquetaContainer>
   )
