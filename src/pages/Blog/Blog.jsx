@@ -14,6 +14,7 @@ import NoticiaDestacada from '../../components/MenuBlogPage/Noticia/NoticiaDesta
 import SearchBlog from '../../components/MenuBlogPage/Search/SearchBlog'
 import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
 import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
+import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 
 export default function Blog() {
   ///const dispatch = useDispatch()
@@ -38,6 +39,9 @@ export default function Blog() {
   return (
     <>
       <Portada img={blogimg} titulo="Blog" />
+      <div>
+        <SelectOrder/>
+      </div>
       <BlogBody>
         <GridCardBlog>
           {paginatedData

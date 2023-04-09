@@ -29,6 +29,13 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (formData) => {
   return response.data
 })
 
+export const filterCategory = createAsyncThunk('blogs/filterCategory', async (category) => {
+  return category
+})
+
+export const OrderBlog = createAsyncThunk('blogs/OrderBlog', async (type) => {
+  return type
+})
 
 export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
 

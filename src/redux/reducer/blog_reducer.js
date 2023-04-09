@@ -3,14 +3,17 @@ import {
   addBlog,
   deleteBlog,
   editBlog,
+  filterCategory,
   getAllBlogs,
   getBlog,
   getBlogTitle,
-  getCategories
+  getCategories,
+  OrderBlog,
 } from '../actions/blog_actions';
 
 const initialState = {
   blogs: [],
+  copyblogs: [],
   blog: {},
   categories: [],
   status: null,
@@ -27,6 +30,7 @@ const blogSlice = createSlice({
     builder
       .addCase(getAllBlogs.fulfilled, (state, action) => {
         state.blogs = action.payload
+        state.copyblogs = action.payload
       })
       .addCase(getAllBlogs.rejected, (state, action) => {
         state.error = action.error.message
@@ -68,6 +72,27 @@ const blogSlice = createSlice({
       .addCase(editBlog.fulfilled, (state, action) => {
         state.confirmation = action.payload;
       })
+
+      .addCase(filterCategory.fulfilled, (state, action) => {
+        const blogCategory = state.copyblogs.filter(blogg => blogg.categories.some(category => category.name === action.payload))
+        state.blogs = blogCategory
+      })
+
+      .addCase(OrderBlog.fulfilled, (state, action) => {
+        const sortOptions = {
+          title: {
+            asc: (a, b) => a.title.localeCompare(b.title),
+            desc: (a, b) => b.title.localeCompare(a.title),
+          },
+          fecha: {
+            asc: (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+            desc: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+          },
+        };
+
+       state.blogs = [...state.blogs].sort(sortOptions[action.payload.type][action.payload.sort])
+      })
+
   },
 })
 
