@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 import {
   addBlog,
   deleteBlog,
@@ -8,18 +8,20 @@ import {
   getBlog,
   getBlogTitle,
   getCategories,
+  getTags,
   OrderBlog,
-} from '../actions/blog_actions';
+} from '../actions/blog_actions'
 
 const initialState = {
   blogs: [],
   copyblogs: [],
   blog: {},
+  tags: [],
   categories: [],
   status: null,
   error: null,
   newBlog: {},
-  confirmation: ''
+  confirmation: '',
 }
 
 const blogSlice = createSlice({
@@ -70,11 +72,20 @@ const blogSlice = createSlice({
         state.error = action.payload
       })
       .addCase(editBlog.fulfilled, (state, action) => {
-        state.confirmation = action.payload;
+        state.confirmation = action.payload
       })
 
-      .addCase(filterCategory.fulfilled, (state, action) => {
-        const blogCategory = state.copyblogs.filter(blogg => blogg.categories.some(category => category.name === action.payload))
+      .addCase(getTags.fulfilled, (state, action) => {
+        state.tags = action.payload
+      })
+     .addCase(getTags.rejected, (state, action) => {
+      state.error = action.payload
+    })
+
+    .addCase(filterCategory.fulfilled, (state, action) => {
+        const blogCategory = state.copyblogs.filter((blogg) =>
+          blogg.categories.some((category) => category.name === action.payload)
+        )
         state.blogs = blogCategory
       })
 
@@ -88,11 +99,12 @@ const blogSlice = createSlice({
             asc: (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
             desc: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
           },
-        };
+        }
 
-       state.blogs = [...state.blogs].sort(sortOptions[action.payload.type][action.payload.sort])
+        state.blogs = [...state.blogs].sort(
+          sortOptions[action.payload.type][action.payload.sort]
+        )
       })
-
   },
 })
 
