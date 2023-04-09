@@ -8,6 +8,7 @@ import Portada from '../../components/Portada/Portada'
 import Footer from '../../components/Footer/Footer'
 import CardProximos from '../../components/ProximoEvento/CardProximos'
 import FilterProximos from '../../components/ProximoEvento/FilterProximos'
+import SearchEvent from '../../components/SearchEvent/SearchEvent'
 
 import { EventContainer } from './Evento.Styles'
 
@@ -41,6 +42,7 @@ export default function Evento() {
       />
 
       <EventContainer>
+        <SearchEvent />
         <FilterProximos />
 
         {paginatedData.map((event) => (
@@ -54,15 +56,22 @@ export default function Evento() {
             title={event.title}
           />
         ))}
+        {!paginatedData.length && (
+          <span className="spanError">
+            Error: No se han encontrado eventos con sus elecciones
+          </span>
+        )}
       </EventContainer>
 
-      <BtnPaginado
-        pageNumbers={pageNumbers}
-        PreviousPage={PreviousPage}
-        posts={events}
-        NextPage={NextPage}
-        goToPage={goToPage}
-      />
+      {paginatedData.length && (
+        <BtnPaginado
+          pageNumbers={pageNumbers}
+          PreviousPage={PreviousPage}
+          posts={events}
+          NextPage={NextPage}
+          goToPage={goToPage}
+        />
+      )}
       <Footer />
     </>
   )

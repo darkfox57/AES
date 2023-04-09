@@ -9,7 +9,6 @@ import {
 const initialState = {
   events: [],
   filteredEvents: [],
-  titleEvents: [],
   event: {},
   error: null,
 }
@@ -36,9 +35,7 @@ const eventSlice = createSlice({
       })
 
       .addCase(getEventByTitle.fulfilled, (state, action) => {
-        state.titleEvents = state.events.filter(
-          (event) => event.title === action.payload
-        )
+        state.filteredEvents = action.payload
       })
       .addCase(getEventByTitle.rejected, (state, action) => {
         state.error = action.error.message

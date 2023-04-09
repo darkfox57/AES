@@ -10,11 +10,9 @@ import Footer from '../Footer/Footer'
 
 import {
   EventoArticleForm,
-  FirstLetter,
   FlexInfo,
   SectionEvent,
   TextEvent,
-  Text,
 } from './EventoForm.Styled'
 
 const EventoForm = () => {
@@ -30,29 +28,21 @@ const EventoForm = () => {
     'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
 
   return (
-    console.log(event),
-    (
-      <EventoArticleForm>
-        <Portada titulo={event.title} img={event.frontpage} />
-        <SectionEvent>
-          <figure>
-            <img src={imgprueba} alt={event.title} />
-          </figure>
-          <FlexInfo>
-            <TextEvent>
-              <FirstLetter>
-                <p>{event.description.charAt(0).toUpperCase()}</p>
-              </FirstLetter>
-              <Text>
-                <p>{event.description}</p>
-              </Text>
-            </TextEvent>
-            <BlockEvento event={event} />
-          </FlexInfo>
-        </SectionEvent>
-        <Footer />
-      </EventoArticleForm>
-    )
+    <EventoArticleForm>
+      <Portada titulo={event.title} img={event.frontpage} />
+      <SectionEvent>
+        <figure>
+          <img src={imgprueba} alt={event.title} />
+        </figure>
+        <FlexInfo>
+          <TextEvent>
+            <p>{event.description}</p>
+          </TextEvent>
+          <BlockEvento event={event} />
+        </FlexInfo>
+      </SectionEvent>
+      <Footer />
+    </EventoArticleForm>
   )
 }
 

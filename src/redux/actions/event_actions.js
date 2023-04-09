@@ -14,7 +14,7 @@ export const getEvent = createAsyncThunk('events/getOne', async (slug) => {
 export const getEventByTitle = createAsyncThunk(
   'events/getByTitle',
   async (title) => {
-    const response = await axios(``)
+    const response = await axios(`/events?search=${title}`)
     return response.data
   }
 )
