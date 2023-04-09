@@ -6,6 +6,11 @@ export const EventContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  gap: 50px;
+  gap: 20px;
   padding: 75px 10%;
+
+  .spanError {
+    color: red;
+    padding-top: 15px;
+  }
 `

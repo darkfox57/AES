@@ -13,13 +13,13 @@ export const CardImg = styled.div`
   background: #fff url(${(props) => props.img}) center center/cover no-repeat;
   color: white;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   padding: 10px;
   gap: 10px;
-  span:nth-child(2){
+  span:nth-child(2) {
     background: green;
   }
-  span{
+  span {
     width: max-content;
     height: max-content;
     background: #b51717;
@@ -27,20 +27,27 @@ export const CardImg = styled.div`
     padding: 5px 20px;
   }
 `
-export const CardInfo= styled.div`
+export const CardInfo = styled.div`
+  display: grid;
+  gap: 8px;
+  div {
     display: grid;
-    gap: 8px;
-    div {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    span {
+      display: flex;
       gap: 10px;
-      span{
-        display: flex;
-        gap: 10px;
-        align-items:center;
-        .check{
-            color: green;
-        }
+      align-items: center;
+      .check {
+        color: green;
       }
     }
+  }
+  p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-align: justify;
+  }
 `

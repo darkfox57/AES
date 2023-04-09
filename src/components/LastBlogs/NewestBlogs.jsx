@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import { BlogContainer, LastBlogsContainer } from './NewestBlogs.Styles'
@@ -7,7 +7,6 @@ import { BlogContainer, LastBlogsContainer } from './NewestBlogs.Styles'
 import { getAllBlogs } from '../../redux/actions/blog_actions'
 
 export default function NewestBlogs() {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const blogs = useSelector((state) => state.blog.copyblogs).map((blog) => blog)
     .reverse()
