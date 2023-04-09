@@ -54,7 +54,7 @@ export default function BlogCard({
           type="primary"
           text="Editar"
           size="lg"
-          link={`/dashboard/blog/${slug}`}
+          link={`/dashboard/blog/edit/${slug}`}
         />
         <div className="toggle">
           <ToggleButton
