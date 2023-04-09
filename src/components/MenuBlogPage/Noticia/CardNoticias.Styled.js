@@ -1,13 +1,20 @@
 import styled from 'styled-components'
 
 export const CardNoticiaFlex = styled.div`
+ 
   display: flex;
   align-items: center;
   column-gap: 20px;
   border-bottom: 1px solid gray;
-  padding: 10px 0;
+  padding: 10px 10px;
+  transition: all 0.2s ease-out;
+  :hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 2px gray;
+  }
   span {
     h5 {
+      text-transform: capitalize;
       margin-bottom: 5px;
     }
     p {

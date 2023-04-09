@@ -14,6 +14,9 @@ export const ContainerInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  h3{
+    text-transform: capitalize;
+  }
   & > span:first-child {
     color: white;
     background: #ff5151;

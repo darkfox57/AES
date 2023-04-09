@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
+border: 1px solid black;
 width: 340px;
 height: 350px;
 background-color: var(--main-white);
@@ -30,6 +31,7 @@ img{
 }
 `
 export const ContainerInfo = styled.div`
+text-transform: capitalize;
 padding: 25px 30px;
 display: flex;
 flex-direction: column;
