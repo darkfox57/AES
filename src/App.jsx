@@ -9,8 +9,8 @@ import DashLayout from './layouts/DashLayout'
 import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
-import Evento from './pages/Evento/Evento'
 import Contacto from './pages/Contacto/Contacto'
+import Evento from './pages/Evento/Evento'
 import Faqs from './pages/FAQs/Faqs'
 import Involucrate from './pages/Involucrate/Involucrate'
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
@@ -27,11 +27,11 @@ function App() {
   const dispatch = useDispatch()
   const estado = useSelector((state) => state.account.status)
   const navigate = useNavigate()
-  const token = localStorage.getItem('access_token')
-  useEffect(() => {
-    if (!token && location.pathname.includes('dashboard')) navigate('/login')
-    if (token && location.pathname.includes('login')) navigate('/dashboard')
-  }, [token])
+  // const token = localStorage.getItem('access_token')
+  // useEffect(() => {
+  //   if (!token && location.pathname.includes('dashboard')) navigate('/login')
+  //   if (token && location.pathname.includes('login')) navigate('/dashboard')
+  // }, [token])
 
   useEffect(() => {
     dispatch(getAllBlogs())

@@ -44,17 +44,19 @@ const Blog = () => {
         centeredSlides={true}
         //onSwiper={(swiper) => console.log(swiper)}
       >
-        {posts.map((post) => (
-          <SwiperSlide key={post._id} className="swiper-card">
-            <BlogCard
-              image={post.image}
-              title={post.title}
-              status={post.status}
-              date={post.createdAt}
-              slug={post.slug}
-            />
-          </SwiperSlide>
-        ))}
+        {posts
+          .filter((post) => post.status)
+          .map((post) => (
+            <SwiperSlide key={post._id} className="swiper-card">
+              <BlogCard
+                image={post.image}
+                title={post.title}
+                status={post.status}
+                date={post.createdAt}
+                slug={post.slug}
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </BlogContainer>
   )

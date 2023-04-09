@@ -32,7 +32,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoSpeedometerOutline />
@@ -43,7 +43,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoHeartOutline />
@@ -54,7 +54,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoMailUnreadOutline />
@@ -65,7 +65,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoEarOutline />
@@ -76,7 +76,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/blog"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoNewspaperOutline />
@@ -87,7 +87,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoCalendarOutline />
@@ -98,7 +98,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoImageOutline />
@@ -109,7 +109,7 @@ export default function Sidebar() {
           <li>
             <NavLink
               to="/dashboard/"
-              className={({ isActive }) => isActive && 'current'}
+              className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
                 <IoBuildOutline />

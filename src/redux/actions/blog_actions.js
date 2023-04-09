@@ -7,7 +7,7 @@ export const getAllBlogs = createAsyncThunk('blogs/getAllBlogs', async () => {
 })
 
 export const getBlog = createAsyncThunk('blogs/getBlog', async (slug) => {
-  const response = await axios.get(`/blogs/search?slug=${slug}`)
+  const response = await axios.get(`/blogs?slug=${slug}`)
   return response.data
 })
 
@@ -25,10 +25,32 @@ export const getCategories = createAsyncThunk(
 )
 
 export const addBlog = createAsyncThunk('blogs/addBlog', async (formData) => {
-  const response = await axios.post('/blogs', formData, {
-    body: {
-      'Content-Type': 'application/json',
-    },
-  })
+  const response = await axios.post('/blogs', formData)
+  return response.data
+})
+
+
+export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
+
+  const formatedpost = {
+    'title': post.title,
+    'description': post.description,
+    'image': post.image,
+    'categories': post.categories,
+    'status': post.status,
+    'tags': post.tags
+  }
+  try {
+    const response = await axios.put(`/blogs/${post.id}`, formatedpost)
+    return response.data
+  }
+  catch (error) {
+    return error.response.data
+  }
+})
+
+
+export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
+  const response = await axios.delete(`/blogs/${id}`)
   return response.data
 })

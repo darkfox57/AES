@@ -1,106 +1,115 @@
 @font-face {
- font-family: 'Caviar Dreams';
- src: url('./fonts/CaviarDreams.ttf') format('truetype'),
-  url('./fonts/CaviarDreams_Bold.ttf') format('truetype'),
-  url('./fonts/CaviarDreams_Italic.ttf') format('truetype'),
-  url('./fonts/CaviarDreams_BoldItalic.ttf') format('truetype');
- font-weight: normal;
- font-style: normal;
+    font-family: 'Caviar Dreams';
+    src: url('./fonts/CaviarDreams.ttf') format('truetype'),
+        url('./fonts/CaviarDreams_Bold.ttf') format('truetype'),
+        url('./fonts/CaviarDreams_Italic.ttf') format('truetype'),
+        url('./fonts/CaviarDreams_BoldItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
- font-family: 'Bebas Neue';
- src: url('https://fonts.gstatic.com/s/bebasneue/v2/JTURjIg1_i6t8kCHKm45_epG3g.ttf') format('truetype');
- font-weight: normal;
- font-style: normal;
+    font-family: 'Bebas Neue';
+    src: url('https://fonts.gstatic.com/s/bebasneue/v2/JTURjIg1_i6t8kCHKm45_epG3g.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 :root {
- --main-color: #13263F;
- --secondary-color: #1F3667;
- --text-color: #4e4e4e;
- --text-white: #f5f5fa;
- --main-dark: #13131a;
- --main-white: #f5f5fa;
- --primary-blue: #4685B6;
- --section-padding: 75px 10%;
- --body-font: 'Caviar Dreams', sans-serif;
+    --main-color: #13263F;
+    --secondary-color: #1F3667;
+    --text-color: #4e4e4e;
+    --text-white: #f5f5fa;
+    --main-dark: #13131a;
+    --main-white: #f5f5fa;
+    --primary-blue: #4685B6;
+    --section-padding: 75px 10%;
+    --body-font: 'Caviar Dreams', sans-serif;
 }
 
 html {
- font-size: 17px;
+    font-size: 17px;
 }
 
 * {
- box-sizing: border-box;
- padding: 0;
- margin: 0;
- scroll-behavior: smooth;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
 }
 
 input ::placeholder {
- font-family: (--body-font);
+    font-family: (--body-font);
 }
 
 body {
- margin: 0;
- padding: 0;
- color: var(--main-dark);
- background-color: var(--main-white);
- /* overflow-x: hidden; */
- font-family: var(--body-font);
- scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    color: var(--main-dark);
+    background-color: var(--main-white);
+    /* overflow-x: hidden; */
+    font-family: var(--body-font);
+    scroll-behavior: smooth;
 }
 
 img {
- width: 100%;
- height: auto;
+    width: 100%;
+    height: auto;
 }
 
 a {
- text-decoration: none;
+    text-decoration: none;
 }
 
 p {
- font-size: 1rem;
- line-height: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
 }
 
 h1,
 h2 {
- font-weight: 400;
- font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 h3,
 h4,
 h5,
 h6 {
- font-weight: 400;
- font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 h1 {
- font-size: 3.5rem;
+    font-size: 3.5rem;
 }
 
 h2 {
- font-size: 3rem;
+    font-size: 3rem;
 }
 
 h3 {
- font-size: 2rem;
+    font-size: 2rem;
 }
 
 h4 {
- font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 li {
- font-size: 1.1rem;
- line-height: 1.3rem;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
 }
-.xd{
+
+.xd {
     display: grid;
-    
+}
+
+
+input {
+    padding: 8px 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    background-color: rgba(200, 200, 200, 0.5);
+    font-family: var(--body-font);
 }

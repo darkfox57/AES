@@ -22,14 +22,25 @@ export default function BlogDash() {
         size="md"
       />
       <BlogList>
+        <div className="blogHeader">
+          <span>Imagen</span>
+          <span>Titulo</span>
+          <span>Fecha Publicación</span>
+          <span>Editar</span>
+          <span>Activar/Desactivar</span>
+        </div>
         {posts.map((post) => (
           <BlogCard
             key={post._id}
+            id={post._id}
             image={post.image}
             title={post.title}
             status={post.status}
             date={post.createdAt}
             slug={post.slug}
+            categories={post.categories}
+            description={post.description}
+            tags={post.tags}
           />
         ))}
       </BlogList>
