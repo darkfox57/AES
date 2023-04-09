@@ -29,6 +29,11 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (formData) => {
   return response.data
 })
 
+export const getTagBlog = createAsyncThunk('blogs/getTagBlog', async () => {
+  const response = await axios.get('/tags', formData)
+  return response.data
+})
+
 export const filterCategory = createAsyncThunk('blogs/filterCategory', async (category) => {
   return category
 })
