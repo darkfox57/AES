@@ -11,8 +11,7 @@ const NoticiaDestacada = () => {
     <NoticiaContainer>
        <h4>🗞️ Noticias Destacadas</h4>
        <div className='flex-card'>
-       {blogsNoticia.map(noticia => <CardNoticias title={noticia.title} fecha={noticia.createdAt} img={noticia.image} />)}
-       
+       {blogsNoticia.map((noticia,i) => <CardNoticias key={i} title={noticia.title} fecha={noticia.createdAt} img={noticia.image} />)}
        </div>
     </NoticiaContainer>
   )
