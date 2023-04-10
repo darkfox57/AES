@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
-const Nav = () => {
+const Nav = ({ToogleHambur}) => {
   const token = localStorage.getItem('access_token')
 
   const handleClick = () => { 
