@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import Swal from 'sweetalert2'
 import { getUser, updateUser } from '../../../../redux/actions/account_actions'
 import { ProfileBody } from './profile.styles'
 
@@ -11,7 +12,6 @@ export default function Profile() {
   const confirmation = useSelector((state) => state.account.confirmation)
   const roles = useSelector((state) => state.account.roles)
   const dispatch = useDispatch()
-
   useEffect(() => {
     getUser(id)
   }, [])
@@ -22,6 +22,26 @@ export default function Profile() {
     formState: { errors },
   } = useForm()
 
+  const alert = async (confirmation) => {
+    let hasConfirmationMessage = false
+    while (!hasConfirmationMessage) {
+      if (confirmation) {
+        hasConfirmationMessage = true
+        Swal.fire('Editado correctamente')
+      }
+      await new Promise((resolve) => setTimeout(resolve, 100))
+    }
+    setTimeout(() => {
+      if (!hasConfirmationMessage) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se ha podido guardar cambios!',
+        })
+      }
+    }, 3000)
+  }
+
   const handleData = (data) => {
     const userData = {
       id: user._id,
@@ -29,13 +49,12 @@ export default function Profile() {
       lastname: data.lastname,
       email: data.email,
       password: data.password,
-      status: 'active',
+      status: true,
       avatar: data.avatar,
       rol: data.roles,
     }
-
     dispatch(updateUser(userData))
-    console.log(confirmation)
+    alert(confirmation.message)
   }
   return (
     <>
@@ -97,6 +116,8 @@ export default function Profile() {
               {...register('password', { required: true })}
             />
           </label>
+          <span>{confirmation.error}</span>
+          <span>{confirmation.message}</span>
           <input type="submit" />
         </form>
       </ProfileBody>

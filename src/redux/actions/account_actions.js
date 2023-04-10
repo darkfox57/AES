@@ -56,7 +56,6 @@ export const updateUser = createAsyncThunk('login/updateUser', async (userData) 
 
  }
  try {
-  console.log('redux: ', formatedpost);
   const response = await axios.put(`users/${userData.id}`, formatedpost)
   return response.data
  }

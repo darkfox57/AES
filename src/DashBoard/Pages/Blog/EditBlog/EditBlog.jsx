@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import ReactQuill from 'react-quill'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import Swal from 'sweetalert2'
 import {
   editBlog,
   getBlog,
@@ -16,6 +17,7 @@ export default function EditBlog() {
   const dispatch = useDispatch()
   const blogPost = useSelector((state) => state.blog.blog)
   const categories = useSelector((state) => state.blog.categories)
+  const confirmation = useSelector((state) => state.blog.confirmation)
   const tags = useSelector((state) => state.blog.tags)
 
   useEffect(() => {
@@ -53,6 +55,10 @@ export default function EditBlog() {
     dispatch(getBlog(slug))
   }, [slug, dispatch])
 
+  const alert = async () => {
+    await Swal.fire('Editado correctamente')
+  }
+
   const handleData = (data) => {
     const post = {
       id: blogPost._id,
@@ -64,6 +70,7 @@ export default function EditBlog() {
       tags: data.tags,
     }
     dispatch(editBlog(post))
+    confirmation.message && alert()
   }
 
   return (
