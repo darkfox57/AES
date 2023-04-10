@@ -18,6 +18,7 @@ export const SearchContainer = styled.div`
     background-color: #00baa3;
     width: 10%;
     height: 35px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     :hover {
       cursor: pointer;
     }

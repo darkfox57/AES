@@ -2,18 +2,18 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
-import { getEvent } from '../../redux/actions/event_actions'
+import { getEvent } from '../../../redux/actions/event_actions'
 
-import Portada from '../Portada/Portada'
+import Portada from '../../../components/Portada/Portada'
 import BlockEvento from './BlockEvento'
-import Footer from '../Footer/Footer'
+import Footer from '../../../components/Footer/Footer'
 
 import {
   EventoArticleForm,
   FlexInfo,
   SectionEvent,
   TextEvent,
-} from './EventoForm.Styled'
+} from './EventArticle.Styles'
 
 const EventoForm = () => {
   const dispatch = useDispatch()

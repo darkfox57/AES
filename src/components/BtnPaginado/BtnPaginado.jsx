@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { BtnPaginadoFlex, Btnpage } from './BtnPaginado.Styled'
+import { BtnPaginadoFlex, Btnpage, Button } from './BtnPaginado.Styled'
 
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 const BtnPaginado = ({
   pageNumbers,
   posts,
   goToPage,
   NextPage,
   PreviousPage,
+  totalPages,
+  currentPage,
 }) => {
   const [index, setIndex] = useState(1)
 
@@ -32,7 +35,9 @@ const BtnPaginado = ({
   return (
     <>
       <BtnPaginadoFlex>
-        <button onClick={handleBack}>Back</button>
+        <Button onClick={handleBack} disabled={!currentPage}>
+          <MdKeyboardArrowLeft size={35} />
+        </Button>
         {pageNumbers.map((item, i) => (
           <Btnpage
             key={i}
@@ -43,7 +48,9 @@ const BtnPaginado = ({
             {item}
           </Btnpage>
         ))}
-        <button onClick={handleSkip}>Skip</button>
+        <Button onClick={handleSkip} disabled={totalPages === currentPage + 1}>
+          <MdKeyboardArrowRight size={35} />
+        </Button>
       </BtnPaginadoFlex>
     </>
   )

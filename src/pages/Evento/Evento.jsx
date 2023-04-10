@@ -9,6 +9,7 @@ import Footer from '../../components/Footer/Footer'
 import CardProximos from '../../components/ProximoEvento/CardProximos'
 import FilterProximos from '../../components/ProximoEvento/FilterProximos'
 import SearchEvent from '../../components/SearchEvent/SearchEvent'
+import SelectEvent from '../../components/SelectEventOrder/SelectEvent'
 
 import { EventContainer } from './Evento.Styles'
 
@@ -44,6 +45,7 @@ export default function Evento() {
       <EventContainer>
         <SearchEvent />
         <FilterProximos />
+        <SelectEvent />
 
         {paginatedData.map((event) => (
           <CardProximos
@@ -70,6 +72,8 @@ export default function Evento() {
           posts={events}
           NextPage={NextPage}
           goToPage={goToPage}
+          totalPages={totalPages}
+          currentPage={currentPage}
         />
       )}
       <Footer />

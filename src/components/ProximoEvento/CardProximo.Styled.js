@@ -30,6 +30,11 @@ export const CardImg = styled.div`
 export const CardInfo = styled.div`
   display: grid;
   gap: 8px;
+
+  h3 {
+    text-transform: capitalize;
+  }
+
   div {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,6 +53,10 @@ export const CardInfo = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     overflow: hidden;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+      sans-serif;
+    color: gray;
     text-align: justify;
   }
 `
