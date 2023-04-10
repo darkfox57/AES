@@ -18,13 +18,17 @@ export default function Login() {
     formState: { errors },
   } = useForm()
 
-  const loginSuccess = () => localStorage.setItem('access_token', estado.token)
+  const loginSuccess = () => {
+    localStorage.setItem('access_token', estado.token)
+    localStorage.setItem('user_id', estado.id)
+  }
 
   const handleData = (data) => {
     dispatch(login(data))
     loginSuccess()
     const token = localStorage.getItem('access_token')
-    token && navigate('/dashboard')
+    const user = localStorage.getItem('user_id')
+    token && user ? navigate('/dashboard') : ''
   }
 
   return (

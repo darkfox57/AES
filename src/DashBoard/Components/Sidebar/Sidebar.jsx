@@ -13,7 +13,7 @@ import { Link, NavLink } from 'react-router-dom'
 import logo from '../../../assets/logo-pups-color.webp'
 import { ProfileMiniature, SideBarContent } from './sidebar.styled'
 
-export default function Sidebar() {
+export default function Sidebar({ user }) {
   return (
     <>
       <SideBarContent>
@@ -24,7 +24,9 @@ export default function Sidebar() {
             alt="Avatar de perfil para usuario administrador - Por un Perú Sano"
           />
           <div>
-            <span>Juanito el del Barrio</span>
+            <span>
+              {user.firstname} {user.lastname}
+            </span>
             <span>Editar Perfil</span>
           </div>
         </ProfileMiniature>
@@ -42,39 +44,6 @@ export default function Sidebar() {
           </li>
           <li>
             <NavLink
-              to="/dashboard/"
-              className={({ isActive }) => (isActive ? 'current' : '')}
-            >
-              <i>
-                <IoHeartOutline />
-              </i>
-              Involucrate
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/"
-              className={({ isActive }) => (isActive ? 'current' : '')}
-            >
-              <i>
-                <IoMailUnreadOutline />
-              </i>
-              Mensajes
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/"
-              className={({ isActive }) => (isActive ? 'current' : '')}
-            >
-              <i>
-                <IoEarOutline />
-              </i>
-              Suscripciones
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/dashboard/blog"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
@@ -86,7 +55,7 @@ export default function Sidebar() {
           </li>
           <li>
             <NavLink
-              to="/dashboard/"
+              to="/dashboard/eventos"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -97,7 +66,40 @@ export default function Sidebar() {
           </li>
           <li>
             <NavLink
-              to="/dashboard/"
+              to="/dashboard/involucrate"
+              className={({ isActive }) => (isActive ? 'current' : '')}
+            >
+              <i>
+                <IoHeartOutline />
+              </i>
+              Involucrate
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/mensajes"
+              className={({ isActive }) => (isActive ? 'current' : '')}
+            >
+              <i>
+                <IoMailUnreadOutline />
+              </i>
+              Mensajes
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/suscriptores"
+              className={({ isActive }) => (isActive ? 'current' : '')}
+            >
+              <i>
+                <IoEarOutline />
+              </i>
+              Suscripciones
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/banner"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -108,7 +110,7 @@ export default function Sidebar() {
           </li>
           <li>
             <NavLink
-              to="/dashboard/"
+              to="/dashboard/configuracion"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>

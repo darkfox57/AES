@@ -1,29 +1,34 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  overflow: hidden;
-  align-items: center;
-  gap: 32px;
-  padding-right: 32px;
-  img {
-    width: 100px;
-    height: 75px;
-    object-fit: cover;
-  }
-  a {
-    align-self: center;
-  }
-`
-
-export const ContainerInfo = styled.div`
+export const FormBody = styled.section`
+display: flex;
+flex-direction: column;
+gap: 32px;
+form {
+ display: flex;
+ flex-direction: column;
+ gap: 32px;
+ label {
   display: flex;
-  align-items: center;
-  gap: 22px;
+  gap: 15px;
+  flex-direction: column;
+ }
+ img {
+  max-width: 500px;
+ }
+ .checkboxBlock{
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  label{
+   flex-direction: row;
+   input {
+    width: auto;
+    box-shadow: none;
+   }
+  }
+ }
+}
 `
 
 export const ToggleButton = styled.button`

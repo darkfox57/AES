@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
+import { Route, Routes, useLocation, useNavigate } from 'react-router'
 
 import axios from 'axios'
 
-import Home from './pages/Home/Home'
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
 import EditBlog from './DashBoard/Pages/Blog/EditBlog/EditBlog'
 import Dashboard from './DashBoard/Pages/Dashboard/Dashboard'
+import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
+import EditEvent from './DashBoard/Pages/Events/EditEvent/EditEvent'
+import EventDash from './DashBoard/Pages/Events/EventDash'
 import Login from './DashBoard/Pages/Login/Login'
 import Header from './components/Header/Header'
 import DashLayout from './layouts/DashLayout'
@@ -16,11 +18,12 @@ import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
+import EventArticle from './pages/Evento/Detail/EventArticle'
 import Evento from './pages/Evento/Evento'
 import Faqs from './pages/FAQs/Faqs'
+import Home from './pages/Home/Home'
 import Involucrate from './pages/Involucrate/Involucrate'
-import EventArticle from './pages/Evento/Detail/EventArticle'
-
+import { getAllEvents } from './redux/actions/event_actions'
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
@@ -41,6 +44,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllBlogs())
     dispatch(getCategories())
+    dispatch(getAllEvents())
   }, [])
 
   return (
@@ -67,6 +71,14 @@ function App() {
           <Route path="blog" element={<BlogDash />} />
           <Route path="blog/add-blog" element={<AddBlog />} />
           <Route path="blog/edit/:slug" element={<EditBlog />} />
+          <Route path="eventos" element={<EventDash />} />
+          <Route path="eventos/add-blog" element={<AddEvent />} />
+          <Route path="eventos/edit/:slug" element={<EditEvent />} />
+          <Route path="involucrate" element={<EventDash />} />
+          <Route path="mensajes" element={<EventDash />} />
+          <Route path="suscriptores" element={<EventDash />} />
+          <Route path="banner" element={<EventDash />} />
+          <Route path="configuracion" element={<EventDash />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>

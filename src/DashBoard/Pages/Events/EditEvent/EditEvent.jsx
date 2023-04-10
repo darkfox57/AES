@@ -3,24 +3,16 @@ import { useForm } from 'react-hook-form'
 import ReactQuill from 'react-quill'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import {
-  editBlog,
-  getBlog,
-  getCategories,
-  getTags,
-} from '../../../../redux/actions/blog_actions'
-import { FormBody, ToggleButton } from './editBlog.styles'
+import { getCategories, getTags } from '../../../../redux/actions/blog_actions'
+import { getEvent } from '../../../../redux/actions/event_actions'
+import { FormBody, ToggleButton } from './editEvent.styles'
 
-export default function EditBlog() {
+export default function EditEvent() {
   const { slug } = useParams()
   const dispatch = useDispatch()
-  const blogPost = useSelector((state) => state.blog.blog)
+  const eventPost = useSelector((state) => state.event.event)
   const categories = useSelector((state) => state.blog.categories)
   const tags = useSelector((state) => state.blog.tags)
-
-  useEffect(() => {
-    setActive(blogPost.status)
-  }, [blogPost])
 
   const {
     register,
@@ -28,7 +20,11 @@ export default function EditBlog() {
     formState: { errors },
   } = useForm()
 
-  const [active, setActive] = useState(blogPost.status)
+  const [active, setActive] = useState('aqui va event status')
+
+  // useEffect(() => {
+  //   setActive(blogPost.status)
+  // }, [blogPost])
 
   const handleClick = () => {
     const post = {
@@ -50,7 +46,7 @@ export default function EditBlog() {
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(getBlog(slug))
+    dispatch(getEvent(slug))
   }, [slug, dispatch])
 
   const handleData = (data) => {
@@ -74,7 +70,7 @@ export default function EditBlog() {
           className={`${active ? ' active' : ''}`}
           type="button"
           onClick={handleClick}
-          aria-pressed={blogPost.status}
+          // aria-pressed={blogPost.status}
           autoComplete="off"
         >
           <div className="handle"></div>
@@ -85,15 +81,15 @@ export default function EditBlog() {
           <label>
             Titulo:
             <input
-              defaultValue={blogPost.title}
+              defaultValue={eventPost.title}
               {...register('title', { required: true })}
             />
           </label>
-          <span>slug: {blogPost.slug}</span>
+          <span>slug: {eventPost.slug}</span>
           <label>
             Descripción
             <textarea
-              defaultValue={blogPost.description}
+              defaultValue={eventPost.description}
               rows="10"
               {...register('description', { required: true, maxLength: 800 })}
             />
@@ -130,12 +126,12 @@ export default function EditBlog() {
             ))}
           </div>
           <span>Imagen:</span>
-          <img src={blogPost.image} alt={blogPost.title} />
+          <img src={eventPost.frontpage} alt={eventPost.title} />
           <label>
             Cargar nueva imagen:
             <input
               placeholder="Imagen Url"
-              defaultValue={blogPost.image}
+              defaultValue={eventPost.frontpage}
               {...register('image')}
             />
             <input type="submit" />
