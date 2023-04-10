@@ -24,10 +24,11 @@ import Evento from './pages/Evento/Evento'
 import Faqs from './pages/FAQs/Faqs'
 import Home from './pages/Home/Home'
 import Involucrate from './pages/Involucrate/Involucrate'
-import { getAllEvents } from './redux/actions/event_actions'
+
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
+import { getAllEvents, getAllCategories } from './redux/actions/event_actions'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
@@ -40,7 +41,9 @@ function App() {
   useEffect(() => {
     dispatch(getAllBlogs())
     dispatch(getCategories())
+
     dispatch(getAllEvents())
+    dispatch(getAllCategories())
   }, [])
 
   return (

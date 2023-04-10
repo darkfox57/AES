@@ -1,34 +1,39 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { filterEvents } from '../../redux/actions/event_actions'
 
-import { FilterProximosEvento } from './FilterProximo.Styled'
+import { FilterProximosEvento, FilterButton } from './FilterProximo.Styled'
 
 const FilterProximos = () => {
-  const dispatch = useDispatch()
+  const [activeButton, setActiveButton] = useState(0)
 
-  const handleFilter = (event) => {
-    dispatch(filterEvents(event.target.value))
+  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.event.categories)
+
+  const arrayCategories = [...categories]
+  arrayCategories.unshift({
+    _id: 'g55gregtsh5665htrhsfgh',
+    name: 'Todas las categorias',
+  })
+
+  const handleFilter = (category, index) => {
+    setActiveButton(index)
+    dispatch(filterEvents(category))
   }
 
   return (
     <FilterProximosEvento>
-      <button value="Default" onClick={handleFilter}>
-        Todas las categorias
-      </button>
-      <button value="Dia del agua" onClick={handleFilter}>
-        Dia del agua
-      </button>
-      <button value="Educacion" onClick={handleFilter}>
-        Educación
-      </button>
-      <button value="Salud" onClick={handleFilter}>
-        Salud
-      </button>
-      <button value="Instituciones" onClick={handleFilter}>
-        Instituciones
-      </button>
+      {arrayCategories.map((category, index) => (
+        <FilterButton
+          key={category._id}
+          active={activeButton === index}
+          onClick={() => handleFilter(category.name, index)}
+          disabled={activeButton === index}
+        >
+          {category.name}
+        </FilterButton>
+      ))}
     </FilterProximosEvento>
   )
 }

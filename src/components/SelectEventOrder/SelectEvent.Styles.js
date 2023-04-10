@@ -8,7 +8,6 @@ export const OrderContainer = styled.div`
 
   select {
     width: 15%;
-    height: 25px;
     border-radius: 10px;
     text-align: center;
     border: none;
