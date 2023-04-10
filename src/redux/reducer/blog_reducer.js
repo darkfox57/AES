@@ -54,7 +54,7 @@ const blogSlice = createSlice({
       })
 
       .addCase(addBlog.fulfilled, (state, action) => {
-        state.blogs.push(action.payload)
+        state.confirmation = action.payload
       })
       .addCase(addBlog.rejected, (state, action) => {
         state.status = action.error.message
@@ -116,3 +116,4 @@ const blogSlice = createSlice({
 })
 
 export default blogSlice.reducer
+

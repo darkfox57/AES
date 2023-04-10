@@ -24,25 +24,22 @@ export const getCategories = createAsyncThunk(
   }
 )
 
-export const addBlog = createAsyncThunk('blogs/addBlog', async (formData) => {
-  const response = await axios.post('/blogs', formData)
-  return response.data
-})
-
-export const getTags = createAsyncThunk('blogs/getTagBlog', async () => {
-  const response = await axios.get('/tags')
-  return response.data
-})
-
-export const filterCategory = createAsyncThunk('blogs/filterCategory', async (category) => {
-  return category
-})
-
-export const OrderBlog = createAsyncThunk('blogs/OrderBlog', async (type) => {
-  return type
-})
-export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
-  return tag
+export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
+  const formatedpost = {
+    'title': post.title,
+    'description': post.description,
+    'image': post.image,
+    'categories': post.categories,
+    'status': post.status,
+    'tags': post.tags
+  }
+  try {
+    const response = await axios.post('/blogs', formatedpost)
+    return response.data
+  }
+  catch (error) {
+    error.response.data
+  }
 })
 
 export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
@@ -64,8 +61,25 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
   }
 })
 
+export const getTags = createAsyncThunk('blogs/getTagBlog', async () => {
+  const response = await axios.get('/tags')
+  return response.data
+})
+
+export const filterCategory = createAsyncThunk('blogs/filterCategory', async (category) => {
+  return category
+})
+
+export const OrderBlog = createAsyncThunk('blogs/OrderBlog', async (type) => {
+  return type
+})
+export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
+  return tag
+})
+
 
 export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
   const response = await axios.delete(`/blogs/${id}`)
   return response.data
 })
+
