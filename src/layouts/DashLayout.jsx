@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router'
 import Header from '../DashBoard/Components/Header/Header.jsx'
@@ -15,16 +15,27 @@ import {
 export default function DashLayout() {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.account.user)
+  const [access, setAccess] = useState()
 
   const navigate = useNavigate()
+  const token = localStorage.getItem('access_token')
 
   useEffect(() => {
     const user_id = localStorage.getItem('user_id')
     const token = localStorage.getItem('access_token')
     dispatch(getUser(user_id))
-    if (user === undefined || token === null) navigate('/login')
-    localStorage.removeItem('access_token')
-    localStorage.removeItem('user_id')
+    Object.keys(user) ? setAccess(true) : setAccess(false)
+
+    // if (
+    //   !access ||
+    //   !user_id ||
+    //   (!token && location.pathname.includes('dashboard'))
+    // ) {
+    //   navigate('/login')
+    // }
+    // if (access && user_id && token && location.pathname.includes('login')) {
+    //   navigate('/dashboard')
+    // }
   }, [])
 
   // useEffect(() => {
@@ -36,18 +47,21 @@ export default function DashLayout() {
   // }, [])
 
   return (
-    <>
-      <DashBoardLayoutContainer>
-        <SidebarContainer>
-          <Sidebar user={user} />
-        </SidebarContainer>
-        <HeaderContainer>
-          <Header />
-        </HeaderContainer>
-        <MainContainer>
-          <Outlet />
-        </MainContainer>
-      </DashBoardLayoutContainer>
-    </>
+    (
+      <>
+        <DashBoardLayoutContainer>
+          <SidebarContainer>
+            <Sidebar user={user} />
+          </SidebarContainer>
+          <HeaderContainer>
+            <Header />
+          </HeaderContainer>
+          <MainContainer>
+            <Outlet />
+          </MainContainer>
+        </DashBoardLayoutContainer>
+      </>
+    )
   )
 }
+

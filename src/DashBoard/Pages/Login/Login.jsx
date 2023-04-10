@@ -17,18 +17,15 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm()
-
   const loginSuccess = () => {
     localStorage.setItem('access_token', estado.token)
     localStorage.setItem('user_id', estado.id)
+    navigate('/dashboard')
   }
 
   const handleData = (data) => {
     dispatch(login(data))
-    loginSuccess()
-    const token = localStorage.getItem('access_token')
-    const user = localStorage.getItem('user_id')
-    token && user ? navigate('/dashboard') : ''
+    estado.success && loginSuccess()
   }
 
   return (

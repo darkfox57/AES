@@ -24,9 +24,9 @@ export const userValidation = createAsyncThunk('login/validation', async (token)
  }
 })
 
-export const getUser = createAsyncThunk('login/getUser', async (id) => {
+export const getUser = createAsyncThunk('login/getUser', async (user_id) => {
  try {
-  const response = await axios.get(`users/${id}`)
+  const response = await axios.get(`users/${user_id}`)
   return response.data
  }
  catch (error) {
