@@ -48,15 +48,13 @@ export default function AddBlog() {
       description: data.description,
       image: data.image,
       categories: data.categories,
-      status: 'active',
+      status: true,
       tags: data.tags,
     }
-    console.log(post.slug)
     dispatch(addBlog(post))
     estado === 'succeeded'
       ? setReqMessage('Creado Correctamente')
       : setReqMessage(estado)
-    console.log(estado)
   }
 
   return (

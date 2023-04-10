@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import ReactQuill from 'react-quill'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
@@ -58,7 +58,7 @@ export default function EditBlog() {
       title: data.title,
       description: data.description,
       image: data.image,
-      status: 'active',
+      status: true,
       categories: data.categories,
       tags: data.tags,
     }
