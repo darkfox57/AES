@@ -32,7 +32,7 @@ const blogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllBlogs.fulfilled, (state, action) => {
-        state.blogs = action.payload
+        state.blogs = action.payload.reverse()
         state.copyblogs = action.payload
       })
       .addCase(getAllBlogs.rejected, (state, action) => {
@@ -79,11 +79,11 @@ const blogSlice = createSlice({
       .addCase(getTags.fulfilled, (state, action) => {
         state.tags = action.payload
       })
-     .addCase(getTags.rejected, (state, action) => {
-      state.error = action.payload
-    })
+      .addCase(getTags.rejected, (state, action) => {
+        state.error = action.payload
+      })
 
-    .addCase(filterCategory.fulfilled, (state, action) => {
+      .addCase(filterCategory.fulfilled, (state, action) => {
         const blogCategory = state.copyblogs.filter((blog) =>
           blog.categories.some((category) => category.name === action.payload)
         )
@@ -91,8 +91,8 @@ const blogSlice = createSlice({
       })
 
       .addCase(filterTags.fulfilled, (state, action) => {
-        const blogTag= state.copyblogs.filter((blog) =>
-        blog.tags.some((tag) => tag.name === action.payload)
+        const blogTag = state.copyblogs.filter((blog) =>
+          blog.tags.some((tag) => tag.name === action.payload)
         )
         state.blogs = blogTag
       })
