@@ -138,8 +138,8 @@ export default function EditBlog() {
               defaultValue={blogPost.image}
               {...register('image')}
             />
-            <input type="submit" />
           </label>
+          <input type="submit" />
         </form>
       </FormBody>
     </>

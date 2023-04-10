@@ -8,6 +8,7 @@ import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
 import EditBlog from './DashBoard/Pages/Blog/EditBlog/EditBlog'
 import Dashboard from './DashBoard/Pages/Dashboard/Dashboard'
+import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
 import EditEvent from './DashBoard/Pages/Events/EditEvent/EditEvent'
 import EventDash from './DashBoard/Pages/Events/EventDash'
@@ -74,6 +75,7 @@ function App() {
           <Route path="suscriptores" element={<EventDash />} />
           <Route path="banner" element={<EventDash />} />
           <Route path="configuracion" element={<EventDash />} />
+          <Route path="perfil/:id" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
