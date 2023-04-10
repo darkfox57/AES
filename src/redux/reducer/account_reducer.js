@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getUser, logOut, login, userValidation } from '../actions/account_actions'
+import { getAllUsers, getRoles, getUser, logOut, login, updateUser, userValidation } from '../actions/account_actions'
 
 const initialState = {
   user: {},
+  users: [],
+  roles: [],
   status: '',
   validation: '',
+  confirmation: '',
+  error: ''
 }
 
 
@@ -23,8 +27,20 @@ const usersSlice = createSlice({
       .addCase(userValidation.fulfilled, (state, action) => {
         state.validation = action.payload
       })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.users = action.payload
+      })
+      .addCase(getRoles.fulfilled, (state, action) => {
+        state.roles = action.payload
+      })
+      .addCase(getRoles.rejected, (state, action) => {
+        state.error = action.error.message
+      })
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.confirmation = action.payload
       })
   },
 })

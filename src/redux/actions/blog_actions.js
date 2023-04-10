@@ -2,24 +2,24 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const getAllBlogs = createAsyncThunk('blogs/getAllBlogs', async () => {
-  const response = await axios.get('/blogs')
+  const response = await axios.get('blogs')
   return response.data
 })
 
 export const getBlog = createAsyncThunk('blogs/getBlog', async (slug) => {
-  const response = await axios.get(`/blogs?slug=${slug}`)
+  const response = await axios.get(`blogs?slug=${slug}`)
   return response.data
 })
 
 export const getBlogTitle = createAsyncThunk('blogs/getBlogTitle', async (title) => {
-  const response = await axios.get(`/blogs?search=${title}`)
+  const response = await axios.get(`blogs?search=${title}`)
   return response.data
 })
 
 export const getCategories = createAsyncThunk(
   'categories/getCategories',
   async () => {
-    const response = await axios.get('/category')
+    const response = await axios.get('category')
     return response.data
   }
 )
@@ -34,7 +34,7 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
     'tags': post.tags
   }
   try {
-    const response = await axios.post('/blogs', formatedpost)
+    const response = await axios.post('blogs', formatedpost)
     return response.data
   }
   catch (error) {
@@ -53,7 +53,7 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
     'tags': post.tags
   }
   try {
-    const response = await axios.put(`/blogs/${post.id}`, formatedpost)
+    const response = await axios.put(`blogs/${post.id}`, formatedpost)
     return response.data
   }
   catch (error) {
@@ -62,7 +62,7 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
 })
 
 export const getTags = createAsyncThunk('blogs/getTagBlog', async () => {
-  const response = await axios.get('/tags')
+  const response = await axios.get('tags')
   return response.data
 })
 
@@ -79,7 +79,7 @@ export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
 
 
 export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
-  const response = await axios.delete(`/blogs/${id}`)
+  const response = await axios.delete(`blogs/${id}`)
   return response.data
 })
 

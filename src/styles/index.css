@@ -106,10 +106,23 @@ li {
 }
 
 
-input {
+input,
+select {
     padding: 8px 15px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     border: none;
-    background-color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(223, 223, 223, 0.5);
     font-family: var(--body-font);
+    font-size: 0.9rem;
+}
+
+input[type='submit'] {
+    max-width: 200px;
+    color: var(--main-white);
+    background-color: rgb(251, 99, 115);
+    transition: all 0.3s ease-in-out;
+}
+
+input[type='submit']:hover {
+    scale: 1.03;
 }

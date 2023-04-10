@@ -20,14 +20,14 @@ export default function Sidebar({ user }) {
         <img src={logo} alt="" />
         <ProfileMiniature>
           <img
-            src="https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg"
+            src={user.avatar}
             alt="Avatar de perfil para usuario administrador - Por un Perú Sano"
           />
           <div>
             <span>
               {user.firstname} {user.lastname}
             </span>
-            <span>Editar Perfil</span>
+            <Link to={`/dashboard/perfil/${user._id}`}>Editar Perfil</Link>
           </div>
         </ProfileMiniature>
         <nav>

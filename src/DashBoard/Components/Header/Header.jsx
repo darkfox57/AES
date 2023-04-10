@@ -9,7 +9,7 @@ import {
 import { useNavigate } from 'react-router'
 import { HeaderNotifications, LogOut, ProfileMiniature } from './header.styles'
 
-export default function Header() {
+export default function Header({ user }) {
   const navigate = useNavigate()
   return (
     <>
@@ -29,7 +29,7 @@ export default function Header() {
           src="https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg"
           alt="Avatar de perfil para usuario administrador - Por un Perú Sano"
         />
-        <span>Juanito</span>
+        <span>{user.firstname}</span>
         <i>
           <IoCaretDownOutline />
         </i>
