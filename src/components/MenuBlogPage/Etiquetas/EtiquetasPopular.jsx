@@ -3,7 +3,7 @@ import { EtiquetaContainer, GridEtiquetaBtn } from './Etiquetas.Styled'
 import { useDispatch } from 'react-redux'
 import { filterTags } from '../../../redux/actions/blog_actions'
 import useScroll from '../../../Hooks/useScrollTop'
-
+import { MdLabelImportant} from 'react-icons/md'
 const EtiquetasPopular = ({tags}) => {
   const dispatch = useDispatch()
 
@@ -14,7 +14,7 @@ const EtiquetasPopular = ({tags}) => {
 
   return (
     <EtiquetaContainer>
-      <h4>Etiquetas populares</h4>
+      <h4><MdLabelImportant className="icon-label" /> Etiquetas populares</h4>
       <GridEtiquetaBtn>
         {tags.map((tag,i)=> <button onClick={()=> handleTag(tag.name)} key={i}>{tag.name}</button> )}
       </GridEtiquetaBtn>

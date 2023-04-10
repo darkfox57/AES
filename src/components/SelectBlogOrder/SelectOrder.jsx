@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { OrderBlog } from '../../redux/actions/blog_actions'
+import { SelectOrderContainer } from './SelectBlogOrder.Styled'
 
 const SelectOrder = () => {
   const dispatch = useDispatch()
@@ -27,21 +28,21 @@ const SelectOrder = () => {
 
   return (
     <>
-      <select name="title" value={nameOrder} onChange={handleNameOrderChange}>
+      <SelectOrderContainer name="title" value={nameOrder} onChange={handleNameOrderChange}>
         <option value="" defaultValue disabled>
           A-Z
         </option>
         <option value="asc">A-Z</option>
         <option value="desc">Z-A</option>
-      </select>
+      </SelectOrderContainer>
 
-      <select name="fecha" value={dateOrder} onChange={handleDateOrderChange}>
+      <SelectOrderContainer name="fecha" value={dateOrder} onChange={handleDateOrderChange}>
         <option value="" defaultValue disabled>
           Fecha
         </option>
         <option value="asc">Ascendente</option>
         <option value="desc">Descendente</option>
-      </select>
+      </SelectOrderContainer>
     </>
   )
 }

@@ -50,9 +50,13 @@ export const ContainerSpan = styled.div`
     }
   }
   span{
-    display: flex;
+  display: flex;
    justify-content: center;
    align-items: center;
    gap: 10px;
+   .icon-card-blog{
+    font-size: 1.2rem;
+    color: rgb(0, 186, 163);
+   }
   }
 `

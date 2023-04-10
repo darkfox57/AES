@@ -2,22 +2,35 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
 height: 50px;
+width: 100%;
 cursor: pointer;
-
-span{
-    display: inline-block;
-    padding: 15px 20px;
+border: 1px solid #d5d5d5;
+display: flex;
+transform: all 0.2s ease-in-out;
+:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+    box-shadow: gray 0px 0px 10px 2px;
+}
+.text,.cant{
     height: 100%;
+    display: flex;
+    align-items: center;
 }
-span:first-child{
-    :hover{
-    color: blue;
-}
-background: #ebebeb;
+
+.text{
+padding: 0 10px;
+background: white;
 width: calc(100% - 60px);
+:hover{
+    color: rgb(255, 81, 81);
 }
-span:nth-child(2){
-    background: rgb(181 181 181);
+}
+
+.cant{
+    color: white;
+    background: rgb(255, 81, 81);
+    justify-content: center;
     width: 60px;
 }
 `

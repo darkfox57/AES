@@ -7,8 +7,9 @@ export const CardNoticiaFlex = styled.div`
   column-gap: 20px;
   border-bottom: 1px solid gray;
   padding: 10px 10px;
-  transition: all 0.2s ease-out;
+  transition: all 0.2s ease-in-out;
   :hover {
+    transform: scale(1.01);
     cursor: pointer;
     box-shadow: 0 0 10px 2px gray;
   }

@@ -1,7 +1,7 @@
 import React,{useMemo} from 'react'
 import { CardFlex, CategoriaContainer } from './Categoria.Styled'
 import CardCategory from './CardCategory'
-
+import { TbCategory2} from 'react-icons/tb'
 
 const countCategories = (categories, posts) => {
   return categories.reduce((counter, { name, _id }) => {
@@ -21,7 +21,7 @@ const Categorias = ({ category, posts }) => {
 
   return (
     <CategoriaContainer>
-      <h4>🫠 Categorias</h4>
+      <h4><TbCategory2 className='icon-category'/> Categorias</h4>
       <CardFlex>
         {Object.keys(categories).map((category, index) => (
           <CardCategory
