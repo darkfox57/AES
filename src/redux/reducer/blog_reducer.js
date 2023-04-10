@@ -53,7 +53,7 @@ const blogSlice = createSlice({
       })
 
       .addCase(addBlog.fulfilled, (state, action) => {
-        state.blogs.push(action.payload)
+        state.confirmation = action.payload
       })
       .addCase(addBlog.rejected, (state, action) => {
         state.status = action.error.message
@@ -78,11 +78,11 @@ const blogSlice = createSlice({
       .addCase(getTags.fulfilled, (state, action) => {
         state.tags = action.payload
       })
-     .addCase(getTags.rejected, (state, action) => {
-      state.error = action.payload
-    })
+      .addCase(getTags.rejected, (state, action) => {
+        state.error = action.payload
+      })
 
-    .addCase(filterCategory.fulfilled, (state, action) => {
+      .addCase(filterCategory.fulfilled, (state, action) => {
         const blogCategory = state.copyblogs.filter((blogg) =>
           blogg.categories.some((category) => category.name === action.payload)
         )

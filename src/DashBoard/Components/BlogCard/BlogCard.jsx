@@ -56,7 +56,7 @@ export default function BlogCard({
           size="lg"
           link={`/dashboard/blog/edit/${slug}`}
         />
-        <div className="toggle">
+        <div>
           <ToggleButton
             className={`${active ? ' active' : ''}`}
             type="button"
