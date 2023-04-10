@@ -35,11 +35,6 @@ function App() {
   const dispatch = useDispatch()
   const estado = useSelector((state) => state.account.status)
   const navigate = useNavigate()
-  const token = localStorage.getItem('access_token')
-  useEffect(() => {
-    if (!token && location.pathname.includes('dashboard')) navigate('/login')
-    if (token && location.pathname.includes('login')) navigate('/dashboard')
-  }, [token])
 
   useEffect(() => {
     dispatch(getAllBlogs())
