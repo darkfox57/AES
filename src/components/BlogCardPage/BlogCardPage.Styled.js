@@ -4,7 +4,6 @@ export const BlogPageCardContainer = styled.div`
   border: 1px solid #d7d7d7;
   height: max-content;
   .portada {
-    width: 700px;
     height: 400px;
     background: #fff url(${(props) => props.img}) center center/cover no-repeat;
   }
@@ -14,6 +13,10 @@ export const ContainerInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  //**Responsive */
+  @media screen and (max-width: 1213px){
+    padding: 30px 25px;
+  }
   h3{
     text-transform: capitalize;
   }

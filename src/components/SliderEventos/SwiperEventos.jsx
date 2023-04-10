@@ -32,7 +32,23 @@ const SwiperEventos = () => {
         loop={true}
         navigation
         spaceBetween={20}
-        slidesPerView={4}
+       // slidesPerView={4}
+        breakpoints={{
+          // Configuración para pantallas más pequeñas
+          1458: {
+            slidesPerView: 4
+          },
+          1080: {
+            slidesPerView: 3
+          },
+          754: {
+            slidesPerView: 2
+          },
+          // Configuración para pantallas aún más pequeñas
+          480: {
+            slidesPerView: 2
+          }
+        }}
         //centeredSlides={true}
         //onSlideChange={(swiper) => console.log(swiper)}
       >

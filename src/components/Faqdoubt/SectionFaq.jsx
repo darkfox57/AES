@@ -15,17 +15,10 @@ const SectionFaq = ({ title, details, index, visibleIndex, setVisibleIndex }) =>
 
   return (
     <SectionFaqContainer >
-      <div className='title'>
+     <div className='title'>
         <h3>{title}</h3>
         <button onClick={handleView}>❤️</button>
       </div>
-      
-      {/*visibleIndex === index && (
-        // Mostrar los detalles solo si el índice del span es igual al visibleIndex
-        <AnimatedSpan visible={visibleIndex === index}>
-          <p>{details}</p>
-        </AnimatedSpan>
-      )*/}
       <AnimatedSpan visible={visibleIndex === index}>
         <p>{details}</p>
       </AnimatedSpan>

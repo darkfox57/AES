@@ -16,16 +16,18 @@ export default function Footer() {
       <Donacion />
       <Contacto />
       <FooterContent>
-        <InfoContent size="800px" />
+        <InfoContent />
         <FooterMenu>
           <h4>Por un Perú Sano</h4>
-          <li>Home</li>
-          <li>Acerca de</li>
-          <li>Involucrate</li>
-          <li>Blog</li>
-          <li>Más</li>
-          <li>Contacto</li>
-          <li>Donaciones</li>
+          <ul>
+            <li>Home</li>
+            <li>Acerca de</li>
+            <li>Involucrate</li>
+            <li>Blog</li>
+            <li>Más</li>
+            <li>Contacto</li>
+            <li>Donaciones</li>
+          </ul>
         </FooterMenu>
         <LastBlogs>
           <h4>Ultimas Entradas del blog</h4>

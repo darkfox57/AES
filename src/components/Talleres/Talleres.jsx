@@ -14,19 +14,19 @@ const events = [
   },
   {
     icon: <TbHeartHandshake />,
-    title: 'Cultura Sanitaria',
+    title: 'Cultura Ambiental',
     parraf:
       'Una de nuestros objetivos es asegurarnos de que los talleres abarquen la salud de forma integral es decir incluyendo la salud mental',
   },
   {
     icon: <TbLifebuoy />,
-    title: 'Cultura Sanitaria',
+    title: 'Cultura Corazon',
     parraf:
       'Una de nuestros objetivos es asegurarnos de que los talleres abarquen la salud de forma integral es decir incluyendo la salud mental',
   },
   {
     icon: <FaYelp />,
-    title: 'Cultura Sanitaria',
+    title: 'Cultura Deportiva',
     parraf:
       'Una de nuestros objetivos es asegurarnos de que los talleres abarquen la salud de forma integral es decir incluyendo la salud mental',
   },

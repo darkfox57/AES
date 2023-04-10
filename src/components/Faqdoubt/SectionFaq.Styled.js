@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SectionFaqContainer = styled.div`
   //background: #181818;
   padding: 25px 0px;
-  width: 746px;
+  max-width: 746px;
   border-bottom: 2px solid var(--secondary-color);
   .title {
     display: flex;

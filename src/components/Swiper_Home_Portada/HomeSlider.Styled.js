@@ -11,7 +11,7 @@ export const HomeContainer = styled.div`
     width:100%;
     img{
         object-fit:cover;
-        object-position:center
+        object-position:center;
         width: 100%;
         height: 100%;
     }

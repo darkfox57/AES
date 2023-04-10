@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Banner_Stylizied = styled.div`
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jj1LckfjAEk6YBdHiTshg0YvVg-8C0_--A&usqp=CAU');
+  background-image: url('https://coachendo.com/wp-content/uploads/2022/07/shutterstock_2069741426-1200x800.jpg');
   min-height: 400px;
   background-size: cover;
   background-position: center;
