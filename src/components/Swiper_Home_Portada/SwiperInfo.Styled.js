@@ -8,7 +8,6 @@ export const TextMainContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
   display: flex;
   flex-direction:column;
   gap: 5px 0;

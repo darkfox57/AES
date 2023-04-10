@@ -5,9 +5,8 @@ import { BsShare } from 'react-icons/bs'
 import Button from '../../utils/Button/Button'
 import { CardContainer, ContainerImg, ContainerInfo } from './BlogCard.Styled'
 
-const Img =
-  'https://revistarecursoshumanos.com/wp-content/uploads/2016/08/atención-cliente_2015.jpg'
-const BlogCard = ({ image, title, date, status, id, slug }) => {
+const BlogCard = ({ image, title, date, slug }) => {
+  const fecha =  new Date(date);
   return (
     <>
       <CardContainer>
@@ -15,11 +14,7 @@ const BlogCard = ({ image, title, date, status, id, slug }) => {
           <img src={image} alt={title} />
           <div className="fecha">
             <span>
-              {new Date(date).toLocaleString('es-ES', {
-                day: 'numeric',
-                month: 'numeric',
-                year: 'numeric',
-              })}{' '}
+              {fecha.toLocaleDateString()}
             </span>
           </div>
         </ContainerImg>
@@ -27,12 +22,12 @@ const BlogCard = ({ image, title, date, status, id, slug }) => {
           <p>{title}</p>
           <div>
             <Button
-              type="secundary"
+              type="primary"
               text="Leer más"
               size="lg"
               link={`/blog/${slug}`}
             />
-            <Button type="link" text={<BsShare />} size="lg" />
+            <Button type="secundary" text={"Shared"} size="lg" />
           </div>
         </ContainerInfo>
       </CardContainer>

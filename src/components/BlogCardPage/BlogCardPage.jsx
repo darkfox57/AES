@@ -21,7 +21,7 @@ const BlogCardPage = ({img,title,date,description,tags}) => {
     <BlogPageCardContainer img={img} >
       <div className="portada"></div>
       <ContainerInfo>
-      <span>Charity</span>
+     <span>Charity</span>
       <h3>
         {title}
       </h3>
@@ -39,6 +39,7 @@ const BlogCardPage = ({img,title,date,description,tags}) => {
         </div>
         <span>Readmore</span>
       </ContainerSpan>
+     
       </ContainerInfo>
     </BlogPageCardContainer>
   )

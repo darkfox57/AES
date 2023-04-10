@@ -13,28 +13,32 @@ import Button from '../../utils/Button/Button'
 export default function About_Home() {
   return (
     <ComponentContainer>
+      <div className='center'>
       <ImgContainer>
         <figure>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrHkL4JZ0DfWN7vvvESpb_T1O4mThoaxWNPLATaMRuTb9KCxKuRNz-9ocA9qCSdGo1m7A&usqp=CAU"
+            src="https://americantechnet.us/wp-content/uploads/2020/09/equipo-de-trabajo-american-technet-980x1284.jpg"
             alt=""
           />
         </figure>
 
         <figure>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVFigMPQ9_E9pedvvBdUzFrUKTsE7tZpp11A&usqp=CAU"
+            src="https://img.tsn.ua/cached/914/tsn-e95b1de226ff0ebf7770d159fcb9c526/thumbs/608xX/f1/04/3053cde173de43c26fa91e3a72db04f1.jpg"
             alt=""
           ></img>
         </figure>
       </ImgContainer>
+      <div className='flexInfoContent'>
       <InfoContent />
+      </div>
+      </div>
     </ComponentContainer>
   )
 }
 
-export const InfoContent = ({ size }) => (
-  <InfoContainer size={size}>
+export const InfoContent = () => (
+  <InfoContainer >
     <h2>
       ¿QUIENES SOMOS <br />
       <span>Y QUE HACEMOS?</span>
@@ -46,6 +50,6 @@ export const InfoContent = ({ size }) => (
       salud buscan formar una sólida cultura sanitaria en los adolescentes del
       Perú a través de talleres dinámicos
     </p>
-    <Button type="secondary" link="/contacto" text="Contáctenos" size="md" />
+    <Button type="primary" link="/contacto" text="Contáctenos" size="md" />
   </InfoContainer>
 )

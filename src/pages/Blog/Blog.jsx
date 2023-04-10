@@ -67,11 +67,14 @@ export default function Blog() {
           />
         </GridCardBlog>
         <ContainerMenuBlog>
+          <div className='fixedMenu'>
           <SearchBlog />
           <NoticiaDestacada />
           <Categorias category={category} posts={posts} />
           <SiguenosRedes />
           <EtiquetasPopular tags={tags} />
+          </div>
+          
         </ContainerMenuBlog>
       </BlogBody>
       <Footer />

@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
 position: relative;
-width: 300px;
-height: 350px;
-background: #f4f4f4;
+width: 330px;
+height: 380px;
+background: white;
 padding: 40px;
 overflow:hidden;
 ::before{
  content: "";
  width: 100px;
  height: 100px;
- background: #E7E7E7;
+ background: rgb(255, 81, 81);
  position: absolute;
  border-radius: 100%;
  top: 0;
@@ -26,12 +26,15 @@ export const ContainerInfo = styled.div`
 display: flex;
 flex-direction: column;
 row-gap: 10px;
-& > p:nth-child(1) {
+h5 {
  font-size: 1.5rem;
  line-height: 1.6rem;
 }
+p{
+    color: gray;
+}
 `
 export const ContainerIcon = styled.div`
-font-size: 3rem;
-color: red;
+font-size: 5rem;
+color: rgb(255, 81, 81);
 `
