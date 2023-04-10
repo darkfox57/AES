@@ -23,7 +23,13 @@ const BlockEvento = ({ event }) => {
           </li>
           <li>
             <span>🗓️</span>
-            {new Date(event.createdAt).toLocaleString('es-ES', {
+            {new Date(event.date_in).toLocaleString('es-ES', {
+              day: 'numeric',
+              month: 'numeric',
+              year: 'numeric',
+            })}
+            &nbsp; -&nbsp;
+            {new Date(event.date_out).toLocaleString('es-ES', {
               day: 'numeric',
               month: 'numeric',
               year: 'numeric',

@@ -3,17 +3,36 @@ import { CardContainer, CardImg, CardInfo } from './CardProximo.Styled'
 import Button from '../../utils/Button/Button'
 import { BsCheckSquareFill } from 'react-icons/bs'
 
-const CardProximos = ({ slug, description, img, date, lugar, title }) => {
+const CardProximos = ({
+  slug,
+  description,
+  img,
+  dateIn,
+  dateOut,
+  lugar,
+  title,
+}) => {
   return (
     <CardContainer>
       <CardImg img={img}>
-        <span>
-          {new Date(date).toLocaleString('es-ES', {
-            day: 'numeric',
-            month: 'numeric',
-            year: 'numeric',
-          })}
-        </span>
+        <div className="dateContainer">
+          <span>
+            Inicio:&nbsp;
+            {new Date(dateIn).toLocaleString('es-ES', {
+              day: 'numeric',
+              month: 'numeric',
+              year: 'numeric',
+            })}
+          </span>
+          <span>
+            Fin:&nbsp;
+            {new Date(dateOut).toLocaleString('es-ES', {
+              day: 'numeric',
+              month: 'numeric',
+              year: 'numeric',
+            })}
+          </span>
+        </div>
         <span>{lugar}</span>
       </CardImg>
       {/**detalles de la informacion 2da columna*/}

@@ -16,15 +16,28 @@ export const CardImg = styled.div`
   justify-content: center;
   padding: 10px;
   gap: 10px;
+
   span:nth-child(2) {
     background: green;
   }
+  .dateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      background: #b51717;
+    }
+  }
+
   span {
+    text-align: center;
     width: max-content;
     height: max-content;
-    background: #b51717;
     border-radius: 50px;
     padding: 5px 20px;
+    font-size: 0.85rem;
   }
 `
 export const CardInfo = styled.div`
