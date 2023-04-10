@@ -16,7 +16,7 @@ export const CardContainer = styled.div`
     object-fit: cover;
   }
   a {
-    align-self: center;
+    align-self: center!important;
   }
 `
 

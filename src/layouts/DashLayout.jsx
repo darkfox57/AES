@@ -21,9 +21,10 @@ export default function DashLayout() {
   useEffect(() => {
     const user_id = localStorage.getItem('user_id')
     const token = localStorage.getItem('access_token')
-    console.log(user_id)
     dispatch(getUser(user_id))
-    if (user_id === null || token === null) navigate('/login')
+    if (user === undefined || token === null) navigate('/login')
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('user_id')
   }, [])
 
   // useEffect(() => {
