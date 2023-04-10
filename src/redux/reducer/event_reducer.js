@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
+  editEvent,
   filterEvents,
   getAllEvents,
   getEvent,
   getEventByTitle,
-  orderEvents,
+  orderEvents
 } from '../actions/event_actions'
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   filteredEvents: [],
   event: {},
   error: null,
+  confirmation: ''
 }
 
 const eventSlice = createSlice({
@@ -21,7 +23,7 @@ const eventSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllEvents.fulfilled, (state, action) => {
-        state.events = action.payload
+        state.events = action.payload.reverse()
         state.filteredEvents = action.payload
       })
       .addCase(getAllEvents.rejected, (state, action) => {
@@ -40,6 +42,10 @@ const eventSlice = createSlice({
       })
       .addCase(getEventByTitle.rejected, (state, action) => {
         state.error = action.error.message
+      })
+
+      .addCase(editEvent.fulfilled, (state, action) => {
+        state.confirmation = action.payload
       })
 
       .addCase(filterEvents.fulfilled, (state, action) => {

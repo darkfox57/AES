@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { login, logOut, userValidation } from '../actions/account_actions'
+import { getUser, logOut, login, userValidation } from '../actions/account_actions'
 
 const initialState = {
   user: {},
   status: '',
-  validation: ''
+  validation: '',
 }
 
 
@@ -22,6 +22,9 @@ const usersSlice = createSlice({
       })
       .addCase(userValidation.fulfilled, (state, action) => {
         state.validation = action.payload
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.user = action.payload
       })
   },
 })

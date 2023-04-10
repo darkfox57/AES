@@ -50,7 +50,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           <TextInput
             register={register}
             name="nombreEmpresa"
-            label="Nombre de su organizacion: "
+            label="Nombre de la Institución Educativa: "
             type="text"
             required={true}
             pattern={regexLetras}
@@ -95,7 +95,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           <TextInput
             register={register}
             name="puesto"
-            label="Cargo que ocupa dentro de su organizacion: "
+            label="Cargo que ocupa dentro de la institución: "
             type="text"
             required={true}
             pattern={regexLetras}

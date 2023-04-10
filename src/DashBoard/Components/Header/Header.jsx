@@ -36,6 +36,7 @@ export default function Header() {
         <LogOut
           onClick={() => {
             localStorage.removeItem('access_token')
+            localStorage.removeItem('user_id')
             navigate('/login')
           }}
         >
