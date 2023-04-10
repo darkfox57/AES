@@ -26,7 +26,7 @@ export default function Blog() {
   useEffect(() => {
     dispatch(getTags())
   },[])
-console.log(tags);
+  
   const {
     currentPage,
     totalPages,

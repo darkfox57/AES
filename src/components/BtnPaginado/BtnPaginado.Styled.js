@@ -15,7 +15,7 @@ export const Btnpage = styled.button`
   height: 50px;
   border-radius: 50px;
   border: none;
-  background: ${({ page }) => (page ? 'rgb(19 191 80)' : 'white')};
+  background: ${({ page }) => (page ? 'rgb(0, 186, 163)' : 'white')};
   color: ${({ page }) => (page ? 'white' : 'black')};
 `
 

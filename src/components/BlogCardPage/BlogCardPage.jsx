@@ -2,6 +2,11 @@ import React from 'react'
 import { BlogPageCardContainer, ContainerInfo, ContainerSpan } from './BlogCardPage.Styled'
 import { useDispatch } from 'react-redux';
 import { filterTags } from '../../redux/actions/blog_actions';
+import useScroll from '../../Hooks/useScrollTop';
+import { BiStreetView} from 'react-icons/bi'
+import { AiOutlineComment} from 'react-icons/ai'
+import { IoCalendarSharp} from 'react-icons/io5'
+
 
 const BlogCardPage = ({img,title,date,description,tags}) => {
     const Newdate = new Date(date);
@@ -9,6 +14,7 @@ const BlogCardPage = ({img,title,date,description,tags}) => {
 
     const handleTag = (tag)=>{
       dispatch(filterTags(tag))
+      useScroll(520)
     }
 
     return (
@@ -20,16 +26,16 @@ const BlogCardPage = ({img,title,date,description,tags}) => {
         {title}
       </h3>
       <ContainerSpan>
-        <span>👁️‍🗨️ 232 Views</span>
-        <span>📝 comments 35</span>
-        <span>🗓️ {Newdate.toLocaleDateString()}</span>
+        <span><BiStreetView className='icon-card-blog'/> 232 Views</span>
+        <span><AiOutlineComment className='icon-card-blog' /> comments 35</span>
+        <span><IoCalendarSharp className='icon-card-blog' /> {Newdate.toLocaleDateString()}</span>
       </ContainerSpan>
       <p>
         {description}
       </p>
       <ContainerSpan>
         <div>
-          {tags.map(tag =>  <button onClick={()=>handleTag(tag.name)} key={tag} className='img'>{tag.name}</button>)}
+          {tags.map((tag,i) =>  <button onClick={()=>handleTag(tag.name)} key={i} className='img'>{tag.name}</button>)}
         </div>
         <span>Readmore</span>
       </ContainerSpan>

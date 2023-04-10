@@ -7,6 +7,14 @@ flex-direction: column;
 padding: 30px 23px;
 gap: 20px;
 //align-items: center;
+h4{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    .icon-search{
+        color: rgb(255, 81, 81);
+    }
+  }
 div{
     height: 50px;
     input{

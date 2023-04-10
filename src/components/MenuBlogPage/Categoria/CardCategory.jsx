@@ -14,8 +14,8 @@ const CardCategory = ({text,cant}) => {
   
   return (
     <CardContainer onClick={handleCategory}>
-        <span>{text}</span>
-        <span>{cant}</span>
+        <span className='text'>{text}</span>
+        <span className='cant'>{cant}</span>
     </CardContainer>
   )
 }
