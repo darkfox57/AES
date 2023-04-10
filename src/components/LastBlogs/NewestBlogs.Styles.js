@@ -22,6 +22,7 @@ export const BlogContainer = styled.div`
   img {
     width: 100px;
     height: 100px;
+    object-fit: cover;
   }
 
   & > div:nth-child(2) {
@@ -34,6 +35,6 @@ export const BlogContainer = styled.div`
 
   :hover {
     cursor: pointer;
-    box-shadow: 0 0 10px 2px gray;
+    box-shadow: 0 0 10px 2px #e3e3e3;
   }
 `
