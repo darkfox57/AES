@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+
+import axios from 'axios'
+
+import Home from './pages/Home/Home'
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
 import EditBlog from './DashBoard/Pages/Blog/EditBlog/EditBlog'
@@ -14,13 +19,12 @@ import Contacto from './pages/Contacto/Contacto'
 import Evento from './pages/Evento/Evento'
 import Faqs from './pages/FAQs/Faqs'
 import Involucrate from './pages/Involucrate/Involucrate'
+import EventArticle from './pages/Evento/Detail/EventArticle'
+
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import EventoForm from './components/EventoArticleForm/EventoForm'
-import Home from './pages/Home/Home'
 import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
+
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
 function App() {
@@ -54,7 +58,7 @@ function App() {
         <Route path="/involucrate" element={<Involucrate />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
-        <Route path="/evento/:slug" element={<EventoForm />} />
+        <Route path="/evento/:slug" element={<EventArticle />} />
         <Route path="/evento" element={<Evento />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contacto" element={<Contacto />} />

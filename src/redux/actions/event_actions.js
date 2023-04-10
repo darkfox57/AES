@@ -25,3 +25,7 @@ export const filterEvents = createAsyncThunk(
     return filter
   }
 )
+
+export const orderEvents = createAsyncThunk(`events/order`, async (type) => {
+  return type
+})

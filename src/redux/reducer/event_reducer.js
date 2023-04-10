@@ -4,6 +4,7 @@ import {
   getAllEvents,
   getEvent,
   getEventByTitle,
+  orderEvents,
 } from '../actions/event_actions'
 
 const initialState = {
@@ -52,6 +53,26 @@ const eventSlice = createSlice({
         }
       })
       .addCase(filterEvents.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
+      .addCase(orderEvents.fulfilled, (state, action) => {
+        const sortOptions = {
+          title: {
+            asc: (a, b) => a.title.localeCompare(b.title),
+            desc: (a, b) => b.title.localeCompare(a.title),
+          },
+          fecha: {
+            asc: (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+            desc: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+          },
+        }
+
+        state.filteredEvents = [...state.events].sort(
+          sortOptions[action.payload.type][action.payload.sort]
+        )
+      })
+      .addCase(orderEvents.rejected, (state, action) => {
         state.error = action.error.message
       })
   },
