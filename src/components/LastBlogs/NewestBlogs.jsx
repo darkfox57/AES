@@ -4,18 +4,15 @@ import { useNavigate } from 'react-router'
 
 import { BlogContainer, LastBlogsContainer } from './NewestBlogs.Styles'
 
-import { getAllBlogs } from '../../redux/actions/blog_actions'
-
 export default function NewestBlogs() {
   const navigate = useNavigate()
-  const blogs = useSelector((state) => state.blog.copyblogs).map((blog) => blog)
-    .reverse()
-    .slice(0, 3)
+  const blogs = useSelector((state) => state.blog.copyblogs)
 
   return (
     <LastBlogsContainer>
       {blogs
         .filter((post) => post.status)
+        .slice(0, 3)
         .map((blog, index) => (
           <BlogContainer
             key={index}
