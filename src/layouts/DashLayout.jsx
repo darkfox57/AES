@@ -47,7 +47,6 @@ export default function DashLayout() {
   // }, [])
 
   return (
-    console.log(access),
     (
       <>
         <DashBoardLayoutContainer>
@@ -65,3 +64,4 @@ export default function DashLayout() {
     )
   )
 }
+
