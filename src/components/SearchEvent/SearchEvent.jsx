@@ -13,11 +13,13 @@ export default function SearchEvent() {
 
   const handleTitle = () => {
     dispatch(getEventByTitle(title))
+    setTitle('')
   }
 
   return (
     <SearchContainer>
       <input
+        value={title}
         type="text"
         placeholder="Buscar..."
         onChange={(e) => setTitle(e.target.value)}
