@@ -34,8 +34,6 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
     'tags': post.tags
   }
   try {
-
-    console.log(formatedpost);
     const response = await axios.post('/blogs', formatedpost)
     return response.data
   }
@@ -75,11 +73,13 @@ export const filterCategory = createAsyncThunk('blogs/filterCategory', async (ca
 export const OrderBlog = createAsyncThunk('blogs/OrderBlog', async (type) => {
   return type
 })
-
-
+export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
+  return tag
+})
 
 
 export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
   const response = await axios.delete(`/blogs/${id}`)
   return response.data
 })
+

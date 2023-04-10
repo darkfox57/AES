@@ -19,7 +19,7 @@ const Blog = () => {
   // usamos un useHook perzonalizado para la paginacion tipo slider
 
   //const dispatch = useDispatch()
-  const posts = useSelector((state) => state.blog.blogs)
+  const posts = useSelector((state) => state.blog.copyblogs)
 
   /*useEffect(() => {
     dispatch(getAllBlogs())
@@ -32,7 +32,7 @@ const Blog = () => {
     <BlogContainer>
       <BlogHeader />
       <Swiper
-        className="xd"
+      className='xd'
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
@@ -41,7 +41,7 @@ const Blog = () => {
         navigation
         spaceBetween={20} // gap
         slidesPerView={4}
-        centeredSlides={true}
+        //centeredSlides={true}
         //onSwiper={(swiper) => console.log(swiper)}
       >
         {posts

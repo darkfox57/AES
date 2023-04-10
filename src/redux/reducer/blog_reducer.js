@@ -4,6 +4,7 @@ import {
   deleteBlog,
   editBlog,
   filterCategory,
+  filterTags,
   getAllBlogs,
   getBlog,
   getBlogTitle,
@@ -78,17 +79,23 @@ const blogSlice = createSlice({
       .addCase(getTags.fulfilled, (state, action) => {
         state.tags = action.payload
       })
-      .addCase(getTags.rejected, (state, action) => {
-        state.error = action.payload
-      })
+     .addCase(getTags.rejected, (state, action) => {
+      state.error = action.payload
+    })
 
-      .addCase(filterCategory.fulfilled, (state, action) => {
-        const blogCategory = state.copyblogs.filter((blogg) =>
-          blogg.categories.some((category) => category.name === action.payload)
+    .addCase(filterCategory.fulfilled, (state, action) => {
+        const blogCategory = state.copyblogs.filter((blog) =>
+          blog.categories.some((category) => category.name === action.payload)
         )
         state.blogs = blogCategory
       })
 
+      .addCase(filterTags.fulfilled, (state, action) => {
+        const blogTag= state.copyblogs.filter((blog) =>
+        blog.tags.some((tag) => tag.name === action.payload)
+        )
+        state.blogs = blogTag
+      })
       .addCase(OrderBlog.fulfilled, (state, action) => {
         const sortOptions = {
           title: {
@@ -109,3 +116,4 @@ const blogSlice = createSlice({
 })
 
 export default blogSlice.reducer
+

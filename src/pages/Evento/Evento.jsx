@@ -8,6 +8,7 @@ import Portada from '../../components/Portada/Portada'
 import Footer from '../../components/Footer/Footer'
 import CardProximos from '../../components/ProximoEvento/CardProximos'
 import FilterProximos from '../../components/ProximoEvento/FilterProximos'
+import SearchEvent from '../../components/SearchEvent/SearchEvent'
 
 import { EventContainer } from './Evento.Styles'
 
@@ -32,31 +33,37 @@ export default function Evento() {
   }, [])
 
   return (
-    console.log(events),
-    (
-      <>
-        <Portada
-          img={
-            'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
-          }
-          titulo={'Eventos'}
-        />
+    <>
+      <Portada
+        img={
+          'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
+        }
+        titulo={'Eventos'}
+      />
 
-        <EventContainer>
-          <FilterProximos />
+      <EventContainer>
+        <SearchEvent />
+        <FilterProximos />
 
-          {paginatedData.map((event) => (
-            <CardProximos
-              key={event._id}
-              description={event.description}
-              img={event.frontpage}
-              date={event.date}
-              lugar={event.location}
-              title={event.title}
-            />
-          ))}
-        </EventContainer>
+        {paginatedData.map((event) => (
+          <CardProximos
+            key={event._id}
+            slug={event.slug}
+            description={event.description}
+            img={event.frontpage}
+            date={event.date}
+            lugar={event.location}
+            title={event.title}
+          />
+        ))}
+        {!paginatedData.length && (
+          <span className="spanError">
+            Error: No se han encontrado eventos con sus elecciones
+          </span>
+        )}
+      </EventContainer>
 
+      {paginatedData.length && (
         <BtnPaginado
           pageNumbers={pageNumbers}
           PreviousPage={PreviousPage}
@@ -64,8 +71,8 @@ export default function Evento() {
           NextPage={NextPage}
           goToPage={goToPage}
         />
-        <Footer />
-      </>
-    )
+      )}
+      <Footer />
+    </>
   )
 }

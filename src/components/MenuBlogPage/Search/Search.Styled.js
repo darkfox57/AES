@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SearchContainer = styled.div`
-border: 2px solid gray;
+border: 2px solid #d7d7d7;
 display: flex;
 flex-direction: column;
 padding: 30px 23px;
