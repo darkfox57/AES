@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { BtnPaginadoFlex, Btnpage, Button } from './BtnPaginado.Styled'
 
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+
+import useScroll from '../../Hooks/useScrollTop'
+
 const BtnPaginado = ({
   pageNumbers,
   posts,
@@ -20,16 +23,19 @@ const BtnPaginado = ({
   const handlePage = (e) => {
     setIndex(parseInt(e.target.value))
     goToPage(parseInt(e.target.value))
+    useScroll(520)
   }
 
   const handleSkip = () => {
     NextPage()
     setIndex(index + 1)
+    useScroll(520)
   }
 
   const handleBack = () => {
     PreviousPage()
     setIndex(index - 1)
+    useScroll(520)
   }
 
   return (
