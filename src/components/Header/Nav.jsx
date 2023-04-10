@@ -6,13 +6,11 @@ import { ListNav, NavContainer } from './Nav.Styled'
 const Nav = ({ToogleHambur}) => {
   const token = localStorage.getItem('access_token')
 
-  const handleClick = () => { 
+  const handleClick = () => {
     ToogleHambur()
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-     
     }, 100)
-    
   }
   return (
     <NavContainer>
