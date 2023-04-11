@@ -12,10 +12,17 @@ import FileInput from './FileInput'
 import Button from '../../utils/Button/Button'
 
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
-import Form_Styled from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
+// import  from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 
 import { addFormSpecialist } from '../../redux/actions/form_actions'
+
+import {
+  Form_Styled,
+  WorkShopContainer,
+  RadioButtonContainer,
+  SubmitButton,
+} from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
 //desestructuramos ambas props recibidas en showForm
 //en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
@@ -55,7 +62,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
 
   return (
     modal && (
-      <Desenfoque style={{ display: 'flex', flexDirection: 'column' }}>
+      <Desenfoque>
         <Form_Styled onSubmit={handleSubmit(onSubmit)}>
           <h2>Postulación de especialistas</h2>
 
@@ -105,35 +112,36 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           />
 
           {/**Campo Talleres (RadioButton) */}
-          <div>
+          <WorkShopContainer>
             <label>¿En qué area de salud desearía dictar el taller?</label>
-            {inputs.radius.map((data, index) => (
-              <TextInput
-                key={index}
-                register={register}
-                name="taller"
-                type="radio"
-                label={data.label}
-                value={data.value}
-                required={true}
-                errors={errors}
-              />
-            ))}
+            <RadioButtonContainer>
+              {inputs.radius.map((data, index) => (
+                <TextInput
+                  key={index}
+                  register={register}
+                  name="taller"
+                  type="radio"
+                  label={data.label}
+                  value={data.value}
+                  required={true}
+                  errors={errors}
+                />
+              ))}
+            </RadioButtonContainer>
             {errors['taller']?.type === 'required' && (
-              <p style={{ color: 'red' }}>Por favor eliga uno</p>
+              <span className="spanError">* La elección es obligatoría</span>
             )}
-          </div>
+          </WorkShopContainer>
 
           <FileInput register={register} />
 
-          <button
+          <SubmitButton
             type="submit"
-            style={{ height: '50px', width: '150px' }}
             value="Especialistas"
             {...register('origen')}
           >
             Enviar Formulario
-          </button>
+          </SubmitButton>
 
           <CloseButton onClick={closeModal} name="">
             X

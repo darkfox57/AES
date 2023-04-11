@@ -10,7 +10,12 @@ import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 import inputs from './data.json'
 
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
-import Form_Styled from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
+import {
+  Form_Styled,
+  WorkShopContainer,
+  RadioButtonContainer,
+  SubmitButton,
+} from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
 import { addFormInstitution } from '../../redux/actions/form_actions'
 
@@ -42,7 +47,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
 
   return (
     modal && (
-      <Desenfoque style={{ display: 'flex', flexDirection: 'column' }}>
+      <Desenfoque>
         <Form_Styled onSubmit={handleSubmit(Submit)}>
           <h2>Postulacion de organizaciones</h2>
 
@@ -50,7 +55,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           <TextInput
             register={register}
             name="nombreEmpresa"
-            label="Nombre de la Institución Educativa: "
+            label="Nombre de la institución educativa: "
             type="text"
             required={true}
             pattern={regexLetras}
@@ -114,33 +119,34 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           />
 
           {/**Campo Talleres (RadioButton) */}
-          <div>
-            <h4>¿En qué area de salud desearía dictar el taller?</h4>
-            {inputs.radius.map((data, index) => (
-              <TextInput
-                key={index}
-                register={register}
-                name={'taller'}
-                type={'radio'}
-                value={data.value}
-                label={data.label}
-                required={true}
-                errors={errors}
-              />
-            ))}
+          <WorkShopContainer>
+            <label>¿En qué area de salud desearía dictar el taller?</label>
+            <RadioButtonContainer>
+              {inputs.radius.map((data, index) => (
+                <TextInput
+                  key={index}
+                  register={register}
+                  name="taller"
+                  type="radio"
+                  label={data.label}
+                  value={data.value}
+                  required={true}
+                  errors={errors}
+                />
+              ))}
+            </RadioButtonContainer>
             {errors['taller']?.type === 'required' && (
-              <p style={{ color: 'red' }}>Por favor eliga uno</p>
+              <span className="spanError">* La elección es obligatoría</span>
             )}
-          </div>
+          </WorkShopContainer>
 
-          <button
+          <SubmitButton
             type="submit"
-            style={{ height: '50px', width: '150px' }}
             value="Organizaciones"
             {...register('origen')}
           >
             Enviar Formulario
-          </button>
+          </SubmitButton>
 
           <CloseButton onClick={closeModal}>X</CloseButton>
         </Form_Styled>

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { SelectInputStyled } from './SelectInput.Styles'
+
 const SelectInput = ({
   Controller,
   Select,
@@ -10,7 +12,7 @@ const SelectInput = ({
   errors,
 }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <SelectInputStyled>
       <label>{label}</label>
       <Controller
         name={'pais'}
@@ -26,9 +28,9 @@ const SelectInput = ({
         )}
       />
       {errors.name?.type === `required` && (
-        <p>{`El campo Pais es requerido`}</p>
+        <span>{`El campo Pais es requerido`}</span>
       )}
-    </div>
+    </SelectInputStyled>
   )
 }
 
