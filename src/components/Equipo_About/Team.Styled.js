@@ -6,7 +6,7 @@ export const TeamFlex = styled.div`
   row-gap: 50px;
   justify-content: center;
   align-items: center;
-  background: #2ecc71;
+  background: rgb(0, 186, 163);
   height: max-content;
   padding: var(--section-padding);
   .grid {

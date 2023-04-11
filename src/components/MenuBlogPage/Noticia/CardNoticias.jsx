@@ -1,16 +1,23 @@
 import React from 'react'
 import { CardNoticiaFlex } from './CardNoticias.Styled'
-//const img = "https://res.cloudinary.com/dhjfxxpja/image/upload/v1680459074/10%20señales%20de%20que%20tu%20grupo%20de%20apoyo%20no%20te%20está%20funcionando.jpg"
-const CardNoticias = ({title,fecha,img}) => {
-  const Newdate = new Date(fecha);
+import { useNavigate } from 'react-router'
+import useScroll from '../../../Hooks/useScrollTop'
+
+const CardNoticias = ({ title, fecha, img, slug }) => {
+  const Newdate = new Date(fecha)
+  const navigate = useNavigate()
+  const handleNavigate = () => {
+    navigate(`/blog/${slug}`)
+    useScroll(0)
+  }
   return (
-    <CardNoticiaFlex>
-    <img src={img} alt={title} />
-    <span>
-      <h5>{title}</h5>
-      <p>{Newdate.toLocaleDateString()} </p>
-    </span>
-   </CardNoticiaFlex>
+    <CardNoticiaFlex onClick={handleNavigate}>
+      <img src={img} alt={title} />
+      <span>
+        <h5>{title}</h5>
+        <p>{Newdate.toLocaleDateString()} </p>
+      </span>
+    </CardNoticiaFlex>
   )
 }
 

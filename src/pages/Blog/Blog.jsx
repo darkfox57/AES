@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import blogimg from '../../assets/About.webp'
 //import BlogCard from '../../components/Blog/BlogCard'
@@ -18,15 +18,17 @@ import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 import { getTags } from '../../redux/actions/blog_actions'
 
 export default function Blog() {
+ 
   const dispatch = useDispatch()
   const posts = useSelector((state) => state.blog.blogs)
   const category = useSelector((state) => state.blog.categories)
   const tags = useSelector(state=> state.blog.tags)
-
+  const postscopy = useSelector((state) => state.blog.copyblogs)
+  
   useEffect(() => {
     dispatch(getTags())
-  },[])
-  
+  },[dispatch])
+
   const {
     currentPage,
     totalPages,
@@ -36,7 +38,7 @@ export default function Blog() {
     pageNumbers,
     goToPage,
   } = usePagination(posts, 8)
-
+ //console.log(newpost);
   return (
     <>
       <Portada img={blogimg} titulo="Blog" />
@@ -46,10 +48,9 @@ export default function Blog() {
         <SelectOrder/>
        </div>
         <GridCardBlog>
-          {paginatedData
-            .filter((post) => post.status)
-            .map((post, i) => (
+          {paginatedData.filter((post) => post.status).map((post) => (
               <BlogCardPage
+                slug={post.slug}
                 key={post._id}
                 img={post.image}
                 title={post.title}
@@ -59,8 +60,10 @@ export default function Blog() {
               />
             ))}
           <BtnPaginado
+            currentPage={currentPage}
+            totalPages={totalPages}
             PreviousPage={PreviousPage}
-            posts={posts}
+            posts={postscopy}
             NextPage={NextPage}
             pageNumbers={pageNumbers}
             goToPage={goToPage}

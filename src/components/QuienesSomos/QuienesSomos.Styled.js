@@ -29,7 +29,7 @@ row-gap: 15px;
 padding: 10px 40px;
 max-width: 500px;
 span{
-    color: #2ECC71;
+    color: rgb(0, 186, 163);
 }
 p:first-child{
     color: red;

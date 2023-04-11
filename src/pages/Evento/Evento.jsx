@@ -34,7 +34,6 @@ export default function Evento() {
   }, [])
 
   return (
-    console.log(paginatedData),
     (
       <>
         <Portada

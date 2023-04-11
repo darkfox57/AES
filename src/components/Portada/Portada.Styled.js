@@ -21,5 +21,10 @@ export const PortadaContainer = styled.div`
         margin-left: -30px;
         font-size: 0.8rem;
     }
+    @media screen and (max-width: 678px){
+      h1{
+        font-size: 2.5rem;
+      }
+    }
   }
 `

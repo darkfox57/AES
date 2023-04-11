@@ -11,7 +11,7 @@ export const CardNoticiaFlex = styled.div`
   :hover {
     transform: scale(1.01);
     cursor: pointer;
-    box-shadow: 0 0 10px 2px gray;
+    box-shadow: rgb(227, 227, 227) 0px 0px 10px 2px;
   }
   span {
     h5 {

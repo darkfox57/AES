@@ -29,7 +29,8 @@ export const RedeSocial = styled.div`
       :hover {
         transform: scale(1.05);
         cursor: pointer;
-        box-shadow: gray 0px 0px 10px 2px;
+        box-shadow: rgb(227, 227, 227) 0px 0px 10px 2px;
+
       }
       .ico-redes {
         font-size: 1.5rem;
