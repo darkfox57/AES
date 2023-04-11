@@ -2,18 +2,23 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   editEvent,
   filterEvents,
+  getAllCategories,
   getAllEvents,
   getEvent,
   getEventByTitle,
-  orderEvents
+  orderEvents,
 } from '../actions/event_actions'
 
 const initialState = {
   events: [],
   filteredEvents: [],
+
+  categories: [],
+
   event: {},
+
   error: null,
-  confirmation: ''
+  confirmation: '',
 }
 
 const eventSlice = createSlice({
@@ -49,7 +54,8 @@ const eventSlice = createSlice({
       })
 
       .addCase(filterEvents.fulfilled, (state, action) => {
-        if (action.payload === 'Default') state.filteredEvents = state.events
+        if (action.payload === 'Todas las categorias')
+          state.filteredEvents = state.events
         else {
           state.filteredEvents = state.events.filter((event) =>
             event.categories.some(
@@ -58,6 +64,14 @@ const eventSlice = createSlice({
           )
         }
       })
+
+      .addCase(getAllCategories.fulfilled, (state, action) => {
+        state.categories = action.payload
+      })
+      .addCase(getAllCategories.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
       .addCase(filterEvents.rejected, (state, action) => {
         state.error = action.error.message
       })
