@@ -16,15 +16,19 @@ export const BlogBody = styled.section`
 }
 //**responsive */
 @media screen and (max-width: 1071px){
-  grid-template-columns: minmax(100px, 700px); 
+  grid-template-columns: minmax(100%, 700px); 
   grid-template-areas: 
-    "filtro filtro"
-    "menus menus"
-    "card card";
+    "filtro "
+    "menus "
+    "card ";
+}
+@media screen and (max-width: 594px){
+  padding: 50px 15px;//15
 }
 `
 
 export const GridCardBlog = styled.div`
+position: relative;
 grid-area: card;
 display:grid;
 gap:20px;

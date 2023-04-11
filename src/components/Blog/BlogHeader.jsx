@@ -9,7 +9,7 @@ const BlogHeader = () => {
     <FlexPrincipal>
       <ContainerInfoText>
         {pathname.includes('/blog') ? (
-          <h3>Puedes leer tambien</h3>
+          <h1>Puedes leer tambien</h1>
         ) : (
           <>
             <span>Contenido de interes</span>

@@ -33,7 +33,7 @@ const blogSlice = createSlice({
     builder
       .addCase(getAllBlogs.fulfilled, (state, action) => {
         state.blogs = action.payload.reverse()
-        state.copyblogs = action.payload
+        state.copyblogs = action.payload.filter((post) => post.status)
       })
       .addCase(getAllBlogs.rejected, (state, action) => {
         state.error = action.error.message

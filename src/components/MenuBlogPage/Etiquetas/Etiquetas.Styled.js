@@ -28,8 +28,8 @@ button{
       cursor: pointer;
        color: white;
        background: rgb(255, 81, 81);
-       transform: scale(1.05);
-      box-shadow: gray 0px 0px 10px 2px;
+       transform: scale(1.02);
+       box-shadow: rgb(227, 227, 227) 0px 0px 10px 2px;
     }
 }
 `

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const BlogPageCardContainer = styled.div`
+  min-width: 300px;
   border: 1px solid #d7d7d7;
   height: max-content;
   .portada {
@@ -12,11 +13,15 @@ export const ContainerInfo = styled.div`
   padding: 30px 50px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  row-gap: 10px;
+  width: 100%;
   //**Responsive */
   @media screen and (max-width: 1213px){
     padding: 30px 25px;
   }
+  /*@media screen and (max-width: 509px){
+    padding: 30px 0px;
+  }*/
   h3{
     text-transform: capitalize;
   }
@@ -40,6 +45,8 @@ export const ContainerSpan = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   div{
     display: flex;
     gap: 10px;

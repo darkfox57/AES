@@ -6,20 +6,26 @@ import useScroll from '../../Hooks/useScrollTop';
 import { BiStreetView} from 'react-icons/bi'
 import { AiOutlineComment} from 'react-icons/ai'
 import { IoCalendarSharp} from 'react-icons/io5'
+import {  useNavigate } from 'react-router';
 
 
-const BlogCardPage = ({img,title,date,description,tags}) => {
+const BlogCardPage = ({img,title,date,slug,description,tags}) => {
     const Newdate = new Date(date);
-    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleTag = (tag)=>{
       dispatch(filterTags(tag))
       useScroll(520)
     }
 
+    const handleNavigate = ()=>{
+     navigate(`/blog/${slug}`)
+     useScroll(0)
+    }
     return (
     <BlogPageCardContainer img={img} >
-      <div className="portada"></div>
+     <div className="portada"></div>
       <ContainerInfo>
      <span>Charity</span>
       <h3>
@@ -37,7 +43,7 @@ const BlogCardPage = ({img,title,date,description,tags}) => {
         <div>
           {tags.map((tag,i) =>  <button onClick={()=>handleTag(tag.name)} key={i} className='img'>{tag.name}</button>)}
         </div>
-        <span>Readmore</span>
+        <button onClick={handleNavigate}>Readmore</button>
       </ContainerSpan>
      
       </ContainerInfo>

@@ -17,7 +17,7 @@ const BtnPaginado = ({
   const [index, setIndex] = useState(1)
 
   useEffect(() => {
-    setIndex(1)
+     setIndex(1)
   }, [posts])
 
   const handlePage = (e) => {
@@ -54,9 +54,9 @@ const BtnPaginado = ({
             {item}
           </Btnpage>
         ))}
-        <Button onClick={handleSkip} disabled={totalPages === currentPage + 1}>
+       {<Button onClick={handleSkip} disabled={totalPages === (currentPage + 1)}>
           <MdKeyboardArrowRight size={35} />
-        </Button>
+        </Button>}
       </BtnPaginadoFlex>
     </>
   )
