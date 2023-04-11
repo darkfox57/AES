@@ -5,10 +5,17 @@ import { useDispatch } from 'react-redux'
 import TextInput from '../../utils/TextInput/TextInput'
 import Button from '../../utils/Button/Button'
 
-import info from './data.json'
+import inputs from './data.json'
 
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
-import Form_Styled from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
+import {
+  Form_Styled,
+  WorkShopContainer,
+  RadioButtonContainer,
+  SocialNetworksContainer,
+  SubmitButton,
+} from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
+
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 
 import { addFormAlliance } from '../../redux/actions/form_actions'
@@ -41,7 +48,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
 
   return (
     modal && (
-      <Desenfoque style={{ display: 'flex', flexDirection: 'column' }}>
+      <Desenfoque>
         <Form_Styled onSubmit={handleSubmit(Submit)}>
           <h2>Postulacion para alianzas</h2>
 
@@ -123,69 +130,67 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
             errors={errors}
           />
 
+          <br />
           <h4>Tus redes sociales</h4>
-          {/**Campo Instagram (Texto) */}
-          <TextInput
-            register={register}
-            name="instagram"
-            subname="redesSociales"
-            label="Instagram: "
-            type="text"
-            placeholder="Opcional"
-            errors={errors}
-          />
+          <SocialNetworksContainer>
+            {/**Campo Instagram (Texto) */}
+            <TextInput
+              register={register}
+              name="instagram"
+              subname="redesSociales"
+              label="Instagram: "
+              type="text"
+              placeholder="Opcional"
+              errors={errors}
+            />
 
-          {/**Campo Facebook (Texto) */}
-          <TextInput
-            register={register}
-            name="facebook"
-            subname="redesSociales"
-            label="Facebook: "
-            type="text"
-            placeholder="Opcional"
-            errors={errors}
-          />
+            {/**Campo Facebook (Texto) */}
+            <TextInput
+              register={register}
+              name="facebook"
+              subname="redesSociales"
+              label="Facebook: "
+              type="text"
+              placeholder="Opcional"
+              errors={errors}
+            />
 
-          {/**Campo Twitter (Texto) */}
-          <TextInput
-            register={register}
-            name="twitter"
-            subname="redesSociales"
-            label="Twitter: "
-            type="text"
-            placeholder="Opcional"
-            errors={errors}
-          />
+            {/**Campo Twitter (Texto) */}
+            <TextInput
+              register={register}
+              name="twitter"
+              subname="redesSociales"
+              label="Twitter: "
+              type="text"
+              placeholder="Opcional"
+              errors={errors}
+            />
+          </SocialNetworksContainer>
 
-          <div>
-            <h4>¿En qué area de salud desearía recibir la capacitación?</h4>
-
-            {/**Campo Talleres (RadioButton) */}
-            {info.radius.map((data, index) => (
-              <TextInput
-                key={index}
-                register={register}
-                name={'taller'}
-                type={'radio'}
-                value={data.value}
-                label={data.label}
-                required={true}
-                errors={errors}
-              />
-            ))}
+          <WorkShopContainer>
+            <label>¿En qué area de salud desearía dictar el taller?</label>
+            <RadioButtonContainer>
+              {inputs.radius.map((data, index) => (
+                <TextInput
+                  key={index}
+                  register={register}
+                  name="taller"
+                  type="radio"
+                  label={data.label}
+                  value={data.value}
+                  required={true}
+                  errors={errors}
+                />
+              ))}
+            </RadioButtonContainer>
             {errors['taller']?.type === 'required' && (
-              <p style={{ color: 'red' }}>Por favor eliga uno</p>
+              <span className="spanError">* La elección es obligatoría</span>
             )}
-          </div>
+          </WorkShopContainer>
 
-          <button
-            type="submit"
-            style={{ height: '50px', width: '150px' }}
-            value="Alianzas"
-            {...register('origen')}
-          >
+          <SubmitButton type="submit" value="Alianzas" {...register('origen')}>
             Enviar Formulario
-          </button>
+          </SubmitButton>
           <CloseButton onClick={closeModal}>X</CloseButton>
         </Form_Styled>
       </Desenfoque>

@@ -2,10 +2,24 @@ import styled from 'styled-components'
 
 const CloseButton = styled.button`
   position: absolute;
+
+  border: none;
+
   width: 50px;
   height: 50px;
 
   top: 10px;
   right: 12px;
+
+  background-color: transparent;
+
+  font-size: xx-large;
+  font-weight: bolder;
+  font-family: 'Times New Roman', Times, serif;
+
+  :hover {
+    color: red;
+    cursor: pointer;
+  }
 `
 export default CloseButton
