@@ -29,6 +29,7 @@ import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
 import { getAllEvents, getAllCategories } from './redux/actions/event_actions'
+import FaqDonacion from './pages/FaqDonacion/FaqDonacion'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
@@ -64,6 +65,7 @@ function App() {
         <Route path="/evento/:slug" element={<EventArticle />} />
         <Route path="/evento" element={<Evento />} />
         <Route path="/faqs" element={<Faqs />} />
+        <Route path="/faqs/donaciones" element={<FaqDonacion />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/dashboard" element={<DashLayout />}>
           <Route path="" element={<Dashboard />} />
