@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const FileInput = ({ register }) => {
+import {
+  InputContainer,
+  FileUploader,
+  Label,
+  FileName,
+  UploadIcon,
+  ButtonContainer,
+} from './FileInput.Styles'
+
+function FileInput() {
+  const [fileName, setFileName] = useState('')
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]
+    setFileName(file.name)
+  }
+
   return (
-    <div>
-       <div>
-      <input type="file" {...register('archivo')} />
-    </div>
-    </div>
+    <InputContainer>
+      <FileUploader onChange={handleFileChange} />
+      <Label htmlFor="file">
+        <ButtonContainer>
+          <UploadIcon />
+          Seleccionar Archivo
+        </ButtonContainer>
+        <FileName />
+      </Label>
+
+      <span>{fileName}</span>
+    </InputContainer>
   )
 }
 

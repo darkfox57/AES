@@ -4,83 +4,81 @@ export const Form_Styled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: nowrap;
 
   width: 55%;
-  height: fit-content;
+  max-height: 90%;
 
   background-color: white;
-  border-radius: 12px;
 
   padding: 20px 12px;
   margin: 0 auto;
   gap: 20px;
 
   position: relative;
+  overflow-y: auto;
 
   h2 {
+    text-align: center;
+    padding: 10px 30px;
     font-weight: bolder;
     font-style: oblique;
+    font-size: 1.5rem;
+
+    @media screen and (max-width: 480px) {
+      font-size: 1.25rem;
+    }
   }
 
   .spanError {
-    font-size: 0.75rem;
+    padding-top: 5px;
+    font-size: 0.8rem;
     color: red;
   }
 `
 
 export const WorkShopContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-
-  margin-top: 15px;
-
-  width: 100%;
-  height: 100px;
+  width: 75%;
+  text-align: center;
 `
 
 export const SocialNetworksContainer = styled.div`
   display: flex;
   justify-content: center;
-
+  flex-wrap: wrap;
   gap: 15px;
-
-  width: 200px;
-
-  label {
-    width: auto;
-  }
 `
 
 export const RadioButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 15px;
+
   flex-wrap: wrap;
 
-  gap: 20px;
+  padding-top: 15px;
 
-  width: 35%;
-  height: 100%;
+  input {
+    background: none;
+  }
 `
 
 export const SubmitButton = styled.button`
-  width: 165px;
-  height: 40px;
+  padding: 12px 24px;
 
   border: none;
   border-radius: 20px;
 
-  background-color: #00baa3;
+  background-color: var(--primary-blue);
 
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: medium;
+  font-family: var(--body-font);
+  color: var(--text-white);
 
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 
   :hover {
     cursor: pointer;
-    scale: 1.1;
+    transform: scale(1.05);
   }
 `
