@@ -3,19 +3,24 @@ import styled from 'styled-components'
 export const OrderContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 25px;
+
   width: 100%;
 
   select {
-    width: 15%;
-    border-radius: 10px;
-    text-align: center;
+    min-width: 150px;
+
     border: none;
-    transition: all 1s ease-in-out;
+    border-radius: 10px;
+
+    text-align: center;
+
+    transition: all 0.3s ease-in-out;
 
     :hover {
       cursor: pointer;
-      scale: 1.1;
+      scale: 1.05;
     }
   }
 `

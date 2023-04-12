@@ -15,55 +15,47 @@ const CardProximos = ({
   return (
     <CardContainer>
       <CardImg img={img}>
-        <div className="dateContainer">
-          <span>
-            Inicio:&nbsp;
-            {new Date(dateIn).toLocaleString('es-ES', {
-              day: 'numeric',
-              month: 'numeric',
-              year: 'numeric',
-            })}
-          </span>
-          <span>
-            Fin:&nbsp;
-            {new Date(dateOut).toLocaleString('es-ES', {
-              day: 'numeric',
-              month: 'numeric',
-              year: 'numeric',
-            })}
-          </span>
-        </div>
-        <span>{lugar}</span>
+        <span>
+          <strong>Lugar:&nbsp;</strong> <small>{lugar}</small>
+        </span>
       </CardImg>
-      {/**detalles de la informacion 2da columna*/}
+
       <CardInfo>
         <h3>{title}</h3>
         <p>{description}</p>
+        <div className="infoContainer">
+          <span>
+            <strong>Inicio:&nbsp;</strong>
+            <small>
+              {new Date(dateIn).toLocaleString('es-ES', {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+              })}
+            </small>
+          </span>
+          <span>
+            <strong>Fin:&nbsp;</strong>
+            <small>
+              {new Date(dateOut).toLocaleString('es-ES', {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+              })}
+            </small>
+          </span>
+          <span></span>
+        </div>
+
         <div>
-          <span>
-            <BsCheckSquareFill className="check" /> Aplace in history
-          </span>
-          <span>
-            <BsCheckSquareFill className="check" /> Its’s about impact, goodness
-          </span>
-          <span>
-            <BsCheckSquareFill className="check" /> More goodness
-          </span>
-          <span>
-            <BsCheckSquareFill className="check" /> The world we live
-          </span>
+          <Button
+            size={'lg'}
+            text={'Participa!'}
+            type={'link'}
+            link={`/evento/${slug}`}
+          />
         </div>
       </CardInfo>
-
-      {/**3ra columna */}
-      <div>
-        <Button
-          size={'lg'}
-          text={'Anótate y participa!'}
-          type={'secundary'}
-          link={`/evento/${slug}`}
-        />
-      </div>
     </CardContainer>
   )
 }
