@@ -37,9 +37,6 @@ const BlockEvento = ({ event }) => {
           </li>
         </ul>
       </ListBlock>
-      <ButonBlockContainer>
-        <Button type={'secundary'} size={'lg'} text={'Anótate y participa!'} />
-      </ButonBlockContainer>
     </BlockDetail>
   )
 }

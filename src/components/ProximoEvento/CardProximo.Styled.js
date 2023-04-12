@@ -1,75 +1,80 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-  width: max-content;
   display: grid;
-  grid-template-columns: 1fr 500px max-content;
-  place-items: center;
-  gap: 50px;
-`
-export const CardImg = styled.div`
-  width: 400px;
-  height: 250px;
-  background: #fff url(${(props) => props.img}) center center/cover no-repeat;
-  color: white;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  gap: 10px;
+  grid-template-columns: 40% 60%;
 
-  span:nth-child(2) {
-    background: green;
-  }
-  .dateContainer {
+  @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 32px;
+  }
+`
+export const CardImg = styled.div`
+  padding: 30px;
+  position: relative;
 
-    span {
-      background: #b51717;
-    }
+  background: #fff url(${(props) => props.img}) center center/cover no-repeat;
+
+  height: auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    opacity: 0.8;
   }
 
   span {
-    text-align: center;
-    width: max-content;
-    height: max-content;
-    border-radius: 50px;
-    padding: 5px 20px;
-    font-size: 0.85rem;
+    position: absolute;
+
+    color: var(--main-white);
+    bottom: 10px;
+    right: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    padding: 0;
   }
 `
 export const CardInfo = styled.div`
-  display: grid;
-  gap: 8px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
-  h3 {
-    text-transform: capitalize;
+  .infoContainer {
+    display: flex;
+    gap: 15px;
+
+    max-width: fit-content;
   }
 
-  div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    span {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      .check {
-        color: green;
-      }
-    }
+  span {
+    font-size: 0.95rem;
   }
+
   p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     overflow: hidden;
 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-      sans-serif;
     color: gray;
-    text-align: justify;
+
+    font-family: var(--body-font);
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
   }
 `

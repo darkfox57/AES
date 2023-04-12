@@ -22,12 +22,15 @@ export const Form_Styled = styled.form`
     text-align: center;
     padding: 10px 30px;
     font-weight: bolder;
-    font-style: oblique;
     font-size: 1.5rem;
 
     @media screen and (max-width: 480px) {
       font-size: 1.25rem;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
   }
 
   .spanError {
@@ -60,7 +63,7 @@ export const RadioButtonContainer = styled.div`
   padding-top: 15px;
 
   input {
-    background: none;
+    box-shadow: none;
   }
 `
 

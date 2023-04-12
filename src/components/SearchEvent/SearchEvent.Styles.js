@@ -1,24 +1,29 @@
 import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
-  width: 30%;
-  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+
   input {
-    width: 90%;
-    height: 35px;
+    min-width: 325px;
     text-align: center;
-    border: 1px solid gray;
+
     ::placeholder {
       color: black;
     }
   }
 
   button {
-    border: none;
     background-color: #00baa3;
-    width: 10%;
-    height: 35px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+
+    font-size: 0.9rem;
+    border: none;
+
+    padding: 8px;
+
+    color: var(--main-white);
+
     :hover {
       cursor: pointer;
     }
