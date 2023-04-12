@@ -112,7 +112,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           <TextInput
             register={register}
             name="puesto"
-            label="Cargo que ocupa dentro de su organizacion: "
+            label="Puesto dentro de su organizacion: "
             type="text"
             required={true}
             pattern={regexLetras}
@@ -123,14 +123,13 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           <TextInput
             register={register}
             name="cantIntegrantes"
-            label="Cantidad de personas que atenderán el taller: "
+            label="Cuantas personas atenderán el taller: "
             type="text"
             required={true}
             pattern={regexNumeros}
             errors={errors}
           />
 
-          <br />
           <h4>Tus redes sociales</h4>
           <SocialNetworksContainer>
             {/**Campo Instagram (Texto) */}

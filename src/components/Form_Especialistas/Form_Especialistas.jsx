@@ -127,10 +127,10 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
                   errors={errors}
                 />
               ))}
+              {errors['taller']?.type === 'required' && (
+                <span className="spanError">* La elección es obligatoría</span>
+              )}
             </RadioButtonContainer>
-            {errors['taller']?.type === 'required' && (
-              <span className="spanError">* La elección es obligatoría</span>
-            )}
           </WorkShopContainer>
 
           <FileInput register={register} />

@@ -54,7 +54,7 @@ export const Card_Contact = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 400px;
+    height: fit-content;
     width: 100%;
   }
 `

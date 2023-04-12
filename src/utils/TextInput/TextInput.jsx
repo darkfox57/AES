@@ -13,15 +13,14 @@ const TextInput = ({
   pattern,
   maxLength,
   subname,
-  placeholder,
 }) => {
   const Regex = new RegExp(pattern)
   const propForm = subname ? `${subname}.${name}` : name
 
   return (
     <>
-      <TextInputStyled type={type} subname={subname}>
-        <label>{label}</label>
+      <TextInputStyled>
+        {label}
         <input
           value={value}
           type={type}
@@ -30,17 +29,16 @@ const TextInput = ({
             maxLength: maxLength || false,
             pattern: Regex,
           })}
-          placeholder={placeholder}
         />
 
         {errors[name]?.type === `required` && type !== 'radio' && (
-          <span>{`* Este campo es requerido`}</span>
+          <span className="spanError">{`* Este campo es requerido`}</span>
         )}
         {errors[name]?.type === `maxLength` && (
-          <span>{`Este campo acepta como maximo 15 digitos`}</span>
+          <span className="spanError">{`Este campo acepta como maximo 15 digitos`}</span>
         )}
         {errors[name]?.type === `pattern` && (
-          <span>{`El formato de este campo es incorrecto`}</span>
+          <span className="spanError">{`El formato de este campo es incorrecto`}</span>
         )}
       </TextInputStyled>
     </>

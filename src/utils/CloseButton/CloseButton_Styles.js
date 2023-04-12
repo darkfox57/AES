@@ -8,8 +8,8 @@ const CloseButton = styled.button`
   width: 50px;
   height: 50px;
 
-  top: 10px;
-  right: 12px;
+  top: 0;
+  right: 0;
 
   background-color: transparent;
 
