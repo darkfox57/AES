@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   addBlog,
   getCategories,
   getTags,
 } from '../../../../redux/actions/blog_actions'
+import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { FormBody } from './addBlog.styles'
 
 export default function AddBlog() {
@@ -15,6 +14,7 @@ export default function AddBlog() {
   const categories = useSelector((state) => state.blog.categories)
   const tags = useSelector((state) => state.blog.tags)
   const estado = useSelector((state) => state.blog.status)
+  const postImg = useSelector((state) => state.file.fileUrl)
   const [slugText, setSlugText] = useState('')
 
   useEffect(() => {
@@ -32,13 +32,6 @@ export default function AddBlog() {
   } = useForm()
 
   const handleData = (data) => {
-    // data.description = postContent
-    // const file = data.archivo[0]
-    // const imgUrl = file
-    //   ? URL.createObjectURL(file)
-    //   : 'https://blog.oxfamintermon.org/wp-content/uploads/2014/11/ONG-copia-e1415635063990.jpg'
-    // setImageUrl(imgUrl)
-
     const post = {
       slug: data.title
         .toLowerCase()
@@ -46,10 +39,11 @@ export default function AddBlog() {
         .replace(/[\s\W-]+/g, '-'),
       title: data.title,
       description: data.description,
-      image: data.image,
+      image: postImg,
       categories: data.categories,
       status: true,
       tags: data.tags,
+      files: null,
     }
     dispatch(addBlog(post))
     estado === 'succeeded'
@@ -66,6 +60,8 @@ export default function AddBlog() {
             Titulo:
             <input {...register('title', { required: true })} />
           </label>
+          <span>Cargar nueva imagen de portada:</span>
+          <FileUploader folder="blog" />
           <label>
             Descripción
             <textarea
@@ -104,57 +100,9 @@ export default function AddBlog() {
               </label>
             ))}
           </div>
-          <label>
-            Cargar nueva imagen:
-            <input placeholder="Imagen Url" {...register('image')} />
-            <input type="submit" />
-          </label>
+          <input type="submit" />
         </form>
       </FormBody>
     </>
   )
 }
-
-// <form onSubmit={handleSubmit(handleData)}>
-//         {/**Input Nombre */}
-//         <TextInput
-//           label="Nombre"
-//           type="text"
-//           name="name"
-//           register={register}
-//           errors={errors}
-//           required={true}
-//           pattern="^[A-Za-zÁ-ÿ\s]+$"
-//         />
-//         {/**Input Description */}
-//         <label>
-//           Descripción:
-//           <ReactQuill
-//             name="description"
-//             value={postContent}
-//             onChange={(value) => setPostContent(value)}
-//           />
-//         </label>
-//         {/**Categoria map checkbox */}
-//         {categories.map((category, index) => (
-//           <label key={category._id}>
-//             <TextInput
-//               type="checkbox"
-//               register={register}
-//               value={category.name}
-//               name={'category'}
-//               errors={errors}
-//               required={false}
-//             />
-//             {category.name}
-//           </label>
-//         ))}
-//         {/**Categoria error  */}
-//         {errors.categoria?.type === `required` && (
-//           <p>Seleccione alguna categoria por favor</p>
-//         )}
-//         {/**Imagen  updale */}
-//         <FileInput register={register} name="image" />
-//         <button type="submit">Publicar</button>
-//         <span>{reqMessage}</span>
-//       </form>

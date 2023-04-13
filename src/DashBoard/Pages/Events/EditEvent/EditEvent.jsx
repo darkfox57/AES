@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import ReactQuill from 'react-quill'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCategories, getTags } from '../../../../redux/actions/blog_actions'
@@ -35,6 +34,7 @@ export default function EditEvent() {
       status: !active,
       categories: blogPost.categories.map((c) => c._id),
       tags: blogPost.tags.map((t) => t._id),
+      files: null,
     }
     dispatch(editBlog(post))
     setActive(active ? false : true)
@@ -58,6 +58,7 @@ export default function EditEvent() {
       status: true,
       categories: data.categories,
       tags: data.tags,
+      files: null,
     }
     dispatch(editBlog(post))
   }

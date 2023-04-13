@@ -19,7 +19,7 @@ export const SidebarContainer = styled.div`
   box-shadow: -1px 1px 10px 1.5px #dddddd;
   min-height: 100vh;
   position: fixed;
-  z-index: 10;
+  z-index: 50;
   background-color: var(--main-white);
   max-width: 250px;
 `
@@ -38,6 +38,7 @@ export const HeaderContainer = styled.div`
   -moz-box-shadow: -1px 1px 10px 1.5px #dddddd;
   box-shadow: -1px 1px 10px 1.5px #dddddd;
   position: fixed;
+  z-index: 40;
 `
 
 export const MainContainer = styled.div`
