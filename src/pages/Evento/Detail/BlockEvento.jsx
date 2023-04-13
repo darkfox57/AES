@@ -4,7 +4,7 @@ import {
   ButonBlockContainer,
   ListBlock,
 } from './EventArticle.Styles'
-import Button from '../../../utils/Button/Button'
+
 const BlockEvento = ({ event }) => {
   return (
     <BlockDetail>

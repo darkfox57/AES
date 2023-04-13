@@ -65,14 +65,14 @@ const eventSlice = createSlice({
         }
       })
 
+      .addCase(filterEvents.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
       .addCase(getAllCategories.fulfilled, (state, action) => {
         state.categories = action.payload
       })
       .addCase(getAllCategories.rejected, (state, action) => {
-        state.error = action.error.message
-      })
-
-      .addCase(filterEvents.rejected, (state, action) => {
         state.error = action.error.message
       })
 

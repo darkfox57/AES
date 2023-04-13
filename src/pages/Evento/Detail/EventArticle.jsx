@@ -35,10 +35,10 @@ const EventoForm = () => {
           <img src={imgprueba} alt={event.title} />
         </figure>
         <FlexInfo>
+          <BlockEvento event={event} />
           <TextEvent>
             <p>{event.description}</p>
           </TextEvent>
-          <BlockEvento event={event} />
         </FlexInfo>
       </SectionEvent>
       <Footer />
