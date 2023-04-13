@@ -29,6 +29,7 @@ export default function BlogCard({
       status: !active,
       categories: categories.map((c) => c._id),
       tags: tags.map((t) => t._id),
+      files: null,
     }
     dispatch(editBlog(post))
     setActive(active ? false : true)
