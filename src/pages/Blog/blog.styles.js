@@ -12,6 +12,7 @@ export const BlogBody = styled.section`
 .filtroOrder{
     grid-area: filtro;
     display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 //**responsive */
@@ -59,7 +60,7 @@ top: 70px;
 }
 //**reponsive */
 @media screen and (max-width: 1071px){
-  height: 450px;
+  height: max-content;
 }
 }
 

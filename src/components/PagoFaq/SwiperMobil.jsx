@@ -1,7 +1,7 @@
 import React from 'react'
 import Imagenes from './Imagenes'
 
-import { AppVisual,AppVisualInfo} from './Plin.Styled'
+import { AppVisual,AppVisualInfo,Containermovil} from './Plin.Styled'
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
@@ -12,31 +12,22 @@ SwiperCore.use([Navigation])
 
 const SwiperMobil = ({ banco }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '50px',
-        padding: '70px 0',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexWrap:"wrap",
-        textAlign:"center"
-      }}
-    >
-      <AppVisual>
+    <>
+   {banco && <Containermovil>
+      <AppVisual banco={banco}>
         <Swiper
           navigation
           spaceBetween={0}
           slidesPerView={1}
         >
-          {banco && Imagenes[banco].map((img, i) => (
+           {Imagenes[banco].map((img, i) => (
             <SwiperSlide key={i} className="swiper-card">
               <img src={img} alt={banco} />
             </SwiperSlide>
           ))}
         </Swiper>
       </AppVisual>
-      <AppVisualInfo>
+      <AppVisualInfo  >
         <h2>{banco}</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quae ut
@@ -46,7 +37,8 @@ const SwiperMobil = ({ banco }) => {
         </p>
         <Button type={"primary"} text={"Más informacion"} size={"md"} />
       </AppVisualInfo>
-    </div>
+    </Containermovil>}
+    </>
   )
 }
 

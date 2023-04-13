@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import CardEventos from './CardEventos'
 import { EventoContainer } from './SliderEventos.Styled'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, Navigation } from 'swiper'
 import 'swiper/swiper-bundle.min.css'

@@ -2,41 +2,81 @@ import React from 'react'
 import Button from '../../utils/Button/Button'
 import CardTeam from './CardTeam'
 import { TeamFlex } from './Team.Styled'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Autoplay, Navigation,Pagination } from 'swiper'
+import 'swiper/swiper-bundle.min.css'
+
+SwiperCore.use([Autoplay, Navigation, Pagination]);
+
 const data = [
   {
     name: 'Gerardo Osorio',
     cargo: 'Coordinador(a) de logística',
-    img: 'https://cdn.shopify.com/s/files/1/1045/8368/files/Side-view-of-Tom-Welling-wearing-beige-trenchcoat-and-thick-eyeglasses-playing-the-role-of-Clark-Kent-in-the-2011-series-of-Smallville.jpg?v=1664361554',
+    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
   },
   {
     name: 'Kevin Cotrina',
     cargo: 'Relaciones Públicas',
-    img: 'https://cdn.shopify.com/s/files/1/1045/8368/files/Side-view-of-Tom-Welling-wearing-beige-trenchcoat-and-thick-eyeglasses-playing-the-role-of-Clark-Kent-in-the-2011-series-of-Smallville.jpg?v=1664361554',
+    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
   },
   {
     name: 'Rick Quito',
     cargo: 'Talento Humano',
-    img: 'https://cdn.shopify.com/s/files/1/1045/8368/files/Side-view-of-Tom-Welling-wearing-beige-trenchcoat-and-thick-eyeglasses-playing-the-role-of-Clark-Kent-in-the-2011-series-of-Smallville.jpg?v=1664361554',
+    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
   },
   {
     name: 'Gerardo Osorio',
     cargo: 'Ceo',
-    img: 'https://cdn.shopify.com/s/files/1/1045/8368/files/Side-view-of-Tom-Welling-wearing-beige-trenchcoat-and-thick-eyeglasses-playing-the-role-of-Clark-Kent-in-the-2011-series-of-Smallville.jpg?v=1664361554',
+    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
+  },
+  {
+    name: 'Gerardo Osorio',
+    cargo: 'Ceo',
+    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
+  },
+  {
+    name: 'Gerardo Osorio',
+    cargo: 'Ceo',
+    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
   },
 ]
 const Team = () => {
   return (
     <TeamFlex>
-      <div className="grid">
+      <Swiper
+        /*autoplay={{
+          delay: 5000,
+          disableOnInteraction:true,
+        }}*/
+        //loop={true}
+        navigation
+       // pauseOnMouseEnter
+        spaceBetween={20}
+        pagination={{ clickable: true }}
+       // slidesPerView={4}
+        breakpoints={{
+          // Configuración para pantallas más pequeñas
+          1458: {
+            slidesPerView: 2
+          },
+          // Configuración para pantallas aún más pequeñas
+          1036: {
+            slidesPerView: 1
+          }
+        }}
+        //centeredSlides={true}
+        //onSlideChange={(swiper) => console.log(swiper)}
+      >
+        
         {data.map((team, index) => (
+          <SwiperSlide className='swiper-card' key={index}>
           <CardTeam
-            key={index}
-            name={team.name}
-            cargo={team.cargo}
-            img={team.img}
+            src={team?.src}
           />
+        </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
       <Button size="lg" type="primary" text={'Contactanos'} link="/contacto" />
     </TeamFlex>
   )

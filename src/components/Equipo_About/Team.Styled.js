@@ -9,11 +9,15 @@ export const TeamFlex = styled.div`
   background: rgb(0, 186, 163);
   height: max-content;
   padding: var(--section-padding);
-  .grid {
+  & > div:first-child { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    place-items: center;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  }
+  .swiper-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
