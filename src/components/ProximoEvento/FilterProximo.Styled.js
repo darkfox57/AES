@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export const FilterProximosEvento = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
 `
 
 export const FilterButton = styled.div`
