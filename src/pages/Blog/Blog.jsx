@@ -1,10 +1,8 @@
-import React,{useEffect, useState} from 'react'
-import { useSelector,useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import blogimg from '../../assets/About.webp'
-//import BlogCard from '../../components/Blog/BlogCard'
 import Footer from '../../components/Footer/Footer'
 import Portada from '../../components/Portada/Portada'
-//import { getAllBlogs, getCategories } from '../../redux/actions/blog_actions'
 import usePagination from '../../Hooks/usePagination'
 import BlogCardPage from '../../components/BlogCardPage/BlogCardPage'
 import BtnPaginado from '../../components/BtnPaginado/BtnPaginado'
@@ -16,18 +14,24 @@ import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
 import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
 import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 import { getTags } from '../../redux/actions/blog_actions'
+import FilterProximos from '../../components/ProximoEvento/FilterProximos'
 
 export default function Blog() {
- 
   const dispatch = useDispatch()
   const posts = useSelector((state) => state.blog.blogs)
   const category = useSelector((state) => state.blog.categories)
-  const tags = useSelector(state=> state.blog.tags)
+  const tags = useSelector((state) => state.blog.tags)
   const postscopy = useSelector((state) => state.blog.copyblogs)
-  
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   useEffect(() => {
     dispatch(getTags())
-  },[dispatch])
+  }, [dispatch])
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const {
     currentPage,
@@ -38,17 +42,19 @@ export default function Blog() {
     pageNumbers,
     goToPage,
   } = usePagination(posts, 8)
- //console.log(newpost);
+  //console.log(newpost);
   return (
     <>
       <Portada img={blogimg} titulo="Blog" />
-      
       <BlogBody>
-        <div className='filtroOrder'>
-        <SelectOrder/>
-       </div>
+        <div className="filtroOrder">
+          {windowWidth <= 1071 && <FilterProximos />}
+          <SelectOrder />
+        </div>
         <GridCardBlog>
-          {paginatedData.filter((post) => post.status).map((post) => (
+          {paginatedData
+            .filter((post) => post.status)
+            .map((post) => (
               <BlogCardPage
                 slug={post.slug}
                 key={post._id}
@@ -70,15 +76,19 @@ export default function Blog() {
           />
         </GridCardBlog>
         <ContainerMenuBlog>
-          <div className='fixedMenu'>
-          <SearchBlog />
-          <NoticiaDestacada />
-          <Categorias category={category} posts={posts} />
-          <SiguenosRedes />
-          <EtiquetasPopular tags={tags} />
+          <div className="fixedMenu">
+            <SearchBlog />
+            {windowWidth >= 1071 && (
+              <>
+                <NoticiaDestacada />
+                <Categorias category={category} posts={posts} />
+                <SiguenosRedes />
+                <EtiquetasPopular tags={tags} />
+              </>
+            )}
           </div>
-          
         </ContainerMenuBlog>
+        {windowWidth <= 1071 && <SiguenosRedes />}
       </BlogBody>
       <Footer />
     </>

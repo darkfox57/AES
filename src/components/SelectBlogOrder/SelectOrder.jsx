@@ -27,7 +27,7 @@ const SelectOrder = () => {
   }
 
   return (
-    <>
+    <div style={{display:"flex",gap:"15px"}}>
       <SelectOrderContainer name="title" value={nameOrder} onChange={handleNameOrderChange}>
         <option value="" defaultValue disabled>
           A-Z
@@ -43,7 +43,7 @@ const SelectOrder = () => {
         <option value="asc">Ascendente</option>
         <option value="desc">Descendente</option>
       </SelectOrderContainer>
-    </>
+    </div>
   )
 }
 

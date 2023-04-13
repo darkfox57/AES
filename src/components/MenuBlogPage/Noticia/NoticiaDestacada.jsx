@@ -4,10 +4,7 @@ import { NoticiaContainer } from './NoticiaDestacada.Styled'
 import { useSelector } from 'react-redux'
 import { ImNewspaper } from 'react-icons/im'
 const NoticiaDestacada = () => {
-  const blogsNoticia = useSelector((state) => state.blog.copyblogs)
-    .map((blog) => blog)
-    .reverse()
-    .slice(0, 5)
+  const blogsNoticia = useSelector((state) => state.blog.copyblogs).slice(0,5)
   return (
     <NoticiaContainer>
       <h4>

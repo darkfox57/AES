@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+
+export const Containermovil = styled.div`
+display: flex;
+gap: 50px;
+padding: 70px 0;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+text-align: center;
+`
+
 export const PlinContainer = styled.div`
  flex-direction: column;
 display: flex;
@@ -17,8 +28,9 @@ export const BancosContainer = styled.div`
   width: 100%;
  border: 1px solid red;
 
-  img {
-    width: 13%;
+`
+export const BancosLogo = styled.img`
+   width: 13%;
     min-width: 110px;
     object-fit: contain;
     cursor: pointer;
@@ -28,13 +40,13 @@ export const BancosContainer = styled.div`
     :hover {
       filter: saturate(1);
     }
-  }
-`
+`;
+
 export const AppVisual = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-width: ${({banco}) => banco === "bcp" ? "400px" : "600px"};
+width: ${({banco}) => banco === "bcp" ? "400px" : "400px"};
 &> div:first-child{
     width: 100%;
  }
@@ -44,11 +56,8 @@ width: ${({banco}) => banco === "bcp" ? "400px" : "600px"};
     align-items: center;
 img{
     object-fit: contain;
-    //object-fit: ${({banco}) => banco === "bcp" ? "cover" : "contain"};
-    //height: 530px;
-   // width: 280px;
-    height: ${({banco}) => banco === "bcp" ? "500px" : "530px"};
-    width: ${({banco}) => banco === "bcp" ? "500px" : "530px"};
+    height: ${({banco}) => banco === "bcp" ? "400px" : "530px"};
+    width: ${({banco}) => banco === "bcp" ? "400px" : "530px"};
 }
 }
 `
