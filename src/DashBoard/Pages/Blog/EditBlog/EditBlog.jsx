@@ -87,7 +87,6 @@ export default function EditBlog() {
       tags: data.tags,
       files: null,
     }
-    console.log(post)
     dispatch(editBlog(post))
     confirmation.message && alert(confirmation)
     confirmation.errors && error(confirmation)
