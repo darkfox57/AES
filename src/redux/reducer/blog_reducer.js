@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import {
+  OrderBlog,
   addBlog,
   deleteBlog,
   editBlog,
@@ -10,7 +11,6 @@ import {
   getBlogTitle,
   getCategories,
   getTags,
-  OrderBlog,
 } from '../actions/blog_actions'
 
 const initialState = {
@@ -28,7 +28,11 @@ const initialState = {
 const blogSlice = createSlice({
   name: 'blogs',
   initialState,
-  reducers: {},
+  reducers: {
+    resetBlogState: (state, action) => {
+      state.blog = initialState.blog
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllBlogs.fulfilled, (state, action) => {
@@ -115,5 +119,6 @@ const blogSlice = createSlice({
   },
 })
 
+export const resetBlogState = createAction('blogs/resetBlogState')
 export default blogSlice.reducer
 

@@ -55,6 +55,7 @@ function FileUploader({ folder }) {
     } else {
       setSelectedImg(file)
     }
+    uploadImg()
   }
 
   const uploadImg = async (event) => {
@@ -111,7 +112,9 @@ function FileUploader({ folder }) {
         {imgUrl && (
           <>
             <span>Confirma la imagen antes de continuar</span>
-            <button onClick={uploadImg}>Confirmar imagen</button>
+            <div className="button" onClick={uploadImg}>
+              Confirmar imagen
+            </div>
           </>
         )}
       </div>

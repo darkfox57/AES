@@ -90,7 +90,7 @@ button {
  width: auto;
  object-fit: cover;
 }
- button {
+ .button {
  padding: 8px 15px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     border: none;
@@ -102,9 +102,11 @@ button {
     color: var(--main-white);
     background-color: rgb(251, 99, 115);
     transition: scale 0.3s ease-in-out;
+				text-align: center;
     &:hover {
      scale: 1.03;
     }
 }
 }
 `
+

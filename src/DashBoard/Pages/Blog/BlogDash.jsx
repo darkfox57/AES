@@ -36,6 +36,7 @@ export default function BlogDash() {
             categories={post.categories}
             description={post.description}
             tags={post.tags}
+            files={post.files}
           />
         ))}
       </BlogList>
