@@ -14,6 +14,7 @@ export default function BlogCard({
   categories,
   description,
   tags,
+  files,
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(status)
@@ -22,14 +23,14 @@ export default function BlogCard({
 
   const handleClick = () => {
     const post = {
-      id,
+      _id: id,
       title,
       description,
       image,
       status: !active,
       categories: categories.map((c) => c._id),
       tags: tags.map((t) => t._id),
-      files: null,
+      files,
     }
     dispatch(editBlog(post))
     setActive(active ? false : true)

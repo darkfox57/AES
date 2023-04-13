@@ -27,9 +27,13 @@ import Involucrate from './pages/Involucrate/Involucrate'
 
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
-import { getAllBlogs, getCategories } from './redux/actions/blog_actions'
-import { getAllEvents, getAllCategories } from './redux/actions/event_actions'
 import FaqDonacion from './pages/FaqDonacion/FaqDonacion'
+import {
+  getAllBlogs,
+  getCategories,
+  getTags,
+} from './redux/actions/blog_actions'
+import { getAllCategories, getAllEvents } from './redux/actions/event_actions'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
@@ -42,7 +46,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllBlogs())
     dispatch(getCategories())
-
+    dispatch(getTags())
     dispatch(getAllEvents())
     dispatch(getAllCategories())
   }, [])

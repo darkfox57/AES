@@ -44,7 +44,7 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
 })
 
 export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
-
+  console.log(post);
   const formatedpost = {
     'title': post.title,
     'description': post.description,
@@ -55,7 +55,7 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
     'files': post.files
   }
   try {
-    const response = await axios.put(`blogs/${post.id}`, formatedpost)
+    const response = await axios.put(`blogs/${post._id}`, formatedpost)
     return response.data
   }
   catch (error) {

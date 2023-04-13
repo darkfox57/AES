@@ -10,10 +10,11 @@
 
 @font-face {
     font-family: 'Bebas Neue';
-    src: url('https://fonts.gstatic.com/s/bebasneue/v2/JTURjIg1_i6t8kCHKm45_epG3g.ttf') format('truetype');
+    src: url('./fonts/BebasNeue-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
+
 
 :root {
     --main-color: #13263F;
