@@ -29,18 +29,19 @@ export const Form_Styled = styled.form`
     }
   }
 
-  h4 {
-    font-size: 1rem;
-  }
-
   @media screen and (max-width: 768px) {
     width: 80%;
+  }
+
+  .subtitle {
+    padding: 0 10px;
+    text-align: center;
   }
 
   .spanError {
     padding-top: 5px;
     font-size: 0.8rem;
-    color: red;
+    color: #d55342;
   }
 `
 

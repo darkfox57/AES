@@ -14,6 +14,7 @@ import {
   SectionEvent,
   TextEvent,
 } from './EventArticle.Styles'
+import EventSuscription from '../../../components/EventSuscription/EventSuscription'
 
 const EventoForm = () => {
   const dispatch = useDispatch()
@@ -40,6 +41,8 @@ const EventoForm = () => {
             <p>{event.description}</p>
           </TextEvent>
         </FlexInfo>
+
+        <EventSuscription id={event._id} />
       </SectionEvent>
       <Footer />
     </EventoArticleForm>

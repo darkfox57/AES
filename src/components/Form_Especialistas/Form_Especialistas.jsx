@@ -3,16 +3,12 @@ import { useForm, Controller } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Select from 'react-select'
-import inputs from './data.json'
 
 import TextInput from '../../utils/TextInput/TextInput'
 import SelectInput from '../../utils/SelectInput/SelectInput'
 import FileInput from './FileInput'
-
 import Button from '../../utils/Button/Button'
-
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
-// import  from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 
 import { addFormSpecialist } from '../../redux/actions/form_actions'
@@ -27,7 +23,7 @@ import {
 //desestructuramos ambas props recibidas en showForm
 //en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
 
-const Form_Especialistas = ({ isOpen, setMainForm }) => {
+const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
   const [modal, setModal] = useState(isOpen)
   const {
     register,
@@ -49,7 +45,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
   const onSubmit = (data) => {
     const formData = {
       ...data,
-      pais: data.pais.value,
+      country: data.country.value,
     }
     dispatch(addFormSpecialist(formData))
   }
@@ -65,12 +61,16 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
       <Desenfoque>
         <Form_Styled onSubmit={handleSubmit(onSubmit)}>
           <h2>Postulación de especialistas</h2>
+          <span className="subtitle">
+            ¿Estás interesado en dictar algún taller? Llena este forms para
+            contactarnos contigo
+          </span>
 
           {/**"Campo Nombre (Texto)"*/}
           <TextInput
             register={register}
             label="Nombre Completo: "
-            name="nombre"
+            name="fullname"
             type="text"
             errors={errors}
             required={true}
@@ -81,7 +81,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           <TextInput
             register={register}
             label="Correo de Contacto: "
-            name="correo"
+            name="email"
             type="text"
             errors={errors}
             required={true}
@@ -92,7 +92,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           <TextInput
             register={register}
             label="Celular de Contacto: "
-            name="celular"
+            name="phone"
             type="text"
             maxLength={15}
             errors={errors}
@@ -107,7 +107,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
             control={control}
             options={options}
             label="Seleccione su pais"
-            required={true}
+            // required={true}
             errors={errors}
           />
 
@@ -115,19 +115,19 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
           <WorkShopContainer>
             <label>¿En qué area de salud desearía dictar el taller?</label>
             <RadioButtonContainer>
-              {inputs.radius.map((data, index) => (
+              {areas.map((data, index) => (
                 <TextInput
                   key={index}
                   register={register}
-                  name="taller"
+                  name="area"
                   type="radio"
-                  label={data.label}
-                  value={data.value}
+                  label={data.name}
+                  value={data.name}
                   required={true}
                   errors={errors}
                 />
               ))}
-              {errors['taller']?.type === 'required' && (
+              {errors['area']?.type === 'required' && (
                 <span className="spanError">* La elección es obligatoría</span>
               )}
             </RadioButtonContainer>
@@ -135,17 +135,9 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
 
           <FileInput register={register} />
 
-          <SubmitButton
-            type="submit"
-            value="Especialistas"
-            {...register('origen')}
-          >
-            Enviar Formulario
-          </SubmitButton>
+          <SubmitButton type="submit">Enviar Formulario</SubmitButton>
 
-          <CloseButton onClick={closeModal} name="">
-            X
-          </CloseButton>
+          <CloseButton onClick={closeModal}>X</CloseButton>
         </Form_Styled>
       </Desenfoque>
     )

@@ -16,7 +16,7 @@ const SelectInput = ({
       <SelectInputStyled>
         {label}
         <Controller
-          name={'pais'}
+          name={'country'}
           control={control}
           rules={(required = true)}
           render={({ field }) => (

@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import TextInput from '../../utils/TextInput/TextInput'
 import Button from '../../utils/Button/Button'
-
-import inputs from './data.json'
 
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import {
@@ -22,7 +20,7 @@ import { addFormAlliance } from '../../redux/actions/form_actions'
 //desestructuramos ambas props recibidas en showForm
 //en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
 
-const Form_Alianzas = ({ isOpen, setMainForm }) => {
+const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
   const [modal, setModal] = useState(isOpen)
 
   const {
@@ -37,7 +35,11 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
   const regexNumeros = new RegExp('^[0-9]+$')
 
   const Submit = (data) => {
-    dispatch(addFormAlliance(data))
+    const formData = {
+      ...data,
+      assistants: Number(data.assistants),
+    }
+    dispatch(addFormAlliance(formData))
   }
 
   const closeModal = (event) => {
@@ -50,12 +52,16 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
     modal && (
       <Desenfoque>
         <Form_Styled onSubmit={handleSubmit(Submit)}>
-          <h2>Postulacion para alianzas</h2>
+          <h2>Postulacion de organizaciones para alianzas</h2>
+          <span className="subtitle">
+            ¿Tu organización está interesada en recibir nuestros talleres
+            totalmente gratuitos? Llena este forms para contactarnos contigo
+          </span>
 
           {/**Campo NombreEmpresa (Texto) */}
           <TextInput
             register={register}
-            name="nombreOrganizacion"
+            name="organizations"
             label="Nombre de su organizacion: "
             type="text"
             required={true}
@@ -66,7 +72,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           {/**Campo Mision (Texto) */}
           <TextInput
             register={register}
-            name="mision"
+            name="work"
             label="Mision de su organizacion: "
             type="text"
             required={true}
@@ -77,7 +83,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           {/**Campo NombreInscriptor (Texto) */}
           <TextInput
             register={register}
-            name="nombreInstructor"
+            name="fullname"
             label="Nombre completo de quien inscribe: "
             type="text"
             required={true}
@@ -88,7 +94,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           {/**Campo Correo (Texto) */}
           <TextInput
             register={register}
-            name="correo"
+            name="email"
             label="Correo de contacto: "
             type="text"
             required={true}
@@ -99,7 +105,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           {/**Campo Celular (Texto) */}
           <TextInput
             register={register}
-            name="celular"
+            name="phone"
             label="Celular de contacto: "
             type="text"
             required={true}
@@ -111,7 +117,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           {/**Campo Puesto (Texto) */}
           <TextInput
             register={register}
-            name="puesto"
+            name="post"
             label="Puesto dentro de su organizacion: "
             type="text"
             required={true}
@@ -122,7 +128,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           {/**Campo cantVoluntarios (Texto) */}
           <TextInput
             register={register}
-            name="cantIntegrantes"
+            name="assistants"
             label="Cuantas personas atenderán el taller: "
             type="text"
             required={true}
@@ -130,13 +136,13 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
             errors={errors}
           />
 
-          <h4>Tus redes sociales</h4>
+          <label>Tus redes sociales</label>
           <SocialNetworksContainer>
             {/**Campo Instagram (Texto) */}
             <TextInput
               register={register}
               name="instagram"
-              subname="redesSociales"
+              subname="social"
               label="Instagram: "
               type="text"
               placeholder="Opcional"
@@ -147,7 +153,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
             <TextInput
               register={register}
               name="facebook"
-              subname="redesSociales"
+              subname="social"
               label="Facebook: "
               type="text"
               placeholder="Opcional"
@@ -158,7 +164,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
             <TextInput
               register={register}
               name="twitter"
-              subname="redesSociales"
+              subname="social"
               label="Twitter: "
               type="text"
               placeholder="Opcional"
@@ -169,14 +175,14 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
           <WorkShopContainer>
             <label>¿En qué area de salud desearía dictar el taller?</label>
             <RadioButtonContainer>
-              {inputs.radius.map((data, index) => (
+              {areas.map((data, index) => (
                 <TextInput
                   key={index}
                   register={register}
-                  name="taller"
+                  name="areas"
                   type="radio"
-                  label={data.label}
-                  value={data.value}
+                  label={data.name}
+                  value={data.name}
                   required={true}
                   errors={errors}
                 />
@@ -187,9 +193,7 @@ const Form_Alianzas = ({ isOpen, setMainForm }) => {
             )}
           </WorkShopContainer>
 
-          <SubmitButton type="submit" value="Alianzas" {...register('origen')}>
-            Enviar Formulario
-          </SubmitButton>
+          <SubmitButton type="submit">Enviar Formulario</SubmitButton>
           <CloseButton onClick={closeModal}>X</CloseButton>
         </Form_Styled>
       </Desenfoque>

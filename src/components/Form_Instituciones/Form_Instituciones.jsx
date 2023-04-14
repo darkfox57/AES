@@ -7,8 +7,6 @@ import TextInput from '../../utils/TextInput/TextInput'
 import Button from '../../utils/Button/Button'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 
-import inputs from './data.json'
-
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import {
   Form_Styled,
@@ -22,7 +20,7 @@ import { addFormInstitution } from '../../redux/actions/form_actions'
 //desestructuramos ambas props recibidas en showForm
 //en la funcion closemodal modificamos el estado del padre (involucrate) en '' para poder reabrir el form a futuro
 
-export default function Form_Instituciones({ isOpen, setMainForm }) {
+export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
   const [modal, setModal] = useState(isOpen)
   const {
     register,
@@ -49,12 +47,16 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
     modal && (
       <Desenfoque>
         <Form_Styled onSubmit={handleSubmit(Submit)}>
-          <h2>Postulacion de organizaciones</h2>
+          <h2>Postulacion de instituciones</h2>
+          <span className="subtitle">
+            ¿Tu institución está interesada en recibir nuestros talleres
+            totalmente gratuitos? Llena este forms para contactarnos contigo
+          </span>
 
           {/**Campo NombreOrganizacion (Texto) */}
           <TextInput
             register={register}
-            name="nombreEmpresa"
+            name="organization"
             label="Nombre de la institución educativa: "
             type="text"
             required={true}
@@ -65,7 +67,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           {/**Campo NombreInscriptor (Texto) */}
           <TextInput
             register={register}
-            name="nombreInstructor"
+            name="fullname"
             label="Nombre completo de quien inscribe: "
             type="text"
             required={true}
@@ -76,7 +78,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           {/**Campo Correo (Texto) */}
           <TextInput
             register={register}
-            name="correo"
+            name="email"
             label="Correo de contacto: "
             type="text"
             required={true}
@@ -87,7 +89,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           {/**Campo Celular (Texto) */}
           <TextInput
             register={register}
-            name="celular"
+            name="phone"
             label="Celular de contacto: "
             type="text"
             required={true}
@@ -99,7 +101,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           {/**Campo Puesto (Texto) */}
           <TextInput
             register={register}
-            name="puesto"
+            name="post"
             label="Cargo que ocupa dentro de la institución: "
             type="text"
             required={true}
@@ -110,7 +112,7 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           {/**Campo Ciudad (Texto) */}
           <TextInput
             register={register}
-            name="ciudad"
+            name="city"
             label="Indique su ciudad correspondiente: "
             type="text"
             required={true}
@@ -122,31 +124,25 @@ export default function Form_Instituciones({ isOpen, setMainForm }) {
           <WorkShopContainer>
             <label>¿En qué area de salud desearía dictar el taller?</label>
             <RadioButtonContainer>
-              {inputs.radius.map((data, index) => (
+              {areas.map((data, index) => (
                 <TextInput
                   key={index}
                   register={register}
-                  name="taller"
+                  name="areas"
                   type="radio"
-                  label={data.label}
-                  value={data.value}
+                  label={data.name}
+                  value={data.name}
                   required={true}
                   errors={errors}
                 />
               ))}
             </RadioButtonContainer>
-            {errors['taller']?.type === 'required' && (
+            {errors['areas']?.type === 'required' && (
               <span className="spanError">* La elección es obligatoría</span>
             )}
           </WorkShopContainer>
 
-          <SubmitButton
-            type="submit"
-            value="Organizaciones"
-            {...register('origen')}
-          >
-            Enviar Formulario
-          </SubmitButton>
+          <SubmitButton type="submit">Enviar Formulario</SubmitButton>
 
           <CloseButton onClick={closeModal}>X</CloseButton>
         </Form_Styled>

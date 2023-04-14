@@ -13,4 +13,8 @@ export const TextInputStyled = styled.label`
     min-width: 280px;
     font-size: 0.7rem;
   }
+
+  span {
+    color: #d55342;
+  }
 `

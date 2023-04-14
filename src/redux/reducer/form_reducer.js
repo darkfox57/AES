@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
+  getAreas,
   addFormSpecialist,
   addFormInstitution,
   addFormAlliance,
@@ -9,7 +10,11 @@ import {
 
 const initialState = {
   forms: [],
+
   countries: [],
+
+  areas: [],
+
   error: null,
 }
 
@@ -19,6 +24,14 @@ const formSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
+      .addCase(getAreas.fulfilled, (state, action) => {
+        state.areas = action.payload
+      })
+      .addCase(getAreas.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
       .addCase(addFormSpecialist.fulfilled, (state, action) => {
         state.forms.push(action.payload)
       })

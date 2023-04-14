@@ -9,7 +9,7 @@ import {
   ButtonContainer,
 } from './FileInput.Styles'
 
-function FileInput() {
+function FileInput({ register }) {
   const [fileName, setFileName] = useState('')
 
   const handleFileChange = (event) => {
@@ -19,7 +19,7 @@ function FileInput() {
 
   return (
     <InputContainer>
-      <FileUploader onChange={handleFileChange} />
+      <FileUploader onChange={handleFileChange} {...register('filepath')} />
       <Label htmlFor="file">
         <ButtonContainer>
           <UploadIcon />
