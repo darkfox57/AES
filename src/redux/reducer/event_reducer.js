@@ -2,8 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   editEvent,
   filterEvents,
+  filterTagsEvent,
   getAllCategories,
   getAllEvents,
+  getAllTags,
   getEvent,
   getEventByTitle,
   orderEvents,
@@ -11,12 +13,10 @@ import {
 
 const initialState = {
   events: [],
-  filteredEvents: [],
-
+  copyEvents: [],
   categories: [],
-
+  tags: [],
   event: {},
-
   error: null,
   confirmation: '',
 }
@@ -28,8 +28,8 @@ const eventSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllEvents.fulfilled, (state, action) => {
-        state.events = action.payload.reverse()
-        state.filteredEvents = action.payload
+        state.events = action.payload.reverse();
+        state.copyEvents = action.payload.filter((post) => post.status)
       })
       .addCase(getAllEvents.rejected, (state, action) => {
         state.error = action.error.message
@@ -43,9 +43,16 @@ const eventSlice = createSlice({
       })
 
       .addCase(getEventByTitle.fulfilled, (state, action) => {
-        state.filteredEvents = action.payload
+        state.events = action.payload
       })
       .addCase(getEventByTitle.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
+      .addCase(getAllTags.fulfilled, (state, action) => {
+        state.tags = action.payload
+      })
+      .addCase(getAllTags.rejected, (state, action) => {
         state.error = action.error.message
       })
 
@@ -54,15 +61,10 @@ const eventSlice = createSlice({
       })
 
       .addCase(filterEvents.fulfilled, (state, action) => {
-        if (action.payload === 'Todas las categorias')
-          state.filteredEvents = state.events
-        else {
-          state.filteredEvents = state.events.filter((event) =>
-            event.categories.some(
-              (category) => category.name === action.payload
-            )
-          )
-        }
+        const eventoCategory = state.copyEvents.filter((blog) =>
+          blog.categories.some((category) => category.name === action.payload)
+        )
+         state.events = eventoCategory
       })
 
       .addCase(filterEvents.rejected, (state, action) => {
@@ -88,12 +90,19 @@ const eventSlice = createSlice({
           },
         }
 
-        state.filteredEvents = [...state.events].sort(
+        state.events = [...state.events].sort(
           sortOptions[action.payload.type][action.payload.sort]
         )
       })
       .addCase(orderEvents.rejected, (state, action) => {
         state.error = action.error.message
+      })
+
+      .addCase(filterTagsEvent.fulfilled, (state, action) => {
+        const EvenTag = state.copyEvents.filter((event) =>
+        event.tags.some((tag) => tag.name === action.payload)
+      )
+      state.events = EvenTag
       })
   },
 })

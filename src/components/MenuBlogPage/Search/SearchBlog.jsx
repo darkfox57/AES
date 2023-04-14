@@ -3,13 +3,14 @@ import { SearchContainer } from './Search.Styled'
 import { useDispatch } from 'react-redux'
 import { getBlogTitle } from '../../../redux/actions/blog_actions'
 import { FiSearch } from 'react-icons/fi'
-const SearchBlog = () => {
+import { getEventByTitle } from '../../../redux/actions/event_actions'
+const SearchBlog = ({Event}) => {
   const [title, setTitle] = useState("")
 
   const dispatch = useDispatch()
 
   const handleSearch = () => {
-    dispatch(getBlogTitle(title))
+    Event ?  dispatch(getEventByTitle(title)) : dispatch(getBlogTitle(title))
   }
 
   return (
