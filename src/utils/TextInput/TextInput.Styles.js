@@ -1,17 +1,16 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const TextInputStyled = styled.label`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 
-  text-align: center;
-  gap: 5px;
+  gap: 8px;
 
   font-size: 0.8rem;
 
-  input {
+  input[type='text'] {
+    min-width: 280px;
     font-size: 0.7rem;
   }
 `

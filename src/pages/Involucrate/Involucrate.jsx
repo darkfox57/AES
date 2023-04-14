@@ -12,6 +12,7 @@ import {
 } from './Involucrate.Styles'
 
 import { getAllCountries } from '../../redux/actions/form_actions'
+import Galeria from '../../components/Galeria/Galeria'
 
 const img =
   'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
@@ -84,6 +85,8 @@ export default function Involucrate() {
 
         {/** Enviamos a todos los forms la funcion paa actualizar el estado 'form' */}
         {form && <ShowForm formToShow={form} updateForm={handleForm} />}
+
+        <Galeria />
       </Involucrate_Container>
 
       <Footer />

@@ -34,52 +34,50 @@ export default function Evento() {
   }, [])
 
   return (
-    (
-      <>
-        <Portada
-          img={
-            'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
-          }
-          titulo={'Eventos'}
-        />
+    <>
+      <Portada
+        img={
+          'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
+        }
+        titulo={'Eventos'}
+      />
 
-        <EventContainer>
-          <SearchEvent />
-          <FilterProximos />
-          <SelectEvent />
+      <EventContainer>
+        <SearchEvent />
+        <FilterProximos />
+        <SelectEvent />
 
-          {paginatedData.map((event) => (
-            <CardProximos
-              key={event._id}
-              slug={event.slug}
-              description={event.description}
-              img={event.frontpage}
-              dateIn={event.date_in}
-              dateOut={event.date_out}
-              lugar={event.location}
-              title={event.title}
-            />
-          ))}
-          {!paginatedData.length && (
-            <span className="spanError">
-              Error: No se han encontrado eventos con sus elecciones
-            </span>
-          )}
-        </EventContainer>
-
-        {paginatedData.length && (
-          <BtnPaginado
-            pageNumbers={pageNumbers}
-            PreviousPage={PreviousPage}
-            posts={events}
-            NextPage={NextPage}
-            goToPage={goToPage}
-            totalPages={totalPages}
-            currentPage={currentPage}
+        {paginatedData.map((event) => (
+          <CardProximos
+            key={event._id}
+            slug={event.slug}
+            description={event.description}
+            img={event.frontpage}
+            dateIn={event.date_in}
+            dateOut={event.date_out}
+            lugar={event.location}
+            title={event.title}
           />
+        ))}
+        {!paginatedData.length && (
+          <span className="spanError">
+            Error: No se han encontrado eventos con sus elecciones
+          </span>
         )}
-        <Footer />
-      </>
-    )
+      </EventContainer>
+
+      {paginatedData.length && (
+        <BtnPaginado
+          pageNumbers={pageNumbers}
+          PreviousPage={PreviousPage}
+          posts={events}
+          NextPage={NextPage}
+          goToPage={goToPage}
+          totalPages={totalPages}
+          currentPage={currentPage}
+        />
+      )}
+      <Footer />
+    </>
   )
 }
