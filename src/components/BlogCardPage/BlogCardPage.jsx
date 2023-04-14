@@ -17,9 +17,10 @@ const BlogCardPage = ({
   title,
   date,
   slug,
-  description,
+ // description,
   tags,
   EventPage,
+  short_description,
 }) => {
   const Newdate = new Date(date)
   const navigate = useNavigate()
@@ -57,12 +58,13 @@ const BlogCardPage = ({
             {Newdate.toLocaleDateString()}
           </span>
         </ContainerSpan>
-        <div
+        <p>{short_description} </p>
+        {/*<div
           className="post-body"
           dangerouslySetInnerHTML={{
             __html: description,
           }}
-        ></div>
+        ></div>*/}
         <ContainerSpan>
           <div>
             {tags.map((tag, i) => (

@@ -60,6 +60,7 @@ export default function Blog() {
                 tags={post.tags}
                 date={post.createdAt}
                 description={post.description}
+                short_description={post.short_description}
               />
             ))}
           <BtnPaginado
