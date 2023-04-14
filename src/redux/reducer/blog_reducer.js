@@ -60,9 +60,9 @@ const blogSlice = createSlice({
       .addCase(addBlog.fulfilled, (state, action) => {
         state.confirmation = action.payload
       })
-      .addCase(addBlog.rejected, (state, action) => {
-        state.status = action.error.message
-        state.error = action.error.message
+
+      .addCase(editBlog.fulfilled, (state, action) => {
+        state.confirmation = action.payload
       })
       .addCase(getCategories.fulfilled, (state, action) => {
         state.categories = action.payload
@@ -75,9 +75,6 @@ const blogSlice = createSlice({
       })
       .addCase(deleteBlog.rejected, (state, action) => {
         state.error = action.payload
-      })
-      .addCase(editBlog.fulfilled, (state, action) => {
-        state.confirmation = action.payload
       })
 
       .addCase(getTags.fulfilled, (state, action) => {

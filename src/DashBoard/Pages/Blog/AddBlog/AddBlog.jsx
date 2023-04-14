@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  addBlog,
-  getCategories,
-  getTags,
-} from '../../../../redux/actions/blog_actions'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { addBlog } from '../../../../redux/actions/blog_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
+import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody } from './addBlog.styles'
 
 export default function AddBlog() {
@@ -15,40 +16,55 @@ export default function AddBlog() {
   const tags = useSelector((state) => state.blog.tags)
   const estado = useSelector((state) => state.blog.status)
   const postImg = useSelector((state) => state.file.fileUrl)
-  const [slugText, setSlugText] = useState('')
-
-  useEffect(() => {
-    dispatch(getCategories())
-    dispatch(getTags())
-  }, [dispatch])
+  const MySwal = withReactContent(Swal)
+  const [sending, setSending] = useState(false)
 
   const [postContent, setPostContent] = useState('')
-  const [reqMessage, setReqMessage] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
 
-  const handleData = (data) => {
+  const notification = async () => {
+    await MySwal.fire({
+      icon: 'success',
+      title: 'Genial',
+      text: 'La publicación se ha actualizado correctamente!',
+    })
+  }
+
+  const errorNotify = async () => {
+    await MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No se ha podido guardar cambios!',
+    })
+  }
+
+  const handleData = async (data) => {
     const post = {
       slug: data.title
         .toLowerCase()
         .trim()
         .replace(/[\s\W-]+/g, '-'),
       title: data.title,
-      description: data.description,
+      description: postContent,
       image: postImg,
       categories: data.categories,
       status: true,
       tags: data.tags,
       files: null,
     }
-    dispatch(addBlog(post))
-    estado === 'succeeded'
-      ? setReqMessage('Creado Correctamente')
-      : setReqMessage(estado)
+    try {
+      setSending(true)
+      await dispatch(addBlog(post))
+      return notification()
+    } catch (error) {
+      errorNotify()
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -62,13 +78,16 @@ export default function AddBlog() {
           </label>
           <span>Cargar nueva imagen de portada:</span>
           <FileUploader folder="blog" />
-          <label>
-            Descripción
-            <textarea
-              rows="10"
-              {...register('description', { required: true, maxLength: 800 })}
-            />
-          </label>
+          <span>Descripción</span>
+          <div className="editor">
+            <ReactQuill
+              theme="snow"
+              value={postContent}
+              onChange={setPostContent}
+              className="editor-input"
+              modules={modules}
+            ></ReactQuill>
+          </div>
           <div className="checkboxBlock">
             <span>Categorias:</span>
             {categories.map((category) => (
@@ -76,9 +95,6 @@ export default function AddBlog() {
                 <input
                   type="checkbox"
                   value={category._id}
-                  // checked={blogPost.categories?.some(
-                  //   (c) => c._id === category._id
-                  // )}
                   {...register('categories')}
                 />
                 <span>{category.name}</span>
@@ -91,7 +107,6 @@ export default function AddBlog() {
               <label key={tag._id}>
                 <input
                   type="checkbox"
-                  // checked={blogPost.tags?.some((t) => t === tag._id)}
                   value={tag._id}
                   placeholder={tag.name}
                   {...register('tags', {})}
