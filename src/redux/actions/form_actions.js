@@ -1,10 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+export const getAreas = createAsyncThunk('forms/areas', async () => {
+  const response = await axios('/areas')
+  return response.data
+})
+
 export const addFormSpecialist = createAsyncThunk(
   'forms/addFormSpecialist',
   async (form) => {
-    const createForm = await axios.post('/form/especialista', form)
+    form.country = 'Argentina'
+    form.filepath = 'archivo.pdf'
+
+    const createForm = await axios.post('/specialist', form)
     return createForm.data
   }
 )
@@ -12,7 +20,7 @@ export const addFormSpecialist = createAsyncThunk(
 export const addFormInstitution = createAsyncThunk(
   'forms/addFormInstitution',
   async (form) => {
-    const createForm = await axios.post('/form/organizaciones', form)
+    const createForm = await axios.post('/institution', form)
     return createForm.data
   }
 )
@@ -20,7 +28,9 @@ export const addFormInstitution = createAsyncThunk(
 export const addFormAlliance = createAsyncThunk(
   'forms/addFormAlliance',
   async (form) => {
-    const createForm = await axios.post('/form/alianzas', form)
+    data.city = 'Miami'
+
+    const createForm = await axios.post('/organization', form)
     return createForm.data
   }
 )

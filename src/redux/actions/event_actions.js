@@ -22,7 +22,7 @@ export const editEvent = createAsyncThunk('events/editEvent', async (post) => {
     date_out: post.end,
     categories: post.categories,
     tags: post.tags,
-    files: post.files
+    files: post.files,
   }
   try {
     const response = await axios.put(`/events/${post.id}`, formatedpost)
@@ -31,7 +31,6 @@ export const editEvent = createAsyncThunk('events/editEvent', async (post) => {
     return error.response.data
   }
 })
-
 
 export const addEvent = createAsyncThunk('events/addEvent', async (post) => {
   const formatedpost = {
@@ -44,7 +43,7 @@ export const addEvent = createAsyncThunk('events/addEvent', async (post) => {
     date_out: post.end,
     categories: post.categories,
     tags: post.tags,
-    files: post.files
+    files: post.files,
   }
   
   try {
@@ -96,3 +95,11 @@ export const getAllTags = createAsyncThunk(
 export const orderEvents = createAsyncThunk(`events/order`, async (type) => {
   return type
 })
+
+export const createEventSuscription = createAsyncThunk(
+  'events/suscription',
+  async (suscription) => {
+    const response = await axios.post('/person', suscription)
+    return response.data
+  }
+)

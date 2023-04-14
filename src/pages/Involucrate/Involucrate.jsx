@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
 import Footer from '../../components/Footer/Footer'
@@ -11,7 +11,7 @@ import {
   Button_Styled,
 } from './Involucrate.Styles'
 
-import { getAllCountries } from '../../redux/actions/form_actions'
+import { getAllCountries, getAreas } from '../../redux/actions/form_actions'
 import Galeria from '../../components/Galeria/Galeria'
 
 const img =
@@ -25,9 +25,11 @@ const img =
 export default function Involucrate() {
   const [form, setForm] = useState('')
   const dispatch = useDispatch()
+  const areas = useSelector((state) => state.form.areas)
 
   useEffect(() => {
     dispatch(getAllCountries())
+    dispatch(getAreas())
   }, [])
 
   const handleForm = (evento) => {
@@ -56,6 +58,18 @@ export default function Involucrate() {
           </Card_Contact>
 
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwM04418DHJtKAtm7_QGgdfJo_B_ZTmxzoUg&usqp=CAU">
+            <h3>Instituciones sanas</h3>
+            <p>
+              Nuestros talleres están enfocados en las necesidades de cada
+              institución educativa. Si desea que sus alumnos participen agende
+              una reunión con nosotros.
+            </p>
+            <Button_Styled name="Form_Instituciones" onClick={handleForm}>
+              Rellenar Formulario
+            </Button_Styled>
+          </Card_Contact>
+
+          <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQoWn8xV5mi4gEGF7d2U19ZQkxywsqxDGY_A&usqp=CAU">
             <h3>Se un voluntario de AES</h3>
             <p>
               Hay muchas formas de contribuir a nuestras labores. Es totalmente
@@ -63,20 +77,6 @@ export default function Involucrate() {
               contribuir a formar una sociedad sana. Conozca más sobre lo que
               hacemos y cómo puede brindar apoyo.
             </p>
-
-            <Button_Styled name="Form_Instituciones" onClick={handleForm}>
-              Rellenar Formulario
-            </Button_Styled>
-          </Card_Contact>
-
-          <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQoWn8xV5mi4gEGF7d2U19ZQkxywsqxDGY_A&usqp=CAU">
-            <h3>Instituciones sanas</h3>
-            <p>
-              Nuestros talleres están enfocados en las necesidades de cada
-              institución educativa. Si desea que sus alumnos participen agende
-              una reunión con nosotros.
-            </p>
-
             <Button_Styled name="Form_Alianzas" onClick={handleForm}>
               Rellenar Formulario
             </Button_Styled>
@@ -84,7 +84,9 @@ export default function Involucrate() {
         </Card_Container>
 
         {/** Enviamos a todos los forms la funcion paa actualizar el estado 'form' */}
-        {form && <ShowForm formToShow={form} updateForm={handleForm} />}
+        {form && (
+          <ShowForm formToShow={form} areas={areas} updateForm={handleForm} />
+        )}
 
         <Galeria />
       </Involucrate_Container>
