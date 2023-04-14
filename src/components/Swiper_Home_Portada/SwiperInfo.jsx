@@ -10,7 +10,12 @@ export default function SwiperInfo({ text }) {
         <h2>ASOCIACION DE EDUCACION SANITARIA</h2>
         <p>{text} </p>
         <FlexButtom>
-          <Button type="primary" link="/" text="Donar ahora" size="md" />
+          <Button
+            type="primary"
+            link="/faqs/donaciones"
+            text="Donar ahora"
+            size="md"
+          />
           <Button
             type="secondary"
             link="/contacto"

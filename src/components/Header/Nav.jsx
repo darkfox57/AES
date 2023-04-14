@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
-const Nav = ({ToogleHambur}) => {
+const Nav = ({ ToogleHambur }) => {
   const token = localStorage.getItem('access_token')
 
   const handleClick = () => {
@@ -79,7 +79,12 @@ const Nav = ({ToogleHambur}) => {
           </NavLink>
         </li>
         <li>
-          <Button type="primary" size="md" text="Haz una donación" link="/" />
+          <Button
+            type="primary"
+            size="md"
+            text="Haz una donación"
+            link="/faqs/donaciones"
+          />
           {token && (
             <Button type="secondary" size="md" text="Admin" link="/dashboard" />
           )}
