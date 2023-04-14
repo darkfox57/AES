@@ -3,13 +3,21 @@ import { CardContainer } from './CardCategory.Styled'
 import { useDispatch } from 'react-redux'
 import { filterCategory } from '../../../redux/actions/blog_actions'
 import useScroll from '../../../Hooks/useScrollTop'
+import { filterEvents } from '../../../redux/actions/event_actions'
 
-const CardCategory = ({text,cant}) => {
+const CardCategory = ({text,cant,typeEvent}) => {
   const dispatch = useDispatch()
 
   const handleCategory = ()=>{
+   if(!typeEvent){
     dispatch(filterCategory(text))
     useScroll(520)
+   }else{
+     dispatch(filterEvents(text))
+    useScroll(520)
+   }
+   
+   
   }
   
   return (

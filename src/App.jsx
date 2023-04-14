@@ -19,8 +19,7 @@ import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
-import EventArticle from './pages/Evento/Detail/EventArticle'
-import Evento from './pages/Evento/Evento'
+import EventArticle from './pages/Eventos/Detail/EventArticle'
 import Faqs from './pages/FAQs/Faqs'
 import Home from './pages/Home/Home'
 import Involucrate from './pages/Involucrate/Involucrate'
@@ -34,6 +33,7 @@ import {
   getTags,
 } from './redux/actions/blog_actions'
 import { getAllCategories, getAllEvents } from './redux/actions/event_actions'
+import Eventos from './pages/Eventos/Eventos'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
@@ -67,7 +67,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/evento/:slug" element={<EventArticle />} />
-        <Route path="/evento" element={<Evento />} />
+        <Route path="/evento" element={<Eventos />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/faqs/donaciones" element={<FaqDonacion />} />
         <Route path="/contacto" element={<Contacto />} />

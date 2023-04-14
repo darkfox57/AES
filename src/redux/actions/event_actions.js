@@ -46,6 +46,7 @@ export const addEvent = createAsyncThunk('events/addEvent', async (post) => {
     tags: post.tags,
     files: post.files
   }
+  
   try {
     const response = await axios.post(`events`, formatedpost)
     return response.data
@@ -74,6 +75,21 @@ export const filterEvents = createAsyncThunk(
   'events/filter',
   async (filter) => {
     return filter
+  }
+)
+
+export const filterTagsEvent = createAsyncThunk(
+  'events/filterTagsEvent',
+  async (tag) => {
+    return tag
+  }
+)
+
+export const getAllTags = createAsyncThunk(
+  'events/getAllTags',
+  async () => {
+    const response = await axios(`/tags`)
+    return response.data
   }
 )
 

@@ -12,7 +12,15 @@ import {
   ContainerSpan,
 } from './BlogCardPage.Styled'
 
-const BlogCardPage = ({ img, title, date, slug, description, tags }) => {
+const BlogCardPage = ({
+  img,
+  title,
+  date,
+  slug,
+  description,
+  tags,
+  EventPage,
+}) => {
   const Newdate = new Date(date)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -23,8 +31,13 @@ const BlogCardPage = ({ img, title, date, slug, description, tags }) => {
   }
 
   const handleNavigate = () => {
-    navigate(`/blog/${slug}`)
-    useScroll(0)
+    if (EventPage) {
+      navigate(`/evento/${slug}`)
+      useScroll(0)
+    } else {
+      navigate(`/blog/${slug}`)
+      useScroll(0)
+    }
   }
   return (
     <BlogPageCardContainer img={img}>

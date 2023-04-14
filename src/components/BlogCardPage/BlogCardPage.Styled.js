@@ -43,13 +43,23 @@ export const ContainerInfo = styled.div`
 `
 export const ContainerSpan = styled.div`
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+  button{
+      cursor: pointer;
+      text-transform: capitalize;
+      background: rgb(0, 186, 163);
+      border: none;
+      color: white;
+      padding: 4px 10px;
+    }
   div{
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
     button{
       cursor: pointer;
       text-transform: capitalize;

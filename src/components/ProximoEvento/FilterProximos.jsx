@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-import useConditionalRender from '../../Hooks/useConditionalRender'
-
+import { useDispatch} from 'react-redux'
 import { filterEvents } from '../../redux/actions/event_actions'
-
 import { FilterProximosEvento, FilterButton } from './FilterProximo.Styled'
 
-import { OrderContainer } from '../SelectEventOrder/SelectEvent.Styles'
 
-const FilterProximos = () => {
+
+const FilterProximos = ({categories}) => {
   const [activeButton, setActiveButton] = useState(0)
-  const [showSelect] = useConditionalRender(768)
-
   const dispatch = useDispatch()
-  const categories = useSelector((state) => state.event.categories)
 
   const arrayCategories = [...categories]
   arrayCategories.unshift({
@@ -29,15 +22,6 @@ const FilterProximos = () => {
 
   return (
     <FilterProximosEvento>
-      {showSelect ? (
-        <OrderContainer>
-          <select onChange={() => handleFilter(event.target.value)}>
-            {arrayCategories.map((category) => (
-              <option key={category._id}>{category.name}</option>
-            ))}
-          </select>
-        </OrderContainer>
-      ) : (
         <FilterProximosEvento>
           {arrayCategories.map((category, index) => (
             <FilterButton
@@ -50,7 +34,6 @@ const FilterProximos = () => {
             </FilterButton>
           ))}
         </FilterProximosEvento>
-      )}
     </FilterProximosEvento>
   )
 }

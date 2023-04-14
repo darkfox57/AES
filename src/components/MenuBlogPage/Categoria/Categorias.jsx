@@ -16,7 +16,7 @@ const countCategories = (categories, posts) => {
 
 
 
-const Categorias = ({ category, posts }) => {
+const Categorias = ({ category, posts,typeEvent }) => {
   const categories = useMemo(() => countCategories(category, posts), [category]);
 
   return (
@@ -25,6 +25,7 @@ const Categorias = ({ category, posts }) => {
       <CardFlex>
         {Object.keys(categories).map((category, index) => (
           <CardCategory
+            typeEvent={typeEvent}
             key={index}
             text={category}
             cant={categories[category]}

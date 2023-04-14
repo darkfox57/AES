@@ -4,12 +4,18 @@ import { useDispatch } from 'react-redux'
 import { filterTags } from '../../../redux/actions/blog_actions'
 import useScroll from '../../../Hooks/useScrollTop'
 import { MdLabelImportant} from 'react-icons/md'
-const EtiquetasPopular = ({tags}) => {
+import { filterTagsEvent } from '../../../redux/actions/event_actions'
+
+const EtiquetasPopular = ({tags,EventTag}) => {
   const dispatch = useDispatch()
 
   const handleTag = (tag)=>{
-    dispatch(filterTags(tag))
-    useScroll(520)
+    if(EventTag){
+      dispatch(filterTagsEvent(tag))
+    }else{
+      dispatch(filterTags(tag))
+     useScroll(520)
+    }
   }
 
   return (
