@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
@@ -7,6 +9,7 @@ import withReactContent from 'sweetalert2-react-content'
 import { editBlog, getBlog } from '../../../../redux/actions/blog_actions'
 import { resetBlogState } from '../../../../redux/reducer/blog_reducer'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
+import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody, ToggleButton } from './editBlog.styles'
 
 export default function EditBlog() {
@@ -19,15 +22,12 @@ export default function EditBlog() {
   const MySwal = withReactContent(Swal)
   const [newImg, setNewImg] = useState(false)
   const [sending, setSending] = useState(false)
-  const [blogLoaded, setBlogLoaded] = useState(false)
-
+  const [postContent, setPostContent] = useState('')
   useEffect(() => {
-    dispatch(resetBlogState())
     dispatch(getBlog(slug)).then(() => {
       setLoading(false)
-      setBlogLoaded(true)
     })
-  }, [slug, dispatch])
+  }, [slug])
 
   const blogPost = useSelector((state) => {
     if (state.blog.blog) {
@@ -39,20 +39,22 @@ export default function EditBlog() {
 
   useEffect(() => {
     setActive(blogPost.status)
+    setPostContent(blogPost.description)
   }, [blogPost])
 
-  const { register, handleSubmit, defaultValues } = useForm({
-    defaultValues: {
-      id: blogPost._id,
-      title: blogPost.title,
-      description: blogPost.description,
-      image: blogPost.image,
-      files: null,
-    },
-  })
-  useForm({
-    defaultValues: async () => blogPost,
-  })
+  const { register, handleSubmit, reset } = useForm()
+  useEffect(() => {
+    if (blogPost) {
+      const { _id, title, description, image } = blogPost
+      reset({
+        id: _id,
+        title,
+        description,
+        image,
+        files: null,
+      })
+    }
+  }, [blogPost, reset])
 
   const [active, setActive] = useState(blogPost.status)
 
@@ -87,7 +89,7 @@ export default function EditBlog() {
     const post = {
       ...blogPost,
       title: data.title,
-      description: data.description,
+      description: postContent,
       image: postImg || blogPost.image,
       categories: data.categories,
       tags: data.tags,
@@ -145,14 +147,16 @@ export default function EditBlog() {
               </>
             )}
           </div>
-          <label>
-            Descripción
-            <textarea
-              defaultValue={blogPost.description}
-              rows="10"
-              {...register('description', { min: 50, max: 2000 })}
-            />
-          </label>
+          <span>Descripción</span>
+          <div className="editor">
+            <ReactQuill
+              theme="snow"
+              value={postContent}
+              onChange={setPostContent}
+              className="editor-input"
+              modules={modules}
+            ></ReactQuill>
+          </div>
 
           <div className="checkboxBlock">
             <span>Categorias:</span>

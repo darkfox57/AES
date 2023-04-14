@@ -31,7 +31,7 @@ export const ContainerInfo = styled.div`
     width: max-content;
     padding: 5px 10px;
   }
-  p {
+  .post-body {
     color: #838383;
     display: -webkit-box;
     -webkit-box-orient: vertical;

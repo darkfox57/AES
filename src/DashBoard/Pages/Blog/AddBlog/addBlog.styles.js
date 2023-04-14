@@ -16,6 +16,17 @@ form {
  img {
   max-width: 500px;
  }
+ .editor {
+  width: 100%;
+  min-height: 400px;
+  padding: 0;
+   background-color: #fff;
+  .editor-input {
+   width: 100%;
+   height: 360px;
+   background-color: #fff;
+  }
+ }
  .checkboxBlock{
   display: flex;
   width: 100%;
