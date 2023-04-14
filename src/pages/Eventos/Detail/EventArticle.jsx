@@ -4,10 +4,11 @@ import { useParams } from 'react-router'
 
 import { getEvent } from '../../../redux/actions/event_actions'
 
+import Footer from '../../../components/Footer/Footer'
 import Portada from '../../../components/Portada/Portada'
 import BlockEvento from './BlockEvento'
-import Footer from '../../../components/Footer/Footer'
 
+import EventSuscription from '../../../components/EventSuscription/EventSuscription'
 import {
   EventoArticleForm,
   FlexInfo,
@@ -40,6 +41,8 @@ const EventoForm = () => {
             <p>{event.description}</p>
           </TextEvent>
         </FlexInfo>
+
+        <EventSuscription id={event._id} />
       </SectionEvent>
       <Footer />
     </EventoArticleForm>
