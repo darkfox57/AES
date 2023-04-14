@@ -45,13 +45,14 @@ export default function EditBlog() {
   const { register, handleSubmit, reset } = useForm()
   useEffect(() => {
     if (blogPost) {
-      const { _id, title, description, image } = blogPost
+      const { _id, title, description, image, short_description } = blogPost
       reset({
         id: _id,
         title,
         description,
         image,
         files: null,
+        short_description,
       })
     }
   }, [blogPost, reset])
@@ -64,6 +65,7 @@ export default function EditBlog() {
         ...blogPost,
         status: !blogPost.status,
         categories: blogPost.categories.map((c) => c._id),
+        short_description: blogPost.short_description,
       })
     )
     setActive(active ? false : true)
@@ -93,6 +95,7 @@ export default function EditBlog() {
       image: postImg || blogPost.image,
       categories: data.categories,
       tags: data.tags,
+      short_description: data.short_description,
     }
     try {
       setSending(true)
@@ -147,6 +150,16 @@ export default function EditBlog() {
               </>
             )}
           </div>
+          <label>
+            Descripción corta
+            <textarea
+              defaultValue={blogPost.short_description}
+              rows="3"
+              {...register('short_description', {
+                maxLength: 160,
+              })}
+            />
+          </label>
           <span>Descripción</span>
           <div className="editor">
             <ReactQuill

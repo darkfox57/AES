@@ -33,6 +33,7 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
     'status': post.status,
     'tags': post.tags,
     'files': post.files,
+    'short_description': post.short_description
   }
   try {
     const response = await axios.post('blogs', formatedpost)
@@ -52,7 +53,8 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
     'categories': post.categories,
     'status': post.status,
     'tags': post.tags,
-    'files': post.files
+    'files': post.files,
+    'short_description': post.short_description
   }
   try {
     const response = await axios.put(`blogs/${post._id}`, formatedpost)

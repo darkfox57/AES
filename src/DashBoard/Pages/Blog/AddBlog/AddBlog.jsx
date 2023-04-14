@@ -55,6 +55,7 @@ export default function AddBlog() {
       status: true,
       tags: data.tags,
       files: null,
+      short_description: data.short_description,
     }
     try {
       setSending(true)
@@ -78,6 +79,16 @@ export default function AddBlog() {
           </label>
           <span>Cargar nueva imagen de portada:</span>
           <FileUploader folder="blog" />
+          <label>
+            Descripción corta
+            <textarea
+              rows="5"
+              {...register('short_description', {
+                required: true,
+                maxLength: 160,
+              })}
+            />
+          </label>
           <span>Descripción</span>
           <div className="editor">
             <ReactQuill
