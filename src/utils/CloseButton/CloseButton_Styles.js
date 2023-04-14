@@ -15,7 +15,6 @@ const CloseButton = styled.button`
 
   font-size: xx-large;
   font-weight: bolder;
-  font-family: 'Times New Roman', Times, serif;
 
   :hover {
     color: red;

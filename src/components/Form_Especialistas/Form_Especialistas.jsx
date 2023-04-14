@@ -106,7 +106,7 @@ const Form_Especialistas = ({ isOpen, setMainForm }) => {
             Select={Select}
             control={control}
             options={options}
-            label="Seleccione su pais: "
+            label="Seleccione su pais"
             required={true}
             errors={errors}
           />
