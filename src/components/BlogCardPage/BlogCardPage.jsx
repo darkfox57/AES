@@ -58,13 +58,7 @@ const BlogCardPage = ({
             {Newdate.toLocaleDateString()}
           </span>
         </ContainerSpan>
-        <p>{short_description} </p>
-        {/*<div
-          className="post-body"
-          dangerouslySetInnerHTML={{
-            __html: description,
-          }}
-        ></div>*/}
+        <p className="post-body">{short_description} </p>
         <ContainerSpan>
           <div>
             {tags.map((tag, i) => (
