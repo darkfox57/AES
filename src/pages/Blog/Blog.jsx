@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import blogimg from '../../assets/About.webp'
-import Footer from '../../components/Footer/Footer'
-import Portada from '../../components/Portada/Portada'
+import { useDispatch, useSelector } from 'react-redux'
+import useConditionalRender from '../../Hooks/useConditionalRender'
 import usePagination from '../../Hooks/usePagination'
+import blogimg from '../../assets/About.webp'
 import BlogCardPage from '../../components/BlogCardPage/BlogCardPage'
 import BtnPaginado from '../../components/BtnPaginado/BtnPaginado'
+import Footer from '../../components/Footer/Footer'
 import Categorias from '../../components/MenuBlogPage/Categoria/Categorias'
 import EtiquetasPopular from '../../components/MenuBlogPage/Etiquetas/EtiquetasPopular'
 import NoticiaDestacada from '../../components/MenuBlogPage/Noticia/NoticiaDestacada'
 import SearchBlog from '../../components/MenuBlogPage/Search/SearchBlog'
 import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
-import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
+import Portada from '../../components/Portada/Portada'
 import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 import { filterCategory, getTags } from '../../redux/actions/blog_actions'
-import useConditionalRender from '../../Hooks/useConditionalRender'
+import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
 
 export default function Blog() {
   const dispatch = useDispatch()
@@ -46,7 +46,11 @@ export default function Blog() {
       <Portada img={blogimg} titulo="Blog" />
       <BlogBody>
         <div className="filtroOrder">
-          <SelectOrder handleFilter={handleFilter} categorys={category} size={showSelect} />
+          <SelectOrder
+            handleFilter={handleFilter}
+            categorys={category}
+            size={showSelect}
+          />
         </div>
         <GridCardBlog>
           {paginatedData
@@ -60,6 +64,7 @@ export default function Blog() {
                 tags={post.tags}
                 date={post.createdAt}
                 description={post.description}
+                short_description={post.short_description}
               />
             ))}
           <BtnPaginado
