@@ -29,11 +29,6 @@ export default function Interacciones_Contacto({
 
           {details2 && <label>{details2} </label>}
         </div>
-        <div>
-          <Button_Styled>
-            <ArrowIcon />
-          </Button_Styled>
-        </div>
       </BottomContainer>
     </Interaction_Styled>
   )

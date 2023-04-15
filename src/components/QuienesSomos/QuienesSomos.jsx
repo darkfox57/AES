@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../utils/Button/Button'
+
 import {
   GridQuienes,
   QuienesInfo,
@@ -28,14 +28,6 @@ const QuienesSomos = () => {
             profesionales de la salud buscan formar una sólida cultura sanitaria
             en los adolescentes del Perú a través de talleres dinámicos.
           </p>
-          <div>
-            <Button
-              type="primary"
-              text="Contáctenos"
-              size="lg"
-              link="/contacto"
-            />
-          </div>
         </QuienesInfo>
       </GridQuienes>
     </QuieneSomosContainer>

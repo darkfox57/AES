@@ -1,15 +1,20 @@
 import React from 'react'
+
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+
 import {
   FormContainer,
   MainContainer,
   Requirement,
 } from './Form_Contacto.Styles'
+import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
-import { useForm } from 'react-hook-form'
-
-import Button from '../../utils/Button/Button'
+import { addFormContact } from '../../redux/actions/form_actions'
 
 export default function Form_Contacto() {
+  const dispatch = useDispatch()
+
   const {
     register,
     handleSubmit,
@@ -18,6 +23,7 @@ export default function Form_Contacto() {
 
   const enviarFormulario = (data) => {
     console.log(data)
+    dispatch(addFormContact(data))
   }
 
   return (
@@ -38,10 +44,10 @@ export default function Form_Contacto() {
             />
 
             {errors.name?.type === 'required' && (
-              <span>Este campo requiere completarse</span>
+              <span>* Este campo requiere completarse</span>
             )}
             {errors.name?.type === 'pattern' && (
-              <span>Este campo acepta solo letras</span>
+              <span>* Este campo acepta solo letras</span>
             )}
           </div>
           <div>
@@ -57,10 +63,10 @@ export default function Form_Contacto() {
             />
 
             {errors.email?.type === 'required' && (
-              <span>Este campo requiere completarse</span>
+              <span>* Este campo requiere completarse</span>
             )}
             {errors.email?.type === 'pattern' && (
-              <span>El formato del correo es incorrecto</span>
+              <span>* El formato del correo es incorrecto</span>
             )}
           </div>
         </Requirement>
@@ -71,17 +77,17 @@ export default function Form_Contacto() {
             <input
               type="text"
               placeholder="Introduce tu número de teléfono"
-              {...register('telefono', {
+              {...register('phone', {
                 required: true,
-                pattern: /^[a-zA-Z\s]+$/,
+                pattern: /^[0-9]+$/,
               })}
             />
 
             {errors.telefono?.type === 'required' && (
-              <span>Este campo require completarse</span>
+              <span>* Este campo require completarse</span>
             )}
             {errors.telefono?.type === 'pattern' && (
-              <span>Este campo acepta solo numeros</span>
+              <span>* Este campo acepta solo numeros</span>
             )}
           </div>
           <div>
@@ -89,8 +95,14 @@ export default function Form_Contacto() {
             <input
               type="text"
               placeholder="Escriba el asunto"
-              {...register('asunto')}
+              {...register('title', {
+                required: true,
+              })}
             />
+
+            {errors.asunto?.type === 'required' && (
+              <span>* Este campo require completarse</span>
+            )}
           </div>
         </Requirement>
 
@@ -101,19 +113,19 @@ export default function Form_Contacto() {
               type="text"
               rows={10}
               placeholder="Escribe tu mensaje aqui"
-              {...register('mensaje', {
+              {...register('content', {
                 required: true,
               })}
             />
 
             {errors.mensaje?.type === 'required' && (
-              <span>Este campo requiere completarse</span>
+              <span>* Este campo requiere completarse</span>
             )}
           </div>
         </Requirement>
 
         <div>
-          <Button type="primary" text="Enviar" size="lg" link=""></Button>
+          <SubmitButton>Enviar consulta</SubmitButton>
         </div>
       </FormContainer>
     </MainContainer>

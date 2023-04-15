@@ -62,8 +62,7 @@ export default function AddEvent() {
 
     try {
       setSending(true)
-      console.log('log componente', data.date_in)
-      // await dispatch(addEvent(post))
+      await dispatch(addEvent(post))
       return notification()
     } catch (error) {
       errorNotify()
