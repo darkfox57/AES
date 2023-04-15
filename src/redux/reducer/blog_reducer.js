@@ -51,7 +51,7 @@ const blogSlice = createSlice({
       })
 
       .addCase(getBlogTitle.fulfilled, (state, action) => {
-        state.blogs = action.payload
+        state.copyblogs = action.payload
       })
       .addCase(getBlogTitle.rejected, (state, action) => {
         state.error = action.error.message
@@ -85,17 +85,18 @@ const blogSlice = createSlice({
       })
 
       .addCase(filterCategory.fulfilled, (state, action) => {
-        const blogCategory = state.copyblogs.filter((blog) =>
+        const blogCategory = state.blogs.filter((blog) =>
           blog.categories.some((category) => category.name === action.payload)
         )
-        state.blogs = blogCategory
+        state.copyblogs = blogCategory
       })
 
       .addCase(filterTags.fulfilled, (state, action) => {
-        const blogTag = state.copyblogs.filter((blog) =>
+        const Status = state.blogs.filter((post) => post.status)
+        const blogTag = Status.filter((blog) =>
           blog.tags.some((tag) => tag.name === action.payload)
         )
-        state.blogs = blogTag
+        state.copyblogs = blogTag
       })
       .addCase(OrderBlog.fulfilled, (state, action) => {
         const sortOptions = {
@@ -109,7 +110,7 @@ const blogSlice = createSlice({
           },
         }
 
-        state.blogs = [...state.blogs].sort(
+        state.copyblogs = [...state.copyblogs].sort(
           sortOptions[action.payload.type][action.payload.sort]
         )
       })
@@ -118,4 +119,3 @@ const blogSlice = createSlice({
 
 export const resetBlogState = createAction('blogs/resetBlogState')
 export default blogSlice.reducer
-
