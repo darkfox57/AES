@@ -16,15 +16,18 @@ export default function EventCard({
   start,
   end,
   location,
+  short_description,
+  files,
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(status)
 
   const handleClick = () => {
     const post = {
-      id,
+      _id: id,
       title,
       description,
+      short_description,
       image,
       status: !active,
       categories: categories.map((c) => c._id),
@@ -43,33 +46,35 @@ export default function EventCard({
 
   return (
     <>
-      <CardContainer>
-        <img src={image} alt={title} />
-        <p>{title}</p>
-        <span>
-          Empieza:
+      <tr>
+        <td>
+          <img src={image} alt={title} />
+        </td>
+        <td>{title}</td>
+        <td>
           {new Date(start).toLocaleString('es-ES', {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
           })}{' '}
-        </span>
-        <span>
-          Termina:
+        </td>
+        <td>
           {new Date(end).toLocaleString('es-ES', {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
           })}{' '}
-        </span>
-        <span>{location}</span>
-        <Button
-          type="primary"
-          text="Editar"
-          size="lg"
-          link={`/dashboard/eventos/edit/${slug}`}
-        />
-        <div>
+        </td>
+        <td>{location}</td>
+        <td>
+          <Button
+            type="primary"
+            text="Editar"
+            size="lg"
+            link={`/dashboard/eventos/edit/${slug}`}
+          />
+        </td>
+        <td>
           <ToggleButton
             className={`${active ? ' active' : ''}`}
             type="button"
@@ -79,8 +84,8 @@ export default function EventCard({
           >
             <div className="handle"></div>
           </ToggleButton>
-        </div>
-      </CardContainer>
+        </td>
+      </tr>
     </>
   )
 }

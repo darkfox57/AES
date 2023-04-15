@@ -8,7 +8,7 @@ import withReactContent from 'sweetalert2-react-content'
 import { addEvent } from '../../../../redux/actions/event_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
-import {} from './addEvent.styles'
+import { FormBody } from './addEvent.styles'
 
 export default function AddEvent() {
   const dispatch = useDispatch()
@@ -44,6 +44,7 @@ export default function AddEvent() {
 
   const handleData = async (data) => {
     const post = {
+      ...data,
       slug: data.title
         .toLowerCase()
         .trim()
@@ -55,9 +56,13 @@ export default function AddEvent() {
       status: true,
       tags: data.tags,
       files: null,
+      date_in: new Date(data.date_in).toISOString().slice(0, 10),
+      date_out: new Date(data.date_out).toISOString().slice(0, 10),
     }
+
     try {
       setSending(true)
+      // console.log('log componente', post)
       await dispatch(addEvent(post))
       return notification()
     } catch (error) {
@@ -69,7 +74,7 @@ export default function AddEvent() {
 
   return (
     <>
-      <h2>Crear Articulo de Blog</h2>
+      <h2>Crear Nuevo Evento</h2>
       <FormBody>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
@@ -78,6 +83,39 @@ export default function AddEvent() {
           </label>
           <span>Cargar nueva imagen de portada:</span>
           <FileUploader folder="blog" />
+
+          <div className="dates">
+            <label>
+              Inicio del evento
+              <input
+                type="datetime-local"
+                placeholder="Fecha de Inicio"
+                {...register('date_in', { required: true })}
+              />
+            </label>
+            <label>
+              Fin del evento
+              <input
+                type="datetime-local"
+                placeholder="Fecha de fin"
+                {...register('date_out', { required: true })}
+              />
+            </label>
+          </div>
+          <label>
+            Ubicación:
+            <input {...register('location', { required: true })} />
+          </label>
+          <label>
+            Descripción corta
+            <textarea
+              rows="5"
+              {...register('short_description', {
+                required: true,
+                maxLength: 160,
+              })}
+            />
+          </label>
           <span>Descripción</span>
           <div className="editor">
             <ReactQuill

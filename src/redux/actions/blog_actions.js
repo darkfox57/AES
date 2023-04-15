@@ -45,7 +45,6 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
 })
 
 export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
-  console.log(post);
   const formatedpost = {
     'title': post.title,
     'description': post.description,
