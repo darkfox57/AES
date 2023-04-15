@@ -37,7 +37,7 @@ export default function Eventos() {
     PreviousPage,
     pageNumbers,
     goToPage,
-  } = usePagination(posts, 8)
+  } = usePagination(eventocopy, 8)
   const handleFilter = (e) => {
     dispatch(filterCategory(e.target.value))
   }
@@ -74,7 +74,7 @@ export default function Eventos() {
               currentPage={currentPage}
               totalPages={totalPages}
               PreviousPage={PreviousPage}
-              posts={posts}
+              posts={eventocopy}
               NextPage={NextPage}
               pageNumbers={pageNumbers}
               goToPage={goToPage}
@@ -86,7 +86,7 @@ export default function Eventos() {
             <SearchBlog Event={true} />
             {!showSelect && (
               <>
-                <NoticiaDestacada Noticia={eventocopy} EventPage={true} />
+                <NoticiaDestacada Noticia={posts} EventPage={true} />
                 <Categorias
                   category={category}
                   posts={posts}

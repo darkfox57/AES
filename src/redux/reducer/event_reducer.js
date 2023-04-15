@@ -43,7 +43,7 @@ const eventSlice = createSlice({
       })
 
       .addCase(getEventByTitle.fulfilled, (state, action) => {
-        state.events = action.payload
+        state.copyEvents = action.payload
       })
       .addCase(getEventByTitle.rejected, (state, action) => {
         state.error = action.error.message
@@ -61,10 +61,11 @@ const eventSlice = createSlice({
       })
 
       .addCase(filterEvents.fulfilled, (state, action) => {
-        const eventoCategory = state.copyEvents.filter((blog) =>
+
+        const eventoCategory = state.events.filter((blog) =>
           blog.categories.some((category) => category.name === action.payload)
         )
-         state.events = eventoCategory
+         state.copyEvents = eventoCategory
       })
 
       .addCase(filterEvents.rejected, (state, action) => {
@@ -90,7 +91,7 @@ const eventSlice = createSlice({
           },
         }
 
-        state.events = [...state.events].sort(
+        state.copyEvents = [...state.copyEvents].sort(
           sortOptions[action.payload.type][action.payload.sort]
         )
       })
@@ -99,10 +100,11 @@ const eventSlice = createSlice({
       })
 
       .addCase(filterTagsEvent.fulfilled, (state, action) => {
-        const EvenTag = state.copyEvents.filter((event) =>
+        const Status = state.events.filter((event) => event.status)
+        const EvenTag = Status.filter((event) =>
         event.tags.some((tag) => tag.name === action.payload)
       )
-      state.events = EvenTag
+      state.copyEvents = EvenTag
       })
   },
 })
