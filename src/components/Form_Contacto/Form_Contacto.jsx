@@ -1,15 +1,20 @@
 import React from 'react'
+
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+
 import {
   FormContainer,
   MainContainer,
   Requirement,
 } from './Form_Contacto.Styles'
+import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
-import { useForm } from 'react-hook-form'
-
-import Button from '../../utils/Button/Button'
+import { addFormContact } from '../../redux/actions/form_actions'
 
 export default function Form_Contacto() {
+  const dispatch = useDispatch()
+
   const {
     register,
     handleSubmit,
@@ -18,6 +23,7 @@ export default function Form_Contacto() {
 
   const enviarFormulario = (data) => {
     console.log(data)
+    dispatch(addFormContact(data))
   }
 
   return (
@@ -71,9 +77,9 @@ export default function Form_Contacto() {
             <input
               type="text"
               placeholder="Introduce tu número de teléfono"
-              {...register('telefono', {
+              {...register('phone', {
                 required: true,
-                pattern: /^[a-zA-Z\s]+$/,
+                pattern: /^[0-9]+$/,
               })}
             />
 
@@ -89,7 +95,7 @@ export default function Form_Contacto() {
             <input
               type="text"
               placeholder="Escriba el asunto"
-              {...register('asunto', {
+              {...register('title', {
                 required: true,
               })}
             />
@@ -107,7 +113,7 @@ export default function Form_Contacto() {
               type="text"
               rows={10}
               placeholder="Escribe tu mensaje aqui"
-              {...register('mensaje', {
+              {...register('content', {
                 required: true,
               })}
             />
@@ -119,8 +125,7 @@ export default function Form_Contacto() {
         </Requirement>
 
         <div>
-          {/* <Button type="primary" text="Enviar" size="lg" link=""></Button> */}
-          <button>Enviar consulta</button>
+          <SubmitButton>Enviar consulta</SubmitButton>
         </div>
       </FormContainer>
     </MainContainer>

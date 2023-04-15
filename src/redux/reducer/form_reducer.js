@@ -24,7 +24,6 @@ const formSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-
       .addCase(getAreas.fulfilled, (state, action) => {
         state.areas = action.payload
       })
@@ -71,7 +70,6 @@ const formSlice = createSlice({
           return 0
         })
       })
-
       .addCase(getAllCountries.rejected, (state, action) => {
         state.error = action.error.message
       })
