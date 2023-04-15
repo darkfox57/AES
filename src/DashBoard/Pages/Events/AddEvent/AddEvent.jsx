@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { addEvent } from '../../../../redux/actions/event_actions'
+import { addEvent, getAllEvents } from '../../../../redux/actions/event_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody } from './addEvent.styles'
@@ -62,7 +62,7 @@ export default function AddEvent() {
 
     try {
       setSending(true)
-      await dispatch(addEvent(post))
+      await dispatch(addEvent(post)).finally(() => dispatch(getAllEvents()))
       return notification()
     } catch (error) {
       errorNotify()

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editEvent } from '../../../redux/actions/event_actions'
+import { editEvent, getAllEvents } from '../../../redux/actions/event_actions'
 import Button from '../../../utils/Button/Button'
 import { CardContainer, ToggleButton } from './eventCard.styles'
 
@@ -22,7 +22,7 @@ export default function EventCard({
   const dispatch = useDispatch()
   const [active, setActive] = useState(status)
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const post = {
       _id: id,
       title,
@@ -36,7 +36,7 @@ export default function EventCard({
       start,
       end,
     }
-    dispatch(editEvent(post))
+    await dispatch(editEvent(post)).finally(() => dispatch(getAllEvents()))
     setActive(active ? false : true)
   }
 

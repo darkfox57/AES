@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { editEvent, getEvent } from '../../../../redux/actions/event_actions'
+import {
+  editEvent,
+  getAllEvents,
+  getEvent,
+} from '../../../../redux/actions/event_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody, ToggleButton } from './editEvent.styles'
@@ -70,7 +74,7 @@ export default function EditEvent() {
 
   const [active, setActive] = useState(eventPost.status)
 
-  const handleClick = () => {
+  const handleClick = async () => {
     dispatch(
       editEvent({
         ...eventPost,
@@ -82,7 +86,8 @@ export default function EditEvent() {
         // start: new Date(eventPost.date_in).toISOString().slice(0, 10),
         // end: new Date(eventPost.date_out).toISOString().slice(0, 10),
       })
-    )
+    ).finally(() => dispatch(getAllEvents()))
+
     setActive(active ? false : true)
   }
 
@@ -121,7 +126,7 @@ export default function EditEvent() {
     try {
       setSending(true)
       // console.log(post)
-      await dispatch(editEvent(post))
+      await dispatch(editEvent(post)).finally(() => dispatch(getAllEvents()))
       return notification()
     } catch (error) {
       errorNotify()
@@ -262,4 +267,3 @@ export default function EditEvent() {
     </>
   )
 }
-

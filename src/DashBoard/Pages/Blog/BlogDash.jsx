@@ -42,6 +42,7 @@ export default function BlogDash() {
                 description={post.description}
                 tags={post.tags}
                 files={post.files}
+                short_description={post.short_description}
               />
             ))}
           </tbody>
