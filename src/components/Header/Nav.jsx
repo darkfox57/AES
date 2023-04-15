@@ -3,15 +3,16 @@ import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
-const Nav = ({ ToogleHambur }) => {
+const Nav = ({ OpenNav }) => {
   const token = localStorage.getItem('access_token')
 
   const handleClick = () => {
-    ToogleHambur()
+    OpenNav()
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 100)
   }
+
   return (
     <NavContainer>
       <ListNav>

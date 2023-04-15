@@ -9,6 +9,7 @@ export const TextMainContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  min-width: 300px;
   flex-direction:column;
   gap: 5px 0;
   p{

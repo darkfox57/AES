@@ -27,7 +27,6 @@ const BlogCard = ({ image, title, date, slug }) => {
               size="lg"
               link={`/blog/${slug}`}
             />
-            <Button type="secundary" text={"Shared"} size="lg" />
           </div>
         </ContainerInfo>
       </CardContainer>
