@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { addBlog } from '../../../../redux/actions/blog_actions'
+import { addBlog, getAllBlogs } from '../../../../redux/actions/blog_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody } from './addBlog.styles'
@@ -59,7 +59,7 @@ export default function AddBlog() {
     }
     try {
       setSending(true)
-      await dispatch(addBlog(post))
+      await dispatch(addBlog(post)).finally(() => dispatch(getAllBlogs()))
       return notification()
     } catch (error) {
       errorNotify()

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editBlog } from '../../../redux/actions/blog_actions'
+import { editBlog, getAllBlogs } from '../../../redux/actions/blog_actions'
 import Button from '../../../utils/Button/Button'
 import { CardContainer, ToggleButton } from './blogcard.styles'
 
@@ -15,13 +15,14 @@ export default function BlogCard({
   description,
   tags,
   files,
+  short_description,
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(status)
 
   const edited = useSelector((state) => state.blog.confirmation)
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const post = {
       _id: id,
       title,
@@ -31,8 +32,9 @@ export default function BlogCard({
       categories: categories.map((c) => c._id),
       tags: tags.map((t) => t._id),
       files,
+      short_description,
     }
-    dispatch(editBlog(post))
+    await dispatch(editBlog(post)).finally(() => dispatch(getAllBlogs()))
     setActive(active ? false : true)
   }
 

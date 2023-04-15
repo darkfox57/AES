@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { editBlog, getBlog } from '../../../../redux/actions/blog_actions'
+import {
+  editBlog,
+  getAllBlogs,
+  getBlog,
+} from '../../../../redux/actions/blog_actions'
 import { resetBlogState } from '../../../../redux/reducer/blog_reducer'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
@@ -59,15 +63,15 @@ export default function EditBlog() {
 
   const [active, setActive] = useState(blogPost.status)
 
-  const handleClick = () => {
-    dispatch(
+  const handleClick = async () => {
+    await dispatch(
       editBlog({
         ...blogPost,
         status: !blogPost.status,
         categories: blogPost.categories.map((c) => c._id),
         short_description: blogPost.short_description,
       })
-    )
+    ).finally(() => dispatch(getAllBlogs()))
     setActive(active ? false : true)
   }
 
@@ -99,7 +103,7 @@ export default function EditBlog() {
     }
     try {
       setSending(true)
-      await dispatch(editBlog(post))
+      await dispatch(editBlog(post)).finally(() => dispatch(getAllBlogs()))
       return notification()
     } catch (error) {
       errorNotify()
