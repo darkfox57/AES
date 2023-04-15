@@ -15,10 +15,8 @@ const CardTaller = ({ icon, title, parraf }) => {
         <ContainerInfo>
           <h5>{title}</h5>
           <p>{parraf}</p>
-          <Button type={"primary"} size={"lg"} text={"Read More"} />
         </ContainerInfo>
       </CenterCard>
-      
     </CardContainer>
   )
 }

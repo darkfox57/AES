@@ -4,10 +4,10 @@ import CardTeam from './CardTeam'
 import { TeamFlex } from './Team.Styled'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay, Navigation,Pagination } from 'swiper'
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 
-SwiperCore.use([Autoplay, Navigation, Pagination]);
+SwiperCore.use([Autoplay, Navigation, Pagination])
 
 const data = [
   {
@@ -51,33 +51,29 @@ const Team = () => {
         }}*/
         //loop={true}
         navigation
-       // pauseOnMouseEnter
+        // pauseOnMouseEnter
         spaceBetween={20}
         pagination={{ clickable: true }}
-       // slidesPerView={4}
+        // slidesPerView={4}
         breakpoints={{
           // Configuración para pantallas más pequeñas
           1458: {
-            slidesPerView: 2
+            slidesPerView: 2,
           },
           // Configuración para pantallas aún más pequeñas
           1036: {
-            slidesPerView: 1
-          }
+            slidesPerView: 1,
+          },
         }}
         //centeredSlides={true}
         //onSlideChange={(swiper) => console.log(swiper)}
       >
-        
         {data.map((team, index) => (
-          <SwiperSlide className='swiper-card' key={index}>
-          <CardTeam
-            src={team?.src}
-          />
-        </SwiperSlide>
+          <SwiperSlide className="swiper-card" key={index}>
+            <CardTeam src={team?.src} />
+          </SwiperSlide>
         ))}
       </Swiper>
-      <Button size="lg" type="primary" text={'Contactanos'} link="/contacto" />
     </TeamFlex>
   )
 }

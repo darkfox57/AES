@@ -38,10 +38,10 @@ export default function Form_Contacto() {
             />
 
             {errors.name?.type === 'required' && (
-              <span>Este campo requiere completarse</span>
+              <span>* Este campo requiere completarse</span>
             )}
             {errors.name?.type === 'pattern' && (
-              <span>Este campo acepta solo letras</span>
+              <span>* Este campo acepta solo letras</span>
             )}
           </div>
           <div>
@@ -57,10 +57,10 @@ export default function Form_Contacto() {
             />
 
             {errors.email?.type === 'required' && (
-              <span>Este campo requiere completarse</span>
+              <span>* Este campo requiere completarse</span>
             )}
             {errors.email?.type === 'pattern' && (
-              <span>El formato del correo es incorrecto</span>
+              <span>* El formato del correo es incorrecto</span>
             )}
           </div>
         </Requirement>
@@ -78,10 +78,10 @@ export default function Form_Contacto() {
             />
 
             {errors.telefono?.type === 'required' && (
-              <span>Este campo require completarse</span>
+              <span>* Este campo require completarse</span>
             )}
             {errors.telefono?.type === 'pattern' && (
-              <span>Este campo acepta solo numeros</span>
+              <span>* Este campo acepta solo numeros</span>
             )}
           </div>
           <div>
@@ -89,8 +89,14 @@ export default function Form_Contacto() {
             <input
               type="text"
               placeholder="Escriba el asunto"
-              {...register('asunto')}
+              {...register('asunto', {
+                required: true,
+              })}
             />
+
+            {errors.asunto?.type === 'required' && (
+              <span>* Este campo require completarse</span>
+            )}
           </div>
         </Requirement>
 
@@ -107,13 +113,14 @@ export default function Form_Contacto() {
             />
 
             {errors.mensaje?.type === 'required' && (
-              <span>Este campo requiere completarse</span>
+              <span>* Este campo requiere completarse</span>
             )}
           </div>
         </Requirement>
 
         <div>
-          <Button type="primary" text="Enviar" size="lg" link=""></Button>
+          {/* <Button type="primary" text="Enviar" size="lg" link=""></Button> */}
+          <button>Enviar consulta</button>
         </div>
       </FormContainer>
     </MainContainer>

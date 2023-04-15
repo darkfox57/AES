@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const CardContainer = styled.div`
   position: relative;
   width: 310px;
-  height: 380px;
+  height: 350px;
   background: white;
   padding: 40px;
   overflow: hidden;

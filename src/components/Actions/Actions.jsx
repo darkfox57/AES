@@ -20,7 +20,12 @@ export default function Actions() {
             Apoya nuestras causas con una donación que nos va a ayudar a cumplir
             con todos los objetivos
           </p>
-          <Button type="link" link="/" text="Leer más" size="md" />
+          <Button
+            type="link"
+            link="/faqs/donaciones"
+            text="Leer más"
+            size="md"
+          />
         </div>
       </Donation_Action_Content>
       <Involve_Action_Content>
