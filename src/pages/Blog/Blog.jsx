@@ -22,11 +22,11 @@ export default function Blog() {
   const category = useSelector((state) => state.blog.categories)
   const tags = useSelector((state) => state.blog.tags)
   const postscopy = useSelector((state) => state.blog.copyblogs)
-console.log(postscopy);
+
   useEffect(() => {
     dispatch(getTags())
   }, [dispatch])
- //console.log(posts);
+
   const [showSelect] = useConditionalRender(1071)
   const {
     currentPage,
