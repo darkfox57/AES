@@ -33,8 +33,8 @@ export default function EventCard({
       categories: categories.map((c) => c._id),
       tags: tags.map((t) => t._id),
       location,
-      start: new Date(start).toISOString().slice(0, 10),
-      end: new Date(end).toISOString().slice(0, 10),
+      start,
+      end,
     }
     dispatch(editEvent(post))
     setActive(active ? false : true)
