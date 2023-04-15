@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes, useLocation, useNavigate } from 'react-router'
+import { getAllAreas } from './redux/actions/dash_forms_actions'
 
 import axios from 'axios'
 
@@ -12,6 +13,11 @@ import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
 import EditEvent from './DashBoard/Pages/Events/EditEvent/EditEvent'
 import EventDash from './DashBoard/Pages/Events/EventDash'
+import Institutions from './DashBoard/Pages/Involucrate/Institutions/Institutions'
+import InvolucrateDash from './DashBoard/Pages/Involucrate/Involucrate'
+import Organizations from './DashBoard/Pages/Involucrate/Oganizations/Organizacions'
+import Specialists from './DashBoard/Pages/Involucrate/Specialists/Specialists'
+import InvolucrateDashMain from './DashBoard/Pages/Involucrate/page/Involucrate'
 import Login from './DashBoard/Pages/Login/Login'
 import Header from './components/Header/Header'
 import DashLayout from './layouts/DashLayout'
@@ -20,27 +26,24 @@ import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
 import EventArticle from './pages/Eventos/Detail/EventArticle'
+import Eventos from './pages/Eventos/Eventos'
 import Faqs from './pages/FAQs/Faqs'
+import FaqDonacion from './pages/FaqDonacion/FaqDonacion'
 import Home from './pages/Home/Home'
 import Involucrate from './pages/Involucrate/Involucrate'
-
-import { isLoggedIn } from './utils/Auth/isLoggedIn'
-
-import FaqDonacion from './pages/FaqDonacion/FaqDonacion'
 import {
   getAllBlogs,
   getCategories,
   getTags,
 } from './redux/actions/blog_actions'
 import { getAllCategories, getAllEvents } from './redux/actions/event_actions'
-import Eventos from './pages/Eventos/Eventos'
+import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
 function App() {
   const location = useLocation()
   const dispatch = useDispatch()
-  const estado = useSelector((state) => state.account.status)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -49,6 +52,7 @@ function App() {
     dispatch(getTags())
     dispatch(getAllEvents())
     dispatch(getAllCategories())
+    dispatch(getAllAreas())
   }, [])
 
   return (
@@ -79,7 +83,11 @@ function App() {
           <Route path="eventos" element={<EventDash />} />
           <Route path="eventos/add-blog" element={<AddEvent />} />
           <Route path="eventos/edit/:slug" element={<EditEvent />} />
-          <Route path="involucrate" element={<EventDash />} />
+          <Route path="involucrate" element={<InvolucrateDash />} />
+          <Route path="involucrate/" element={<InvolucrateDashMain />} />
+          <Route path="involucrate/instituciones" element={<Institutions />} />
+          <Route path="involucrate/alianzas" element={<Organizations />} />
+          <Route path="involucrate/especialistas" element={<Specialists />} />
           <Route path="mensajes" element={<EventDash />} />
           <Route path="suscriptores" element={<EventDash />} />
           <Route path="banner" element={<EventDash />} />
