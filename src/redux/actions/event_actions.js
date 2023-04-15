@@ -17,15 +17,15 @@ export const editEvent = createAsyncThunk('events/editEvent', async (post) => {
     location: post.location,
     frontpage: post.image,
     description: post.description,
+    short_description: post.short_description,
     status: post.status,
     date_in: post.start,
     date_out: post.end,
     categories: post.categories,
     tags: post.tags,
-    files: post.files,
   }
   try {
-    const response = await axios.put(`/events/${post.id}`, formatedpost)
+    const response = await axios.put(`/events/${post._id}`, formatedpost)
     return response.data
   } catch (error) {
     return error.response.data
@@ -39,13 +39,13 @@ export const addEvent = createAsyncThunk('events/addEvent', async (post) => {
     frontpage: post.image,
     description: post.description,
     status: post.status,
-    date_in: post.start,
-    date_out: post.end,
+    date_in: post.date_in,
+    date_out: post.date_out,
     categories: post.categories,
     tags: post.tags,
-    files: post.files,
+    short_description: post.short_description
   }
-  
+
   try {
     const response = await axios.post(`events`, formatedpost)
     return response.data

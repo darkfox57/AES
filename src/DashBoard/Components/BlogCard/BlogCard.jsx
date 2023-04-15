@@ -42,34 +42,43 @@ export default function BlogCard({
 
   return (
     <>
-      <CardContainer>
-        <img src={image} alt={title} />
-        <p>{title}</p>
-        <span>
+      <tr>
+        <td>
+          <img src={image} alt={title} />
+        </td>
+        <td>
+          <p>{title}</p>
+        </td>
+        <td>
           {new Date(date).toLocaleString('es-ES', {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
           })}{' '}
-        </span>
-        <Button
-          type="primary"
-          text="Editar"
-          size="lg"
-          link={`/dashboard/blog/edit/${slug}`}
-        />
-        <div>
-          <ToggleButton
-            className={`${active ? ' active' : ''}`}
-            type="button"
-            onClick={handleClick}
-            aria-pressed={status}
-            autoComplete="off"
-          >
-            <div className="handle"></div>
-          </ToggleButton>
-        </div>
-      </CardContainer>
+        </td>
+        <td>
+          {' '}
+          <Button
+            type="primary"
+            text="Editar"
+            size="lg"
+            link={`/dashboard/blog/edit/${slug}`}
+          />
+        </td>
+        <td>
+          <div>
+            <ToggleButton
+              className={`${active ? ' active' : ''}`}
+              type="button"
+              onClick={handleClick}
+              aria-pressed={status}
+              autoComplete="off"
+            >
+              <div className="handle"></div>
+            </ToggleButton>
+          </div>
+        </td>
+      </tr>
     </>
   )
 }
