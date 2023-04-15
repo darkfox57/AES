@@ -19,7 +19,7 @@ const Blog = () => {
   // usamos un useHook perzonalizado para la paginacion tipo slider
 
   //const dispatch = useDispatch()
-  const posts = useSelector((state) => state.blog.copyblogs)
+  const posts = useSelector((state) => state.blog.blogs)
 
 
   if (!posts.length) {
@@ -53,7 +53,7 @@ const Blog = () => {
         }}
         //centeredSlides={true}
       >
-        {posts.map((post) => (
+        {posts.filter((post) => post.status).map((post) => (
             <SwiperSlide key={post._id} className="swiper-card">
               <BlogCard
                 image={post.image}

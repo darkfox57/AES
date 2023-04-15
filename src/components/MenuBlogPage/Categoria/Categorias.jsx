@@ -4,9 +4,10 @@ import CardCategory from './CardCategory'
 import { TbCategory2} from 'react-icons/tb'
 
 const countCategories = (categories, posts) => {
+  const Status = posts.filter((post) => post.status)
   return categories.reduce((counter, { name, _id }) => {
     // Filtra los posts que incluyen la categoría actual
-    const filteredPosts = posts.filter(post => post.categories.some(category => category._id === _id));
+    const filteredPosts = Status.filter(post => post.categories.some(category => category._id === _id));
     // Agrega una propiedad al contador con el nombre de la categoría y la cantidad de posts filtrados
     counter[name] = filteredPosts.length;
     // Retorna el contador actualizado

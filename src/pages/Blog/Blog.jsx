@@ -22,11 +22,11 @@ export default function Blog() {
   const category = useSelector((state) => state.blog.categories)
   const tags = useSelector((state) => state.blog.tags)
   const postscopy = useSelector((state) => state.blog.copyblogs)
-
+console.log(postscopy);
   useEffect(() => {
     dispatch(getTags())
   }, [dispatch])
-
+ //console.log(posts);
   const [showSelect] = useConditionalRender(1071)
   const {
     currentPage,
@@ -36,7 +36,7 @@ export default function Blog() {
     PreviousPage,
     pageNumbers,
     goToPage,
-  } = usePagination(posts, 8)
+  } = usePagination(postscopy, 8)
 
   const handleFilter = (e) => {
     dispatch(filterCategory(e.target.value))
@@ -49,9 +49,7 @@ export default function Blog() {
           <SelectOrder handleFilter={handleFilter} categorys={category} size={showSelect} />
         </div>
         <GridCardBlog>
-          {paginatedData
-            .filter((post) => post.status)
-            .map((post) => (
+          {paginatedData.map((post) => (
               <BlogCardPage
                 slug={post.slug}
                 key={post._id}
@@ -67,7 +65,7 @@ export default function Blog() {
             currentPage={currentPage}
             totalPages={totalPages}
             PreviousPage={PreviousPage}
-            posts={posts}
+            posts={postscopy}
             NextPage={NextPage}
             pageNumbers={pageNumbers}
             goToPage={goToPage}
@@ -78,7 +76,7 @@ export default function Blog() {
             <SearchBlog />
             {!showSelect && (
               <>
-                <NoticiaDestacada Noticia={postscopy} />
+                <NoticiaDestacada Noticia={posts} />
                 <Categorias category={category} posts={posts} />
                 <SiguenosRedes />
                 <EtiquetasPopular tags={tags} />
