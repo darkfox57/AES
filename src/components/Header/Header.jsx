@@ -7,8 +7,8 @@ import Nav from './Nav'
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false)
-  const [visible, setVisible] = useState(false)
-
+  const [isOpen, setIsOpen] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 0
@@ -20,20 +20,22 @@ const Header = () => {
     }
   }, [])
 
-  const handleHamburgue = () => {
-    !visible ? setVisible(true) : setVisible(false)
-  }
+  const OpenNav = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <Hamburguer scrolled={scrolled}>
-        <GiHamburgerMenu onClick={handleHamburgue} />
+        <GiHamburgerMenu onClick={OpenNav} />
       </Hamburguer>
-      <HeaderGrid scrolled={scrolled} visible={visible}>
+
+      <HeaderGrid className={isOpen ? 'open' : ''} scrolled={scrolled}>
         <img
           src={logo}
           alt="Por un Perú Sano - organización sin fines de lucro"
         />
-        <Nav ToogleHambur={handleHamburgue} />
+        <Nav OpenNav={OpenNav} />
       </HeaderGrid>
     </>
   )

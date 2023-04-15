@@ -46,7 +46,7 @@ const HomeSlider = () => {
     autoplay={{
         delay: 5000,
         disableOnInteraction: false
-      }}
+    }}
       pagination={{clickable:true}}
       loop={true}
       navigation

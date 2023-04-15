@@ -1,21 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-const slideIn = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`
-const slideOut = keyframes`
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0;
-  }
-`
+
 
 export const NavContainer = styled.nav`
   width: max-content;
@@ -57,7 +42,14 @@ export const ListNav = styled.ul`
       }
     }
   }
-  @media screen and (max-width: 1316px) {
+  //**Responsive media */
+  @media screen and (max-width: 1609px){
+    column-gap: 50px;
+  }
+  @media screen and (max-width: 1551px){
+    column-gap: 35px;
+  }
+  @media screen and (max-width: 1378px) {
     flex-direction: column;
     row-gap: 50px;
   }

@@ -7,18 +7,18 @@ export const BlogContainer = styled.div`
   padding: var(--section-padding);
   align-items: center;
   gap: 50px;
-  .xd {
+  .swiper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 50px;
+    //gap: 50px;
   }
   .swiper-card{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 330px;
   }
 `
 

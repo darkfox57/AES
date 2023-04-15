@@ -21,9 +21,6 @@ const Blog = () => {
   //const dispatch = useDispatch()
   const posts = useSelector((state) => state.blog.copyblogs)
 
-  /*useEffect(() => {
-    dispatch(getAllBlogs())
-  }, [])*/
 
   if (!posts.length) {
     return <p>Cargando eventos...</p>
@@ -32,7 +29,7 @@ const Blog = () => {
     <BlogContainer>
       <BlogHeader />
       <Swiper
-      className='xd'
+      className='swiper'
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
@@ -40,9 +37,7 @@ const Blog = () => {
         loop={true}
         navigation
         spaceBetween={20} // gap
-        //slidesPerView={4}
         breakpoints={{
-          // Configuración para pantallas más pequeñas
           1458: {
             slidesPerView: 4
           },
@@ -52,17 +47,13 @@ const Blog = () => {
           754: {
             slidesPerView: 2
           },
-          // Configuración para pantallas aún más pequeñas
           480: {
             slidesPerView: 1
           }
         }}
         //centeredSlides={true}
-        //onSwiper={(swiper) => console.log(swiper)}
       >
-        {posts
-          .filter((post) => post.status)
-          .map((post) => (
+        {posts.map((post) => (
             <SwiperSlide key={post._id} className="swiper-card">
               <BlogCard
                 image={post.image}

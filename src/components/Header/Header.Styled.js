@@ -1,26 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const slideInAnimation = keyframes`
-  from {
-    transform: translateX(-100%);
-    left: -350px;
-  }
-  to {
-    transform: translateX(0%);
-    left: 0px;
-  }
-`;
-
-const slideOutAnimation = keyframes`
-  from {
-    transform: translateX(0%);
-    left: 0px;
-  }
-  to {
-    transform: translateX(-100%);
-    left: -350px;
-  }
-`;
+import styled from 'styled-components'
 
 export const HeaderGrid = styled.header`
   display: flex;
@@ -34,7 +12,7 @@ export const HeaderGrid = styled.header`
   ${({ scrolled }) =>
     scrolled &&
     `
-    background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -44,49 +22,37 @@ export const HeaderGrid = styled.header`
     height: 50px;
     width: auto;
   }
-  @media screen and (max-width: 1316px) {
-    
+  @media screen and (max-width: 1378px) {
+  display: flex;
   flex-direction: column;
-  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  left: -330px;
+  width: 330px;
+  min-height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-out;
   background: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   border: 1px solid rgba(0, 0, 0, 0.25);
-  z-index: 40;
-  width: 350px;
-  justify-content: space-evenly;
-  min-height: 100vh;
-  z-index: 200;
-  left: ${({ visible }) => (visible ? '0px' : '-350px')};
-  animation: ${props => (props.visible ? slideInAnimation : slideOutAnimation)} 0.3s ease-in-out;
-}
-
+  z-index: 100;
+  &.open {
+    transform: translateX(330px);
+  }
+  }
 `
 export const Hamburguer = styled.header`
-  z-index:40;
+  cursor: pointer;
+  z-index: 40;
   font-size: 1.6rem;
   position: fixed;
   right: 20px;
   top: 20px;
-  color: white;
+  color: var(--primary-blue);
   display: none;
-  ${({ scrolled }) =>
-    scrolled &&
-    `
-    top: 0;
-    right: 0;
-    padding: 10px 20px;;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  z-index: 100;
-  svg {
-    float: right;
-  }
-  `}
-  @media screen and (max-width: 1316px) {
+  @media screen and (max-width: 1378px) {
     display: block;
   }
 `
