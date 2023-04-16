@@ -53,15 +53,14 @@ export default function OrganizationCard({
         </td>
 
         <td>
-          {' '}
           {new Date(submit).toLocaleString('es-ES', {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
-          })}{' '}
+          })}
         </td>
         <td>
-          <Link to={`/dashboard/involucrate/instituciones/${id}`}>Ver</Link>
+          <Link to={`/dashboard/involucrate/alianzas/${id}`}>Ver</Link>
         </td>
       </tr>
     </>
