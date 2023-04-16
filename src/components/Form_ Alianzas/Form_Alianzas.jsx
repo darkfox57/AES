@@ -2,8 +2,10 @@ import React, { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 import TextInput from '../../utils/TextInput/TextInput'
-import Button from '../../utils/Button/Button'
 
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import {
@@ -30,18 +32,12 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
   } = useForm()
   const dispatch = useDispatch()
   const modalRef = useRef(null)
+  const MySwal = withReactContent(Swal)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
+  const regexTelefono = new RegExp('^\\+(?:[0-9]-?){6,14}[0-9]$')
   const regexNumeros = new RegExp('^[0-9]+$')
-
-  const Submit = (data) => {
-    const formData = {
-      ...data,
-      assistants: Number(data.assistants),
-    }
-    dispatch(addFormAlliance(formData))
-  }
 
   const closeModal = (event) => {
     event.preventDefault()
@@ -54,6 +50,35 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       setModal(false)
       setMainForm(event)
+    }
+  }
+
+  const notification = async () => {
+    await MySwal.fire({
+      icon: 'success',
+      title: 'Genial',
+      text: 'El formulario ha sido enviado exitosamente!',
+    })
+  }
+
+  const errorNotify = async () => {
+    await MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Lo sentimos, el formulario no ha podido enviarse adecuadamente!',
+    })
+  }
+
+  const Submit = (data) => {
+    const formData = {
+      ...data,
+      assistants: Number(data.assistants),
+    }
+    try {
+      dispatch(addFormAlliance(formData))
+      return notification()
+    } catch (error) {
+      errorNotify()
     }
   }
 
@@ -119,7 +144,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
             type="text"
             required={true}
             maxLength={15}
-            pattern={regexNumeros}
+            pattern={regexTelefono}
             errors={errors}
           />
 
@@ -188,16 +213,16 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
                 <TextInput
                   key={index}
                   register={register}
-                  name="areas"
+                  name="area"
                   type="radio"
                   label={data.name}
-                  value={data.name}
+                  value={data._id}
                   required={true}
                   errors={errors}
                 />
               ))}
             </RadioButtonContainer>
-            {errors['taller']?.type === 'required' && (
+            {errors['area']?.type === 'required' && (
               <span className="spanError">* La elección es obligatoría</span>
             )}
           </WorkShopContainer>

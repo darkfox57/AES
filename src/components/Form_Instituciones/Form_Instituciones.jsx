@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 import TextInput from '../../utils/TextInput/TextInput'
 
 import Button from '../../utils/Button/Button'
@@ -29,14 +32,11 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
   } = useForm()
   const dispatch = useDispatch()
   const modalRef = useRef(null)
+  const MySwal = withReactContent(Swal)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
-  const regexNumeros = new RegExp('^[0-9]+$')
-
-  const Submit = (data) => {
-    dispatch(addFormInstitution(data))
-  }
+  const regexTelefono = new RegExp('^\\+(?:[0-9]-?){6,14}[0-9]$')
 
   const closeModal = (event) => {
     event.preventDefault()
@@ -49,6 +49,31 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       setModal(false)
       setMainForm(event)
+    }
+  }
+
+  const notification = async () => {
+    await MySwal.fire({
+      icon: 'success',
+      title: 'Genial',
+      text: 'El formulario ha sido enviado exitosamente!',
+    })
+  }
+
+  const errorNotify = async () => {
+    await MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Lo sentimos, el formulario no ha podido enviarse adecuadamente!',
+    })
+  }
+
+  const Submit = (data) => {
+    try {
+      dispatch(addFormInstitution(data))
+      return notification()
+    } catch (error) {
+      errorNotify()
     }
   }
 
@@ -103,7 +128,7 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
             type="text"
             required={true}
             maxLength={15}
-            pattern={regexNumeros}
+            pattern={regexTelefono}
             errors={errors}
           />
 
@@ -137,16 +162,16 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
                 <TextInput
                   key={index}
                   register={register}
-                  name="areas"
+                  name="area"
                   type="radio"
                   label={data.name}
-                  value={data.name}
+                  value={data._id}
                   required={true}
                   errors={errors}
                 />
               ))}
             </RadioButtonContainer>
-            {errors['areas']?.type === 'required' && (
+            {errors['area']?.type === 'required' && (
               <span className="spanError">* La elección es obligatoría</span>
             )}
           </WorkShopContainer>
