@@ -44,6 +44,7 @@ import {
 } from './redux/actions/blog_actions'
 import { getAllCategories, getAllEvents } from './redux/actions/event_actions'
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
+import Desuscripcion from './pages/Desuscripcion/Desuscripcion'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
@@ -64,7 +65,8 @@ function App() {
   return (
     <>
       {location.pathname.includes('dashboard') ||
-      location.pathname === '/login' ? (
+      location.pathname === '/login' ||
+      location.pathname === '/desuscripcion' ? (
         ''
       ) : (
         <Header />
@@ -81,6 +83,7 @@ function App() {
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/faqs/donaciones" element={<FaqDonacion />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/desuscripcion" element={<Desuscripcion />} />
         <Route path="/dashboard" element={<DashLayout />}>
           <Route path="" element={<Dashboard />} />
           <Route path="blog" element={<BlogDash />} />
