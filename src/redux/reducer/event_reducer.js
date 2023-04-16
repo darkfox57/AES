@@ -61,8 +61,8 @@ const eventSlice = createSlice({
       })
 
       .addCase(filterEvents.fulfilled, (state, action) => {
-
-        const eventoCategory = state.events.filter((blog) =>
+        const Status = state.events.filter((event) => event.status)
+        const eventoCategory = Status.filter((blog) =>
           blog.categories.some((category) => category.name === action.payload)
         )
          state.copyEvents = eventoCategory
