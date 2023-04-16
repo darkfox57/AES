@@ -31,7 +31,7 @@ export default function Institutions() {
 
   return (
     <>
-      <h2>Inscritos Involucrate</h2>
+      <h2>Inscritos Instituciones</h2>
       <SubmitList>
         <Table>
           <thead>

@@ -1,19 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SubmitList = styled.div`
-display: flex;
-flex-direction: column;
-gap: 30px;
-.blogHeader {
- display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  .blogHeader {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 `
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-
 
   thead {
     th {
@@ -33,6 +32,16 @@ export const Table = styled.table`
       padding: 0.8rem 0;
       vertical-align: center;
       border-top: 1px solid #dee2e6;
+      a {
+        align-self: center !important;
+        text-decoration: none;
+        color: var(--dash-color);
+        transition: scale 0.5s ease-in-out;
+        &:hover {
+          scale: 1.1;
+          text-decoration: underline;
+        }
+      }
     }
   }
   img {
@@ -40,4 +49,4 @@ export const Table = styled.table`
     height: 100px;
     object-fit: cover;
   }
-`;
+`

@@ -33,6 +33,16 @@ export const Table = styled.table`
       padding: 0.8rem 0;
       vertical-align: center;
       border-top: 1px solid #dee2e6;
+      a {
+        align-self: center !important;
+        text-decoration: none;
+        color: var(--dash-color);
+        transition: scale 0.5s ease-in-out;
+        &:hover {
+          scale: 1.1;
+          text-decoration: underline;
+        }
+      }
     }
   }
   img {

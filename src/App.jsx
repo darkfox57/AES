@@ -86,8 +86,11 @@ function App() {
           <Route path="involucrate" element={<InvolucrateDash />} />
           <Route path="involucrate/" element={<InvolucrateDashMain />} />
           <Route path="involucrate/instituciones" element={<Institutions />} />
+          <Route path="involucrate/instituciones/:id" element={'hola'} />
           <Route path="involucrate/alianzas" element={<Organizations />} />
+          <Route path="involucrate/alianzas/:id" element={'hola'} />
           <Route path="involucrate/especialistas" element={<Specialists />} />
+          <Route path="involucrate/especialistas/:id" element={'hola'} />
           <Route path="mensajes" element={<EventDash />} />
           <Route path="suscriptores" element={<EventDash />} />
           <Route path="banner" element={<EventDash />} />

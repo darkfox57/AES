@@ -12,41 +12,38 @@ export default function Organizations() {
     dispatch(getAllOrganizations())
   }, [])
   return (
-    console.log(organizations),
-    (
-      <>
-        <h2>Inscritos Alianzas</h2>
-        <SubmitList>
-          <Table>
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Organización</th>
-                <th>Ciudad</th>
-                <th>Fecha</th>
-              </tr>
-            </thead>
+    <>
+      <h2>Inscritos Alianzas</h2>
+      <SubmitList>
+        <Table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Organización</th>
+              <th>Ciudad</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
 
-            <tbody>
-              {organizations.map((org) => (
-                <OrganizationCard
-                  key={org._id}
-                  id={org._id}
-                  name={org.fullname}
-                  email={org.email}
-                  organization={org.organizations}
-                  phone={org.phone}
-                  submit={org.createdAt}
-                  city={org.city}
-                  view={org.view}
-                />
-              ))}
-            </tbody>
-          </Table>
-        </SubmitList>
-      </>
-    )
+          <tbody>
+            {organizations.map((org) => (
+              <OrganizationCard
+                key={org._id}
+                id={org._id}
+                name={org.fullname}
+                email={org.email}
+                organization={org.organizations}
+                phone={org.phone}
+                submit={org.createdAt}
+                city={org.city}
+                view={org.view}
+              />
+            ))}
+          </tbody>
+        </Table>
+      </SubmitList>
+    </>
   )
 }
