@@ -6,7 +6,6 @@ export const Form_Styled = styled.form`
   align-items: center;
   flex-wrap: nowrap;
 
-  width: 55%;
   max-height: 90%;
 
   background-color: white;
@@ -29,13 +28,10 @@ export const Form_Styled = styled.form`
     }
   }
 
-  @media screen and (max-width: 768px) {
-    width: 80%;
-  }
-
   .subtitle {
     padding: 0 10px;
     text-align: center;
+    max-width: 400px;
   }
 
   .spanError {

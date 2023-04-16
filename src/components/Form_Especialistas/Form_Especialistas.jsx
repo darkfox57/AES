@@ -2,15 +2,16 @@ import React, { useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 import Select from 'react-select'
 
-import Button from '../../utils/Button/Button'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import PdfUploader from '../../utils/FileUploader/pdfUploader'
 import SelectInput from '../../utils/SelectInput/SelectInput'
 import TextInput from '../../utils/TextInput/TextInput'
-import FileInput from './FileInput'
 
 import { addFormSpecialist } from '../../redux/actions/form_actions'
 
@@ -36,23 +37,15 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
   const countries = useSelector((state) => state.form.countries)
   const uploadedFile = useSelector((state) => state.file.pdfUrl)
   const modalRef = useRef(null)
+  const MySwal = withReactContent(Swal)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
-  const regexNumeros = new RegExp('^[0-9]+$')
+  const regexTelefono = new RegExp('^\\+(?:[0-9]-?){6,14}[0-9]$')
 
   const options = countries.map((country) => {
     return { value: country.name, label: country.name }
   })
-
-  const onSubmit = (data) => {
-    const formData = {
-      ...data,
-      country: data.country.value,
-      filepath: uploadedFile,
-    }
-    dispatch(addFormSpecialist(formData))
-  }
 
   const closeModal = (event) => {
     event.preventDefault()
@@ -65,6 +58,43 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       setModal(false)
       setMainForm(event)
+    }
+  }
+
+  const notification = async () => {
+    await MySwal.fire({
+      icon: 'success',
+      title: 'Genial',
+      text: 'El formulario ha sido enviado exitosamente!',
+    })
+  }
+
+  const errorNotify = async ({ errorMsg }) => {
+    await MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: errorMsg,
+    })
+  }
+
+  const onSubmit = async (data) => {
+    const formData = {
+      ...data,
+      country: data.country.value,
+      filepath: uploadedFile,
+    }
+    if (!uploadedFile) {
+      let errorMsg = 'Por favor, recuerde de mandar su CV!'
+      errorNotify(errorMsg)
+    } else {
+      try {
+        dispatch(addFormSpecialist(formData))
+        return notification()
+      } catch (error) {
+        let errorMsg =
+          'Oops... Al parecer hubo un error al mandar el formulario. Vuelve a intentarlo!'
+        errorNotify(errorMsg)
+      }
     }
   }
 
@@ -95,6 +125,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
             label="Correo de Contacto: "
             name="email"
             type="text"
+            placeholder={'Ej: miemail@gmail.com'}
             errors={errors}
             required={true}
             pattern={regexMail}
@@ -106,10 +137,11 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
             label="Celular de Contacto: "
             name="phone"
             type="text"
+            placeholder={'Ej: +120345678'}
             maxLength={15}
             errors={errors}
             required={true}
-            pattern={regexNumeros}
+            pattern={regexTelefono}
           />
 
           {/**Campo Paises (Seleccion) */}
@@ -134,7 +166,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
                   name="area"
                   type="radio"
                   label={data.name}
-                  value={data.name}
+                  value={data._id}
                   required={true}
                   errors={errors}
                 />
