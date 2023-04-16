@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllMessages } from '../../../redux/actions/dash_forms_actions'
-import MessagesCard from '../../Components/MesaggesCard/MessagesCard'
+import MessagesCard from './MessagesCard/MessagesCard'
 import { SubmitList, Table } from './messages.styles'
 
 export default function Messages() {

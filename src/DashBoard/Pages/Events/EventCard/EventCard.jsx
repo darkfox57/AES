@@ -1,40 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editBlog, getAllBlogs } from '../../../redux/actions/blog_actions'
-import Button from '../../../utils/Button/Button'
-import { CardContainer, ToggleButton } from './blogcard.styles'
+import {
+  editEvent,
+  getAllEvents,
+} from '../../../../redux/actions/event_actions'
+import Button from '../../../../utils/Button/Button'
+import { CardContainer, ToggleButton } from './eventCard.styles'
 
-export default function BlogCard({
+export default function EventCard({
   image,
   title,
-  date,
   status,
   id,
   slug,
   categories,
   description,
   tags,
-  files,
+  start,
+  end,
+  location,
   short_description,
+  files,
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(status)
-
-  const edited = useSelector((state) => state.blog.confirmation)
 
   const handleClick = async () => {
     const post = {
       _id: id,
       title,
       description,
+      short_description,
       image,
       status: !active,
       categories: categories.map((c) => c._id),
       tags: tags.map((t) => t._id),
-      files,
-      short_description,
+      location,
+      start,
+      end,
     }
-    await dispatch(editBlog(post)).finally(() => dispatch(getAllBlogs()))
+    await dispatch(editEvent(post)).finally(() => dispatch(getAllEvents()))
     setActive(active ? false : true)
   }
 
@@ -48,37 +53,40 @@ export default function BlogCard({
         <td>
           <img src={image} alt={title} />
         </td>
+        <td>{title}</td>
         <td>
-          <p>{title}</p>
-        </td>
-        <td>
-          {new Date(date).toLocaleString('es-ES', {
+          {new Date(start).toLocaleString('es-ES', {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
           })}{' '}
         </td>
         <td>
-          {' '}
+          {new Date(end).toLocaleString('es-ES', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric',
+          })}{' '}
+        </td>
+        <td>{location}</td>
+        <td>
           <Button
             type="primary"
             text="Editar"
             size="lg"
-            link={`/dashboard/blog/edit/${slug}`}
+            link={`/dashboard/eventos/edit/${slug}`}
           />
         </td>
         <td>
-          <div>
-            <ToggleButton
-              className={`${active ? ' active' : ''}`}
-              type="button"
-              onClick={handleClick}
-              aria-pressed={status}
-              autoComplete="off"
-            >
-              <div className="handle"></div>
-            </ToggleButton>
-          </div>
+          <ToggleButton
+            className={`${active ? ' active' : ''}`}
+            type="button"
+            onClick={handleClick}
+            aria-pressed={status}
+            autoComplete="off"
+          >
+            <div className="handle"></div>
+          </ToggleButton>
         </td>
       </tr>
     </>

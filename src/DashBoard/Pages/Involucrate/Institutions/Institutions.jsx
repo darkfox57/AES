@@ -4,7 +4,7 @@ import {
   getAllInstitutions,
   getAllOrganizations,
 } from '../../../../redux/actions/dash_forms_actions'
-import InstitutionCard from '../../../Components/InstitutionCard/InstitutionCard'
+import InstitutionCard from './InstitutionCard/InstitutionCard'
 import { SubmitList, Table } from './institutions.styles'
 
 export default function Institutions() {

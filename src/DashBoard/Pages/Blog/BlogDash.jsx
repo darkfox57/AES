@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../utils/Button/Button'
-import BlogCard from '../../Components/BlogCard/BlogCard'
+import BlogCard from './BlogCard/BlogCard'
 import { BlogList, Table } from './blog.styles'
 
 export default function BlogDash() {

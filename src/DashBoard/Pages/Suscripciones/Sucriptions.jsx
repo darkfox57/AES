@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPersons } from '../../../redux/actions/dash_forms_actions'
-import PersonCard from '../../Components/PersonCard/PersonCard'
+import PersonCard from './PersonCard/PersonCard'
 import { SubmitList, Table } from './suscriptions.styles'
 
 export default function Suscriptions() {
