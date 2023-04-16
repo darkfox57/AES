@@ -6,6 +6,7 @@ import DashReducer from '../reducer/dash_forms_reducer';
 import EventReducer from '../reducer/event_reducer';
 import FilesReducer from '../reducer/files_reducer';
 import FormReducer from '../reducer/form_reducer';
+import GalleryReducer from '../reducer/gallery_reducer';
 
 export default configureStore({
  reducer: {
@@ -14,7 +15,8 @@ export default configureStore({
   form: FormReducer,
   account: AccountReducer,
   file: FilesReducer,
-  dash: DashReducer
+  dash: DashReducer,
+  gallery: GalleryReducer,
  },
 });
 

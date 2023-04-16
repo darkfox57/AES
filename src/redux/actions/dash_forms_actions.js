@@ -40,3 +40,8 @@ export const getSpecialist = createAsyncThunk('dash/specialist', async (id) => {
  const response = await axios.get(`specialist/${id}`)
  return response.data
 })
+
+export const getAllMessages = createAsyncThunk('dash/messages', async () => {
+ const response = await axios.get('contact')
+ return response.data
+})
