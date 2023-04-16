@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Button from '../../../utils/Button/Button'
-import { ToggleButton } from './person.styles'
 
 export default function PersonCard({ id, email, submit, view }) {
   const dispatch = useDispatch()

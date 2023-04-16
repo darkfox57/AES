@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllOrganizations } from '../../../../redux/actions/dash_forms_actions'
-import OrganizationCard from '../../../Components/OrganizationCard/OrganizationCard'
+import OrganizationCard from './OrganizationCard/OrganizationCard'
 import { SubmitList, Table } from './organizations.styles'
 
 export default function Organizations() {

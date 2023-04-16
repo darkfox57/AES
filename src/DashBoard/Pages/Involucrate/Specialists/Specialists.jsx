@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllSpecialist } from '../../../../redux/actions/dash_forms_actions'
-import SpecialistCard from '../../../Components/SpecialistCard/SpecialistCard'
+import SpecialistCard from './SpecialistCard/SpecialistCard'
 import { SubmitList, Table } from './specialist.styles'
 
 export default function Specialists() {

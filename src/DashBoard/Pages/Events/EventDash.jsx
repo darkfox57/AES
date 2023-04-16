@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllEvents } from '../../../redux/actions/event_actions'
 import Button from '../../../utils/Button/Button'
-import EventCard from '../../Components/EventCard/EventCard'
+import EventCard from './EventCard/EventCard'
 import { EventList, Table } from './events.style'
 
 export default function EventDash() {
