@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -29,6 +29,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     formState: { errors },
   } = useForm()
   const dispatch = useDispatch()
+  const modalRef = useRef(null)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
@@ -48,10 +49,18 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     setMainForm(event)
   }
 
+  const handleModalVisibility = (event) => {
+    // si el clic ocurre fuera de la ventana modal, la cerramos
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setModal(false)
+      setMainForm(event)
+    }
+  }
+
   return (
     modal && (
-      <Desenfoque>
-        <Form_Styled onSubmit={handleSubmit(Submit)}>
+      <Desenfoque onClick={handleModalVisibility}>
+        <Form_Styled onSubmit={handleSubmit(Submit)} ref={modalRef}>
           <h2>Postulacion de organizaciones para alianzas</h2>
           <span className="subtitle">
             ¿Tu organización está interesada en recibir nuestros talleres

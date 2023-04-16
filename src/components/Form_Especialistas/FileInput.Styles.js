@@ -39,6 +39,7 @@ export const InputContainer = styled.div`
   flex-wrap: wrap;
   gap: 10px;
 
+  margin-top: -10px;
   span {
     font-style: oblique;
     font-size: 0.8rem;

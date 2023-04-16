@@ -64,7 +64,8 @@ export default function Eventos() {
                 img={post.frontpage}
                 title={post.title}
                 tags={post.tags}
-                date={post.createdAt}
+                date={post.date_in}
+                dateOut={post.dateOut}
                 description={post.description}
               />
             ))}

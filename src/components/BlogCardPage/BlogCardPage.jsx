@@ -16,13 +16,15 @@ const BlogCardPage = ({
   img,
   title,
   date,
+  dateOut,
   slug,
- // description,
+  // description,
   tags,
   EventPage,
   short_description,
 }) => {
   const Newdate = new Date(date)
+  const NewDateOut = dateOut && new Date(dateOut)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -50,13 +52,19 @@ const BlogCardPage = ({
           <span>
             <BiStreetView className="icon-card-blog" /> 232 Views
           </span>
-          <span>
-            <AiOutlineComment className="icon-card-blog" /> comments 35
-          </span>
-          <span>
-            <IoCalendarSharp className="icon-card-blog" />{' '}
-            {Newdate.toLocaleDateString()}
-          </span>
+          <div>
+            <span>
+              <IoCalendarSharp className="icon-card-blog" />{' '}
+              {Newdate.toLocaleDateString()}
+            </span>
+            {NewDateOut && (
+              <span>
+                -
+                <IoCalendarSharp className="icon-card-blog" />{' '}
+                {NewDateOut.toLocaleDateString()}
+              </span>
+            )}
+          </div>
         </ContainerSpan>
         <p className="post-body">{short_description} </p>
         <ContainerSpan>
