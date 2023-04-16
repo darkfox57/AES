@@ -5,6 +5,7 @@ import { TbCategory2} from 'react-icons/tb'
 
 const countCategories = (categories, posts) => {
   const Status = posts.filter((post) => post.status)
+
   return categories.reduce((counter, { name, _id }) => {
     // Filtra los posts que incluyen la categoría actual
     const filteredPosts = Status.filter(post => post.categories.some(category => category._id === _id));
@@ -14,7 +15,6 @@ const countCategories = (categories, posts) => {
     return counter;
   }, {});
 }
-
 
 
 const Categorias = ({ category, posts,typeEvent }) => {

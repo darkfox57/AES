@@ -85,7 +85,8 @@ const blogSlice = createSlice({
       })
 
       .addCase(filterCategory.fulfilled, (state, action) => {
-        const blogCategory = state.blogs.filter((blog) =>
+        const Status = state.blogs.filter((blog) => blog.status)
+        const blogCategory = Status.filter((blog) =>
           blog.categories.some((category) => category.name === action.payload)
         )
         state.copyblogs = blogCategory
