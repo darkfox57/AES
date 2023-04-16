@@ -22,7 +22,6 @@ export const getAreas = createAsyncThunk('forms/areas', async () => {
 export const addFormSpecialist = createAsyncThunk(
   'forms/addFormSpecialist',
   async (form) => {
-    form.filepath = 'archivo.pdf'
 
     const createForm = await axios.post('/specialist', form)
     return createForm.data

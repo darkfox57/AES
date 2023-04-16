@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { addBlog, getAllBlogs } from '../../../../redux/actions/blog_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
+import PdfUploader from '../../../../utils/FileUploader/pdfUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody } from './addBlog.styles'
 
@@ -16,6 +17,7 @@ export default function AddBlog() {
   const tags = useSelector((state) => state.blog.tags)
   const estado = useSelector((state) => state.blog.status)
   const postImg = useSelector((state) => state.file.fileUrl)
+  const postPdf = useSelector((state) => state.file.pdfUrl)
   const MySwal = withReactContent(Swal)
   const [sending, setSending] = useState(false)
 
@@ -54,7 +56,7 @@ export default function AddBlog() {
       categories: data.categories,
       status: true,
       tags: data.tags,
-      files: null,
+      files: postPdf,
       short_description: data.short_description,
     }
     try {
@@ -99,6 +101,8 @@ export default function AddBlog() {
               modules={modules}
             ></ReactQuill>
           </div>
+          <p>Subir pdf</p>
+          <PdfUploader />
           <div className="checkboxBlock">
             <span>Categorias:</span>
             {categories.map((category) => (
@@ -126,6 +130,7 @@ export default function AddBlog() {
               </label>
             ))}
           </div>
+
           <input type="submit" />
         </form>
       </FormBody>

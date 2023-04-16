@@ -38,6 +38,7 @@ export default function Organization_Detail() {
         <p>Cargo: {submition.post}</p>
         <p>Ciudad: {submition.city}</p>
         <p>Número de asistentes: {submition.assistants}</p>
+        <p>Aréa: {submition.area.name}</p>
       </Detail_Body>
     </>
   )

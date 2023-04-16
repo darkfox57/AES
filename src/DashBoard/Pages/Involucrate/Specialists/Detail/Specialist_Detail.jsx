@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
+import { IoDocumentAttachOutline } from 'react-icons/io5'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 import { getSpecialist } from '../../../../../redux/actions/dash_forms_actions'
 import { Detail_Body } from '../../detail.styles'
 
@@ -36,7 +38,12 @@ export default function Specialist_Detail() {
         <p>Teléfono: {submition.phone}</p>
         <p>País: {submition.country}</p>
         <p>Número de asistentes: {submition.assistants}</p>
-        <p>Hoja de vida: {submition.filepath}</p>
+        <p>Hoja de vida:</p>
+        <Link to={submition.filepath} target="_blank">
+          <i>
+            <IoDocumentAttachOutline /> <span>Ver cv</span>
+          </i>
+        </Link>
       </Detail_Body>
     </>
   )
