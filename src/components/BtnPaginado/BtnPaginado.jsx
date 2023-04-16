@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { BtnPaginadoFlex, Btnpage, Button } from './BtnPaginado.Styled'
 
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
-
 import useScroll from '../../Hooks/useScrollTop'
 
 const BtnPaginado = ({
