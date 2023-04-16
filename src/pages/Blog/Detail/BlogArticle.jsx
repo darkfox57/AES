@@ -6,6 +6,7 @@ import Footer from '../../../components/Footer/Footer'
 import Portada from '../../../components/Portada/Portada'
 import { getBlog } from '../../../redux/actions/blog_actions'
 import { BlogDetailBody } from './blogdetail.styles'
+import Suscription from '../../../components/Footer/Suscription'
 
 export default function BlogArticle() {
   const { slug } = useParams()
@@ -43,6 +44,7 @@ export default function BlogArticle() {
           </div>
         </BlogDetailBody>
       )}
+      <Suscription />
       <Blog />
       <Footer />
     </>
