@@ -13,6 +13,7 @@ export const uploadFiles = createAsyncThunk('file/upload', async (file) => {
    },
   })
   const fileUrl = await uploadFile(data.path)
+  console.log('subido');
   return fileUrl
  }
  catch (error) {

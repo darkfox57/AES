@@ -1,23 +1,24 @@
-import React, { useState, useRef } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import React, { useRef, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Select from 'react-select'
 
-import TextInput from '../../utils/TextInput/TextInput'
-import SelectInput from '../../utils/SelectInput/SelectInput'
-import FileInput from './FileInput'
 import Button from '../../utils/Button/Button'
-import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
+import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
+import PdfUploader from '../../utils/FileUploader/pdfUploader'
+import SelectInput from '../../utils/SelectInput/SelectInput'
+import TextInput from '../../utils/TextInput/TextInput'
+import FileInput from './FileInput'
 
 import { addFormSpecialist } from '../../redux/actions/form_actions'
 
 import {
   Form_Styled,
-  WorkShopContainer,
   RadioButtonContainer,
   SubmitButton,
+  WorkShopContainer,
 } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
 //desestructuramos ambas props recibidas en showForm
@@ -33,6 +34,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
   } = useForm()
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.form.countries)
+  const uploadedFile = useSelector((state) => state.file.pdfUrl)
   const modalRef = useRef(null)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
@@ -47,6 +49,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
     const formData = {
       ...data,
       country: data.country.value,
+      filepath: uploadedFile,
     }
     dispatch(addFormSpecialist(formData))
   }
@@ -143,7 +146,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
           </WorkShopContainer>
 
           <label>Mandanós tu CV</label>
-          <FileInput register={register} />
+          <PdfUploader />
 
           <SubmitButton type="submit">Enviar Formulario</SubmitButton>
 
