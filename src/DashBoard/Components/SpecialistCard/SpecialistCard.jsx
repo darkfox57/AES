@@ -56,7 +56,7 @@ export default function SpecialistCard({
           })}{' '}
         </td>
         <td>
-          <Link to={`/dashboard/involucrate/instituciones/${id}`}>Ver</Link>
+          <Link to={`/dashboard/involucrate/especialistas/${id}`}>Ver</Link>
         </td>
       </tr>
     </>

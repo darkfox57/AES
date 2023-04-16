@@ -13,9 +13,12 @@ import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
 import EditEvent from './DashBoard/Pages/Events/EditEvent/EditEvent'
 import EventDash from './DashBoard/Pages/Events/EventDash'
+import Institution_Detail from './DashBoard/Pages/Involucrate/Institutions/Detail/Institution_Detail'
 import Institutions from './DashBoard/Pages/Involucrate/Institutions/Institutions'
 import InvolucrateDash from './DashBoard/Pages/Involucrate/Involucrate'
+import Organization_Detail from './DashBoard/Pages/Involucrate/Oganizations/Detail/Organization_Detail'
 import Organizations from './DashBoard/Pages/Involucrate/Oganizations/Organizacions'
+import Specialist_Detail from './DashBoard/Pages/Involucrate/Specialists/Detail/Specialist_Detail'
 import Specialists from './DashBoard/Pages/Involucrate/Specialists/Specialists'
 import InvolucrateDashMain from './DashBoard/Pages/Involucrate/page/Involucrate'
 import Login from './DashBoard/Pages/Login/Login'
@@ -86,11 +89,20 @@ function App() {
           <Route path="involucrate" element={<InvolucrateDash />} />
           <Route path="involucrate/" element={<InvolucrateDashMain />} />
           <Route path="involucrate/instituciones" element={<Institutions />} />
-          <Route path="involucrate/instituciones/:id" element={'hola'} />
+          <Route
+            path="involucrate/instituciones/:id"
+            element={<Institution_Detail />}
+          />
           <Route path="involucrate/alianzas" element={<Organizations />} />
-          <Route path="involucrate/alianzas/:id" element={'hola'} />
+          <Route
+            path="involucrate/alianzas/:id"
+            element={<Organization_Detail />}
+          />
           <Route path="involucrate/especialistas" element={<Specialists />} />
-          <Route path="involucrate/especialistas/:id" element={'hola'} />
+          <Route
+            path="involucrate/especialistas/:id"
+            element={<Specialist_Detail />}
+          />
           <Route path="mensajes" element={<EventDash />} />
           <Route path="suscriptores" element={<EventDash />} />
           <Route path="banner" element={<EventDash />} />
