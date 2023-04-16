@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '../../../utils/Button/Button'
+import { Link } from 'react-router-dom'
 
 export default function SpecialistCard({
   id,
@@ -56,7 +56,7 @@ export default function SpecialistCard({
           })}{' '}
         </td>
         <td>
-          <Button type="primary" text="Ver" size="sm" />
+          <Link to={`/dashboard/involucrate/instituciones/${id}`}>Ver</Link>
         </td>
       </tr>
     </>

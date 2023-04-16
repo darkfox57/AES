@@ -17,6 +17,9 @@ export const CardContainer = styled.div`
   }
   a {
     align-self: center!important;
+    text-decoration: none;
+    font-size: 3rem;
+    color: var(--dash-color)
   }
 `
 

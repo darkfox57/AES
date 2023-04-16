@@ -16,7 +16,7 @@ nav {
  width: 100%;
  list-style: none;
  li .current {
-  background-color: #fb6373;
+  background-color: var(--dash-color);
    color: var(--text-white);
  }
  li a {
@@ -31,7 +31,7 @@ nav {
    font-size: 1.3rem;
   }
   &:hover {
-   background-color: #fb6373;
+   background-color: var(--dash-color);
    color: var(--text-white);
   }
  }

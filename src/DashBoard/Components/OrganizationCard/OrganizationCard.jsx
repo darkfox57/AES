@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '../../../utils/Button/Button'
+import { Link } from 'react-router-dom'
 
 export default function OrganizationCard({
   id,
@@ -61,7 +61,7 @@ export default function OrganizationCard({
           })}{' '}
         </td>
         <td>
-          <Button type="primary" size="sm" text="ver" />
+          <Link to={`/dashboard/involucrate/instituciones/${id}`}>Ver</Link>
         </td>
       </tr>
     </>
