@@ -4,9 +4,20 @@ import { getAllEvents } from '../../../redux/actions/event_actions'
 import Button from '../../../utils/Button/Button'
 import EventCard from './EventCard/EventCard'
 import { EventList, Table } from './events.style'
+import usePagination from '../../../Hooks/usePagination'
+import Paginado from '../../Components/Paginado/Paginado'
 
 export default function EventDash() {
   const events = useSelector((state) => state.event.events)
+
+  const {
+    currentPage,
+    totalPages,
+    paginatedData,
+    NextPage,
+    PreviousPage,
+  } = usePagination(events, 8)
+
   return (
     <>
       <h2>Eventos</h2>
@@ -31,7 +42,7 @@ export default function EventDash() {
           </thead>
 
           <tbody>
-            {events.map((event) => (
+            {paginatedData.map((event) => (
               <EventCard
                 key={event._id}
                 id={event._id}
@@ -52,6 +63,12 @@ export default function EventDash() {
             ))}
           </tbody>
         </Table>
+        <Paginado
+          currentPage={currentPage}
+          totalPages={totalPages}
+          PreviousPage={PreviousPage}
+          NextPage={NextPage}
+        />
       </EventList>
     </>
   )
