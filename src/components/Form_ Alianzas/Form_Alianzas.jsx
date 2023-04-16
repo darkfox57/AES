@@ -50,7 +50,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
 
   return (
     modal && (
-      <Desenfoque>
+      <Desenfoque onClick={closeModal}>
         <Form_Styled onSubmit={handleSubmit(Submit)}>
           <h2>Postulacion de organizaciones para alianzas</h2>
           <span className="subtitle">

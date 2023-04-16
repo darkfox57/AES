@@ -58,7 +58,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
 
   return (
     modal && (
-      <Desenfoque>
+      <Desenfoque onClick={closeModal}>
         <Form_Styled onSubmit={handleSubmit(onSubmit)}>
           <h2>Postulación de especialistas</h2>
           <span className="subtitle">

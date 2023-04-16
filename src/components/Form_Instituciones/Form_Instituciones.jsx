@@ -45,7 +45,7 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
 
   return (
     modal && (
-      <Desenfoque>
+      <Desenfoque onClick={closeModal}>
         <Form_Styled onSubmit={handleSubmit(Submit)}>
           <h2>Postulacion de instituciones</h2>
           <span className="subtitle">
