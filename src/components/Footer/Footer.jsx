@@ -3,6 +3,7 @@ import { InfoContent } from '../Swiper_Home_Portada/About_Home'
 import Contacto from './Contacto'
 import Donacion from './Donacion'
 import NewestBlogs from '../LastBlogs/NewestBlogs'
+
 import {
   FooterContainer,
   FooterContent,

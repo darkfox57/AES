@@ -9,7 +9,7 @@ export const getAllForms = createAsyncThunk('/forms', async () => {
 export const getAllCountries = createAsyncThunk(
   'forms/getAllCountries',
   async () => {
-    const allCountries = await axios('/country/all')
+    const allCountries = await axios('/country')
     return allCountries.data
   }
 )
@@ -22,7 +22,6 @@ export const getAreas = createAsyncThunk('forms/areas', async () => {
 export const addFormSpecialist = createAsyncThunk(
   'forms/addFormSpecialist',
   async (form) => {
-    form.country = 'Argentina'
     form.filepath = 'archivo.pdf'
 
     const createForm = await axios.post('/specialist', form)
@@ -52,6 +51,14 @@ export const addFormContact = createAsyncThunk(
   'forms/contact',
   async (form) => {
     const response = await axios.post('/contact', form)
+    return response.data
+  }
+)
+
+export const addFormSuscription = createAsyncThunk(
+  'forms/suscription',
+  async (form) => {
+    const response = await axios.post('/suscription', form)
     return response.data
   }
 )
