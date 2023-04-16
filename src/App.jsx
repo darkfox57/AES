@@ -22,6 +22,9 @@ import Specialist_Detail from './DashBoard/Pages/Involucrate/Specialists/Detail/
 import Specialists from './DashBoard/Pages/Involucrate/Specialists/Specialists'
 import InvolucrateDashMain from './DashBoard/Pages/Involucrate/page/Involucrate'
 import Login from './DashBoard/Pages/Login/Login'
+import Messages from './DashBoard/Pages/Messages/Messages'
+import Slider from './DashBoard/Pages/Slider/Slider'
+import Suscriptions from './DashBoard/Pages/Suscripciones/Sucriptions'
 import Header from './components/Header/Header'
 import DashLayout from './layouts/DashLayout'
 import About from './pages/About/About'
@@ -103,9 +106,9 @@ function App() {
             path="involucrate/especialistas/:id"
             element={<Specialist_Detail />}
           />
-          <Route path="mensajes" element={<EventDash />} />
-          <Route path="suscriptores" element={<EventDash />} />
-          <Route path="banner" element={<EventDash />} />
+          <Route path="mensajes" element={<Messages />} />
+          <Route path="suscriptores" element={<Suscriptions />} />
+          <Route path="banner" element={<Slider />} />
           <Route path="configuracion" element={<EventDash />} />
           <Route path="perfil/:id" element={<Profile />} />
         </Route>
