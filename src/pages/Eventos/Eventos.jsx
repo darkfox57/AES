@@ -42,65 +42,69 @@ export default function Eventos() {
     dispatch(filterCategory(e.target.value))
   }
   return (
-    <>
-      <Portada img={blogimg} titulo="Evento" />
-      <BlogBody>
-        <div className="filtroOrder">
-          <SelectOrder
-            EventOrder={true}
-            handleFilter={handleFilter}
-            categorys={category}
-            size={showSelect}
-          />
-        </div>
-        <GridCardBlog>
-          {paginatedData
-            .filter((post) => post.status)
-            .map((post) => (
-              <BlogCardPage
-                EventPage={true}
-                slug={post.slug}
-                key={post._id}
-                img={post.frontpage}
-                title={post.title}
-                tags={post.tags}
-                date={post.createdAt}
-                description={post.description}
-              />
-            ))}
-          {!paginatedData.length && <h1>Hola</h1>}
-          {totalPages !== 0 && (
-            <BtnPaginado
-              currentPage={currentPage}
-              totalPages={totalPages}
-              PreviousPage={PreviousPage}
-              posts={eventocopy}
-              NextPage={NextPage}
-              pageNumbers={pageNumbers}
-              goToPage={goToPage}
+    console.log(paginatedData),
+    (
+      <>
+        <Portada img={blogimg} titulo="Evento" />
+        <BlogBody>
+          <div className="filtroOrder">
+            <SelectOrder
+              EventOrder={true}
+              handleFilter={handleFilter}
+              categorys={category}
+              size={showSelect}
             />
-          )}
-        </GridCardBlog>
-        <ContainerMenuBlog>
-          <div className="fixedMenu">
-            <SearchBlog Event={true} />
-            {!showSelect && (
-              <>
-                <NoticiaDestacada Noticia={posts} EventPage={true} />
-                <Categorias
-                  category={category}
-                  posts={posts}
-                  typeEvent={true}
-                />
-                <SiguenosRedes />
-                <EtiquetasPopular EventTag={true} tags={tags} />
-              </>
-            )}
           </div>
-        </ContainerMenuBlog>
-        {showSelect && <SiguenosRedes />}
-      </BlogBody>
-      <Footer />
-    </>
+          <GridCardBlog>
+            {paginatedData
+              .filter((post) => post.status)
+              .map((post) => (
+                <BlogCardPage
+                  EventPage={true}
+                  slug={post.slug}
+                  key={post._id}
+                  img={post.frontpage}
+                  title={post.title}
+                  tags={post.tags}
+                  date={post.date_in}
+                  dateOut={post.date_out}
+                  description={post.description}
+                />
+              ))}
+            {!paginatedData.length && <h1>Hola</h1>}
+            {totalPages !== 0 && (
+              <BtnPaginado
+                currentPage={currentPage}
+                totalPages={totalPages}
+                PreviousPage={PreviousPage}
+                posts={eventocopy}
+                NextPage={NextPage}
+                pageNumbers={pageNumbers}
+                goToPage={goToPage}
+              />
+            )}
+          </GridCardBlog>
+          <ContainerMenuBlog>
+            <div className="fixedMenu">
+              <SearchBlog Event={true} />
+              {!showSelect && (
+                <>
+                  <NoticiaDestacada Noticia={posts} EventPage={true} />
+                  <Categorias
+                    category={category}
+                    posts={posts}
+                    typeEvent={true}
+                  />
+                  <SiguenosRedes />
+                  <EtiquetasPopular EventTag={true} tags={tags} />
+                </>
+              )}
+            </div>
+          </ContainerMenuBlog>
+          {showSelect && <SiguenosRedes />}
+        </BlogBody>
+        <Footer />
+      </>
+    )
   )
 }

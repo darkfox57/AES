@@ -133,6 +133,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
             </RadioButtonContainer>
           </WorkShopContainer>
 
+          <label>Mandanós tu CV</label>
           <FileInput register={register} />
 
           <SubmitButton type="submit">Enviar Formulario</SubmitButton>

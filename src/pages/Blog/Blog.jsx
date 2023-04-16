@@ -46,21 +46,25 @@ export default function Blog() {
       <Portada img={blogimg} titulo="Blog" />
       <BlogBody>
         <div className="filtroOrder">
-          <SelectOrder handleFilter={handleFilter} categorys={category} size={showSelect} />
+          <SelectOrder
+            handleFilter={handleFilter}
+            categorys={category}
+            size={showSelect}
+          />
         </div>
         <GridCardBlog>
           {paginatedData.map((post) => (
-              <BlogCardPage
-                slug={post.slug}
-                key={post._id}
-                img={post.image}
-                title={post.title}
-                tags={post.tags}
-                date={post.createdAt}
-                description={post.description}
-                short_description={post.short_description}
-              />
-            ))}
+            <BlogCardPage
+              slug={post.slug}
+              key={post._id}
+              img={post.image}
+              title={post.title}
+              tags={post.tags}
+              date={post.createdAt}
+              description={post.description}
+              short_description={post.short_description}
+            />
+          ))}
           <BtnPaginado
             currentPage={currentPage}
             totalPages={totalPages}
