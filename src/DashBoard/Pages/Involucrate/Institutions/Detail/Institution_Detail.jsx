@@ -37,7 +37,7 @@ export default function Institution_Detail() {
         <p>Teléfono: {submition.phone}</p>
         <p>Cargo: {submition.post}</p>
         <p>Ciudad: {submition.city}</p>
-        {submition.area.name ? <p>Aréa: {submition.area.name}</p> : ''}
+        {submition.area?.name ? <p>Aréa: {submition.area.name}</p> : ''}
       </Detail_Body>
     </>
   )

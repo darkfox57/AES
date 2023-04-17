@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Card({ id, title, subtitle, url, status }) {
   return (
@@ -6,7 +7,9 @@ export default function Card({ id, title, subtitle, url, status }) {
       <div className="content">
         <h2>{title}</h2>
         <p>{subtitle}</p>
-        <button>Editar</button>
+        <Link to={`edit/${id}`}>
+          <button>Editar</button>
+        </Link>
       </div>
       <img src={url} alt={title} />
     </div>
