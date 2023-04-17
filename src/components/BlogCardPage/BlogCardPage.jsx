@@ -19,6 +19,7 @@ const BlogCardPage = ({
   dateOut,
   slug,
   // description,
+  count_view,
   tags,
   EventPage,
   short_description,
@@ -50,7 +51,7 @@ const BlogCardPage = ({
         <h3>{title}</h3>
         <ContainerSpan>
           <span>
-            <BiStreetView className="icon-card-blog" /> 232 Views
+            <BiStreetView className="icon-card-blog" /> {count_view} Vistas
           </span>
           <div>
             <span>

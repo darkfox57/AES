@@ -56,6 +56,7 @@ export default function Blog() {
           {paginatedData.map((post) => (
             <BlogCardPage
               slug={post.slug}
+              count_view={post.count_view}
               key={post._id}
               img={post.image}
               title={post.title}
