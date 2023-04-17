@@ -17,6 +17,7 @@ export default function EditSlider() {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(true)
   const MySwal = withReactContent(Swal)
   const slider = useSelector((state) => state.gallery.file)
   const { register, handleSubmit, reset } = useForm()
@@ -25,7 +26,9 @@ export default function EditSlider() {
   const postImg = useSelector((state) => state.file.fileUrl)
 
   useEffect(() => {
-    dispatch(getFile(id))
+    dispatch(getFile(id)).then(() => {
+      setLoading(false)
+    })
   }, [id])
 
   useEffect(() => {
@@ -86,6 +89,10 @@ export default function EditSlider() {
     } catch (error) {
       return console.log(error)
     }
+  }
+
+  if (loading) {
+    return <div>Cargando...</div>
   }
 
   return (

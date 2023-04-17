@@ -52,7 +52,7 @@ export default function AddSlider() {
 
   return (
     <div>
-      <h2>Editar Banner</h2>
+      <h2>Agregar Nuevo Banner</h2>
       <FormBody>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
