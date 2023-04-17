@@ -3,6 +3,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 import {
   FormContainer,
   MainContainer,
@@ -20,10 +23,31 @@ export default function Form_Contacto() {
     handleSubmit,
     formState: { errors },
   } = useForm()
+  const MySwal = withReactContent(Swal)
+
+  const notification = async () => {
+    await MySwal.fire({
+      icon: 'success',
+      title: 'Genial',
+      text: 'El mensaje ha sido enviado exitosamente!',
+    })
+  }
+
+  const errorNotify = async ({ errorMsg }) => {
+    await MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: errorMsg,
+    })
+  }
 
   const enviarFormulario = (data) => {
-    console.log(data)
-    dispatch(addFormContact(data))
+    try {
+      dispatch(addFormContact(data))
+      return notification()
+    } catch (error) {
+      errorNotify()
+    }
   }
 
   return (
@@ -79,15 +103,15 @@ export default function Form_Contacto() {
               placeholder="Introduce tu número de teléfono"
               {...register('phone', {
                 required: true,
-                pattern: /^[0-9]+$/,
+                pattern: '^\\+(?:[0-9]-?){6,14}[0-9]$',
               })}
             />
 
-            {errors.telefono?.type === 'required' && (
+            {errors.phone?.type === 'required' && (
               <span>* Este campo require completarse</span>
             )}
-            {errors.telefono?.type === 'pattern' && (
-              <span>* Este campo acepta solo numeros</span>
+            {errors.phone?.type === 'pattern' && (
+              <span>* El formato es incorrecto</span>
             )}
           </div>
           <div>
@@ -100,7 +124,7 @@ export default function Form_Contacto() {
               })}
             />
 
-            {errors.asunto?.type === 'required' && (
+            {errors.title?.type === 'required' && (
               <span>* Este campo require completarse</span>
             )}
           </div>
@@ -118,7 +142,7 @@ export default function Form_Contacto() {
               })}
             />
 
-            {errors.mensaje?.type === 'required' && (
+            {errors.content?.type === 'required' && (
               <span>* Este campo requiere completarse</span>
             )}
           </div>
