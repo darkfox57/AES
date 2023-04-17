@@ -80,12 +80,16 @@ export const BlockDetail = styled.section`
 `
 export const ListBlock = styled.div`
   margin-bottom: 20px;
-
+  
   ul {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     gap: 20px;
-
+   span{
+    font-size: 1.4rem;
+    color:  rgb(0, 186, 163);
+   }
     li {
       display: flex;
       column-gap: 10px;

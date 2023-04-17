@@ -4,6 +4,7 @@ import {
   ButonBlockContainer,
   ListBlock,
 } from './EventArticle.Styles'
+import {MdPlace,MdDateRange,MdOutgoingMail,MdSmartphone} from 'react-icons/md';
 
 const BlockEvento = ({ event }) => {
   return (
@@ -12,17 +13,17 @@ const BlockEvento = ({ event }) => {
       <ListBlock>
         <ul>
           <li>
-            <span>🏠</span>
+            <span><MdPlace/></span>
             {event.location}
           </li>
           <li>
-            <span>📧</span>span_blockdetail@gmail.com
+            <span><MdOutgoingMail/></span>span_blockdetail@gmail.com
           </li>
           <li>
-            <span>📱</span>951378285
+            <span><MdSmartphone/></span>951378285
           </li>
           <li>
-            <span>🗓️</span>
+            <span><MdDateRange/></span>
             {new Date(event.date_in).toLocaleString('es-ES', {
               day: 'numeric',
               month: 'numeric',

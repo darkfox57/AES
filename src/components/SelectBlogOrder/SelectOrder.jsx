@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { OrderBlog } from '../../redux/actions/blog_actions'
-import { SelectOrderContainer } from './SelectBlogOrder.Styled'
+import { SelectFlex, SelectOrderContainer } from './SelectBlogOrder.Styled'
 import { orderEvents } from '../../redux/actions/event_actions'
 
 const SelectOrder = ({categorys,handleFilter,size,EventOrder}) => {
@@ -29,7 +29,7 @@ const SelectOrder = ({categorys,handleFilter,size,EventOrder}) => {
   }
 
   return (
-    <div style={{display:"flex",gap:"15px"}}>
+    <SelectFlex>
       <SelectOrderContainer name="title" value={nameOrder} onChange={handleNameOrderChange}>
         <option value="" defaultValue disabled>
           Alfabetico
@@ -51,7 +51,7 @@ const SelectOrder = ({categorys,handleFilter,size,EventOrder}) => {
               <option key={category._id} value={category.name} >{category.name}</option>
             ))}
         </SelectOrderContainer>}
-    </div>
+    </SelectFlex>
   )
 }
 

@@ -4,10 +4,19 @@ import logo from '../../assets/logo-aes.png'
 import { Hamburguer, HeaderGrid } from './Header.Styled'
 
 import Nav from './Nav'
+import useConditionalRender from '../../Hooks/useConditionalRender'
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
+
+  const [showSelect] = useConditionalRender(1378)
+
+  useEffect(() => {
+    if (!showSelect) {
+      setIsOpen(false)
+    }
+  }, [showSelect])
   
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +35,7 @@ const Header = () => {
 
   return (
     <>
-      <Hamburguer scrolled={scrolled}>
+      <Hamburguer scrolled={scrolled} isOpen={isOpen} >
         <GiHamburgerMenu onClick={OpenNav} />
       </Hamburguer>
 

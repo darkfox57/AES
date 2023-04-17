@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnimatedSpan, SectionFaqContainer } from './SectionFaq.Styled';
+import { IoMdArrowDropdown,IoMdArrowDropup } from 'react-icons/io';
 
 const SectionFaq = ({ title, details, index, visibleIndex, setVisibleIndex }) => {
     
@@ -17,7 +18,7 @@ const SectionFaq = ({ title, details, index, visibleIndex, setVisibleIndex }) =>
     <SectionFaqContainer >
      <div className='title'>
         <h3>{title}</h3>
-        <button onClick={handleView}>❤️</button>
+        <button onClick={handleView}>{index ===  visibleIndex ? <IoMdArrowDropup/> : <IoMdArrowDropdown/>}</button>
       </div>
       <AnimatedSpan visible={visibleIndex === index}>
         <p>{details}</p>
