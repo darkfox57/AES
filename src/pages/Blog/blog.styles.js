@@ -10,7 +10,6 @@ export const BlogBody = styled.section`
     "card menus";
     grid-template-columns: minmax(550px, 700px) 400px; 
 .filtroOrder{
-  //border: 1px solid red;
     grid-area: filtro;
     display: flex;
     gap: 10px;

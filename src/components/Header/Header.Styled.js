@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderGrid = styled.header`
-  display: flex;
+  display: ${({isOpen})=> isOpen ? "none" : "flex"};
   justify-content: space-around;
   align-items: center;
   position: fixed;
@@ -23,7 +23,6 @@ export const HeaderGrid = styled.header`
     width: auto;
   }
   @media screen and (max-width: 1378px) {
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
