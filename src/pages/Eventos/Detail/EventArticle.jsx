@@ -32,9 +32,6 @@ const EventoForm = () => {
     <EventoArticleForm>
       <Portada titulo={event.title} img={event.frontpage} />
       <SectionEvent>
-        <figure>
-          <img src={imgprueba} alt={event.title} />
-        </figure>
         <FlexInfo>
           <BlockEvento event={event} />
           <TextEvent>
