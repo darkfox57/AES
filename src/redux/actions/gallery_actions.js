@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-export const getAllFiles = createAsyncThunk('gallery', async () => {
+export const getAllFiles = createAsyncThunk('dash/gallery', async () => {
  const response = await axios.get('resources/gallery/show')
  return response.data
 })
@@ -11,13 +11,18 @@ export const getFile = createAsyncThunk('gallery/file', async (id) => {
  return response.data
 })
 
+export const deleteFile = createAsyncThunk('gallery/delete', async (id) => {
+ const response = await axios.delete(`resources/gallery/${id}`)
+ return response.data
+})
+
 export const addFile = createAsyncThunk('gallery/add', async (post) => {
  const formatedpost = {
   'title': post.title,
   'subtitle': post.subtitle,
   'url': post.url,
-  'origin': post.origin,
   'status': post.status,
+  'origin': post.origin,
  }
  try {
   const response = await axios.post(`resources/gallery/upload`, formatedpost)
@@ -44,6 +49,4 @@ export const editFile = createAsyncThunk('gallery/edit', async (post) => {
   return error.response.data
  }
 })
-
-
 

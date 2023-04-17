@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {
+  deleteFile,
   editFile,
   getAllFiles,
   getFile,
 } from '../../../../redux/actions/gallery_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
-import { FormBody } from './edit.styles'
+import { DeleteBtn, FormBody } from './edit.styles'
 
 export default function EditSlider() {
   const { id } = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const MySwal = withReactContent(Swal)
   const slider = useSelector((state) => state.gallery.file)
   const { register, handleSubmit, reset } = useForm()
   const [sending, setSending] = useState(null)
   const [newImg, setNewImg] = useState(false)
   const postImg = useSelector((state) => state.file.fileUrl)
+
   useEffect(() => {
     dispatch(getFile(id))
   }, [id])
@@ -74,9 +77,21 @@ export default function EditSlider() {
     }
   }
 
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteFile(slider._id)).finally(() =>
+        dispatch(getAllFiles())
+      )
+      return navigate('/dashboard/banner')
+    } catch (error) {
+      return console.log(error)
+    }
+  }
+
   return (
     <div>
       <h2>Editar Banner</h2>
+      <DeleteBtn onClick={handleDelete}>Eliminar Slider</DeleteBtn>
       <FormBody>
         <form onSubmit={handleSubmit(handleData)}>
           <label>

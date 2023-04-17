@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getAllFiles } from '../../../redux/actions/gallery_actions'
 import Card from './Card/Card'
-import { Sliders } from './slider.styles'
+import { AddBtn, Sliders } from './slider.styles'
 
 export default function Slider() {
   const dispatch = useDispatch()
@@ -15,6 +16,10 @@ export default function Slider() {
   return (
     <>
       <h2>Banner Principal</h2>
+      <Link to={'add-banner'}>
+        <AddBtn>Agregar Slider</AddBtn>
+      </Link>
+
       <Sliders>
         {files
           .filter((file) => file.origin === 'slider')

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const FormBody = styled.section`
   display: flex;
@@ -63,3 +63,23 @@ export const FormBody = styled.section`
     }
   }
 `
+
+export const DeleteBtn = styled.button`
+  padding: 8px 15px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border: none;
+  background-color: rgba(223, 223, 223, 0.5);
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+  max-width: 200px;
+  cursor: pointer;
+  color: var(--main-white);
+  background-color: rgb(251, 99, 115);
+  transition: scale 0.3s ease-in-out;
+  margin-bottom: 50px;
+  /* float: right; */
+  &:hover {
+    scale: 1.03;
+  }
+`
+
