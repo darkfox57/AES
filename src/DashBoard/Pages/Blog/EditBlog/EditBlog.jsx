@@ -28,9 +28,7 @@ export default function EditBlog() {
   const [sending, setSending] = useState(false)
   const [postContent, setPostContent] = useState('')
   useEffect(() => {
-    dispatch(getBlog(slug)).then(() => {
-      setLoading(false)
-    })
+    dispatch(getBlog(slug))
   }, [slug])
 
   const blogPost = useSelector((state) => {
