@@ -4,9 +4,6 @@ import axios from 'axios'
 export const getAllFiles = createAsyncThunk('dash/gallery', async () => {
  const response = await axios.get('resources/gallery/show')
  return response.data
-<<<<<<< Updated upstream
-})
-=======
 })
 
 export const getFile = createAsyncThunk('gallery/file', async (id) => {
@@ -28,7 +25,6 @@ export const addFile = createAsyncThunk('gallery/add', async (post) => {
   'origin': post.origin,
  }
  try {
-  console.log(formatedpost);
   const response = await axios.post(`resources/gallery/upload`, formatedpost)
   return response.data
  }
@@ -54,6 +50,3 @@ export const editFile = createAsyncThunk('gallery/edit', async (post) => {
  }
 })
 
-
-
->>>>>>> Stashed changes

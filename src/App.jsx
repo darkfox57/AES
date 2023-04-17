@@ -23,6 +23,8 @@ import Specialists from './DashBoard/Pages/Involucrate/Specialists/Specialists'
 import InvolucrateDashMain from './DashBoard/Pages/Involucrate/page/Involucrate'
 import Login from './DashBoard/Pages/Login/Login'
 import Messages from './DashBoard/Pages/Messages/Messages'
+import AddSlider from './DashBoard/Pages/Slider/AddSlider/AddSlider'
+import EditSlider from './DashBoard/Pages/Slider/EditSlider/EditSlider'
 import Slider from './DashBoard/Pages/Slider/Slider'
 import Suscriptions from './DashBoard/Pages/Suscripciones/Sucriptions'
 import Header from './components/Header/Header'
@@ -31,6 +33,7 @@ import About from './pages/About/About'
 import Blog from './pages/Blog/Blog'
 import BlogArticle from './pages/Blog/Detail/BlogArticle'
 import Contacto from './pages/Contacto/Contacto'
+import Desuscripcion from './pages/Desuscripcion/Desuscripcion'
 import EventArticle from './pages/Eventos/Detail/EventArticle'
 import Eventos from './pages/Eventos/Eventos'
 import Faqs from './pages/FAQs/Faqs'
@@ -44,7 +47,6 @@ import {
 } from './redux/actions/blog_actions'
 import { getAllCategories, getAllEvents } from './redux/actions/event_actions'
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
-import Desuscripcion from './pages/Desuscripcion/Desuscripcion'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
 
@@ -112,6 +114,8 @@ function App() {
           <Route path="mensajes" element={<Messages />} />
           <Route path="suscriptores" element={<Suscriptions />} />
           <Route path="banner" element={<Slider />} />
+          <Route path="banner/add-banner" element={<AddSlider />} />
+          <Route path="banner/edit/:id" element={<EditSlider />} />
           <Route path="configuracion" element={<EventDash />} />
           <Route path="perfil/:id" element={<Profile />} />
         </Route>
