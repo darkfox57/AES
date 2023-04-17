@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SectionFaqContainer = styled.div`
   //background: #181818;
-  padding: 25px 0px;
+  padding: 15px 0px;
   max-width: 746px;
   border-bottom: 2px solid var(--secondary-color);
   .title {
@@ -10,6 +10,7 @@ export const SectionFaqContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     button {
+      color: rgb(255, 81, 81);
         font-size: 2rem;
       background: none;
       border: 0;

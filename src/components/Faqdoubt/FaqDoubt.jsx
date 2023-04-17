@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SectionFaq from './SectionFaq'
+import { FaqContainerText } from './FaqDoubt.Styled'
 const datas = [
   {
     title: '¿A cuántas personas ayudan con su trabajo de beneficencia?',
@@ -22,14 +23,7 @@ const FaqDoubt = () => {
   const [visibleIndex, setVisibleIndex] = useState(null) // Estado para el índice del span visible
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '80px 80px',
-      }}
-    >
+    <FaqContainerText>
       <div>
         {datas.map((data, index) => (
           <SectionFaq
@@ -42,7 +36,7 @@ const FaqDoubt = () => {
           />
         ))}
       </div>
-    </div>
+    </FaqContainerText>
   )
 }
 
