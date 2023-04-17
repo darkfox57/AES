@@ -61,6 +61,7 @@ export default function Eventos() {
                 EventPage={true}
                 slug={post.slug}
                 key={post._id}
+                count_view={post.count_view}
                 img={post.frontpage}
                 title={post.title}
                 tags={post.tags}
