@@ -61,7 +61,7 @@ export default function InstitutionCard({
           })}{' '}
         </td>
         <td>
-          <Link to={`/dashboard/involucrate/instituciones/${id}`}>Ver</Link>
+          <Link to={`${id}`}>Ver</Link>
         </td>
       </tr>
     </>

@@ -60,7 +60,7 @@ export default function OrganizationCard({
           })}
         </td>
         <td>
-          <Link to={`/dashboard/involucrate/alianzas/${id}`}>Ver</Link>
+          <Link to={`${id}`}>Ver</Link>
         </td>
       </tr>
     </>

@@ -2,9 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   fileUrl: null,
-  pdfUrl: null
+  pdfUrl: null,
 };
-
 const fileSlice = createSlice({
   name: 'file',
   initialState,
@@ -15,7 +14,7 @@ const fileSlice = createSlice({
     setPdfUrl: (state, action) => {
       state.pdfUrl = action.payload;
     },
-  },
+  }
 });
 
 export const { setFileUrl, setPdfUrl } = fileSlice.actions;

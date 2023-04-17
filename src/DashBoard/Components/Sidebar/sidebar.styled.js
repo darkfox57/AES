@@ -25,7 +25,7 @@ nav {
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 15px 50px;
+  padding: 15px 20px;
   cursor: pointer;
   i {
    font-size: 1.3rem;
