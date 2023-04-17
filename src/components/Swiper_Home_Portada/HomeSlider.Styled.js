@@ -7,13 +7,18 @@ export const HomeContainer = styled.div`
     width:100%;
     height: 100vh;
    .slider{
-    opacity:0.7;
+    
     width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img{
         object-fit:cover;
         object-position:center;
         width: 100%;
         height: 100%;
+        z-index: -1;
+        opacity:0.7;
     }
    }
   }
