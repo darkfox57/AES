@@ -22,7 +22,6 @@ export const getAreas = createAsyncThunk('forms/areas', async () => {
 export const addFormSpecialist = createAsyncThunk(
   'forms/addFormSpecialist',
   async (form) => {
-
     const createForm = await axios.post('/specialist', form)
     return createForm.data
   }
@@ -58,6 +57,14 @@ export const addFormSuscription = createAsyncThunk(
   'forms/suscription',
   async (form) => {
     const response = await axios.post('/suscription', form)
+    return response.data
+  }
+)
+
+export const deleteFormSuscriptioin = createAsyncThunk(
+  'forms/desuscription',
+  async (email) => {
+    const response = await axios.delete('/suscription', email)
     return response.data
   }
 )
