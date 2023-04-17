@@ -1,28 +1,26 @@
 import styled from 'styled-components'
 
-export const Sliders = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
-  gap: 50px;
-  .container {
+export const FormBody = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  form {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px;
-    height: 400px;
-    -webkit-box-shadow: -1px 1px 10px 1.5px #dddddd;
-    -moz-box-shadow: -1px 1px 10px 1.5px #dddddd;
-    box-shadow: -1px 1px 10px 1.5px #dddddd;
-    position: relative;
-    overflow: hidden;
-    color: var(--text-white);
-    img {
-      position: absolute;
-      inset: 0 0;
-      object-fit: cover;
-      z-index: -1;
+    gap: 32px;
+    label {
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
     }
-    .content {
+    img {
+      max-width: 500px;
+    }
+    .editImg {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      width: auto;
       button {
         padding: 8px 15px;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -36,14 +34,37 @@ export const Sliders = styled.section`
         background-color: rgb(251, 99, 115);
         transition: scale 0.3s ease-in-out;
         &:hover {
-          scale: 1.1;
+          scale: 1.03;
+        }
+      }
+    }
+    .editor {
+      width: 100%;
+      min-height: 400px;
+      padding: 0;
+      background-color: #fff;
+      .editor-input {
+        width: 100%;
+        height: 360px;
+        background-color: #fff;
+      }
+    }
+    .checkboxBlock {
+      display: flex;
+      width: 100%;
+      gap: 30px;
+      label {
+        flex-direction: row;
+        input {
+          width: auto;
+          box-shadow: none;
         }
       }
     }
   }
 `
 
-export const AddBtn = styled.button`
+export const DeleteBtn = styled.button`
   padding: 8px 15px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   border: none;
