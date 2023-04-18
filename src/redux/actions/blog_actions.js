@@ -1,5 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+const token = localStorage.getItem('access_token');
+
 
 export const getAllBlogs = createAsyncThunk('blogs/getAllBlogs', async () => {
   const response = await axios.get('blogs')
@@ -36,7 +38,11 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
     'short_description': post.short_description
   }
   try {
-    const response = await axios.post('blogs', formatedpost)
+    const response = await axios.post('blogs', formatedpost, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
     return response.data
   }
   catch (error) {
@@ -55,8 +61,14 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
     'files': post.files,
     'short_description': post.short_description
   }
+
+
   try {
-    const response = await axios.put(`blogs/${post._id}`, formatedpost)
+    const response = await axios.put(`blogs/${post._id}`, formatedpost, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
     return response.data
   }
   catch (error) {
@@ -82,7 +94,11 @@ export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
 
 
 export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
-  const response = await axios.delete(`blogs/${id}`)
+  const response = await axios.delete(`blogs/${id}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
   return response.data
 })
 

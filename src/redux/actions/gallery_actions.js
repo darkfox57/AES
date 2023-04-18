@@ -12,7 +12,11 @@ export const getFile = createAsyncThunk('gallery/file', async (id) => {
 })
 
 export const deleteFile = createAsyncThunk('gallery/delete', async (id) => {
- const response = await axios.delete(`resources/gallery/${id}`)
+ const response = await axios.delete(`resources/gallery/${id}`, {
+  headers: {
+   'Authorization': `Bearer ${token}`
+  }
+ })
  return response.data
 })
 
@@ -36,8 +40,11 @@ export const addFile = createAsyncThunk('gallery/add', async (post) => {
 
 export const editFile = createAsyncThunk('gallery/edit', async (post) => {
  try {
-  console.log(post);
-  const response = await axios.put(`resources/gallery/${post._id}`, post)
+  const response = await axios.put(`resources/gallery/${post._id}`, post, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
   return response.data
  }
  catch (error) {

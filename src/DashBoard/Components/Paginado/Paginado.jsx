@@ -22,7 +22,7 @@ const Paginado = ({ NextPage, PreviousPage, totalPages, currentPage }) => {
         className={`dashBtn ${!currentPage && 'disabled'}`}
         onClick={handleBack}
       >
-        back
+        Ant.
       </button>
       <span>
         {currentPage + 1} de {totalPages}
@@ -31,7 +31,7 @@ const Paginado = ({ NextPage, PreviousPage, totalPages, currentPage }) => {
         className={`dashBtn ${totalPages === currentPage + 1 && 'disabled'}`}
         onClick={handleSkip}
       >
-        skip
+        Sig.
       </button>
     </PaginadoContainer>
   )

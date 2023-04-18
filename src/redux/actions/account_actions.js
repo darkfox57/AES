@@ -11,13 +11,21 @@ export const login = createAsyncThunk('login/validate', async (userData) => {
 })
 
 export const logOut = createAsyncThunk('logOut', async () => {
- const response = await axios.post('/auth/logOut')
+ const response = await axios.post('/auth/logOut', {
+  headers: {
+   'Authorization': `Bearer ${token}`
+  }
+ })
  return response.data
 })
 
 export const userValidation = createAsyncThunk('login/validation', async (token) => {
  try {
-  const response = await axios.post('/auth/validation', token)
+  const response = await axios.post('/auth/validation', token, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
   return response.data
  } catch (error) {
   return error.response.data
@@ -26,7 +34,11 @@ export const userValidation = createAsyncThunk('login/validation', async (token)
 
 export const getAllUsers = createAsyncThunk('login/getAllUsers', async () => {
  try {
-  const response = await axios.get('users')
+  const response = await axios.get('users', {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
   return response.data
  }
  catch (error) {
@@ -36,7 +48,11 @@ export const getAllUsers = createAsyncThunk('login/getAllUsers', async () => {
 
 export const getUser = createAsyncThunk('login/getUser', async (user_id) => {
  try {
-  const response = await axios.get(`users/${user_id}`)
+  const response = await axios.get(`users/${user_id}`, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
   return response.data
  }
  catch (error) {
@@ -56,7 +72,11 @@ export const updateUser = createAsyncThunk('login/updateUser', async (userData) 
 
  }
  try {
-  const response = await axios.put(`users/${userData.id}`, formatedpost)
+  const response = await axios.put(`users/${userData.id}`, formatedpost, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
   return response.data
  }
  catch (error) {
@@ -65,7 +85,11 @@ export const updateUser = createAsyncThunk('login/updateUser', async (userData) 
 })
 
 export const getRoles = createAsyncThunk('login/getRoles', async () => {
- const response = await axios.get('roles')
+ const response = await axios.get('roles', {
+  headers: {
+   'Authorization': `Bearer ${token}`
+  }
+ })
  return response.data
 
 })

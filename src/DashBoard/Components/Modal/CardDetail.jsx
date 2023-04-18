@@ -100,9 +100,6 @@ const CardDetail = ({ submition, setSelectedCard, type }) => {
               src={submition.url}
               alt="Imagen de la galeria de involucrate"
             />
-            <button className="dashBtn">
-              {submition.status ? 'desactivar' : 'activar'}
-            </button>
           </>
         )}
       </DetailModal>

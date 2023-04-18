@@ -64,7 +64,11 @@ export const addFormSuscription = createAsyncThunk(
 export const deleteFormSuscription = createAsyncThunk(
   'forms/desuscription',
   async (email) => {
-    const response = await axios.delete(`suscription/delete?email=${email}`)
+    const response = await axios.delete(`suscription/delete?email=${email}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
     return response.data
   }
 )
