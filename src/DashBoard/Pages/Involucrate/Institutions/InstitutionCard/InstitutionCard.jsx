@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import CardDetail from '../../../../Components/Modal/CardDetail'
 
 export default function InstitutionCard({
   id,
@@ -12,6 +13,10 @@ export default function InstitutionCard({
   submit,
   view,
   city,
+  activeModal,
+  captureIdModal,
+  submition,
+  setSelectedCard
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(view)
@@ -61,8 +66,9 @@ export default function InstitutionCard({
           })}{' '}
         </td>
         <td>
-          <Link to={`${id}`}>Ver</Link>
+        <button onClick={() => captureIdModal(id)}>Ver</button> 
         </td>
+        {activeModal && <CardDetail submition={submition} type={"institucion"} setSelectedCard={setSelectedCard} />}
       </tr>
     </>
   )
