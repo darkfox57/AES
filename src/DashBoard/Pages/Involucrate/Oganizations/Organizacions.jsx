@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import usePagination from '../../../../Hooks/usePagination'
 import { getAllOrganizations } from '../../../../redux/actions/dash_forms_actions'
+import Paginado from '../../../Components/Paginado/Paginado'
 import OrganizationCard from './OrganizationCard/OrganizationCard'
 import { SubmitList, Table } from './organizations.styles'
 
@@ -11,6 +13,9 @@ export default function Organizations() {
   useEffect(() => {
     dispatch(getAllOrganizations())
   }, [])
+
+  const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
+    usePagination(organizations, 10)
   return (
     <>
       <h2>Inscritos Alianzas</h2>
@@ -28,7 +33,7 @@ export default function Organizations() {
           </thead>
 
           <tbody>
-            {organizations.map((org) => (
+            {paginatedData.map((org) => (
               <OrganizationCard
                 key={org._id}
                 id={org._id}
@@ -43,6 +48,12 @@ export default function Organizations() {
             ))}
           </tbody>
         </Table>
+        <Paginado
+          currentPage={currentPage}
+          totalPages={totalPages}
+          PreviousPage={PreviousPage}
+          NextPage={NextPage}
+        />
       </SubmitList>
     </>
   )
