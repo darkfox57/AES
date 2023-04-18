@@ -21,9 +21,6 @@ export default function Header({ user }) {
         <i>
           <IoNotificationsOutline />
         </i>
-        <i>
-          <IoSearchOutline />
-        </i>
       </HeaderNotifications>
       <ProfileMiniature>
         <img

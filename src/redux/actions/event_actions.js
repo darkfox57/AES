@@ -1,5 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+const token = localStorage.getItem('access_token');
+
 
 export const getAllEvents = createAsyncThunk('events/getAll', async () => {
   const response = await axios.get('/events')
@@ -25,7 +27,11 @@ export const editEvent = createAsyncThunk('events/editEvent', async (post) => {
     tags: post.tags,
   }
   try {
-    const response = await axios.put(`/events/${post._id}`, formatedpost)
+    const response = await axios.put(`/events/${post._id}`, formatedpost, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
     return response.data
   } catch (error) {
     return error.response.data
@@ -47,11 +53,36 @@ export const addEvent = createAsyncThunk('events/addEvent', async (post) => {
   }
 
   try {
-    const response = await axios.post(`events`, formatedpost)
+    const response = await axios.post(`events`, formatedpost, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
     return response.data
   } catch (error) {
     return error.response.data
   }
+})
+
+export const createEventSuscription = createAsyncThunk(
+  'events/suscription',
+  async (suscription) => {
+    const response = await axios.post('/person', suscription, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    return response.data
+  }
+)
+
+export const deleteEvent = createAsyncThunk('events/delete', async (id) => {
+  const response = await axios.delete(`events/${id}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
 })
 
 export const getEventByTitle = createAsyncThunk(
@@ -96,15 +127,4 @@ export const orderEvents = createAsyncThunk(`events/order`, async (type) => {
   return type
 })
 
-export const createEventSuscription = createAsyncThunk(
-  'events/suscription',
-  async (suscription) => {
-    const response = await axios.post('/person', suscription)
-    return response.data
-  }
-)
 
-export const deleteEvent = createAsyncThunk('events/delete', async (id) => {
-  const response = await axios.delete(`events/${id}`)
-  return response.data
-})
