@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
@@ -13,7 +13,7 @@ import { FormContainer } from './Suscription.Styles'
 import { addFormSuscription } from '../../redux/actions/form_actions'
 
 export default function () {
-  // const [showError, setShowError] = useState(false)
+  const [formSubmitted, setFormSubmitted] = useState(false)
 
   const {
     register,
@@ -22,21 +22,15 @@ export default function () {
   } = useForm()
   const dispatch = useDispatch()
   const error = useSelector((state) => state.form.error)
+  const [showError, setShowError] = useState(null)
+  const errorRef = useRef(null)
   const MySwal = withReactContent(Swal)
 
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
 
-  const handleSuscription = (data) => {
+  const handleSuscription = async (data) => {
     dispatch(addFormSuscription(data))
-    // .then(() => setShowError(false))
-    // .catch(() => setShowError(true))
-
-    // console.log(error)
-    if (error) {
-      return errorNotify()
-    } else {
-      return notification()
-    }
+    setFormSubmitted(true)
   }
 
   const notification = async () => {
@@ -51,17 +45,25 @@ export default function () {
     await MySwal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Lo sentimos, parece que hubo un problema al querer inscribirte al newsletter',
+      text: 'Lo sentimos, parece que hubo un problema al querer inscribirte a nuestro newsletter',
     })
   }
 
-  // useEffect(() => {
-  //   if (showError) {
-  //     errorNotify()
-  //   } else {
-  //     notification()
-  //   }
-  // }, [showError])
+  useEffect(() => {
+    errorRef.current = error
+  }, [error])
+
+  useEffect(() => {
+    if (formSubmitted) {
+      const hasError = errorRef.current !== null
+      if (hasError) {
+        errorNotify()
+      } else {
+        notification()
+      }
+      setFormSubmitted(false)
+    }
+  }, [formSubmitted])
 
   return (
     <FormContainer onSubmit={handleSubmit(handleSuscription)}>

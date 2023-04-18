@@ -57,7 +57,6 @@ export const addFormSuscription = createAsyncThunk(
   'forms/suscription',
   async (form) => {
     const response = await axios.post('suscription', form)
-    console.log(response)
     return response.data
   }
 )
