@@ -45,3 +45,8 @@ export const getAllMessages = createAsyncThunk('dash/messages', async () => {
  const response = await axios.get('contact')
  return response.data
 })
+
+export const getMessage = createAsyncThunk('dash/messages/message', async (id) => {
+ const response = await axios.get(`contact/${id}`)
+ return response.data
+})

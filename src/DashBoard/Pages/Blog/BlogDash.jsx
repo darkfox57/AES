@@ -1,30 +1,24 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import usePagination from '../../../Hooks/usePagination'
 import Button from '../../../utils/Button/Button'
+import Paginado from '../../Components/Paginado/Paginado'
 import BlogCard from './BlogCard/BlogCard'
 import { BlogList, Table } from './blog.styles'
-import Paginado from '../../Components/Paginado/Paginado'
-import usePagination from '../../../Hooks/usePagination'
 
 export default function BlogDash() {
   const posts = useSelector((state) => state.blog.blogs)
 
-  const {
-    currentPage,
-    totalPages,
-    paginatedData,
-    NextPage,
-    PreviousPage,
-  } = usePagination(posts, 8)
+  const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
+    usePagination(posts, 8)
   return (
     <>
       <h2>Blog</h2>
-      <Button
-        type="primary"
-        link="/dashboard/blog/add-blog"
-        text="Crear nuevo articulo"
-        size="md"
-      />
+      <Link to={`/dashboard/blog/add-blog`}>
+        <button className="dashBtn">Crear nuevo articulo</button>
+      </Link>
+
       <BlogList>
         <Table>
           <thead>
@@ -57,10 +51,10 @@ export default function BlogDash() {
           </tbody>
         </Table>
         <Paginado
-           currentPage={currentPage}
-           totalPages={totalPages}
-           PreviousPage={PreviousPage}
-           NextPage={NextPage}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          PreviousPage={PreviousPage}
+          NextPage={NextPage}
         />
       </BlogList>
     </>

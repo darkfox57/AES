@@ -22,6 +22,7 @@ import Specialist_Detail from './DashBoard/Pages/Involucrate/Specialists/Detail/
 import Specialists from './DashBoard/Pages/Involucrate/Specialists/Specialists'
 import InvolucrateDashMain from './DashBoard/Pages/Involucrate/page/Involucrate'
 import Login from './DashBoard/Pages/Login/Login'
+import MessageDetail from './DashBoard/Pages/Messages/MessageDetail/MessageDetail'
 import Messages from './DashBoard/Pages/Messages/Messages'
 import AddSlider from './DashBoard/Pages/Slider/AddSlider/AddSlider'
 import EditSlider from './DashBoard/Pages/Slider/EditSlider/EditSlider'
@@ -92,7 +93,7 @@ function App() {
           <Route path="blog/add-blog" element={<AddBlog />} />
           <Route path="blog/edit/:slug" element={<EditBlog />} />
           <Route path="eventos" element={<EventDash />} />
-          <Route path="eventos/add-blog" element={<AddEvent />} />
+          <Route path="eventos/add-event" element={<AddEvent />} />
           <Route path="eventos/edit/:slug" element={<EditEvent />} />
           <Route path="involucrate" element={<InvolucrateDash />} />
           <Route path="involucrate/" element={<InvolucrateDashMain />} />
@@ -112,6 +113,7 @@ function App() {
             element={<Specialist_Detail />}
           />
           <Route path="mensajes" element={<Messages />} />
+          <Route path="mensajes/:id" element={<MessageDetail />} />
           <Route path="suscriptores" element={<Suscriptions />} />
           <Route path="banner" element={<Slider />} />
           <Route path="banner/add-banner" element={<AddSlider />} />
