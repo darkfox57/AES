@@ -1,21 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import usePagination from '../../../../Hooks/usePagination'
-import { getAllOrganizations } from '../../../../redux/actions/dash_forms_actions'
-import Paginado from '../../../Components/Paginado/Paginado'
+import { getAllOrganizations, getOrganization } from '../../../../redux/actions/dash_forms_actions'
 import OrganizationCard from './OrganizationCard/OrganizationCard'
 import { SubmitList, Table } from './organizations.styles'
 
 export default function Organizations() {
   const organizations = useSelector((state) => state.dash.organizations)
+  const [selectedCard, setSelectedCard] = useState(null);
+  const submition = useSelector((state) => state.dash.organization)
   const areas = useSelector((state) => state.dash.areas)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllOrganizations())
   }, [])
 
-  const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
-    usePagination(organizations, 10)
+  const captureIdModal = (cardId) => {
+    setSelectedCard(cardId);
+    dispatch(getOrganization(cardId));
+  };
+
   return (
     <>
       <h2>Inscritos Alianzas</h2>
@@ -33,7 +36,7 @@ export default function Organizations() {
           </thead>
 
           <tbody>
-            {paginatedData.map((org) => (
+            {organizations.map((org) => (
               <OrganizationCard
                 key={org._id}
                 id={org._id}
@@ -44,16 +47,14 @@ export default function Organizations() {
                 submit={org.createdAt}
                 city={org.city}
                 view={org.view}
+                submition={submition}
+                activeModal={selectedCard === org._id}
+                captureIdModal={captureIdModal}
+                setSelectedCard={setSelectedCard}
               />
             ))}
           </tbody>
         </Table>
-        <Paginado
-          currentPage={currentPage}
-          totalPages={totalPages}
-          PreviousPage={PreviousPage}
-          NextPage={NextPage}
-        />
       </SubmitList>
     </>
   )

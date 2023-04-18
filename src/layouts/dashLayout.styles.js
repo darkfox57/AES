@@ -42,6 +42,7 @@ export const HeaderContainer = styled.div`
 `
 
 export const MainContainer = styled.div`
+  //position: relative;
   grid-area: main;
   padding: 105px 30px;
   height: 100%;
