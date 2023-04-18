@@ -1,16 +1,13 @@
 import React from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-import { MainContainer } from './Desuscripcion.Styles'
-import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 import { deleteFormSuscription } from '../../redux/actions/form_actions'
+import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
+import { MainContainer } from './Desuscripcion.Styles'
 
 export default function Desuscripcion() {
   const [searchparams] = useSearchParams()
@@ -28,14 +25,14 @@ export default function Desuscripcion() {
       return errorNotify()
     } else {
       return notification()
-     }
-}
+    }
+  }
 
   const notification = async () => {
     await MySwal.fire({
       icon: 'success',
       title: 'Proceso exitoso',
-      text: 'Te has desuscrito exitosamente!
+      text: 'Te has desuscrito exitosamente!',
     })
   }
 
