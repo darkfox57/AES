@@ -1,33 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  getAllInstitutions,
-  getAllOrganizations,
-} from '../../../../redux/actions/dash_forms_actions'
+import usePagination from '../../../../Hooks/usePagination'
+import { getAllInstitutions } from '../../../../redux/actions/dash_forms_actions'
+import Paginado from '../../../Components/Paginado/Paginado'
 import InstitutionCard from './InstitutionCard/InstitutionCard'
 import { SubmitList, Table } from './institutions.styles'
 
 export default function Institutions() {
   const institutions = useSelector((state) => state.dash.institutions)
-  const areas = useSelector((state) => state.dash.areas)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllInstitutions())
   }, [])
 
-  // {categories.map((category) => (
-  //  <label key={category.name}>
-  //    <input
-  //      type="checkbox"
-  //      value={category._id}
-  //      defaultChecked={blogPost.categories?.some(
-  //        (c) => c._id === category._id
-  //      )}
-  //      {...register('categories')}
-  //    />
-  //    <span>{category.name}</span>
-  //  </label>
-  // ))}
+  const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
+    usePagination(institutions, 10)
 
   return (
     <>
@@ -46,7 +33,7 @@ export default function Institutions() {
           </thead>
 
           <tbody>
-            {institutions.map((inst) => (
+            {paginatedData.map((inst) => (
               <InstitutionCard
                 key={inst._id}
                 id={inst._id}
@@ -62,6 +49,12 @@ export default function Institutions() {
             ))}
           </tbody>
         </Table>
+        <Paginado
+          currentPage={currentPage}
+          totalPages={totalPages}
+          PreviousPage={PreviousPage}
+          NextPage={NextPage}
+        />
       </SubmitList>
     </>
   )
