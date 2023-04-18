@@ -42,12 +42,10 @@ const HomeSlider = () => {
         {files
           .filter((file) => file.origin === 'slider')
           .map((image) => (
-            <>
-              <SwiperSlide className="slider" key={image._id}>
-                <img src={image.url} alt={image.title} />
-                <SwiperInfo title={image.title} subtitle={image.subtitle} />
-              </SwiperSlide>
-            </>
+            <SwiperSlide className="slider" key={image._id}>
+              <img src={image.url} alt={image.title} />
+              <SwiperInfo title={image.title} subtitle={image.subtitle} />
+            </SwiperSlide>
           ))}
       </Swiper>
     </HomeContainer>

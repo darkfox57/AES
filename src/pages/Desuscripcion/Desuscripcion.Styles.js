@@ -37,6 +37,7 @@ export const ImgContainer = styled.div`
     margin-top: -75px;
   }
 
+
   @media (max-width: 900px) {
     height: 175px;
 
@@ -60,7 +61,7 @@ export const TextContainer = styled.div`
   h3 {
     color: #00baa3;
   }
-
+  
   span,
   h3 {
     text-align: center;

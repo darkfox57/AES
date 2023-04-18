@@ -1,93 +1,113 @@
 import React from 'react'
-import { DetailModal, ModalContainer } from './Modal.styled'
 import { IoDocumentAttachOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-const CardDetail = ({ submition, setSelectedCard,type }) => {
+import { DetailModal, ModalContainer } from './Modal.styled'
+const CardDetail = ({ submition, setSelectedCard, type }) => {
   const handleCloseModal = () => {
     setSelectedCard(null)
   }
 
   return (
     <ModalContainer onClick={handleCloseModal}>
-      <DetailModal onClick={(e) => e.stopPropagation()}>
+      <DetailModal onClick={(e) => e.stopPropagation()} size={type}>
         <button className="close" onClick={handleCloseModal}>
-          Close
+          <h4>X</h4>
         </button>
-        {type === "especialista" && <> <h4>Nombre Completo</h4>
-        <span>{submition.fullname}</span>
-
-        <h4>Telefono</h4>
-        <span>{submition.phone}</span>
-
-        <h4>Email</h4>
-        <span>{submition.email}</span>
-
-         <h4>N de asistentes</h4>
-        <span>{submition.assistants ? submition.assistants : 0}</span>
-
-        <h4>Pais</h4>
-        <span>{submition.country}</span>
-
-        <h4>Hoja de vida</h4>
-        <div>
-         <Link to={submition.filepath} target="_blank">
-          <i>
-           <IoDocumentAttachOutline /> <span>Ver cv</span>
-          </i>
-        </Link>
-        </div>
-        </>}
-        {type === "institucion" && <> 
-        <h4>Nombre Completo</h4>
-        <span>{submition.fullname}</span>
-
-        <h4>Institución</h4>
-        <span>{submition.organization}</span>
-
-        <h4>Telefono</h4>
-        <span>{submition.phone}</span>
-
-        <h4>Email</h4>
-        <span>{submition.email}</span>
-
-         <h4>Cargo</h4>
-        <span>{submition.post}</span>
-
-        <h4>Ciudad</h4>
-        <span>{submition.city}</span>
-        {submition.area?.name ? <><h4>Aréa:</h4> <span>{submition.area.name}</span></> : ''}
-    
-        </>}
-        {
-          type === "organizacion"&& <> 
-          <h4>Nombre Completo</h4>
-          <span>{submition.fullname}</span>
-  
-          <h4>Organización</h4>
-          <span>{submition.work}</span>
-  
-          <h4>Telefono</h4>
-          <span>{submition.phone}</span>
-  
-          <h4>Email</h4>
-          <span>{submition.email}</span>
-  
-           <h4>Cargo</h4>
-          <span>{submition.post}</span>
-
-          <h4>N de asistentes</h4>
-          <span>{submition.assistants}</span>
-
-          <h4>Ciudad</h4>
-          <span>{submition.city}</span>
-          {submition.area?.name ? <><h4>Aréa:</h4> <span>{submition.area.name}</span></> : ''}
-      
+        {type === 'especialista' && (
+          <>
+            {' '}
+            <p>Nombre Completo</p>
+            <span>{submition.fullname}</span>
+            <p>Telefono</p>
+            <span>{submition.phone}</span>
+            <p>Email</p>
+            <span>{submition.email}</span>
+            <p>N de asistentes</p>
+            <span>{submition.assistants ? submition.assistants : 0}</span>
+            <p>Pais</p>
+            <span>{submition.country}</span>
+            <p>Hoja de vida</p>
+            <div>
+              <Link to={submition.filepath} target="_blank">
+                <i>
+                  <IoDocumentAttachOutline />
+                </i>
+                <span>Ver cv</span>
+              </Link>
+            </div>
           </>
-        }
+        )}
+        {type === 'institucion' && (
+          <>
+            <p>Nombre Completo</p>
+            <span>{submition.fullname}</span>
+
+            <p>Institución</p>
+            <span>{submition.organization}</span>
+
+            <p>Telefono</p>
+            <span>{submition.phone}</span>
+
+            <p>Email</p>
+            <span>{submition.email}</span>
+
+            <p>Cargo</p>
+            <span>{submition.post}</span>
+
+            <p>Ciudad</p>
+            <span>{submition.city}</span>
+            {submition.area?.name ? (
+              <>
+                <p>Aréa:</p> <span>{submition.area.name}</span>
+              </>
+            ) : (
+              ''
+            )}
+          </>
+        )}
+        {type === 'organizacion' && (
+          <>
+            <p>Nombre Completo</p>
+            <span>{submition.fullname}</span>
+
+            <p>Organización</p>
+            <span>{submition.work}</span>
+
+            <p>Telefono</p>
+            <span>{submition.phone}</span>
+
+            <p>Email</p>
+            <span>{submition.email}</span>
+
+            <p>Cargo</p>
+            <span>{submition.post}</span>
+
+            <p>N de asistentes</p>
+            <span>{submition.assistants}</span>
+
+            {submition.area?.name ? (
+              <>
+                <p>Aréa:</p> <span>{submition.area.name}</span>
+              </>
+            ) : (
+              ''
+            )}
+          </>
+        )}
+        {type === 'gallery' && (
+          <>
+            <img
+              src={submition.url}
+              alt="Imagen de la galeria de involucrate"
+            />
+            <button className="dashBtn">
+              {submition.status ? 'desactivar' : 'activar'}
+            </button>
+          </>
+        )}
       </DetailModal>
     </ModalContainer>
   )
 }
 
 export default CardDetail
-
