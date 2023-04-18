@@ -16,7 +16,7 @@ export default function InstitutionCard({
   activeModal,
   captureIdModal,
   submition,
-  setSelectedCard
+  setSelectedCard,
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(view)
@@ -66,9 +66,17 @@ export default function InstitutionCard({
           })}{' '}
         </td>
         <td>
-        <button onClick={() => captureIdModal(id)}>Ver</button> 
+          <button className="dashBtn" onClick={() => captureIdModal(id)}>
+            Ver
+          </button>
         </td>
-        {activeModal && <CardDetail submition={submition} type={"institucion"} setSelectedCard={setSelectedCard} />}
+        {activeModal && (
+          <CardDetail
+            submition={submition}
+            type={'institucion'}
+            setSelectedCard={setSelectedCard}
+          />
+        )}
       </tr>
     </>
   )

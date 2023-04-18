@@ -15,7 +15,7 @@ export default function SpecialistCard({
   activeModal,
   captureIdModal,
   submition,
-  setSelectedCard
+  setSelectedCard,
 }) {
   const dispatch = useDispatch()
 
@@ -45,10 +45,18 @@ export default function SpecialistCard({
           })}{' '}
         </td>
         <td>
-          <button onClick={() => captureIdModal(id)}>Ver</button> 
+          <button className="dashBtn" onClick={() => captureIdModal(id)}>
+            Ver
+          </button>
         </td>
       </tr>
-      {activeModal && <CardDetail submition={submition} type={"especialista"} setSelectedCard={setSelectedCard} />}
+      {activeModal && (
+        <CardDetail
+          submition={submition}
+          type={'especialista'}
+          setSelectedCard={setSelectedCard}
+        />
+      )}
     </>
   )
 }

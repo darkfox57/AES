@@ -7,6 +7,7 @@ import {
   IoSearchOutline,
 } from 'react-icons/io5'
 import { useNavigate } from 'react-router'
+import Notifications from '../Notifications/Notifications'
 import { HeaderNotifications, LogOut, ProfileMiniature } from './header.styles'
 
 export default function Header({ user }) {
@@ -26,7 +27,7 @@ export default function Header({ user }) {
       </HeaderNotifications>
       <ProfileMiniature>
         <img
-          src="https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg"
+          src={user.avatar}
           alt="Avatar de perfil para usuario administrador - Por un Perú Sano"
         />
         <span>{user.firstname}</span>

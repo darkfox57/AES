@@ -13,6 +13,9 @@ import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
 import EditEvent from './DashBoard/Pages/Events/EditEvent/EditEvent'
 import EventDash from './DashBoard/Pages/Events/EventDash'
+import AddImage from './DashBoard/Pages/Gallery/AddImage/AddImage'
+import EditImg from './DashBoard/Pages/Gallery/EditImg/EditImg'
+import Gallery from './DashBoard/Pages/Gallery/Gallery'
 import Institution_Detail from './DashBoard/Pages/Involucrate/Institutions/Detail/Institution_Detail'
 import Institutions from './DashBoard/Pages/Involucrate/Institutions/Institutions'
 import InvolucrateDash from './DashBoard/Pages/Involucrate/Involucrate'
@@ -118,7 +121,10 @@ function App() {
           <Route path="banner" element={<Slider />} />
           <Route path="banner/add-banner" element={<AddSlider />} />
           <Route path="banner/edit/:id" element={<EditSlider />} />
-          <Route path="configuracion" element={<EventDash />} />
+          <Route path="galeria-involucrate" element={<Gallery />} />
+          <Route path="galeria-involucrate/add" element={<AddImage />} />
+          <Route path="galeria-involucrate/edit/:id" element={<EditImg />} />
+
           <Route path="perfil/:id" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />

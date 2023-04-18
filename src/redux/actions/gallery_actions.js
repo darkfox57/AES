@@ -35,14 +35,9 @@ export const addFile = createAsyncThunk('gallery/add', async (post) => {
 
 
 export const editFile = createAsyncThunk('gallery/edit', async (post) => {
- const formatedpost = {
-  'title': post.title,
-  'subtitle': post.subtitle,
-  'url': post.url,
-  'status': post.status,
- }
  try {
-  const response = await axios.put(`resources/gallery/${post._id}`, formatedpost)
+  console.log(post);
+  const response = await axios.put(`resources/gallery/${post._id}`, post)
   return response.data
  }
  catch (error) {
