@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import usePagination from '../../../../Hooks/usePagination'
 import {
   getAllInstitutions,
   getAllOrganizations,
   getInstitution,
 } from '../../../../redux/actions/dash_forms_actions'
+import Paginado from '../../../Components/Paginado/Paginado'
 import InstitutionCard from './InstitutionCard/InstitutionCard'
 import { SubmitList, Table } from './institutions.styles'
 
 export default function Institutions() {
   const institutions = useSelector((state) => state.dash.institutions)
   const areas = useSelector((state) => state.dash.areas)
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null)
   const submition = useSelector((state) => state.dash.institution)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -19,9 +21,9 @@ export default function Institutions() {
   }, [])
 
   const captureIdModal = (cardId) => {
-    setSelectedCard(cardId);
-    dispatch(getInstitution(cardId));
-  };
+    setSelectedCard(cardId)
+    dispatch(getInstitution(cardId))
+  }
   // {categories.map((category) => (
   //  <label key={category.name}>
   //    <input
@@ -35,6 +37,9 @@ export default function Institutions() {
   //    <span>{category.name}</span>
   //  </label>
   // ))}
+
+  const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
+    usePagination(institutions, 10)
 
   return (
     <>
@@ -53,7 +58,7 @@ export default function Institutions() {
           </thead>
 
           <tbody>
-            {institutions.map((inst) => (
+            {paginatedData.map((inst) => (
               <InstitutionCard
                 key={inst._id}
                 id={inst._id}
@@ -73,6 +78,12 @@ export default function Institutions() {
             ))}
           </tbody>
         </Table>
+        <Paginado
+          currentPage={currentPage}
+          totalPages={totalPages}
+          PreviousPage={PreviousPage}
+          NextPage={NextPage}
+        />
       </SubmitList>
     </>
   )
