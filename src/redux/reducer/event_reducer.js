@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
+  deleteEvent,
   editEvent,
   filterEvents,
   filterTagsEvent,
@@ -8,7 +9,7 @@ import {
   getAllTags,
   getEvent,
   getEventByTitle,
-  orderEvents,
+  orderEvents
 } from '../actions/event_actions'
 
 const initialState = {
@@ -59,13 +60,19 @@ const eventSlice = createSlice({
       .addCase(editEvent.fulfilled, (state, action) => {
         state.confirmation = action.payload
       })
+      .addCase(deleteEvent.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+      .addCase(deleteEvent.rejected, (state, action) => {
+        state.error = action.payload
+      })
 
       .addCase(filterEvents.fulfilled, (state, action) => {
         const Status = state.events.filter((event) => event.status)
         const eventoCategory = Status.filter((blog) =>
           blog.categories.some((category) => category.name === action.payload)
         )
-         state.copyEvents = eventoCategory
+        state.copyEvents = eventoCategory
       })
 
       .addCase(filterEvents.rejected, (state, action) => {
@@ -102,9 +109,9 @@ const eventSlice = createSlice({
       .addCase(filterTagsEvent.fulfilled, (state, action) => {
         const Status = state.events.filter((event) => event.status)
         const EvenTag = Status.filter((event) =>
-        event.tags.some((tag) => tag.name === action.payload)
-      )
-      state.copyEvents = EvenTag
+          event.tags.some((tag) => tag.name === action.payload)
+        )
+        state.copyEvents = EvenTag
       })
   },
 })

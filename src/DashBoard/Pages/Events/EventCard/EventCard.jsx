@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
   editEvent,
   getAllEvents,
 } from '../../../../redux/actions/event_actions'
-import Button from '../../../../utils/Button/Button'
 import { CardContainer, ToggleButton } from './eventCard.styles'
 
 export default function EventCard({
@@ -70,12 +70,9 @@ export default function EventCard({
         </td>
         <td>{location}</td>
         <td>
-          <Button
-            type="primary"
-            text="Editar"
-            size="lg"
-            link={`/dashboard/eventos/edit/${slug}`}
-          />
+          <Link to={`/dashboard/eventos/edit/${slug}`}>
+            <button className="dashBtn">Editar</button>
+          </Link>
         </td>
         <td>
           <ToggleButton
