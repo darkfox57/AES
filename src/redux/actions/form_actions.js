@@ -1,8 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+const token = localStorage.getItem('access_token');
+
 
 export const getAllForms = createAsyncThunk('/forms', async () => {
-  const allForms = await axios('forms')
+  const allForms = await axios('forms', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
   return allForms.data
 })
 

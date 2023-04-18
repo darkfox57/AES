@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+const token = localStorage.getItem('access_token');
 
 export const login = createAsyncThunk('login/validate', async (userData) => {
  try {

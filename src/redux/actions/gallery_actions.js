@@ -1,5 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+const token = localStorage.getItem('access_token');
 
 export const getAllFiles = createAsyncThunk('dash/gallery', async () => {
  const response = await axios.get('resources/gallery/show')
