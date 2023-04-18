@@ -4,7 +4,11 @@ import { Outlet, useNavigate } from 'react-router'
 import Header from '../DashBoard/Components/Header/Header.jsx'
 import Sidebar from '../DashBoard/Components/Sidebar/Sidebar.jsx'
 import Dashboard from '../DashBoard/Pages/Dashboard/Dashboard.jsx'
-import { getRoles, getUser } from '../redux/actions/account_actions.js'
+import {
+  getRoles,
+  getUser,
+  userValidation,
+} from '../redux/actions/account_actions.js'
 
 import {
   DashBoardLayoutContainer,
@@ -16,33 +20,33 @@ import {
 export default function DashLayout() {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.account.user)
-  const [access, setAccess] = useState()
-  const roles = useSelector((state) => state.account.roles)
   const navigate = useNavigate()
-  const token = localStorage.getItem('access_token')
-  const accessLog = useSelector((state) => state.account.user)
+  const validation = useSelector((state) => state.account.validation)
+  const user_id = localStorage.getItem('user_id')
+  const token_validation = localStorage.getItem('access_token')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const user_id = localStorage.getItem('user_id')
-    const token = localStorage.getItem('access_token')
-    dispatch(getRoles())
-    dispatch(getUser(user_id))
-    Object.keys(user) ? setAccess(true) : setAccess(false)
-    if (accessLog.errors && !token && location.pathname.includes('dashboard')) {
+    const validationLogin = async () => {
+      await dispatch(userValidation(token_validation))
+    }
+    validationLogin()
+  }, [dispatch, token_validation])
+
+  useEffect(() => {
+    if (validation.message === true) {
+      dispatch(getUser(user_id))
+      dispatch(getRoles())
+      setLoading(false)
+    }
+    if (validation.message === false) {
+      localStorage.removeItem('user_id')
+      localStorage.removeItem('access_token')
       navigate('/login')
     }
-    // if (access && user_id && token && location.pathname.includes('login')) {
-    //   navigate('/dashboard')
-    // }
-  }, [])
+  }, [validation, dispatch, user_id])
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('access_token')
-  //   dispatch(userValidation(token))
-  //   validation === 'deny'
-  //     ? localStorage.removeItem('access_token')
-  //     : navigate('/login')
-  // }, [])
+  if (loading) return <div>cargando...</div>
 
   return (
     <>

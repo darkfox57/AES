@@ -20,11 +20,13 @@ export const logOut = createAsyncThunk('logOut', async () => {
  return response.data
 })
 
-export const userValidation = createAsyncThunk('login/validation', async (token) => {
+
+
+export const userValidation = createAsyncThunk('login/validation', async (token_validation) => {
  try {
-  const response = await axios.post('/auth/validation', token, {
+  const response = await axios.get('/auth/dashboard', {
    headers: {
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token_validation}`
    }
   })
   return response.data
@@ -32,6 +34,9 @@ export const userValidation = createAsyncThunk('login/validation', async (token)
   return error.response.data
  }
 })
+
+
+
 
 export const getAllUsers = createAsyncThunk('login/getAllUsers', async () => {
  try {
@@ -66,7 +71,6 @@ export const updateUser = createAsyncThunk('login/updateUser', async (userData) 
   'firstname': userData.firstname,
   'lastname': userData.lastname,
   'email': userData.email,
-  'password': userData.password,
   'status': userData.status,
   'roles': userData.rol,
   'avatar': userData.avatar
