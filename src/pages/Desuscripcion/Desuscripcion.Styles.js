@@ -23,6 +23,7 @@ export const MainContainer = styled.div`
 export const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
+
   width: 100%;
   height: 225px;
 
@@ -36,7 +37,7 @@ export const ImgContainer = styled.div`
     margin-top: -75px;
   }
 
-  @media (max-width: 905px) {
+  @media (max-width: 900px) {
     height: 175px;
 
     img {
@@ -59,6 +60,7 @@ export const TextContainer = styled.div`
   h3 {
     color: #00baa3;
   }
+
   span,
   h3 {
     text-align: center;
