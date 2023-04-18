@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
-const Nav = ({ OpenNav }) => {
+const Nav = ({ OpenNav,showSelect }) => {
   const token = localStorage.getItem('access_token')
 
   const handleClick = () => {
@@ -19,7 +19,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to="/"
-            onClick={handleClick}
+            onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Home
@@ -28,7 +28,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to={'/acerca-de'}
-            onClick={handleClick}
+             onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Acerca de
@@ -37,7 +37,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to={'/involucrate'}
-            onClick={handleClick}
+             onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Involucrate
@@ -46,7 +46,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to={'/blog'}
-            onClick={handleClick}
+            onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Blogs
@@ -55,7 +55,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to={'/evento'}
-            onClick={handleClick}
+            onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Eventos
@@ -64,7 +64,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to={'/faqs'}
-            onClick={handleClick}
+             onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             FAQ's
@@ -73,7 +73,7 @@ const Nav = ({ OpenNav }) => {
         <li>
           <NavLink
             to={'/contacto'}
-            onClick={handleClick}
+            onClick={showSelect ? handleClick : ""}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Contacto
@@ -81,13 +81,14 @@ const Nav = ({ OpenNav }) => {
         </li>
         <li>
           <Button
+            funtion={showSelect ? handleClick : ""}
             type="primary"
             size="md"
             text="Haz una donación"
             link="/faqs/donaciones"
           />
           {token && (
-            <Button type="secondary" size="md" text="Admin" link="/dashboard" />
+            <Button  funtion={showSelect ? handleClick : ""} type="secondary" size="md" text="Admin" link="/dashboard" />
           )}
         </li>
       </ListNav>

@@ -44,7 +44,7 @@ const Header = () => {
           src={logo}
           alt="Por un Perú Sano - organización sin fines de lucro"
         />
-        <Nav OpenNav={OpenNav} />
+        <Nav OpenNav={OpenNav} showSelect={showSelect} />
       </HeaderGrid>
     </>
   )

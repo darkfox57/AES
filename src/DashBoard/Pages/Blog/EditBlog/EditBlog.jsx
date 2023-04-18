@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { IoDocumentAttachOutline } from 'react-icons/io5'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {
+  deleteBlog,
   editBlog,
   getAllBlogs,
   getBlog,
 } from '../../../../redux/actions/blog_actions'
 import { resetBlogState } from '../../../../redux/reducer/blog_reducer'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
+import PdfUploader from '../../../../utils/FileUploader/pdfUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
 import { FormBody, ToggleButton } from './editBlog.styles'
 
@@ -23,12 +27,18 @@ export default function EditBlog() {
   const categories = useSelector((state) => state.blog.categories)
   const postImg = useSelector((state) => state.file.fileUrl)
   const tags = useSelector((state) => state.blog.tags)
+  const uploadedFile = useSelector((state) => state.file.pdfUrl)
   const MySwal = withReactContent(Swal)
   const [newImg, setNewImg] = useState(false)
+  const [newFile, setNewFile] = useState(false)
   const [sending, setSending] = useState(false)
   const [postContent, setPostContent] = useState('')
+  const navigate = useNavigate()
+
   useEffect(() => {
-    dispatch(getBlog(slug))
+    dispatch(getBlog(slug)).then(() => {
+      setLoading(false)
+    })
   }, [slug])
 
   const blogPost = useSelector((state) => {
@@ -42,18 +52,20 @@ export default function EditBlog() {
   useEffect(() => {
     setActive(blogPost.status)
     setPostContent(blogPost.description)
+    blogPost.files === null && setNewFile(true)
   }, [blogPost])
 
   const { register, handleSubmit, reset } = useForm()
   useEffect(() => {
     if (blogPost) {
-      const { _id, title, description, image, short_description } = blogPost
+      const { _id, title, description, image, short_description, files } =
+        blogPost
       reset({
         id: _id,
         title,
         description,
         image,
-        files: null,
+        files,
         short_description,
       })
     }
@@ -98,6 +110,7 @@ export default function EditBlog() {
       categories: data.categories,
       tags: data.tags,
       short_description: data.short_description,
+      files: data.files || uploadedFile,
     }
     try {
       setSending(true)
@@ -110,24 +123,42 @@ export default function EditBlog() {
     }
   }
 
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteBlog(blogPost._id)).finally(() =>
+        dispatch(getAllBlogs())
+      )
+      return navigate('/dashboard/blog')
+    } catch (error) {
+      return console.log(error)
+    }
+  }
+
   if (loading) {
     return <div>Cargando...</div>
   }
   return (
     <>
       <h2>Editar</h2>
-      <div className="toggle">
-        <ToggleButton
-          className={`${active ? ' active' : ''}`}
-          type="button"
-          onClick={handleClick}
-          aria-pressed={blogPost.status}
-          autoComplete="off"
-        >
-          <div className="handle"></div>
-        </ToggleButton>
-      </div>
+
       <FormBody>
+        <div className="editBtns">
+          <div className="toggle">
+            <span>Cambiar estado:</span>
+            <ToggleButton
+              className={`${active ? ' active' : ''}`}
+              type="button"
+              onClick={handleClick}
+              aria-pressed={blogPost.status}
+              autoComplete="off"
+            >
+              <div className="handle"></div>
+            </ToggleButton>
+          </div>
+          <div className="dashBtn" onClick={handleDelete}>
+            Eliminar
+          </div>
+        </div>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
             Titulo:
@@ -172,6 +203,24 @@ export default function EditBlog() {
               modules={modules}
             ></ReactQuill>
           </div>
+
+          {!newFile ? (
+            <>
+              <Link to={blogPost.files} target="_blank">
+                <i>
+                  <IoDocumentAttachOutline /> <span>Ver archivo</span>
+                </i>
+              </Link>
+              <button onClick={() => setNewFile(true)}>
+                Subir nuevo archivo
+              </button>
+            </>
+          ) : (
+            <>
+              <span>Cargar nuevo archivo:</span>
+              <PdfUploader />
+            </>
+          )}
 
           <div className="checkboxBlock">
             <span>Categorias:</span>

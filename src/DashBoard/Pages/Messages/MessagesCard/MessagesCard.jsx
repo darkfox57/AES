@@ -56,7 +56,7 @@ export default function Card({
           })}{' '}
         </td>
         <td>
-          <Link to={`/dashboard/messages/${id}`}>Ver</Link>
+          <Link to={`${id}`}>Ver</Link>
         </td>
       </tr>
     </>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { editBlog, getAllBlogs } from '../../../../redux/actions/blog_actions'
 import Button from '../../../../utils/Button/Button'
 import { CardContainer, ToggleButton } from './blogcard.styles'
@@ -56,16 +57,12 @@ export default function BlogCard({
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
-          })}{' '}
+          })}
         </td>
         <td>
-          {' '}
-          <Button
-            type="primary"
-            text="Editar"
-            size="lg"
-            link={`/dashboard/blog/edit/${slug}`}
-          />
+          <Link to={`/dashboard/blog/edit/${slug}`}>
+            <button className="dashBtn">Editar</button>
+          </Link>
         </td>
         <td>
           <div>

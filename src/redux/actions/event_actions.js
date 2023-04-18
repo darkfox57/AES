@@ -103,3 +103,8 @@ export const createEventSuscription = createAsyncThunk(
     return response.data
   }
 )
+
+export const deleteEvent = createAsyncThunk('events/delete', async (id) => {
+  const response = await axios.delete(`events/${id}`)
+  return response.data
+})

@@ -4,6 +4,17 @@ export const FormBody = styled.section`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  .editBtns {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .toggle {
+    display: flex;
+gap: 10px;
+align-items: center;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -75,7 +86,6 @@ export const ToggleButton = styled.button`
   background-color: #ccc;
   outline: none;
   cursor: pointer;
-
   .handle {
     position: absolute;
     top: 0.125rem;

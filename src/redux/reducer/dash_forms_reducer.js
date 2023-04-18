@@ -1,6 +1,6 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 
-import { getAllAreas, getAllInstitutions, getAllMessages, getAllOrganizations, getAllPersons, getAllSpecialist, getInstitution, getOrganization, getSpecialist } from '../actions/dash_forms_actions'
+import { getAllAreas, getAllInstitutions, getAllMessages, getAllOrganizations, getAllPersons, getAllSpecialist, getInstitution, getMessage, getOrganization, getSpecialist } from '../actions/dash_forms_actions'
 
 const initialState = {
   areas: [],
@@ -15,7 +15,8 @@ const initialState = {
   institution: {},
   organization: {},
   specialist: {},
-  messages: []
+  messages: [],
+  message: {}
 }
 
 const dashSlice = createSlice({
@@ -77,6 +78,12 @@ const dashSlice = createSlice({
         state.messages = action.payload
       })
       .addCase(getAllMessages.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+      .addCase(getMessage.fulfilled, (state, action) => {
+        state.message = action.payload
+      })
+      .addCase(getMessage.rejected, (state, action) => {
         state.error = action.error.message
       })
   },

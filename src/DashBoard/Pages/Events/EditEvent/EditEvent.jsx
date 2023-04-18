@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {
+  deleteEvent,
   editEvent,
   getAllEvents,
   getEvent,
@@ -26,6 +27,8 @@ export default function EditEvent() {
   const [newImg, setNewImg] = useState(false)
   const [sending, setSending] = useState(false)
   const [postContent, setPostContent] = useState('')
+  const navigate = useNavigate()
+
   useEffect(() => {
     dispatch(getEvent(slug)).then(() => {
       setLoading(false)
@@ -135,6 +138,17 @@ export default function EditEvent() {
     }
   }
 
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteEvent(eventPost._id)).finally(() =>
+        dispatch(getAllEvents())
+      )
+      return navigate('/dashboard/eventos')
+    } catch (error) {
+      return console.log(error)
+    }
+  }
+
   if (loading) {
     return <div>Cargando...</div>
   }
@@ -142,18 +156,25 @@ export default function EditEvent() {
   return (
     <>
       <h2>Editar</h2>
-      <div className="toggle">
-        <ToggleButton
-          className={`${active ? ' active' : ''}`}
-          type="button"
-          onClick={handleClick}
-          aria-pressed={eventPost.status}
-          autoComplete="off"
-        >
-          <div className="handle"></div>
-        </ToggleButton>
-      </div>
+
       <FormBody>
+        <div className="editBtns">
+          <div className="toggle">
+            <span>Cambiar estado:</span>
+            <ToggleButton
+              className={`${active ? ' active' : ''}`}
+              type="button"
+              onClick={handleClick}
+              aria-pressed={eventPost.status}
+              autoComplete="off"
+            >
+              <div className="handle"></div>
+            </ToggleButton>
+          </div>
+          <div className="dashBtn" onClick={handleDelete}>
+            Eliminar
+          </div>
+        </div>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
             Titulo:

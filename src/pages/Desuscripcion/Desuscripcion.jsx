@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 import { MainContainer } from './Desuscripcion.Styles'
 import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 import { deleteFormSuscription } from '../../redux/actions/form_actions'
@@ -14,6 +17,7 @@ export default function Desuscripcion() {
   const email = searchparams.get('email')
 
   const dispatch = useDispatch()
+
   const error = useSelector((state) => state.form.error)
   const MySwal = withReactContent(Swal)
 
@@ -24,14 +28,14 @@ export default function Desuscripcion() {
       return errorNotify()
     } else {
       return notification()
-    }
-  }
+     }
+}
 
   const notification = async () => {
     await MySwal.fire({
       icon: 'success',
       title: 'Proceso exitoso',
-      text: 'Te has desuscrito exitosamente!',
+      text: 'Te has desuscrito exitosamente!
     })
   }
 
