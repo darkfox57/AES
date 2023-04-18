@@ -2,12 +2,17 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
+import sadEmoji from '../../assets/sadEmoji.png'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 import { deleteFormSuscription } from '../../redux/actions/form_actions'
 import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
-import { MainContainer } from './Desuscripcion.Styles'
+import {
+  ImgContainer,
+  MainContainer,
+  TextContainer,
+} from './Desuscripcion.Styles'
 
 export default function Desuscripcion() {
   const [searchparams] = useSearchParams()
@@ -46,19 +51,26 @@ export default function Desuscripcion() {
 
   return (
     <MainContainer>
-      <h3>Cancelacion</h3>
+      <ImgContainer>
+        <img src={sadEmoji} alt="" />
+      </ImgContainer>
 
-      <span>
-        Haga clic en "Cancelar suscripción" para dejar de recibir mensajes de
-        este remitente a esta dirección de correo electrónico: Haga clic en
-        "Cancelación" para dejar de recibir mensajes de este remitente a esta
-        dirección de correo electrónico:
-        <strong></strong>
-      </span>
+      <TextContainer>
+        <h3>Wow... ¿En serio quieres dejarnos?</h3>
 
-      <SubmitButton onClick={handleDesuscription}>
-        Cancelar suscripcion
-      </SubmitButton>
+        <span>
+          El siguiente email: <strong>{email}</strong> esta por dejar de recibir
+          notificaciones con respecto a nuestro newsletter.
+        </span>
+        <span>
+          Si estas seguro de que quieres desuscribirte, simplemente haz un click
+          en el boton de <em>"Cancelar Suscripcion"</em> que se encuentra justo
+          debajo.
+        </span>
+        <SubmitButton onClick={handleDesuscription}>
+          Cancelar suscripcion
+        </SubmitButton>
+      </TextContainer>
     </MainContainer>
   )
 }
