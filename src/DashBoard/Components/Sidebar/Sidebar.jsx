@@ -27,7 +27,7 @@ export default function Sidebar({ user }) {
             <span>
               {user.firstname} {user.lastname}
             </span>
-            <Link to={`/dashboard/perfil/${user._id}`}>Editar Perfil</Link>
+            <Link to={`perfil/${user._id}`}>Editar Perfil</Link>
           </div>
         </ProfileMiniature>
         <nav>
@@ -44,7 +44,7 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/blog"
+              to="blog"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -55,7 +55,7 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/eventos"
+              to="eventos"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -66,7 +66,7 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/involucrate"
+              to="involucrate"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -77,7 +77,7 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/mensajes"
+              to="mensajes"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -88,7 +88,7 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/suscriptores"
+              to="suscriptores"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -99,7 +99,7 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/banner"
+              to="banner"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
@@ -110,13 +110,13 @@ export default function Sidebar({ user }) {
           </li>
           <li>
             <NavLink
-              to="/dashboard/configuracion"
+              to="galeria-involucrate"
               className={({ isActive }) => (isActive ? 'current' : '')}
             >
               <i>
-                <IoBuildOutline />
+                <IoImageOutline />
               </i>
-              Configuración
+              Galleria Involucrate
             </NavLink>
           </li>
         </nav>

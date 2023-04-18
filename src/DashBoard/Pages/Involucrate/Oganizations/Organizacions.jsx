@@ -38,7 +38,6 @@ export default function Organizations() {
               <th>Email</th>
               <th>Teléfono</th>
               <th>Organización</th>
-              <th>Ciudad</th>
               <th>Fecha</th>
             </tr>
           </thead>

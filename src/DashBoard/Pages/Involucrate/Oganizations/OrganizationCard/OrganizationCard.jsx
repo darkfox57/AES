@@ -15,7 +15,7 @@ export default function OrganizationCard({
   activeModal,
   captureIdModal,
   submition,
-  setSelectedCard
+  setSelectedCard,
 }) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(view)
@@ -53,9 +53,6 @@ export default function OrganizationCard({
         <td>
           <p>{organization}</p>
         </td>
-        <td>
-          <p>{city}</p>
-        </td>
 
         <td>
           {new Date(submit).toLocaleString('es-ES', {
@@ -65,9 +62,17 @@ export default function OrganizationCard({
           })}
         </td>
         <td>
-        <button onClick={() => captureIdModal(id)}>Ver</button> 
+          <button className="dashBtn" onClick={() => captureIdModal(id)}>
+            Ver
+          </button>
         </td>
-        {activeModal && <CardDetail submition={submition} type={"organizacion"} setSelectedCard={setSelectedCard} />}
+        {activeModal && (
+          <CardDetail
+            submition={submition}
+            type={'organizacion'}
+            setSelectedCard={setSelectedCard}
+          />
+        )}
       </tr>
     </>
   )

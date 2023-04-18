@@ -70,7 +70,7 @@ export default function Institutions() {
                 submit={inst.createdAt}
                 city={inst.city}
                 view={inst.view}
-                submition={submition}
+                submition={inst}
                 activeModal={selectedCard === inst._id}
                 captureIdModal={captureIdModal}
                 setSelectedCard={setSelectedCard}
