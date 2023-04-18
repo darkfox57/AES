@@ -31,6 +31,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     formState: { errors },
   } = useForm()
   const dispatch = useDispatch()
+  const error = useSelector((state) => state.form.error)
   const modalRef = useRef(null)
   const MySwal = withReactContent(Swal)
 
@@ -74,11 +75,13 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
       ...data,
       assistants: Number(data.assistants),
     }
-    try {
-      dispatch(addFormAlliance(formData))
+
+    dispatch(addFormAlliance(formData))
+
+    if (error) {
+      return errorNotify()
+    } else {
       return notification()
-    } catch (error) {
-      errorNotify()
     }
   }
 

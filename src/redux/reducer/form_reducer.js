@@ -6,6 +6,8 @@ import {
   addFormAlliance,
   getAllForms,
   getAllCountries,
+  addFormSuscription,
+  deleteFormSuscription,
 } from '../actions/form_actions'
 
 const initialState = {
@@ -73,6 +75,27 @@ const formSlice = createSlice({
       .addCase(getAllCountries.rejected, (state, action) => {
         state.error = action.error.message
       })
+
+      // .addCase(addFormSuscription.rejected, (state, action) => {
+      //   state.error = action.error.message
+      // })
+
+      .addCase(deleteFormSuscription.rejected, (state, action) => {
+        state.error = action.error.message
+      })
+
+      .addMatcher(
+        (action) => action.type.endsWith('/fulfilled'),
+        (state) => {
+          state.error = null
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith('/rejected'),
+        (state, action) => {
+          state.error = action.error.message
+        }
+      )
   },
 })
 

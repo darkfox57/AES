@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -31,6 +31,7 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
     formState: { errors },
   } = useForm()
   const dispatch = useDispatch()
+  const error = useSelector((state) => state.form.error)
   const modalRef = useRef(null)
   const MySwal = withReactContent(Swal)
 
@@ -69,11 +70,12 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
   }
 
   const Submit = (data) => {
-    try {
-      dispatch(addFormInstitution(data))
+    dispatch(addFormInstitution(data))
+
+    if (error) {
+      return errorNotify()
+    } else {
       return notification()
-    } catch (error) {
-      errorNotify()
     }
   }
 

@@ -1,35 +1,41 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 import { MainContainer } from './Desuscripcion.Styles'
 import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
-import { deleteFormSuscriptioin } from '../../redux/actions/form_actions'
+import { deleteFormSuscription } from '../../redux/actions/form_actions'
 
 export default function Desuscripcion() {
   const [searchparams] = useSearchParams()
   const email = searchparams.get('email')
 
   const dispatch = useDispatch()
+
+  const error = useSelector((state) => state.form.error)
   const MySwal = withReactContent(Swal)
 
   const handleDesuscription = () => {
-    try {
-      dispatch(deleteFormSuscriptioin(email))
+    dispatch(deleteFormSuscription(email))
+
+    if (error) {
+      return errorNotify()
+    } else {
       return notification()
-    } catch (error) {
-      errorNotify()
-    }
-  }
+     }
+}
 
   const notification = async () => {
     await MySwal.fire({
       icon: 'success',
       title: 'Proceso exitoso',
-      text: 'Te has desuscripto exitosamente',
+      text: 'Te has desuscrito exitosamente!
     })
   }
 

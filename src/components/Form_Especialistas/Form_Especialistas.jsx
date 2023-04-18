@@ -36,6 +36,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.form.countries)
   const uploadedFile = useSelector((state) => state.file.pdfUrl)
+  const error = useSelector((state) => state.form.error)
   const modalRef = useRef(null)
   const MySwal = withReactContent(Swal)
 
@@ -69,7 +70,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
     })
   }
 
-  const errorNotify = async ({ errorMsg }) => {
+  const errorNotify = async (errorMsg) => {
     await MySwal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -87,13 +88,14 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
       let errorMsg = 'Por favor, recuerde de mandar su CV!'
       errorNotify(errorMsg)
     } else {
-      try {
-        dispatch(addFormSpecialist(formData))
-        return notification()
-      } catch (error) {
+      dispatch(addFormSpecialist(formData))
+
+      if (error) {
         let errorMsg =
           'Oops... Al parecer hubo un error al mandar el formulario. Vuelve a intentarlo!'
         errorNotify(errorMsg)
+      } else {
+        return notification()
       }
     }
   }
