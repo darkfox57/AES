@@ -1,12 +1,17 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllOrganizations, getOrganization } from '../../../../redux/actions/dash_forms_actions'
+import usePagination from '../../../../Hooks/usePagination'
+import {
+  getAllOrganizations,
+  getOrganization,
+} from '../../../../redux/actions/dash_forms_actions'
+import Paginado from '../../../Components/Paginado/Paginado'
 import OrganizationCard from './OrganizationCard/OrganizationCard'
 import { SubmitList, Table } from './organizations.styles'
 
 export default function Organizations() {
   const organizations = useSelector((state) => state.dash.organizations)
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null)
   const submition = useSelector((state) => state.dash.organization)
   const areas = useSelector((state) => state.dash.areas)
   const dispatch = useDispatch()
@@ -15,9 +20,12 @@ export default function Organizations() {
   }, [])
 
   const captureIdModal = (cardId) => {
-    setSelectedCard(cardId);
-    dispatch(getOrganization(cardId));
-  };
+    setSelectedCard(cardId)
+    dispatch(getOrganization(cardId))
+  }
+
+  const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
+    usePagination(organizations, 10)
 
   return (
     <>
@@ -36,7 +44,7 @@ export default function Organizations() {
           </thead>
 
           <tbody>
-            {organizations.map((org) => (
+            {paginatedData.map((org) => (
               <OrganizationCard
                 key={org._id}
                 id={org._id}
@@ -55,6 +63,12 @@ export default function Organizations() {
             ))}
           </tbody>
         </Table>
+        <Paginado
+          currentPage={currentPage}
+          totalPages={totalPages}
+          PreviousPage={PreviousPage}
+          NextPage={NextPage}
+        />
       </SubmitList>
     </>
   )
