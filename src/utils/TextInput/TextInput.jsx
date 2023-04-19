@@ -13,6 +13,7 @@ const TextInput = ({
   pattern,
   maxLength,
   subname,
+  placeholder,
 }) => {
   const Regex = new RegExp(pattern)
   const propForm = subname ? `${subname}.${name}` : name
@@ -23,6 +24,7 @@ const TextInput = ({
         {label}
         <input
           value={value}
+          placeholder={placeholder}
           type={type}
           {...register(propForm, {
             required: required,

@@ -25,6 +25,7 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
   const dispatch = useDispatch()
   const modalRef = useRef(null)
@@ -49,6 +50,7 @@ export default function Form_Instituciones({ isOpen, setMainForm, areas }) {
 
   const Submit = (data) => {
     dispatch(addFormInstitution(data))
+    reset()
   }
 
   return (

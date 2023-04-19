@@ -29,6 +29,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm()
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.form.countries)
@@ -64,8 +65,8 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
       filepath: uploadedFile,
     }
 
-    console.log(formData)
     dispatch(addFormSpecialist(formData))
+    reset()
   }
 
   return (
@@ -111,7 +112,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
             maxLength={15}
             errors={errors}
             required={true}
-            // pattern={regexTelefono}
+            pattern={regexTelefono}
           />
 
           {/**Campo Paises (Seleccion) */}
@@ -121,7 +122,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
             control={control}
             options={options}
             label="Seleccione su pais"
-            // required={true}
+            required={true}
             errors={errors}
           />
 

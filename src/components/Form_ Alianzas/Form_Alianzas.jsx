@@ -26,6 +26,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
   const dispatch = useDispatch()
   const modalRef = useRef(null)
@@ -56,6 +57,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     }
 
     dispatch(addFormAlliance(formData))
+    reset()
   }
 
   return (
