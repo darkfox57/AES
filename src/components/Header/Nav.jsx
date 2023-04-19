@@ -3,16 +3,16 @@ import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
 
-const Nav = ({ OpenNav,showSelect }) => {
+const Nav = ({ OpenNav, showSelect }) => {
   const token = localStorage.getItem('access_token')
 
   const handleClick = () => {
-    OpenNav();
+    OpenNav()
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 100)
   }
-  const ScrollUp = ()=>{
+  const ScrollUp = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 100)
@@ -32,7 +32,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/acerca-de'}
-             onClick={showSelect ? handleClick : ScrollUp}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Acerca de
@@ -41,7 +41,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/involucrate'}
-             onClick={showSelect ? handleClick : ScrollUp}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Involucrate
@@ -68,7 +68,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/faqs'}
-             onClick={showSelect ? handleClick : ScrollUp}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             FAQ's
@@ -83,18 +83,24 @@ const Nav = ({ OpenNav,showSelect }) => {
             Contacto
           </NavLink>
         </li>
-        <li>
+        <div className="buttonsNav">
           <Button
-            funtion={showSelect ? handleClick : ""}
+            funtion={showSelect ? handleClick : ''}
             type="primary"
             size="md"
             text="Haz una donación"
             link="/faqs/donaciones"
           />
           {token && (
-            <Button  funtion={showSelect ? handleClick : ""} type="secondary" size="md" text="Admin" link="/dashboard" />
+            <Button
+              funtion={showSelect ? handleClick : ''}
+              type="secondary"
+              size="md"
+              text="Admin"
+              link="/dashboard"
+            />
           )}
-        </li>
+        </div>
       </ListNav>
     </NavContainer>
   )
