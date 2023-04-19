@@ -6,10 +6,8 @@ export const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-`
-
-export const FormLogin = styled.form`
-  display: flex;
+  .formLogin {
+    display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -51,4 +49,6 @@ export const FormLogin = styled.form`
   @media screen and (max-width: 768px) {
     text-align: center;
   }
+  }
 `
+

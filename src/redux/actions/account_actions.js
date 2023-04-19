@@ -12,15 +12,9 @@ export const login = createAsyncThunk('login/validate', async (userData) => {
 })
 
 export const logOut = createAsyncThunk('logOut', async () => {
- const response = await axios.post('/auth/logOut', {
-  headers: {
-   'Authorization': `Bearer ${token}`
-  }
- })
+ const response = await axios.post('/auth/logout')
  return response.data
 })
-
-
 
 export const userValidation = createAsyncThunk('login/validation', async (token_validation) => {
  try {
@@ -34,9 +28,6 @@ export const userValidation = createAsyncThunk('login/validation', async (token_
   return error.response.data
  }
 })
-
-
-
 
 export const getAllUsers = createAsyncThunk('login/getAllUsers', async () => {
  try {
@@ -99,4 +90,17 @@ export const getRoles = createAsyncThunk('login/getRoles', async () => {
 
 })
 
+export const resetPassword = createAsyncThunk('login/resetPassword', async (userData) => {
+ try {
+  const response = await axios.post(`auth/${userData.id}/reset-password`, userData, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
+  return response.data
+ }
+ catch (error) {
+  return error.response.data
+ }
+})
 

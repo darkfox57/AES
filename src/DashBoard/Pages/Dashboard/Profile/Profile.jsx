@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import { getUser, updateUser } from '../../../../redux/actions/account_actions'
+import ResetPassword from '../../../Components/ResetPassword/ResetPassword'
 import { ProfileBody } from './profile.styles'
 
 export default function Profile() {
@@ -108,18 +109,12 @@ export default function Profile() {
               {...register('image')}
             />
           </label>
-          <label>
-            Cambiar Contraseña:
-            <input
-              type="password"
-              defaultValue={user.password}
-              {...register('password', { required: true })}
-            />
-          </label>
+
           <span>{confirmation.error}</span>
           <span>{confirmation.message}</span>
           <input type="submit" />
         </form>
+        <ResetPassword id={user._id} />
       </ProfileBody>
     </>
   )

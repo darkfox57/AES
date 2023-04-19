@@ -4,33 +4,36 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import logo from '../../../assets/logo-pups-color.webp'
 import { login } from '../../../redux/actions/account_actions'
-import Button from '../../../utils/Button/Button'
 
-import { FormLogin, LoginContainer } from './Login.Styles'
+import { LoginContainer } from './Login.Styles'
 
 export default function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const estado = useSelector((state) => state.account.status)
+  const [validando, setValidando] = useState(null)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const loginSuccess = () => {
-    localStorage.setItem('access_token', estado.token)
-    localStorage.setItem('user_id', estado.id)
-    navigate('/dashboard')
+
+  const handleLogin = async (data) => {
+    dispatch(login(data))
   }
 
-  const handleData = (data) => {
-    dispatch(login(data))
-    estado.success && loginSuccess()
-  }
+  useEffect(() => {
+    if (estado.success) {
+      setValidando(true)
+      localStorage.setItem('access_token', estado.token)
+      localStorage.setItem('user_id', estado.id)
+      navigate('/dashboard')
+    }
+  }, [estado.success])
 
   return (
     <LoginContainer>
-      <FormLogin onSubmit={handleSubmit(handleData)}>
+      <form className="formLogin" onSubmit={handleSubmit(handleLogin)}>
         <img src={logo} alt="Logo AES" />
         <div>
           <span>
@@ -70,8 +73,12 @@ export default function Login() {
           <span>El campo 'Contraseña' es obligatorio de completar</span>
         )}
         <span>{estado.error}</span>
-        <input type="submit" />
-      </FormLogin>
+        {validando && <span>Validando accesos</span>}
+        <span>{validando}</span>
+        <button className="dashBtn" type="submit">
+          Log In
+        </button>
+      </form>
     </LoginContainer>
   )
 }
