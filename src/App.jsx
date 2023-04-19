@@ -31,6 +31,9 @@ import AddSlider from './DashBoard/Pages/Slider/AddSlider/AddSlider'
 import EditSlider from './DashBoard/Pages/Slider/EditSlider/EditSlider'
 import Slider from './DashBoard/Pages/Slider/Slider'
 import Suscriptions from './DashBoard/Pages/Suscripciones/Sucriptions'
+import AddVideo from './DashBoard/Pages/Videos/AddVideo/AddVideo'
+import EditVideo from './DashBoard/Pages/Videos/EditVideo/EditVideo'
+import Videos from './DashBoard/Pages/Videos/Videos'
 import Header from './components/Header/Header'
 import DashLayout from './layouts/DashLayout'
 import About from './pages/About/About'
@@ -124,6 +127,9 @@ function App() {
           <Route path="galeria-involucrate" element={<Gallery />} />
           <Route path="galeria-involucrate/add" element={<AddImage />} />
           <Route path="galeria-involucrate/edit/:id" element={<EditImg />} />
+          <Route path="videos" element={<Videos />} />
+          <Route path="videos/add" element={<AddVideo />} />
+          <Route path="videos/edit/:id" element={<EditVideo />} />
 
           <Route path="perfil/:id" element={<Profile />} />
         </Route>

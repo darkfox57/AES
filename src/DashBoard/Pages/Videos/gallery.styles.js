@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const GalleryWrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
   gap: 50px;
   .container {
     display: flex;
@@ -13,8 +13,8 @@ export const GalleryWrapper = styled.section`
     -moz-box-shadow: -1px 1px 10px 1.5px #dddddd;
     box-shadow: -1px 1px 10px 1.5px #dddddd;
     position: relative;
-    color: var(--main-white);
-    aspect-ratio: 4/3;
+    color: var(--text-white);
+    aspect-ratio: 16/9;
     padding: 20px 20px 60px 20px;
 
     .content {
@@ -23,7 +23,6 @@ export const GalleryWrapper = styled.section`
       gap: 30px;
       img {
         object-fit: cover;
-        height: 300px;
       }
       span {
         color: var(--main-dark);
