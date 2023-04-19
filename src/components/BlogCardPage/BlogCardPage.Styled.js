@@ -48,13 +48,20 @@ export const ContainerSpan = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  button{
+  .read-more{
       cursor: pointer;
       text-transform: capitalize;
       background: rgb(0, 186, 163);
       border: none;
       color: white;
-      padding: 4px 10px;
+      padding: 8px 13px;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 5px;
+      transition: scale 0.3s ease-in-out;
+      &:hover {
+        scale: 1.1;
+      }
     }
   div{
     display: flex;
