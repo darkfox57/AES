@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../../components/Footer/Footer'
 import Portada from '../../components/Portada/Portada'
 import ShowForm from './ShowForm'
-import Footer from '../../components/Footer/Footer'
 
 import {
-  Involucrate_Container,
-  Card_Container,
-  Card_Contact,
   Button_Styled,
+  Card_Contact,
+  Card_Container,
+  Involucrate_Container,
 } from './Involucrate.Styles'
 
-import { getAllCountries, getAreas } from '../../redux/actions/form_actions'
 import Galeria from '../../components/Galeria/Galeria'
+import { getAllCountries, getAreas } from '../../redux/actions/form_actions'
 
 const img =
   'https://i.pinimg.com/originals/91/8f/49/918f490f7c1a15124850c009b605e2ee.jpg'
@@ -87,10 +87,8 @@ export default function Involucrate() {
         {form && (
           <ShowForm formToShow={form} areas={areas} updateForm={handleForm} />
         )}
-
-        <Galeria />
       </Involucrate_Container>
-
+      <Galeria />
       <Footer />
     </>
   )

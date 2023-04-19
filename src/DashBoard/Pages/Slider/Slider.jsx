@@ -6,12 +6,7 @@ import Card from './Card/Card'
 import { AddBtn, Sliders } from './slider.styles'
 
 export default function Slider() {
-  const dispatch = useDispatch()
   const files = useSelector((state) => state.gallery.files)
-
-  useEffect(() => {
-    dispatch(getAllFiles())
-  }, [])
 
   return (
     <>

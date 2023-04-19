@@ -25,12 +25,12 @@ export default function Header({ user }) {
   return (
     <>
       <HeaderNotifications>
-        <i>
+        {/* <i>
           <IoMailUnreadOutline />
         </i>
         <i>
           <IoNotificationsOutline />
-        </i>
+        </i> */}
       </HeaderNotifications>
       <ProfileMiniature>
         <img

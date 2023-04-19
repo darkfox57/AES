@@ -10,10 +10,6 @@ export default function Videos() {
   const images = useSelector((state) => state.gallery.files)
   const [selectedCard, setSelectedCard] = useState(null)
 
-  useEffect(() => {
-    dispatch(getAllFiles())
-  }, [])
-
   return (
     <>
       <h2>Testimonios</h2>
