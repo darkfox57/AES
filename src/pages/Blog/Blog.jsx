@@ -18,7 +18,7 @@ import useConditionalRender from '../../Hooks/useConditionalRender'
 
 export default function Blog() {
   const dispatch = useDispatch()
-  const posts = useSelector((state) => state.blog.blogs)
+  const posts = useSelector((state) => state.blog.swiperBlog)
   const category = useSelector((state) => state.blog.categories)
   const tags = useSelector((state) => state.blog.tags)
   const postscopy = useSelector((state) => state.blog.copyblogs)

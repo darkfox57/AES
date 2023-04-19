@@ -33,7 +33,7 @@ const eventSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllEvents.fulfilled, (state, action) => {
-        state.events = action.payload.reverse()
+        state.events = action.payload
         state.swiperEvents = action.payload.filter((post) => post.status)
         state.copyEvents = action.payload.filter((post) => post.status)
       })

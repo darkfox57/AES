@@ -45,7 +45,7 @@ const blogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllBlogs.fulfilled, (state, action) => {
-        state.blogs = action.payload.reverse()
+        state.blogs = action.payload
         state.swiperBlog = action.payload.filter((post) => post.status)
         state.copyblogs = action.payload.filter((post) => post.status)
       })

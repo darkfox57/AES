@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllBlogs } from '../../redux/actions/blog_actions'
+import {  useSelector } from 'react-redux'
 import { BlogContainer } from './Blog.Styled'
 import BlogCard from './BlogCard'
 import BlogHeader from './BlogHeader'
@@ -16,9 +15,7 @@ SwiperCore.use([Autoplay])
 SwiperCore.use([Navigation])
 
 const Blog = () => {
-  // usamos un useHook perzonalizado para la paginacion tipo slider
-
-  //const dispatch = useDispatch()
+ 
   const posts = useSelector((state) => state.blog.swiperBlog)
 
 

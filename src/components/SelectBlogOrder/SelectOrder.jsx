@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { OrderBlog } from '../../redux/actions/blog_actions'
-import { SelectFlex, SelectOrderContainer } from './SelectBlogOrder.Styled'
-import { orderEvents } from '../../redux/actions/event_actions'
+import { OrderBlog, getBlogTitle } from '../../redux/actions/blog_actions'
+import { ResetBtn, SelectFlex, SelectOrderContainer } from './SelectBlogOrder.Styled'
+import { getEventByTitle, orderEvents } from '../../redux/actions/event_actions'
 
 const SelectOrder = ({categorys,handleFilter,size,EventOrder}) => {
 
@@ -28,6 +28,10 @@ const SelectOrder = ({categorys,handleFilter,size,EventOrder}) => {
     EventOrder ? dispatch(orderEvents(option)) :  dispatch(OrderBlog(option))
   }
 
+  const handleReset = ()=>{
+    EventOrder ? dispatch(getEventByTitle("")) :  dispatch(getBlogTitle(""))
+  }
+
   return (
     <SelectFlex>
       <SelectOrderContainer name="title" value={nameOrder} onChange={handleNameOrderChange}>
@@ -45,7 +49,7 @@ const SelectOrder = ({categorys,handleFilter,size,EventOrder}) => {
         <option value="asc">Más Recientes</option>
         <option value="desc">Menos Recientes</option>
       </SelectOrderContainer>
-
+ <ResetBtn onClick={handleReset} >Todos</ResetBtn>
       { size && <SelectOrderContainer onChange={handleFilter}>
             {categorys?.map((category) => (
               <option key={category._id} value={category.name} >{category.name}</option>
