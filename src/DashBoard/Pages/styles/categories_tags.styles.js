@@ -23,6 +23,12 @@ form {
   }
  }
 }
+.selectBlock {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 15px;
+ }
 }
 }
 .list {

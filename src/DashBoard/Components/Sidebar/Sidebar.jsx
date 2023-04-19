@@ -83,6 +83,7 @@ export default function Sidebar({ user }) {
               <NavLink to="eventos/add-event">Nuevo Evento</NavLink>
               <NavLink to="eventos/categorias">Categorías</NavLink>
               <NavLink to="eventos/tags">Etiquedas</NavLink>
+              <NavLink to="eventos/participantes">Participantes</NavLink>
             </div>
           </li>
           <li>

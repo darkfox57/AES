@@ -14,6 +14,7 @@ import {
 } from '../../../../redux/actions/event_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { modules } from '../../../../utils/Modules_quill/modules'
+import EventParticipants from './Participants/Participants'
 import { FormBody, ToggleButton } from './editEvent.styles'
 
 export default function EditEvent() {
@@ -285,6 +286,7 @@ export default function EditEvent() {
           />
         </form>
       </FormBody>
+      <EventParticipants id={eventPost._id} />
     </>
   )
 }

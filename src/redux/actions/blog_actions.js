@@ -90,8 +90,8 @@ export const getCategories = createAsyncThunk(
   }
 )
 
-export const AddCategory = createAsyncThunk('categories/add', async (post) => {
-  const response = await axios.post('categoryBlogs', post, {
+export const addCategory = createAsyncThunk('categories/add', async (post) => {
+  const response = await axios.post('category', post, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -99,8 +99,18 @@ export const AddCategory = createAsyncThunk('categories/add', async (post) => {
   return response.data
 })
 
-export const AddTag = createAsyncThunk('tags/add', async (post) => {
-  const response = await axios.post('tagsBlogs', post, {
+export const editCategory = createAsyncThunk('categories/edit', async (post) => {
+  const response = await axios.put(`category/${post.id}`, post, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  console.log(post);
+  return response.data
+})
+
+export const deleteCategory = createAsyncThunk('categories/delete', async (id) => {
+  const response = await axios.delete(`category/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -108,8 +118,10 @@ export const AddTag = createAsyncThunk('tags/add', async (post) => {
   return response.data
 })
 
-export const DeleteCategory = createAsyncThunk('categories/delete', async (id) => {
-  const response = await axios.delete(`categoryBlogs/${id}`, {
+
+
+export const addTag = createAsyncThunk('tags/add', async (post) => {
+  const response = await axios.post('tags', post, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -117,8 +129,17 @@ export const DeleteCategory = createAsyncThunk('categories/delete', async (id) =
   return response.data
 })
 
-export const DeleteTag = createAsyncThunk('tags/delete', async (id) => {
-  const response = await axios.delete(`tag/${id}`, {
+export const editTag = createAsyncThunk('tag/edit', async (post) => {
+  const response = await axios.put(`tags/${post.id}`, post, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
+})
+
+export const deleteTag = createAsyncThunk('tags/delete', async (id) => {
+  const response = await axios.delete(`tags/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }

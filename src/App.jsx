@@ -14,6 +14,7 @@ import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
 import EditEvent from './DashBoard/Pages/Events/EditEvent/EditEvent'
 import EventDash from './DashBoard/Pages/Events/EventDash'
+import Participats from './DashBoard/Pages/Events/Participants/Participants'
 import AddImage from './DashBoard/Pages/Gallery/AddImage/AddImage'
 import EditImg from './DashBoard/Pages/Gallery/EditImg/EditImg'
 import Gallery from './DashBoard/Pages/Gallery/Gallery'
@@ -107,6 +108,7 @@ function App() {
           <Route path="eventos/tags" element={<Tags />} />
           <Route path="eventos/add-event" element={<AddEvent />} />
           <Route path="eventos/edit/:slug" element={<EditEvent />} />
+          <Route path="eventos/participantes" element={<Participats />} />
           <Route path="involucrate" element={<InvolucrateDash />} />
           <Route path="involucrate/" element={<InvolucrateDashMain />} />
           <Route path="involucrate/instituciones" element={<Institutions />} />
