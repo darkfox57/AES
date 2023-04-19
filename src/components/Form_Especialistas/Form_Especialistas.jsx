@@ -64,7 +64,6 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
       country: data.country.value,
       filepath: uploadedFile,
     }
-
     dispatch(addFormSpecialist(formData))
     reset()
   }
