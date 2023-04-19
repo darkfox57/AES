@@ -70,7 +70,7 @@ export default function Involucrate() {
           </Card_Contact>
 
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQoWn8xV5mi4gEGF7d2U19ZQkxywsqxDGY_A&usqp=CAU">
-            <h3>Se un voluntario de AES</h3>
+            <h3>Postulacion de organizaciones para alianzas</h3>
             <p>
               Hay muchas formas de contribuir a nuestras labores. Es totalmente
               cierto que hasta el menor esfuerzo cuenta, en especial si queremos
