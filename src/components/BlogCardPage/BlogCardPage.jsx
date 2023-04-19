@@ -61,7 +61,7 @@ const BlogCardPage = ({
               <IoCalendarSharp className="icon-card-blog" />{' '}
               {Newdate.toLocaleDateString()}
             </span>
-            {NewDateOut && (
+            {dateOut && (
               <span>
                 -
                 <IoCalendarSharp className="icon-card-blog" />{' '}

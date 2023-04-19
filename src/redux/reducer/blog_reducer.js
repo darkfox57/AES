@@ -61,7 +61,8 @@ const blogSlice = createSlice({
       })
 
       .addCase(getBlogTitle.fulfilled, (state, action) => {
-        state.copyblogs = action.payload
+        const search = action.payload.filter((post) => post.status)
+        state.copyblogs = search.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       })
       .addCase(getBlogTitle.rejected, (state, action) => {
         state.error = action.error.message

@@ -89,7 +89,7 @@ export const getEventByTitle = createAsyncThunk(
   'events/getByTitle',
   async (title) => {
     const response = await axios(`/events?search=${title}`)
-    return response.data.reverse()
+    return response.data
   }
 )
 
