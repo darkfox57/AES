@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+
 import {
   getAreas,
   addFormSpecialist,
@@ -10,6 +11,7 @@ import {
   deleteFormSuscription,
 } from '../actions/form_actions'
 
+import { notification, errorNotify } from '../../components/Footer/ModalWindows'
 const initialState = {
   forms: [],
 
@@ -29,36 +31,21 @@ const formSlice = createSlice({
       .addCase(getAreas.fulfilled, (state, action) => {
         state.areas = action.payload
       })
-      .addCase(getAreas.rejected, (state, action) => {
-        state.error = action.error.message
-      })
 
       .addCase(addFormSpecialist.fulfilled, (state, action) => {
         state.forms.push(action.payload)
-      })
-      .addCase(addFormSpecialist.rejected, (state, action) => {
-        state.error = action.error.message
       })
 
       .addCase(addFormInstitution.fulfilled, (state, action) => {
         state.forms.push(action.payload)
       })
-      .addCase(addFormInstitution.rejected, (state, action) => {
-        state.error = action.error.message
-      })
 
       .addCase(addFormAlliance.fulfilled, (state, action) => {
         state.forms.push(action.payload)
       })
-      .addCase(addFormAlliance.rejected, (state, action) => {
-        state.error = action.error.message
-      })
 
       .addCase(getAllForms.fulfilled, (state, action) => {
         state.forms = action.payload
-      })
-      .addCase(getAllForms.rejected, (state, action) => {
-        state.error = action.error.message
       })
 
       .addCase(getAllCountries.fulfilled, (state, action) => {
@@ -72,28 +59,21 @@ const formSlice = createSlice({
           return 0
         })
       })
-      .addCase(getAllCountries.rejected, (state, action) => {
-        state.error = action.error.message
-      })
-
-      // .addCase(addFormSuscription.rejected, (state, action) => {
-      //   state.error = action.error.message
-      // })
-
-      .addCase(deleteFormSuscription.rejected, (state, action) => {
-        state.error = action.error.message
-      })
 
       .addMatcher(
         (action) => action.type.endsWith('/fulfilled'),
-        (state) => {
+        (state, action) => {
           state.error = null
+          if (action.type.includes('forms')) {
+            notification()
+          }
         }
       )
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {
           state.error = action.error.message
+          errorNotify()
         }
       )
   },

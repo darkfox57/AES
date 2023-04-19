@@ -1,26 +1,25 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-const token = localStorage.getItem('access_token');
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
+const token = localStorage.getItem('access_token')
 
-
-export const getAllForms = createAsyncThunk('/forms', async () => {
+export const getAllForms = createAsyncThunk('forms', async () => {
   const allForms = await axios('forms', {
     headers: {
-      'Authorization': `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   })
   return allForms.data
 })
 
 export const getAllCountries = createAsyncThunk(
-  'forms/getAllCountries',
+  'form/getAllCountries',
   async () => {
     const allCountries = await axios('country')
     return allCountries.data
   }
 )
 
-export const getAreas = createAsyncThunk('forms/areas', async () => {
+export const getAreas = createAsyncThunk('form/areas', async () => {
   const response = await axios('/areas')
   return response.data
 })
@@ -44,8 +43,6 @@ export const addFormInstitution = createAsyncThunk(
 export const addFormAlliance = createAsyncThunk(
   'forms/addFormAlliance',
   async (form) => {
-    data.city = 'Miami'
-
     const createForm = await axios.post('organization', form)
     return createForm.data
   }
@@ -72,8 +69,8 @@ export const deleteFormSuscription = createAsyncThunk(
   async (email) => {
     const response = await axios.delete(`suscription/delete?email=${email}`, {
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
     return response.data
   }

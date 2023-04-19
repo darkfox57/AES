@@ -1,10 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
 import sadEmoji from '../../assets/sadEmoji.png'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 import { deleteFormSuscription } from '../../redux/actions/form_actions'
 import { SubmitButton } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
@@ -20,33 +18,8 @@ export default function Desuscripcion() {
 
   const dispatch = useDispatch()
 
-  const error = useSelector((state) => state.form.error)
-  const MySwal = withReactContent(Swal)
-
   const handleDesuscription = () => {
     dispatch(deleteFormSuscription(email))
-
-    if (error) {
-      return errorNotify()
-    } else {
-      return notification()
-    }
-  }
-
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Proceso exitoso',
-      text: 'Te has desuscrito exitosamente!',
-    })
-  }
-
-  const errorNotify = async () => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Lo sentimos, el proceso de desuscripcion ha fallado!',
-    })
   }
 
   return (
