@@ -127,4 +127,6 @@ export const orderEvents = createAsyncThunk(`events/order`, async (type) => {
   return type
 })
 
-
+export const OrderDasboard = createAsyncThunk(`events/OrderDasboard`, async (type) => {
+  return type
+})

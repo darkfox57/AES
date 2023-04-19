@@ -11,10 +11,13 @@ import {
   getBlogTitle,
   getCategories,
   getTags,
+  OrderDasboard
 } from '../actions/blog_actions'
+import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
 
 const initialState = {
   blogs: [],
+  swiperBlog: [],
   copyblogs: [],
   blog: {},
   tags: [],
@@ -37,6 +40,7 @@ const blogSlice = createSlice({
     builder
       .addCase(getAllBlogs.fulfilled, (state, action) => {
         state.blogs = action.payload.reverse()
+        state.swiperBlog = action.payload.filter((post) => post.status)
         state.copyblogs = action.payload.filter((post) => post.status)
       })
       .addCase(getAllBlogs.rejected, (state, action) => {
@@ -112,6 +116,14 @@ const blogSlice = createSlice({
         }
 
         state.copyblogs = [...state.copyblogs].sort(
+          sortOptions[action.payload.type][action.payload.sort]
+        )
+      })
+
+
+      //*pruebada*/
+      .addCase(OrderDasboard.fulfilled, (state, action) => {  
+        state.blogs = [...state.blogs].sort(
           sortOptions[action.payload.type][action.payload.sort]
         )
       })

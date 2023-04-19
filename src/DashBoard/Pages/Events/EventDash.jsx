@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import usePagination from '../../../Hooks/usePagination'
-import { getAllEvents } from '../../../redux/actions/event_actions'
+import { OrderDasboard, getAllEvents } from '../../../redux/actions/event_actions'
 import Button from '../../../utils/Button/Button'
 import Paginado from '../../Components/Paginado/Paginado'
 import EventCard from './EventCard/EventCard'
@@ -10,9 +10,21 @@ import { EventList, Table } from './events.style'
 
 export default function EventDash() {
   const events = useSelector((state) => state.event.events)
-
+  const dispatch = useDispatch()
   const { currentPage, totalPages, paginatedData, NextPage, PreviousPage } =
     usePagination(events, 8)
+
+//**capturamos el valor y le enviamos al reducer att:emma */
+const [sort,setSort] = useState("asc")
+const handleSort = (e) => {
+  const Name = e.target.getAttribute('name')
+  const obj = {
+    type: Name,
+    sort: sort
+  }
+  dispatch(OrderDasboard(obj))
+  setSort(sort === "asc" ? "desc" : "asc")
+}
 
   return (
     <>
@@ -26,12 +38,12 @@ export default function EventDash() {
           <thead>
             <tr>
               <th>Imagen</th>
-              <th>Título</th>
-              <th>Fecha de Inicio</th>
-              <th>Fecha de Fin</th>
-              <th>Ubicación</th>
+              <th className='order' name="titulo" onClick={handleSort}>Título</th>
+              <th className='order' name="fechainicio" onClick={handleSort}>Fecha de Inicio</th>
+              <th className='order' name="fechafinal" onClick={handleSort} >Fecha de Fin</th>
+              <th className='order' name="ubicacion" onClick={handleSort}>Ubicación</th>
               <th>Editar</th>
-              <th>Estado</th>
+              <th className='order' name="estado" onClick={handleSort}>Estado</th>
             </tr>
           </thead>
 

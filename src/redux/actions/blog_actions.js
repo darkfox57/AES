@@ -92,6 +92,11 @@ export const filterTags = createAsyncThunk('blogs/filterTags', async (tag) => {
   return tag
 })
 
+//**ordenamiento dashborar */
+
+export const OrderDasboard = createAsyncThunk('blogs/OrderDasboard', async (type) => {
+  return type
+})
 
 export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
   const response = await axios.delete(`blogs/${id}`, {
