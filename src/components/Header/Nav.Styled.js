@@ -13,6 +13,7 @@ export const ListNav = styled.ul`
   li {
     list-style: none;
     cursor: pointer;
+    
     a {
       text-decoration: none;
       color: var(--text-white);
@@ -42,6 +43,10 @@ export const ListNav = styled.ul`
       }
     }
   }
+  .buttonsNav {
+      display: flex;
+      gap: 15px;
+    }
   //**Responsive media */
   @media screen and (max-width: 1609px){
     column-gap: 50px;

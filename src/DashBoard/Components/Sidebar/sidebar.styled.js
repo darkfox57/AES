@@ -19,7 +19,9 @@ nav {
   background-color: var(--dash-color);
    color: var(--text-white);
  }
- li a {
+ li {
+
+ a {
   text-decoration: none;
   color: var(--text-dark);
   display: flex;
@@ -35,6 +37,23 @@ nav {
    color: var(--text-white);
   }
  }
+ .menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  overflow: hidden;
+  height: 0px;
+  transition: all 0.3s ease-in-out;
+ }
+.expand {
+  
+  overflow: hidden;
+  height: auto;
+  a {
+    padding: 5px 50px;
+  }
+}
+}
 }
 `
 

@@ -111,3 +111,4 @@ ul{
 export const LastBlogs = styled.div`
   grid-area: UltimNoticia;
 `
+
