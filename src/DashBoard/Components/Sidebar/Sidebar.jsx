@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   IoBuildOutline,
   IoCalendarOutline,
@@ -9,11 +9,14 @@ import {
   IoNewspaperOutline,
   IoSpeedometerOutline,
 } from 'react-icons/io5'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import logo from '../../../assets/logo-pups-color.webp'
 import { ProfileMiniature, SideBarContent } from './sidebar.styled'
 
 export default function Sidebar({ user }) {
+  const [expand, setExpand] = useState(false)
+  const location = useLocation()
+
   return (
     <>
       <SideBarContent>
@@ -52,6 +55,15 @@ export default function Sidebar({ user }) {
               </i>
               Blogs
             </NavLink>
+            <div
+              className={`menuItems ${
+                location.pathname.includes('blog') ? 'expand' : ''
+              }`}
+            >
+              <NavLink to="blog/add-blog">Nuevo Blog</NavLink>
+              <NavLink to="blog/categorias">Categorías</NavLink>
+              <NavLink to="blog/tags">Etiquedas</NavLink>
+            </div>
           </li>
           <li>
             <NavLink
@@ -63,6 +75,15 @@ export default function Sidebar({ user }) {
               </i>
               Eventos
             </NavLink>
+            <div
+              className={`menuItems ${
+                location.pathname.includes('eventos') ? 'expand' : ''
+              }`}
+            >
+              <NavLink to="eventos/add-event">Nuevo Evento</NavLink>
+              <NavLink to="eventos/categorias">Categorías</NavLink>
+              <NavLink to="eventos/tags">Etiquedas</NavLink>
+            </div>
           </li>
           <li>
             <NavLink
@@ -74,6 +95,15 @@ export default function Sidebar({ user }) {
               </i>
               Involucrate
             </NavLink>
+            <div
+              className={`menuItems ${
+                location.pathname.includes('involucrate') ? 'expand' : ''
+              }`}
+            >
+              <NavLink to="involucrate/especialistas">Especialistas</NavLink>
+              <NavLink to="involucrate/instituciones">Instituciones</NavLink>
+              <NavLink to="involucrate/alianzas">Organizaciones</NavLink>
+            </div>
           </li>
           <li>
             <NavLink

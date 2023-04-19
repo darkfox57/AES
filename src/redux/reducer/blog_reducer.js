@@ -1,6 +1,12 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
+import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
 import {
+  AddCategory,
+  AddTag,
+  DeleteCategory,
+  DeleteTag,
   OrderBlog,
+  OrderDasboard,
   addBlog,
   deleteBlog,
   editBlog,
@@ -11,9 +17,7 @@ import {
   getBlogTitle,
   getCategories,
   getTags,
-  OrderDasboard
 } from '../actions/blog_actions'
-import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
 
 const initialState = {
   blogs: [],
@@ -88,6 +92,20 @@ const blogSlice = createSlice({
         state.error = action.payload
       })
 
+      .addCase(AddCategory.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+      .addCase(AddTag.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+      .addCase(DeleteCategory.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+      .addCase(DeleteTag.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+
+
       .addCase(filterCategory.fulfilled, (state, action) => {
         const Status = state.blogs.filter((blog) => blog.status)
         const blogCategory = Status.filter((blog) =>
@@ -122,7 +140,7 @@ const blogSlice = createSlice({
 
 
       //*pruebada*/
-      .addCase(OrderDasboard.fulfilled, (state, action) => {  
+      .addCase(OrderDasboard.fulfilled, (state, action) => {
         state.blogs = [...state.blogs].sort(
           sortOptions[action.payload.type][action.payload.sort]
         )

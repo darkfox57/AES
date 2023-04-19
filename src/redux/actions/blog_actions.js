@@ -18,14 +18,6 @@ export const getBlogTitle = createAsyncThunk('blogs/getBlogTitle', async (title)
   return response.data
 })
 
-export const getCategories = createAsyncThunk(
-  'categories/getCategories',
-  async () => {
-    const response = await axios.get('category')
-    return response.data
-  }
-)
-
 export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
   const formatedpost = {
     'title': post.title,
@@ -76,10 +68,64 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
   }
 })
 
+export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
+  const response = await axios.delete(`blogs/${id}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
+})
+
 export const getTags = createAsyncThunk('blogs/getTagBlog', async () => {
   const response = await axios.get('tags')
   return response.data
 })
+
+export const getCategories = createAsyncThunk(
+  'categories/getCategories',
+  async () => {
+    const response = await axios.get('category')
+    return response.data
+  }
+)
+
+export const AddCategory = createAsyncThunk('categories/add', async (post) => {
+  const response = await axios.post('categoryBlogs', post, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
+})
+
+export const AddTag = createAsyncThunk('tags/add', async (post) => {
+  const response = await axios.post('tagsBlogs', post, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
+})
+
+export const DeleteCategory = createAsyncThunk('categories/delete', async (id) => {
+  const response = await axios.delete(`categoryBlogs/${id}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
+})
+
+export const DeleteTag = createAsyncThunk('tags/delete', async (id) => {
+  const response = await axios.delete(`tag/${id}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return response.data
+})
+
 
 export const filterCategory = createAsyncThunk('blogs/filterCategory', async (category) => {
   return category
@@ -98,12 +144,5 @@ export const OrderDasboard = createAsyncThunk('blogs/OrderDasboard', async (type
   return type
 })
 
-export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (id) => {
-  const response = await axios.delete(`blogs/${id}`, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  })
-  return response.data
-})
+
 

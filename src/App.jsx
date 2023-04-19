@@ -8,6 +8,7 @@ import axios from 'axios'
 import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
 import EditBlog from './DashBoard/Pages/Blog/EditBlog/EditBlog'
+import Categories from './DashBoard/Pages/Categories/Categories'
 import Dashboard from './DashBoard/Pages/Dashboard/Dashboard'
 import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
@@ -31,6 +32,7 @@ import AddSlider from './DashBoard/Pages/Slider/AddSlider/AddSlider'
 import EditSlider from './DashBoard/Pages/Slider/EditSlider/EditSlider'
 import Slider from './DashBoard/Pages/Slider/Slider'
 import Suscriptions from './DashBoard/Pages/Suscripciones/Sucriptions'
+import Tags from './DashBoard/Pages/Tags/Tags'
 import AddVideo from './DashBoard/Pages/Videos/AddVideo/AddVideo'
 import EditVideo from './DashBoard/Pages/Videos/EditVideo/EditVideo'
 import Videos from './DashBoard/Pages/Videos/Videos'
@@ -96,9 +98,13 @@ function App() {
         <Route path="/dashboard" element={<DashLayout />}>
           <Route path="" element={<Dashboard />} />
           <Route path="blog" element={<BlogDash />} />
+          <Route path="blog/categorias" element={<Categories />} />
+          <Route path="blog/tags" element={<Tags />} />
           <Route path="blog/add-blog" element={<AddBlog />} />
           <Route path="blog/edit/:slug" element={<EditBlog />} />
           <Route path="eventos" element={<EventDash />} />
+          <Route path="eventos/categorias" element={<Categories />} />
+          <Route path="eventos/tags" element={<Tags />} />
           <Route path="eventos/add-event" element={<AddEvent />} />
           <Route path="eventos/edit/:slug" element={<EditEvent />} />
           <Route path="involucrate" element={<InvolucrateDash />} />
