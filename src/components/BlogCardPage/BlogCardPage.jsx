@@ -1,5 +1,7 @@
 import React from 'react'
 import { AiOutlineComment } from 'react-icons/ai'
+import { FaMousePointer } from 'react-icons/fa'
+
 import { BiStreetView } from 'react-icons/bi'
 import { IoCalendarSharp } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
@@ -80,7 +82,10 @@ const BlogCardPage = ({
               </button>
             ))}
           </div>
-          <button onClick={handleNavigate}>Readmore</button>
+          <button onClick={handleNavigate} className="read-more">
+            <span>Ver publicación</span>
+            <FaMousePointer />
+          </button>
         </ContainerSpan>
       </ContainerInfo>
     </BlogPageCardContainer>
