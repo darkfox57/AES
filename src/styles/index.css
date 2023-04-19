@@ -149,6 +149,7 @@ input[type='submit']:hover {
     color: var(--dash-color);
     padding: 5px 10px;
     transition: all 0.3s ease-in-out;
+    background-color: transparent;
 }
 
 .dashLink:hover {

@@ -1,13 +1,4 @@
-import styled, { keyframes } from 'styled-components'
-
-const SlideIn = keyframes`
-from {
-  transform: translateX(-300px);
-}
-to {
-  transform: translateX(0);
-}
-`
+import styled from 'styled-components'
 
 export const FooterContainer = styled.section`
   display: flex;
@@ -62,7 +53,7 @@ ul{
   grid-template-columns: 1fr;
   gap: 15px;
 }
-  .navItem {
+  li {
     list-style: none;
     text-decoration: none;
     color: var(--text-color);
@@ -90,6 +81,7 @@ ul{
     color: var(--main-color);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: 8px;
     &::after{
       content: '';
@@ -119,3 +111,4 @@ ul{
 export const LastBlogs = styled.div`
   grid-area: UltimNoticia;
 `
+
