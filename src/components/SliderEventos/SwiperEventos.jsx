@@ -13,7 +13,7 @@ SwiperCore.use([Navigation])
 
 const SwiperEventos = () => {
   const dispatch = useDispatch()
-  const Events = useSelector((state) => state.event.events)
+  const Events = useSelector((state) => state.event.swiperEvents)
 
   useEffect(() => {
     dispatch(getAllEvents())
@@ -48,8 +48,6 @@ const SwiperEventos = () => {
             slidesPerView: 1
           }
         }}
-        //centeredSlides={true}
-        //onSlideChange={(swiper) => console.log(swiper)}
       >
         {Events.map((data) => (
           <SwiperSlide className="swiper-card" key={data._id}>

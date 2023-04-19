@@ -7,19 +7,23 @@ const Nav = ({ OpenNav,showSelect }) => {
   const token = localStorage.getItem('access_token')
 
   const handleClick = () => {
-    OpenNav()
+    OpenNav();
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 100)
   }
-
+  const ScrollUp = ()=>{
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
+  }
   return (
     <NavContainer>
       <ListNav>
         <li>
           <NavLink
             to="/"
-            onClick={showSelect ? handleClick : ""}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Home
@@ -28,7 +32,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/acerca-de'}
-             onClick={showSelect ? handleClick : ""}
+             onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Acerca de
@@ -37,7 +41,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/involucrate'}
-             onClick={showSelect ? handleClick : ""}
+             onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Involucrate
@@ -46,7 +50,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/blog'}
-            onClick={showSelect ? handleClick : ""}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Blogs
@@ -55,7 +59,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/evento'}
-            onClick={showSelect ? handleClick : ""}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Eventos
@@ -64,7 +68,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/faqs'}
-             onClick={showSelect ? handleClick : ""}
+             onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             FAQ's
@@ -73,7 +77,7 @@ const Nav = ({ OpenNav,showSelect }) => {
         <li>
           <NavLink
             to={'/contacto'}
-            onClick={showSelect ? handleClick : ""}
+            onClick={showSelect ? handleClick : ScrollUp}
             className={({ isActive }) => (isActive ? 'current' : '')}
           >
             Contacto

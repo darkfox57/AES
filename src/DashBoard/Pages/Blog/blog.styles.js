@@ -16,6 +16,9 @@ export const Table = styled.table`
 
 
   thead {
+    .order{
+       cursor: pointer;
+    }
     th {
       text-align: left;
       padding: 30px 0;

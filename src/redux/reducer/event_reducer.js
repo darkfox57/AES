@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
+  OrderDasboard,
   deleteEvent,
   editEvent,
   filterEvents,
@@ -11,10 +12,12 @@ import {
   getEventByTitle,
   orderEvents
 } from '../actions/event_actions'
+import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
 
 const initialState = {
   events: [],
   copyEvents: [],
+  swiperEvents:[],
   categories: [],
   tags: [],
   event: {},
@@ -30,6 +33,7 @@ const eventSlice = createSlice({
     builder
       .addCase(getAllEvents.fulfilled, (state, action) => {
         state.events = action.payload.reverse();
+        state.swiperEvents = action.payload.filter((post) => post.status);
         state.copyEvents = action.payload.filter((post) => post.status)
       })
       .addCase(getAllEvents.rejected, (state, action) => {
@@ -112,6 +116,12 @@ const eventSlice = createSlice({
           event.tags.some((tag) => tag.name === action.payload)
         )
         state.copyEvents = EvenTag
+      })
+
+      .addCase(OrderDasboard.fulfilled, (state, action) => {
+        state.events = [...state.events].sort(
+          sortOptions[action.payload.type][action.payload.sort]
+        )
       })
   },
 })
