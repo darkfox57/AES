@@ -127,7 +127,7 @@ export default function Sidebar({ user }) {
               <i>
                 <IoImageOutline />
               </i>
-              Videos
+              Testimonios
             </NavLink>
           </li>
         </nav>

@@ -143,3 +143,19 @@ input[type='submit']:hover {
 .dashBtn:hover {
     scale: 1.03;
 }
+
+.dashLink {
+    border: none;
+    color: var(--dash-color);
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+}
+
+.dashLink:hover {
+    border: 1px solid var(--dash-color);
+    color: var(--dash-color);
+    transition: scale 0.3 ease-in-out;
+    cursor: pointer;
+    scale: 1.1;
+}
