@@ -1,47 +1,18 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Button from '../../utils/Button/Button'
 import CardTeam from './CardTeam'
 import { TeamFlex } from './Team.Styled'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.min.css'
 
 SwiperCore.use([Autoplay, Navigation, Pagination])
 
-const data = [
-  {
-    name: 'Gerardo Osorio',
-    cargo: 'Coordinador(a) de logística',
-    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
-  },
-  {
-    name: 'Kevin Cotrina',
-    cargo: 'Relaciones Públicas',
-    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
-  },
-  {
-    name: 'Rick Quito',
-    cargo: 'Talento Humano',
-    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
-  },
-  {
-    name: 'Gerardo Osorio',
-    cargo: 'Ceo',
-    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
-  },
-  {
-    name: 'Gerardo Osorio',
-    cargo: 'Ceo',
-    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
-  },
-  {
-    name: 'Gerardo Osorio',
-    cargo: 'Ceo',
-    src: 'https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0',
-  },
-]
 const Team = () => {
+  const files = useSelector((state) => state.gallery.files)
+  const videos = files.filter((file) => file.origin === 'videos')
   return (
     <TeamFlex>
       <Swiper
@@ -68,9 +39,9 @@ const Team = () => {
         //centeredSlides={true}
         //onSlideChange={(swiper) => console.log(swiper)}
       >
-        {data.map((team, index) => (
-          <SwiperSlide className="swiper-card" key={index}>
-            <CardTeam src={team?.src} />
+        {videos.map((video) => (
+          <SwiperSlide className="swiper-card" key={video._id}>
+            <CardTeam src={video.url} />
           </SwiperSlide>
         ))}
       </Swiper>

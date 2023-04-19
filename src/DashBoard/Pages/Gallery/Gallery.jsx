@@ -6,13 +6,8 @@ import ImageCard from './Card/ImageCard'
 import { GalleryWrapper } from './gallery.styles'
 
 export default function Gallery() {
-  const dispatch = useDispatch()
   const images = useSelector((state) => state.gallery.files)
   const [selectedCard, setSelectedCard] = useState(null)
-
-  useEffect(() => {
-    dispatch(getAllFiles())
-  }, [])
 
   return (
     <>

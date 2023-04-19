@@ -56,6 +56,7 @@ import {
   getTags,
 } from './redux/actions/blog_actions'
 import { getAllCategories, getAllEvents } from './redux/actions/event_actions'
+import { getAllFiles } from './redux/actions/gallery_actions'
 import { isLoggedIn } from './utils/Auth/isLoggedIn'
 
 axios.defaults.baseURL = 'https://backup-production.up.railway.app/'
@@ -72,6 +73,7 @@ function App() {
     dispatch(getAllEvents())
     dispatch(getAllCategories())
     dispatch(getAllAreas())
+    dispatch(getAllFiles())
   }, [])
 
   return (
