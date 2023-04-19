@@ -1,22 +1,24 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
 import {
-  AddCategory,
-  AddTag,
-  DeleteCategory,
-  DeleteTag,
   OrderBlog,
   OrderDasboard,
   addBlog,
+  addCategory,
+  addTag,
   deleteBlog,
+  deleteCategory,
+  deleteTag,
   editBlog,
+  editCategory,
+  editTag,
   filterCategory,
   filterTags,
   getAllBlogs,
   getBlog,
   getBlogTitle,
   getCategories,
-  getTags,
+  getTags
 } from '../actions/blog_actions'
 
 const initialState = {
@@ -92,16 +94,22 @@ const blogSlice = createSlice({
         state.error = action.payload
       })
 
-      .addCase(AddCategory.fulfilled, (state, action) => {
+      .addCase(addCategory.fulfilled, (state, action) => {
         state.confirmation = action.payload
       })
-      .addCase(AddTag.fulfilled, (state, action) => {
+      .addCase(addTag.fulfilled, (state, action) => {
         state.confirmation = action.payload
       })
-      .addCase(DeleteCategory.fulfilled, (state, action) => {
+      .addCase(editCategory.fulfilled, (state, action) => {
         state.confirmation = action.payload
       })
-      .addCase(DeleteTag.fulfilled, (state, action) => {
+      .addCase(editTag.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+      .addCase(deleteCategory.fulfilled, (state, action) => {
+        state.confirmation = action.payload
+      })
+      .addCase(deleteTag.fulfilled, (state, action) => {
         state.confirmation = action.payload
       })
 
