@@ -6,11 +6,21 @@ import {
   IoNotificationsOutline,
   IoSearchOutline,
 } from 'react-icons/io5'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
+import { logOut } from '../../../redux/actions/account_actions'
 import Notifications from '../Notifications/Notifications'
 import { HeaderNotifications, LogOut, ProfileMiniature } from './header.styles'
 
 export default function Header({ user }) {
+  const dispatch = useDispatch()
+  const handleLogout = async () => {
+    await dispatch(logOut()).finally(() => {
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('user_id')
+      navigate('/login')
+    })
+  }
   const navigate = useNavigate()
   return (
     <>
@@ -31,13 +41,7 @@ export default function Header({ user }) {
         <i>
           <IoCaretDownOutline />
         </i>
-        <LogOut
-          onClick={() => {
-            localStorage.removeItem('access_token')
-            localStorage.removeItem('user_id')
-            navigate('/login')
-          }}
-        >
+        <LogOut onClick={handleLogout}>
           <IoLogOutOutline />
         </LogOut>
       </ProfileMiniature>
