@@ -119,6 +119,17 @@ export default function Sidebar({ user }) {
               Galleria Involucrate
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="videos"
+              className={({ isActive }) => (isActive ? 'current' : '')}
+            >
+              <i>
+                <IoImageOutline />
+              </i>
+              Videos
+            </NavLink>
+          </li>
         </nav>
       </SideBarContent>
     </>

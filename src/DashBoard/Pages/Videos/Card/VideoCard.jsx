@@ -7,15 +7,7 @@ import {
 } from '../../../../redux/actions/gallery_actions'
 import CardDetail from '../../../Components/Modal/CardDetail'
 
-export default function ImageCard({
-  id,
-  url,
-  status,
-  submition,
-  activeModal,
-  captureIdModal,
-  setSelectedCard,
-}) {
+export default function ImageCard({ id, url, status }) {
   const dispatch = useDispatch()
 
   const handleStatus = async () => {
@@ -40,25 +32,23 @@ export default function ImageCard({
   return (
     <div className="container">
       <div className="content">
-        <img src={url} alt={`Imagen ${id} de galeria de involucrate`} />
+        <iframe
+          width="100%"
+          height="415"
+          src="https://www.youtube-nocookie.com/embed/DmCZoiCp5C0?controls=0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
         <span>Estado de la imagen: {status ? 'activa' : 'inactiva'}</span>
         <div className="buttons">
-          <button className="dashBtn" onClick={() => captureIdModal(id)}>
-            Ver
-          </button>
           <button className="dashBtn" onClick={handleStatus}>
             {status ? 'desactivar' : 'activar'}
           </button>
           <button className="dashBtn" onClick={handleDelete}>
             Borrar
           </button>
-          {activeModal && (
-            <CardDetail
-              submition={submition}
-              type={'gallery'}
-              setSelectedCard={setSelectedCard}
-            />
-          )}
         </div>
       </div>
     </div>

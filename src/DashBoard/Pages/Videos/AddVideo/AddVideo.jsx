@@ -4,17 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { addFile, getAllFiles } from '../../../../redux/actions/gallery_actions'
-import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { FormBody } from './add.styles'
 
-export default function AddImage() {
+export default function AddVideo() {
   const { register, handleSubmit, reset } = useForm()
   const MySwal = withReactContent(Swal)
   const dispatch = useDispatch()
   const [sending, setSending] = useState(null)
   const formRef = useRef(null)
-  const postImg = useSelector((state) => state.file.fileUrl)
-
   const notification = async () => {
     await MySwal.fire({
       icon: 'success',
@@ -35,14 +32,14 @@ export default function AddImage() {
     const post = {
       title: data.title,
       subtitle: data.subtitle,
-      url: postImg,
+      url: `https://www.youtube-nocookie.com/embed/${data.ytId}?controls=0`,
       status: true,
-      origin: 'images',
+      origin: 'videos',
     }
     try {
       setSending(true)
       await dispatch(addFile(post)).finally(() => dispatch(getAllFiles()))
-      // formRef.current.reset()
+      formRef.current.reset()
       return notification()
     } catch (error) {
       errorNotify()
@@ -53,7 +50,7 @@ export default function AddImage() {
 
   return (
     <>
-      <h2>Agregar Imagen</h2>
+      <h2>Agregar Video</h2>
       <FormBody>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
@@ -64,13 +61,20 @@ export default function AddImage() {
             Subtitulo:
             <input {...register('subtitle', { max: 120 })} />
           </label>
-          <FileUploader folder="gallery" />
+          <label>
+            Video:
+            <span>
+              Debes subir el id del video que quieres compartir ej.
+              <i>'5Vr2usufh48'</i>
+            </span>
+            <input {...register('ytId')} />
+          </label>
           <button
             type="submit"
             className="dashBtn"
             disabled={sending ? true : false}
           >
-            Agregar imagen
+            Agregar video
           </button>
         </form>
       </FormBody>
