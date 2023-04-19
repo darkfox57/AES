@@ -1,9 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { useSelector, useDispatch } from 'react-redux'
-
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { useDispatch } from 'react-redux'
 
 import TextInput from '../../utils/TextInput/TextInput'
 
@@ -31,9 +28,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     formState: { errors },
   } = useForm()
   const dispatch = useDispatch()
-  const error = useSelector((state) => state.form.error)
   const modalRef = useRef(null)
-  const MySwal = withReactContent(Swal)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
@@ -54,22 +49,6 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     }
   }
 
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'El formulario ha sido enviado exitosamente!',
-    })
-  }
-
-  const errorNotify = async () => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Lo sentimos, el formulario no ha podido enviarse adecuadamente!',
-    })
-  }
-
   const Submit = (data) => {
     const formData = {
       ...data,
@@ -77,12 +56,6 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
     }
 
     dispatch(addFormAlliance(formData))
-
-    if (error) {
-      return errorNotify()
-    } else {
-      return notification()
-    }
   }
 
   return (

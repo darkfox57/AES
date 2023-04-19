@@ -2,9 +2,6 @@ import React, { useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
 import Select from 'react-select'
 
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
@@ -36,9 +33,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.form.countries)
   const uploadedFile = useSelector((state) => state.file.pdfUrl)
-  const error = useSelector((state) => state.form.error)
   const modalRef = useRef(null)
-  const MySwal = withReactContent(Swal)
 
   const regexLetras = new RegExp('^[A-Za-zÁ-ÿ\\s]+$')
   const regexMail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
@@ -62,42 +57,15 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
     }
   }
 
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'El formulario ha sido enviado exitosamente!',
-    })
-  }
-
-  const errorNotify = async (errorMsg) => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: errorMsg,
-    })
-  }
-
   const onSubmit = async (data) => {
     const formData = {
       ...data,
       country: data.country.value,
       filepath: uploadedFile,
     }
-    if (!uploadedFile) {
-      let errorMsg = 'Por favor, recuerde de mandar su CV!'
-      errorNotify(errorMsg)
-    } else {
-      dispatch(addFormSpecialist(formData))
 
-      if (error) {
-        let errorMsg =
-          'Oops... Al parecer hubo un error al mandar el formulario. Vuelve a intentarlo!'
-        errorNotify(errorMsg)
-      } else {
-        return notification()
-      }
-    }
+    console.log(formData)
+    dispatch(addFormSpecialist(formData))
   }
 
   return (
@@ -143,7 +111,7 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
             maxLength={15}
             errors={errors}
             required={true}
-            pattern={regexTelefono}
+            // pattern={regexTelefono}
           />
 
           {/**Campo Paises (Seleccion) */}
