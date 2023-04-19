@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const SlideIn = keyframes`
+from {
+  transform: translateX(-300px);
+}
+to {
+  transform: translateX(0);
+}
+`
 
 export const FooterContainer = styled.section`
   display: flex;
