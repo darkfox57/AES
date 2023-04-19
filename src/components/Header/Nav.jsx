@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Button from '../../utils/Button/Button'
 import { ListNav, NavContainer } from './Nav.Styled'
+import useScroll from '../../Hooks/useScrollTop'
 
 const Nav = ({ OpenNav, showSelect }) => {
   const token = localStorage.getItem('access_token')
@@ -12,6 +13,7 @@ const Nav = ({ OpenNav, showSelect }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 100)
   }
+  
   const ScrollUp = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })

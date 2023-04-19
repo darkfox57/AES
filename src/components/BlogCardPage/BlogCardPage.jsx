@@ -26,8 +26,9 @@ const BlogCardPage = ({
   EventPage,
   short_description,
 }) => {
+  
   const Newdate = new Date(date)
-  const NewDateOut = dateOut && new Date(dateOut)
+  const NewDateOut = new Date(dateOut)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 

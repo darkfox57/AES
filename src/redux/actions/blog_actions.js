@@ -5,7 +5,7 @@ const token = localStorage.getItem('access_token');
 
 export const getAllBlogs = createAsyncThunk('blogs/getAllBlogs', async () => {
   const response = await axios.get('blogs')
-  return response.data
+  return response.data.reverse()
 })
 
 export const getBlog = createAsyncThunk('blogs/getBlog', async (slug) => {
@@ -105,7 +105,6 @@ export const editCategory = createAsyncThunk('categories/edit', async (post) => 
       'Authorization': `Bearer ${token}`
     }
   })
-  console.log(post);
   return response.data
 })
 

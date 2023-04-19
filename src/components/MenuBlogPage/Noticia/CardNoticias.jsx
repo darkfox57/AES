@@ -3,8 +3,19 @@ import { CardNoticiaFlex } from './CardNoticias.Styled'
 import { useNavigate } from 'react-router'
 import useScroll from '../../../Hooks/useScrollTop'
 
-const CardNoticias = ({ title, fecha, img, slug, EventPage }) => {
+const CardNoticias = ({
+  title,
+  fecha,
+  img,
+  slug,
+  EventPage,
+  dateOut,
+  dateIn,
+}) => {
   const Newdate = new Date(fecha)
+  const NewOut = new Date(dateOut)
+  const NewIn = new Date(dateIn)
+
   const navigate = useNavigate()
   const handleNavigate = () => {
     if (EventPage) {
@@ -20,7 +31,18 @@ const CardNoticias = ({ title, fecha, img, slug, EventPage }) => {
       <img src={img} alt={title} />
       <span>
         <h5>{title}</h5>
-        <p>{Newdate.toLocaleDateString()} </p>
+        {!dateIn && <p>{Newdate.toLocaleDateString()}</p>}
+        {dateOut && dateIn && (
+          <div className="flex">
+            <p>
+              {NewOut.toLocaleDateString()}
+            </p>
+            -
+            <p>
+               {NewIn.toLocaleDateString()}
+            </p>
+          </div>
+        )}
       </span>
     </CardNoticiaFlex>
   )

@@ -6,7 +6,7 @@ import { BlogContainer, LastBlogsContainer } from './NewestBlogs.Styles'
 
 export default function NewestBlogs() {
   const navigate = useNavigate()
-  const blogs = useSelector((state) => state.blog.copyblogs)
+  const blogs = useSelector((state) => state.blog.swiperBlog)
 
   return (
     <LastBlogsContainer>

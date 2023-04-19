@@ -5,7 +5,7 @@ const token = localStorage.getItem('access_token');
 
 export const getAllEvents = createAsyncThunk('events/getAll', async () => {
   const response = await axios.get('/events')
-  return response.data
+  return response.data.reverse()
 })
 
 export const getEvent = createAsyncThunk('events/getOne', async (slug) => {
@@ -89,7 +89,7 @@ export const getEventByTitle = createAsyncThunk(
   'events/getByTitle',
   async (title) => {
     const response = await axios(`/events?search=${title}`)
-    return response.data
+    return response.data.reverse()
   }
 )
 

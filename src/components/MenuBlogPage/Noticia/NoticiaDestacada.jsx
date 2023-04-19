@@ -18,6 +18,8 @@ const NoticiaDestacada = ({Noticia , EventPage}) => {
             slug={noticia.slug}
             title={noticia.title}
             fecha={noticia.createdAt}
+            dateOut={noticia.date_in}
+            dateIn={noticia.date_out}
             img={!noticia.image ? noticia.frontpage : noticia.image}
           />
         ))}

@@ -41,6 +41,7 @@ export default function Eventos() {
   const handleFilter = (e) => {
     dispatch(filterCategory(e.target.value))
   }
+
   return (
     <>
       <Portada img={blogimg} titulo="Evento" />
@@ -54,9 +55,7 @@ export default function Eventos() {
           />
         </div>
         <GridCardBlog>
-          {paginatedData
-            .filter((post) => post.status)
-            .map((post) => (
+          {paginatedData.map((post) => (
               <BlogCardPage
                 EventPage={true}
                 slug={post.slug}
@@ -66,7 +65,7 @@ export default function Eventos() {
                 title={post.title}
                 tags={post.tags}
                 date={post.date_in}
-                dateOut={post.dateOut}
+                dateOut={post?.date_out}
                 description={post.description}
               />
             ))}
