@@ -15,36 +15,39 @@ const Team = () => {
   const videos = files.filter((file) => file.origin === 'videos')
   return (
     <TeamFlex>
-      <Swiper
-        /*autoplay={{
+      <h2>Testimonios</h2>
+      <div className="teamflex">
+        <Swiper
+          /*autoplay={{
           delay: 5000,
           disableOnInteraction:true,
         }}*/
-        //loop={true}
-        navigation
-        // pauseOnMouseEnter
-        spaceBetween={20}
-        pagination={{ clickable: true }}
-        // slidesPerView={4}
-        breakpoints={{
-          // Configuración para pantallas más pequeñas
-          1458: {
-            slidesPerView: 2,
-          },
-          // Configuración para pantallas aún más pequeñas
-          1036: {
-            slidesPerView: 1,
-          },
-        }}
-        //centeredSlides={true}
-        //onSlideChange={(swiper) => console.log(swiper)}
-      >
-        {videos.map((video) => (
-          <SwiperSlide className="swiper-card" key={video._id}>
-            <CardTeam src={video.url} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          //loop={true}
+          navigation
+          // pauseOnMouseEnter
+          spaceBetween={20}
+          pagination={{ clickable: true }}
+          // slidesPerView={4}
+          breakpoints={{
+            // Configuración para pantallas más pequeñas
+            1458: {
+              slidesPerView: 2,
+            },
+            // Configuración para pantallas aún más pequeñas
+            1036: {
+              slidesPerView: 1,
+            },
+          }}
+          //centeredSlides={true}
+          //onSlideChange={(swiper) => console.log(swiper)}
+        >
+          {videos.map((video) => (
+            <SwiperSlide className="swiper-card" key={video._id}>
+              <CardTeam src={video.url} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </TeamFlex>
   )
 }

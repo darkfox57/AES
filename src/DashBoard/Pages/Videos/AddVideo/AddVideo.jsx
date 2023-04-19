@@ -39,7 +39,7 @@ export default function AddVideo() {
     try {
       setSending(true)
       await dispatch(addFile(post)).finally(() => dispatch(getAllFiles()))
-      formRef.current.reset()
+
       return notification()
     } catch (error) {
       errorNotify()
@@ -65,7 +65,7 @@ export default function AddVideo() {
             Video:
             <span>
               Debes subir el id del video que quieres compartir ej.
-              <i>'5Vr2usufh48'</i>
+              <i>'5FOocK_QL9A'</i>
             </span>
             <input {...register('ytId')} />
           </label>
