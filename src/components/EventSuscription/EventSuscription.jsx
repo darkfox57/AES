@@ -14,6 +14,7 @@ export default function EventSuscription({ id }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
   const dispatch = useDispatch()
 
@@ -26,6 +27,8 @@ export default function EventSuscription({ id }) {
       events: id,
     }
     dispatch(createEventSuscription(formSuscription))
+
+    reset()
   }
 
   return (

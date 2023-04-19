@@ -3,9 +3,6 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
 import {
   FormContainer,
   MainContainer,
@@ -22,32 +19,12 @@ export default function Form_Contacto() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
-  const MySwal = withReactContent(Swal)
-
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'El mensaje ha sido enviado exitosamente!',
-    })
-  }
-
-  const errorNotify = async ({ errorMsg }) => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: errorMsg,
-    })
-  }
 
   const enviarFormulario = (data) => {
-    try {
-      dispatch(addFormContact(data))
-      return notification()
-    } catch (error) {
-      errorNotify()
-    }
+    dispatch(addFormContact(data))
+    reset()
   }
 
   return (

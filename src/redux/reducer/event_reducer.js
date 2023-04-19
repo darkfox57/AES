@@ -10,14 +10,15 @@ import {
   getAllTags,
   getEvent,
   getEventByTitle,
-  orderEvents
+  orderEvents,
 } from '../actions/event_actions'
 import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
+import { notification, errorNotify } from '../../components/Footer/ModalWindows'
 
 const initialState = {
   events: [],
   copyEvents: [],
-  swiperEvents:[],
+  swiperEvents: [],
   categories: [],
   tags: [],
   event: {},
@@ -32,8 +33,8 @@ const eventSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllEvents.fulfilled, (state, action) => {
-        state.events = action.payload.reverse();
-        state.swiperEvents = action.payload.filter((post) => post.status);
+        state.events = action.payload.reverse()
+        state.swiperEvents = action.payload.filter((post) => post.status)
         state.copyEvents = action.payload.filter((post) => post.status)
       })
       .addCase(getAllEvents.rejected, (state, action) => {
@@ -123,6 +124,26 @@ const eventSlice = createSlice({
           sortOptions[action.payload.type][action.payload.sort]
         )
       })
+
+      .addMatcher(
+        (action) => action.type.endsWith('/fulfilled'),
+        (state, action) => {
+          state.error = null
+          if (action.type.includes('events/suscription')) {
+            notification()
+          }
+        }
+      )
+
+      .addMatcher(
+        (action) => action.type.endsWith('/rejected'),
+        (state, action) => {
+          state.error = null
+          if (action.type.includes('events/suscription')) {
+            errorNotify()
+          }
+        }
+      )
   },
 })
 
