@@ -49,8 +49,11 @@ const eventSlice = createSlice({
       })
 
       .addCase(getEventByTitle.fulfilled, (state, action) => {
-        state.copyEvents = action.payload
+        let search = action.payload.filter((post) => post.status)
+        search.sort((a, b) => new Date(b.date_out) - new Date(a.date_out));
+        state.copyEvents = search
       })
+
       .addCase(getEventByTitle.rejected, (state, action) => {
         state.error = action.error.message
       })
@@ -98,8 +101,8 @@ const eventSlice = createSlice({
             desc: (a, b) => b.title.localeCompare(a.title),
           },
           fecha: {
-            asc: (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
-            desc: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+            asc: (a, b) => new Date(b.date_out) - new Date(a.date_out),
+            desc: (a, b) => new Date(a.date_out) - new Date(b.date_out),
           },
         }
 
