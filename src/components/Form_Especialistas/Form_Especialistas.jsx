@@ -63,8 +63,6 @@ const Form_Especialistas = ({ isOpen, setMainForm, areas }) => {
       country: data.country.value,
       filepath: uploadedFile,
     }
-
-    console.log(formData)
     dispatch(addFormSpecialist(formData))
   }
 
