@@ -5,7 +5,6 @@ import Footer from '../../components/Footer/Footer'
 import Portada from '../../components/Portada/Portada'
 import usePagination from '../../Hooks/usePagination'
 import BlogCardPage from '../../components/BlogCardPage/BlogCardPage'
-import BtnPaginado from '../../components/BtnPaginado/BtnPaginado'
 import Categorias from '../../components/MenuBlogPage/Categoria/Categorias'
 import EtiquetasPopular from '../../components/MenuBlogPage/Etiquetas/EtiquetasPopular'
 import NoticiaDestacada from '../../components/MenuBlogPage/Noticia/NoticiaDestacada'
@@ -16,6 +15,7 @@ import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 import { filterCategory } from '../../redux/actions/blog_actions'
 import useConditionalRender from '../../Hooks/useConditionalRender'
 import { getAllTags } from '../../redux/actions/event_actions'
+import Paginado from '../../components/Paginado/Paginado'
 
 export default function Eventos() {
   const dispatch = useDispatch()
@@ -71,13 +71,8 @@ export default function Eventos() {
             ))}
           {!paginatedData.length && <h1>No hay resultados</h1>}
           {totalPages !== 0 && (
-            <BtnPaginado
-              currentPage={currentPage}
+            <Paginado
               totalPages={totalPages}
-              PreviousPage={PreviousPage}
-              posts={eventocopy}
-              NextPage={NextPage}
-              pageNumbers={pageNumbers}
               goToPage={goToPage}
             />
           )}
