@@ -21,22 +21,19 @@ export default function Contacto() {
         <Interacciones_Contacto
           icon={<FaEnvelope size={32} />}
           subTitle={'Escríbenos'}
-          details1={'info@webmail.com'}
-          details2={'jobs@webmail01.com'}
+          details1={'asociacioneducacionsanitaria@outlook.com'}
         />
 
         <Interacciones_Contacto
           icon={<FaPhoneAlt size={32} />}
           subTitle={'Llámanos'}
           details1={'954812223'}
-          details2={'+(098) 098-098-765'}
         />
 
         <Interacciones_Contacto
           icon={<FaMapMarkerAlt size={32} />}
           subTitle={'Encuéntranos'}
           details1={'Piura - Perú'}
-          details2={''}
         />
       </InteractionsContainer>
 

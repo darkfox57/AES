@@ -8,7 +8,7 @@ const Portada = ({ titulo, img }) => {
   return (
     <PortadaContainer Portada={img} brush={brush}>
       <div>
-        <span>Nuestra Misión: Salud, Educación, Voluntariados</span>
+        <span>Nuestra Misión: Promover la salud integral</span>
         <h1>{titulo}</h1>
       </div>
     </PortadaContainer>

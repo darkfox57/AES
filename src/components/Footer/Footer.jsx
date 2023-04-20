@@ -25,7 +25,7 @@ export default function Footer() {
       <FooterContent>
         <InfoContent />
         <FooterMenu>
-          <h4>Por un Perú Sano</h4>
+          <h4>Educacion Sanitaria</h4>
           <ul>
             <NavLink
               to="/"

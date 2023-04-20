@@ -3,22 +3,23 @@ import SectionFaq from './SectionFaq'
 import { FaqContainerText } from './FaqDoubt.Styled'
 const datas = [
   {
-    title: '¿A cuántas personas ayudan con su trabajo de beneficencia?',
+    title: '¿A quienes están dirigidos los talleres?',
     detail:
-      'Nos contactamos con colegios para brindarles los talleres a adolescentes de últimos años.',
+      'A niños y adolescentes de colegios públicos con poco o nulo acceso a talleres de salud, contamos con modalidad virtual y presencial. ',
   },
   {
     title:
-      'Si hago una donación, ¿puedo decidir a qué sería destinado mi dinero?',
+      'Si hago una donación, ¿puedo decidir a qué se destinaría mi aporte?',
     detail:
-      'Por supuesto, puede elegir si se destinan a kits de salud, adolescentes que necesiten sesiones particulares de psicología o al mantenimiento de nuestras plataformas.',
+      'Por supuesto, puede elegir si se destinan a kits de salud, adolescentes y niños que necesiten sesiones particulares de psicología o al mantenimiento de nuestras plataformas.',
   },
   {
-    title: '¿Qué nos distingue a nosotros de otras organizaciones?',
+    title: '¿Qué nos distingue de otras organizaciones?',
     detail:
-      'Trabajamos de la mano con especialistas del sector salud que de forma voluntaria brindan su tiempo para los talleres. Además que buscamos cubrir el tema de la salud de forma integral, es decir física y mental.',
+      'Trabajamos de la mano con especialistas del sector salud que de forma voluntaria brindan su tiempo para los talleres. Además que buscamos cubrir el tema de la salud de forma integral, es decir física, mental, social y medio ambiental.',
   },
 ]
+
 const FaqDoubt = () => {
   const [visibleIndex, setVisibleIndex] = useState(null) // Estado para el índice del span visible
 
