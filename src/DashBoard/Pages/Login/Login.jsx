@@ -27,6 +27,7 @@ export default function Login() {
       setValidando(true)
       localStorage.setItem('access_token', estado.token)
       localStorage.setItem('user_id', estado.id)
+      localStorage.setItem('user_role', estado.role)
       navigate('/dashboard')
     }
   }, [estado.success])
