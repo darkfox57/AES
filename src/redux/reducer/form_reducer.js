@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import {
-  getAreas,
-  addFormSpecialist,
-  addFormInstitution,
   addFormAlliance,
-  getAllForms,
-  getAllCountries,
+  addFormInstitution,
+  addFormSpecialist,
   addFormSuscription,
   deleteFormSuscription,
+  getAllCountries,
+  getAllForms,
+  getAreas,
 } from '../actions/form_actions'
 
-import { notification, errorNotify } from '../../components/Footer/ModalWindows'
+import { errorNotify, notification } from '../../components/Footer/ModalWindows'
 const initialState = {
   forms: [],
 
@@ -60,22 +60,22 @@ const formSlice = createSlice({
         })
       })
 
-      .addMatcher(
-        (action) => action.type.endsWith('/fulfilled'),
-        (state, action) => {
-          state.error = null
-          if (action.type.includes('forms')) {
-            notification()
-          }
-        }
-      )
-      .addMatcher(
-        (action) => action.type.endsWith('/rejected'),
-        (state, action) => {
-          state.error = action.error.message
-          errorNotify()
-        }
-      )
+    // .addMatcher(
+    //   (action) => action.type.endsWith('/fulfilled'),
+    //   (state, action) => {
+    //     state.error = null
+    //     if (action.type.includes('forms')) {
+    //       notification()
+    //     }
+    //   }
+    // )
+    // .addMatcher(
+    //   (action) => action.type.endsWith('/rejected'),
+    //   (state, action) => {
+    //     state.error = action.error.message
+    //     errorNotify()
+    //   }
+    // )
   },
 })
 

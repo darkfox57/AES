@@ -37,6 +37,8 @@ import Tags from './DashBoard/Pages/Tags/Tags'
 import AddVideo from './DashBoard/Pages/Videos/AddVideo/AddVideo'
 import EditVideo from './DashBoard/Pages/Videos/EditVideo/EditVideo'
 import Videos from './DashBoard/Pages/Videos/Videos'
+import AddLogo from './DashBoard/Pages/logos/AddLogo/AddLogo'
+import Logos from './DashBoard/Pages/logos/logos'
 import Header from './components/Header/Header'
 import DashLayout from './layouts/DashLayout'
 import About from './pages/About/About'
@@ -140,7 +142,8 @@ function App() {
           <Route path="videos" element={<Videos />} />
           <Route path="videos/add" element={<AddVideo />} />
           <Route path="videos/edit/:id" element={<EditVideo />} />
-
+          <Route path="logos" element={<Logos />} />
+          <Route path="logos/add" element={<AddLogo />} />
           <Route path="perfil/:id" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />

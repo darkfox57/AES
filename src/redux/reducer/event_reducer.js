@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
+import { errorNotify, notification } from '../../components/Footer/ModalWindows'
 import {
   OrderDasboard,
   deleteEvent,
@@ -12,8 +14,6 @@ import {
   getEventByTitle,
   orderEvents,
 } from '../actions/event_actions'
-import sortOptions from '../../DashBoard/Pages/OrderSort/OrderSort'
-import { notification, errorNotify } from '../../components/Footer/ModalWindows'
 
 const initialState = {
   events: [],
@@ -128,25 +128,25 @@ const eventSlice = createSlice({
         )
       })
 
-      .addMatcher(
-        (action) => action.type.endsWith('/fulfilled'),
-        (state, action) => {
-          state.error = null
-          if (action.type.includes('events/suscription')) {
-            notification()
-          }
-        }
-      )
+    // .addMatcher(
+    //   (action) => action.type.endsWith('/fulfilled'),
+    //   (state, action) => {
+    //     state.error = null
+    //     if (action.type.includes('events/suscription')) {
+    //       notification()
+    //     }
+    //   }
+    // )
 
-      .addMatcher(
-        (action) => action.type.endsWith('/rejected'),
-        (state, action) => {
-          state.error = null
-          if (action.type.includes('events/suscription')) {
-            errorNotify()
-          }
-        }
-      )
+    // .addMatcher(
+    //   (action) => action.type.endsWith('/rejected'),
+    //   (state, action) => {
+    //     state.error = null
+    //     if (action.type.includes('events/suscription')) {
+    //       errorNotify()
+    //     }
+    //   }
+    // )
   },
 })
 

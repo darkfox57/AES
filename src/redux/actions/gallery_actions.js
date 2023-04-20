@@ -30,7 +30,11 @@ export const addFile = createAsyncThunk('gallery/add', async (post) => {
   'origin': post.origin,
  }
  try {
-  const response = await axios.post(`resources/gallery/upload`, formatedpost)
+  const response = await axios.post(`resources/gallery/upload`, formatedpost, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
   return response.data
  }
  catch (error) {
