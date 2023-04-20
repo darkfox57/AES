@@ -56,7 +56,8 @@ const SwiperMobil = ({ banco }) => {
                 capitalización de mercado.
               </p>
             )}
-            <Button type={'primary'} text={'Más informacion'} size={'md'} />
+            {banco !== 'bcp' && <Button  type={'primary'} link={"https://plin.pe"} a={true} text={'Más informacion'} size={'md'} />}
+            {banco === 'bcp' && <Button  type={'primary'} link={"https://www.yape.com.pe"} a={true} text={'Más informacion'} size={'md'} />}
           </AppVisualInfo>
         </Containermovil>
       )}

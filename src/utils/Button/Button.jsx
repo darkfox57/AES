@@ -8,7 +8,7 @@ import { ButtonStyle } from './Button.styles'
 
 // para seleccionar tamaños estan las opciones sm - md - lg   siendo sm la mas pequeña, lg la más grande y md la que se usa en la mayoria de los casos. Esto se pasa en la prop 'size'
 
-export default function Button({ type, link, text, size, flex,funtion }) {
+export default function Button({ type, link, a, text, size, flex,funtion }) {
   const handleClick = () => {
     if(funtion) funtion()
     setTimeout(() => {
@@ -16,8 +16,8 @@ export default function Button({ type, link, text, size, flex,funtion }) {
     }, 100)
   }
   return (
-    <Link to={link} onClick={handleClick}>
-      <ButtonStyle type={type} size={size} flex={flex}>
+    <Link to={link}  target={a && "_blank"} rel="noopener noreferrer" onClick={handleClick}>
+      <ButtonStyle type={type}  size={size} flex={flex}>
         {text}
       </ButtonStyle>
     </Link>

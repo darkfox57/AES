@@ -69,7 +69,7 @@ export default function Eventos() {
                 description={post.description}
               />
             ))}
-          {!paginatedData.length && <h1>Hola</h1>}
+          {!paginatedData.length && <h1>No hay resultados</h1>}
           {totalPages !== 0 && (
             <BtnPaginado
               currentPage={currentPage}

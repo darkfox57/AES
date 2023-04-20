@@ -66,7 +66,8 @@ export default function Blog() {
               short_description={post.short_description}
             />
           ))}
-          <BtnPaginado
+           {!paginatedData.length && <h1>No hay resultados</h1>}
+           {totalPages !== 0 && (<BtnPaginado
             currentPage={currentPage}
             totalPages={totalPages}
             PreviousPage={PreviousPage}
@@ -74,7 +75,7 @@ export default function Blog() {
             NextPage={NextPage}
             pageNumbers={pageNumbers}
             goToPage={goToPage}
-          />
+          />)}
         </GridCardBlog>
         <ContainerMenuBlog>
           <div className="fixedMenu">
