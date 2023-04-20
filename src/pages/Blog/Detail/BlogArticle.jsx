@@ -13,9 +13,17 @@ export default function BlogArticle() {
 
   const dispatch = useDispatch()
   const post = useSelector((state) => state.blog.blog)
+  const SwiperBlog = useSelector((state) => state.blog.swiperBlog)
+
   useEffect(() => {
     dispatch(getBlog(slug))
   }, [slug, dispatch])
+
+  const Coicidencia = SwiperBlog.filter((obj) =>
+    obj.categories?.some((cat) =>
+      post.categories?.some((cat1) => cat.name === cat1.name)
+    )
+  )
 
   const fecha = new Date(post?.createdAt)
   return (
@@ -45,7 +53,7 @@ export default function BlogArticle() {
         </BlogDetailBody>
       )}
       <Suscription />
-      <Blog />
+      {<Blog posts={Coicidencia} />}
       <Footer />
     </>
   )

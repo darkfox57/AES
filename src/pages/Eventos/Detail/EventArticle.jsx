@@ -35,7 +35,11 @@ const EventoForm = () => {
         <FlexInfo>
           <BlockEvento event={event} />
           <TextEvent>
-            <p>{event.description}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: event?.description,
+              }}
+            ></div>
           </TextEvent>
         </FlexInfo>
 
