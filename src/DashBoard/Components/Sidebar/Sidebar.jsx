@@ -161,6 +161,17 @@ export default function Sidebar({ user }) {
               Testimonios
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="logos"
+              className={({ isActive }) => (isActive ? 'current' : '')}
+            >
+              <i>
+                <IoImageOutline />
+              </i>
+              Logos
+            </NavLink>
+          </li>
         </nav>
       </SideBarContent>
     </>
