@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import {  useSelector } from 'react-redux'
+import React from 'react'
 import { BlogContainer } from './Blog.Styled'
 import BlogCard from './BlogCard'
 import BlogHeader from './BlogHeader'
@@ -14,14 +13,14 @@ import 'swiper/swiper-bundle.min.css'
 SwiperCore.use([Autoplay])
 SwiperCore.use([Navigation])
 
-const Blog = () => {
+const Blog = ({posts}) => {
  
-  const posts = useSelector((state) => state.blog.swiperBlog)
 
 
-  if (!posts.length) {
+  /*if (!posts.length) {
     return <p>Cargando eventos...</p>
-  }
+  }*/
+
   return (
     <BlogContainer>
       <BlogHeader />

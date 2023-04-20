@@ -9,8 +9,10 @@ import Patrocinadores from '../../components/Patrocinadores/Patrocinadores'
 import Talleres from '../../components/Talleres/Talleres'
 import HomeSlider from '../../components/Swiper_Home_Portada/HomeSlider'
 import SwiperEventos from '../../components/SliderEventos/SwiperEventos'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
+  const posts = useSelector((state) => state.blog.swiperBlog)
   return (
     <>
       <HomeSlider/>
@@ -18,7 +20,7 @@ export default function Home() {
       <About_Home />
       <Talleres />
       <BannerCita />
-      <Blog />
+      <Blog posts={posts} />
       <Patrocinadores />
       <SwiperEventos/>
       <Footer />
