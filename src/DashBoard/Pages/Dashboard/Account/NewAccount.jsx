@@ -3,12 +3,11 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
-import { getUser, updateUser } from '../../../../redux/actions/account_actions'
+import { updateUser } from '../../../../redux/actions/account_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
-import ResetPassword from '../../../Components/ResetPassword/ResetPassword'
-import { ProfileBody } from './profile.styles'
+import { ProfileBody } from '../Profile/profile.styles'
 
-export default function Profile() {
+export default function NewAccount() {
   const user = useSelector((state) => state.account.user)
   const { id } = useParams()
   const confirmation = useSelector((state) => state.account.confirmation)
@@ -16,9 +15,7 @@ export default function Profile() {
   const [newAvatar, setNewAvatar] = useState(false)
   const postImg = useSelector((state) => state.file.fileUrl)
   const dispatch = useDispatch()
-  useEffect(() => {
-    getUser(id)
-  }, [])
+  const role = localStorage.getItem('role')
 
   const {
     register,
@@ -66,59 +63,53 @@ export default function Profile() {
         <form onSubmit={handleSubmit(handleData)}>
           <label>
             Nombre:
-            <input
-              defaultValue={user.firstname}
-              {...register('firstname', { required: true })}
-            />
+            <input {...register('firstname', { required: true })} />
           </label>
           <label>
             Apellido:
-            <input
-              defaultValue={user.lastname}
-              {...register('lastname', { required: true })}
-            />
+            <input {...register('lastname', { required: true })} />
           </label>
           <label>
             Email:
+            <input {...register('email', { required: true })} />
+          </label>
+          <label>
+            Contraseña:
             <input
-              defaultValue={user.email}
-              {...register('email', { required: true })}
+              type="password"
+              {...register('password', { required: true })}
             />
           </label>
-
-          {/* <label>
+          <label>
             Rol
             <select {...register('roles', { required: true })}>
               <option value="Selecciona" defaultValue={user.roles}>
                 --
               </option>
-              {roles.map(
-                (rol) =>
-                  rol.name !== 'superadmin' && (
+              {role !== 'superadmin'
+                ? roles.map(
+                    (rol) =>
+                      rol.name !== 'superadmin' && (
+                        <option key={rol._id} value={rol._id}>
+                          {rol.name}
+                        </option>
+                      )
+                  )
+                : roles.map((rol) => (
                     <option key={rol._id} value={rol._id}>
                       {rol.name}
                     </option>
-                  )
-              )}
+                  ))}
             </select>
-          </label> */}
+          </label>
           <span>Avatar:</span>
-          {!newAvatar ? (
-            <>
-              <img src={user.avatar} alt={user.firstname} />
-              <button className="dashBtn" onClick={() => setNewAvatar(true)}>
-                Subir nuevo avatar
-              </button>
-            </>
-          ) : (
-            <FileUploader folder="uploads" />
-          )}
+
+          <FileUploader folder="uploads" />
 
           <span>{confirmation.error}</span>
           <span>{confirmation.message}</span>
           <input type="submit" />
         </form>
-        <ResetPassword id={user._id} />
       </ProfileBody>
     </>
   )

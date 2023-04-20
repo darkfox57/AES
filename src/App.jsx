@@ -9,6 +9,8 @@ import AddBlog from './DashBoard/Pages/Blog/AddBlog/AddBlog'
 import BlogDash from './DashBoard/Pages/Blog/BlogDash'
 import EditBlog from './DashBoard/Pages/Blog/EditBlog/EditBlog'
 import Categories from './DashBoard/Pages/Categories/Categories'
+import AllUsers from './DashBoard/Pages/Dashboard/Account/AllUsers'
+import NewAccount from './DashBoard/Pages/Dashboard/Account/NewAccount'
 import Dashboard from './DashBoard/Pages/Dashboard/Dashboard'
 import Profile from './DashBoard/Pages/Dashboard/Profile/Profile'
 import AddEvent from './DashBoard/Pages/Events/AddEvent/AddEvent'
@@ -52,6 +54,7 @@ import Faqs from './pages/FAQs/Faqs'
 import FaqDonacion from './pages/FaqDonacion/FaqDonacion'
 import Home from './pages/Home/Home'
 import Involucrate from './pages/Involucrate/Involucrate'
+
 import {
   getAllBlogs,
   getCategories,
@@ -145,6 +148,8 @@ function App() {
           <Route path="logos" element={<Logos />} />
           <Route path="logos/add" element={<AddLogo />} />
           <Route path="perfil/:id" element={<Profile />} />
+          <Route path="cuentas" element={<AllUsers />} />
+          <Route path="perfil/new" element={<NewAccount />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
