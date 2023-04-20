@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaPhoneAlt,
   FaRegEnvelope,
-  FaTwitter,
+  FaYoutube,
 } from 'react-icons/fa'
 import logo from '../../assets/logo-aes.png'
 import { ContactInfo, ContactSection, SocialMedia } from './contacto.styles'
@@ -23,7 +25,7 @@ export default function Contacto() {
         </i>
         <div>
           <p>Correo Electrónico</p>
-          <span>info@aes.com</span>
+          <span>asociacioneducacionsanitaria@outlook.com</span>
         </div>
       </ContactInfo>
       <ContactInfo>
@@ -32,22 +34,42 @@ export default function Contacto() {
         </i>
         <div>
           <p>Teléfono</p>
-          <span>980-987-098-09</span>
+          <span>954812223</span>
         </div>
       </ContactInfo>
       <SocialMedia>
-        <button>
-          <FaFacebookF />
-        </button>
-        <button>
-          <FaInstagram />
-        </button>
-        <button>
-          <FaTwitter />
-        </button>
-        <button>
-          <FaLinkedinIn />
-        </button>
+        <Link
+          to="https://www.facebook.com/profile.php?id=100075719030131"
+          target="_blank"
+        >
+          <button>
+            <FaFacebookF />
+          </button>
+        </Link>
+
+        <Link to="">
+          <button>
+            <FaInstagram />
+          </button>
+        </Link>
+
+        <Link
+          to="https://www.youtube.com/channel/UCxvKKBjpUHeYtlfmrznMvlg"
+          target="_blank"
+        >
+          <button>
+            <FaYoutube />
+          </button>
+        </Link>
+
+        <Link
+          to="https://www.linkedin.com/company/educacionsanitaria/?viewAsMember=true"
+          target="_blank"
+        >
+          <button>
+            <FaLinkedinIn />
+          </button>
+        </Link>
       </SocialMedia>
     </ContactSection>
   )

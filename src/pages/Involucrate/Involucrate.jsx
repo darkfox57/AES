@@ -43,13 +43,12 @@ export default function Involucrate() {
       <Involucrate_Container>
         <Card_Container>
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8WX9N5_rLeymZJWTU2TwNWRLyMTOPjTBsbw&usqp=CAU">
-            <h3>Forma parte de nuestros especialistas</h3>
+            <h3>Convocatoria de especialistas</h3>
             <p>
-              La generosidad es una de las fuerzas humanas más poderosas. En Por
-              un Perú sano, aprovechamos los esfuerzos de nuestros especialistas
-              para tener un efecto positivo sobre las vidas de los adolescentes.
-              Nos encantaría que se una a nuestro equipo para ayudar a formar
-              una sociedad sana tanto física como mentalmente.
+              Dona tu tiempo y experiencia validando nuestros talleres o
+              dirigiendolos, si tienes experiencia con niños o adolescentes en
+              temas de salud física, mental, social o medioambiental, déjanos
+              tus datos para contactarte.
             </p>
 
             <Button_Styled name="Form_Especialistas" onClick={handleForm}>
@@ -58,11 +57,11 @@ export default function Involucrate() {
           </Card_Contact>
 
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwM04418DHJtKAtm7_QGgdfJo_B_ZTmxzoUg&usqp=CAU">
-            <h3>Instituciones sanas</h3>
+            <h3>Convocatoria de instituciones saludables</h3>
             <p>
-              Nuestros talleres están enfocados en las necesidades de cada
-              institución educativa. Si desea que sus alumnos participen agende
-              una reunión con nosotros.
+              Si deseas que tus alumnos accedan a nuestros talleres gratuitos
+              sobre salud física, mental, social o medioambiental, déjanos tus
+              datos para contactarte.
             </p>
             <Button_Styled name="Form_Instituciones" onClick={handleForm}>
               Rellenar Formulario
@@ -70,12 +69,11 @@ export default function Involucrate() {
           </Card_Contact>
 
           <Card_Contact bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQoWn8xV5mi4gEGF7d2U19ZQkxywsqxDGY_A&usqp=CAU">
-            <h3>Postulacion de organizaciones para alianzas</h3>
+            <h3>Convocatoria de organizaciones</h3>
             <p>
-              Hay muchas formas de contribuir a nuestras labores. Es totalmente
-              cierto que hasta el menor esfuerzo cuenta, en especial si queremos
-              contribuir a formar una sociedad sana. Conozca más sobre lo que
-              hacemos y cómo puede brindar apoyo.
+              Si estás interesado en capacitar a tus voluntarios en temas de
+              salud física, mental, social o medioambiental, déjanos tus datos
+              para contactarte.
             </p>
             <Button_Styled name="Form_Alianzas" onClick={handleForm}>
               Rellenar Formulario

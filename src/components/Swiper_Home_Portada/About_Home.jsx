@@ -44,15 +44,11 @@ export default function About_Home() {
 
 export const InfoContent = () => (
   <InfoContainer>
-    <h2>
-      ¿QUIENES SOMOS <br />
-      <span>Y QUE HACEMOS?</span>
-    </h2>
+    <h2>¿QUIENES SOMOS?</h2>
     <p>
-      Somos una organización sin fines de lucro creada por jóvenes
-      multidisciplinarios, quienes en trabajo conjunto con profesionales de la
-      salud buscan formar una sólida cultura sanitaria en los adolescentes del
-      Perú a través de talleres dinámicos
+      Somos una asociación sin fines de lucro, conformada por jóvenes
+      multidisciplinarios que buscan promover la salud integral en los niños y
+      adolescentes peruanos a través de talleres dinámicos.
     </p>
     <Button type="primary" link="/acerca-de" text="Leer más" size="md" />
   </InfoContainer>

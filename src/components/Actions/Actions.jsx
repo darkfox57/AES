@@ -17,8 +17,7 @@ export default function Actions() {
         <div>
           <h3>HAZ UNA DONACION</h3>
           <p>
-            Apoya nuestras causas con una donación que nos va a ayudar a cumplir
-            con todos los objetivos
+            Ayúdanos a seguir llevando nuestros talleres a niños y adolescentes.
           </p>
           <Button
             type="link"
@@ -32,9 +31,7 @@ export default function Actions() {
         <FaReact size={75} />
         <div>
           <h3>INVOLUCRATE</h3>
-          <p>
-            Hay muchas formas en las que puedes contribuir a nuestras labores
-          </p>
+          <p>Descubre todas las formas en que las puedes ayudarnos.</p>
           <Button type="link" link="/involucrate" text="Leer más" size="md" />
         </div>
       </Involve_Action_Content>
