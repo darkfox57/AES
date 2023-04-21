@@ -3,19 +3,16 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
-import { updateUser } from '../../../../redux/actions/account_actions'
+import { createUser } from '../../../../redux/actions/account_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import { ProfileBody } from '../Profile/profile.styles'
 
 export default function NewAccount() {
-  const user = useSelector((state) => state.account.user)
-  const { id } = useParams()
   const confirmation = useSelector((state) => state.account.confirmation)
-  const roles = useSelector((state) => state.account.roles)
-  const [newAvatar, setNewAvatar] = useState(false)
+  const allRoles = useSelector((state) => state.account.roles)
+  const option_roles = allRoles.filter((rol) => rol.name !== 'superadmin')
   const postImg = useSelector((state) => state.file.fileUrl)
   const dispatch = useDispatch()
-  const role = localStorage.getItem('role')
 
   const {
     register,
@@ -28,7 +25,7 @@ export default function NewAccount() {
     while (!hasConfirmationMessage) {
       if (confirmation) {
         hasConfirmationMessage = true
-        Swal.fire('Editado correctamente')
+        Swal.fire('Creado correctamente')
       }
       await new Promise((resolve) => setTimeout(resolve, 100))
     }
@@ -45,20 +42,15 @@ export default function NewAccount() {
 
   const handleData = (data) => {
     const userData = {
-      id: user._id,
-      firstname: data.firstname,
-      lastname: data.lastname,
-      email: data.email,
-      password: data.password,
-      status: true,
-      avatar: postImg || user.avatar,
+      ...data,
+      avatar: postImg,
     }
-    dispatch(updateUser(userData))
+    dispatch(createUser(userData))
     alert(confirmation.message)
   }
   return (
     <>
-      <h2>Editar Pefil</h2>
+      <h2>Crear Usuario</h2>
       <ProfileBody>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
@@ -83,23 +75,12 @@ export default function NewAccount() {
           <label>
             Rol
             <select {...register('roles', { required: true })}>
-              <option value="Selecciona" defaultValue={user.roles}>
-                --
-              </option>
-              {role !== 'superadmin'
-                ? roles.map(
-                    (rol) =>
-                      rol.name !== 'superadmin' && (
-                        <option key={rol._id} value={rol._id}>
-                          {rol.name}
-                        </option>
-                      )
-                  )
-                : roles.map((rol) => (
-                    <option key={rol._id} value={rol._id}>
-                      {rol.name}
-                    </option>
-                  ))}
+              <option value="Selecciona">--</option>
+              {option_roles.map((rol) => (
+                <option key={rol._id} value={rol._id}>
+                  {rol.name}
+                </option>
+              ))}
             </select>
           </label>
           <span>Avatar:</span>

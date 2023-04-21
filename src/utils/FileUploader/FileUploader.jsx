@@ -14,11 +14,11 @@ function FileUploader({ folder }) {
   const [apiPreset, setApiPreset] = useState('')
 
   const apiFolder = (folder) => {
-    if (folder === 'blog') setApiPreset('cof2kdru')
-    if (folder === 'events') setApiPreset('ptw6eoec')
-    if (folder === 'files') setApiPreset('e2fy8smu')
-    if (folder === 'gallery') setApiPreset('s8qvxnxx')
-    if (folder === 'uploads') setApiPreset('mpbfbben')
+    if (folder === 'blog') setApiPreset('o9vqchkp')
+    if (folder === 'events') setApiPreset('npqltswp')
+    if (folder === 'files') setApiPreset('huy1gm9a')
+    if (folder === 'gallery') setApiPreset('tqwwuudk')
+    if (folder === 'uploads') setApiPreset('gddsicqt')
   }
 
   const handleFileInputChange = (event) => {
@@ -65,7 +65,7 @@ function FileUploader({ folder }) {
     formData.append('upload_preset', apiPreset)
     try {
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/dhjfxxpja/image/upload',
+        'https://api.cloudinary.com/v1_1/dpisdt9i3/image/upload',
         formData
       )
       dispatch(setFileUrl(response.data.secure_url))

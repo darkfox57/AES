@@ -29,7 +29,7 @@ export const userValidation = createAsyncThunk('login/validation', async (token_
  }
 })
 
-export const getAllUsers = createAsyncThunk('login/getAllUsers', async () => {
+export const getAllUsers = createAsyncThunk('account/getAllUsers', async () => {
  try {
   const response = await axios.get('users', {
    headers: {
@@ -43,7 +43,7 @@ export const getAllUsers = createAsyncThunk('login/getAllUsers', async () => {
  }
 })
 
-export const getUser = createAsyncThunk('login/getUser', async (user_id) => {
+export const getUser = createAsyncThunk('account/getUser', async (user_id) => {
  try {
   const response = await axios.get(`users/${user_id}`, {
    headers: {
@@ -57,7 +57,35 @@ export const getUser = createAsyncThunk('login/getUser', async (user_id) => {
  }
 })
 
-export const updateUser = createAsyncThunk('login/updateUser', async (userData) => {
+export const getOtherUser = createAsyncThunk('account/getOtherUser', async (id) => {
+ try {
+  const response = await axios.get(`users/${id}`, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
+  return response.data
+ }
+ catch (error) {
+  return error.response.data
+ }
+})
+
+export const createUser = createAsyncThunk('account/createUser', async (userData) => {
+ try {
+  const response = await axios.post(`users`, userData, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
+  return response.data
+ }
+ catch (error) {
+  return error.response.data
+ }
+})
+
+export const updateUser = createAsyncThunk('account/updateUser', async (userData) => {
  const formatedpost = {
   'firstname': userData.firstname,
   'lastname': userData.lastname,
@@ -80,7 +108,7 @@ export const updateUser = createAsyncThunk('login/updateUser', async (userData) 
  }
 })
 
-export const getRoles = createAsyncThunk('login/getRoles', async () => {
+export const getRoles = createAsyncThunk('account/getRoles', async () => {
  const response = await axios.get('roles', {
   headers: {
    'Authorization': `Bearer ${token}`
@@ -90,7 +118,7 @@ export const getRoles = createAsyncThunk('login/getRoles', async () => {
 
 })
 
-export const resetPassword = createAsyncThunk('login/resetPassword', async (userData) => {
+export const resetPassword = createAsyncThunk('account/resetPassword', async (userData) => {
  try {
   const response = await axios.post(`auth/${userData.id}/reset-password`, userData, {
    headers: {
@@ -104,3 +132,24 @@ export const resetPassword = createAsyncThunk('login/resetPassword', async (user
  }
 })
 
+export const deleteUser = createAsyncThunk('account/delete', async (id) => {
+ const response = await axios.delete(`users/${id}`, {
+  headers: {
+   'Authorization': `Bearer ${token}`
+  }
+ })
+ return response.data
+})
+
+export const newPassword = createAsyncThunk('account/resetPass', async (userData) => {
+ const user = {
+  newpassword: userData.newpassword
+ }
+ const response = await axios.post(`auth/${userData.id}/change-password`, user, {
+  headers: {
+   'Authorization': `Bearer ${token}`
+  }
+ })
+
+ return response.data
+})

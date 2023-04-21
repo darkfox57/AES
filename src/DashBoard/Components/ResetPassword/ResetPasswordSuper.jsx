@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetPassword } from '../../../redux/actions/account_actions'
+import { newPassword } from '../../../redux/actions/account_actions'
 import { ResetForm } from './reset.styles'
 
-export default function ResetPassword({ id }) {
+export default function ResetPasswordSuper({ id }) {
   const dispatch = useDispatch()
   const confirmation = useSelector((state) => state.account.passConfirmation)
   const [updated, setUpdated] = useState('')
@@ -18,17 +18,14 @@ export default function ResetPassword({ id }) {
     reset,
   } = useForm()
   const formRef = useRef(null)
-
   const watchNewPassword = watch('newPassword', '')
   const watchNewPasswordVerified = watch('newPasswordVerified', '')
-
   const handlePassword = async (data) => {
     const userData = {
       id: id,
-      oldpassword: data.oldPassword,
       newpassword: data.newPasswordVerified,
     }
-    dispatch(resetPassword(userData))
+    dispatch(newPassword(userData))
   }
 
   useEffect(() => {
@@ -40,13 +37,6 @@ export default function ResetPassword({ id }) {
     <ResetForm>
       <h4>Cambiar Contraseña</h4>
       <form ref={formRef} onSubmit={handleSubmit(handlePassword)}>
-        <label>
-          Contraseñá actual:
-          <input
-            type="password"
-            {...register('oldPassword', { required: true })}
-          />
-        </label>
         <label>
           Contraseña nueva:
           <input

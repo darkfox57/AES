@@ -1,52 +1,71 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import Swal from 'sweetalert2'
-import { getUser, updateUser } from '../../../../redux/actions/account_actions'
+import withReactContent from 'sweetalert2-react-content'
+import {
+  deleteUser,
+  getAllUsers,
+  getOtherUser,
+  updateUser,
+} from '../../../../redux/actions/account_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import ResetPassword from '../../../Components/ResetPassword/ResetPassword'
+import ResetPasswordSuper from '../../../Components/ResetPassword/ResetPasswordSuper'
 import { ProfileBody } from './profile.styles'
 
 export default function Profile() {
-  const user = useSelector((state) => state.account.user)
+  const user = useSelector((state) => state.account.anotherUser)
   const { id } = useParams()
   const confirmation = useSelector((state) => state.account.confirmation)
   const roles = useSelector((state) => state.account.roles)
   const [newAvatar, setNewAvatar] = useState(false)
   const postImg = useSelector((state) => state.file.fileUrl)
+  const MySwal = withReactContent(Swal)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const user_id = localStorage.getItem('user_id')
+  const user_role = localStorage.getItem('user_role')
+
   useEffect(() => {
-    getUser(id)
+    dispatch(getOtherUser(id))
   }, [])
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm()
 
-  const alert = async (confirmation) => {
-    let hasConfirmationMessage = false
-    while (!hasConfirmationMessage) {
-      if (confirmation) {
-        hasConfirmationMessage = true
-        Swal.fire('Editado correctamente')
-      }
-      await new Promise((resolve) => setTimeout(resolve, 100))
+  useEffect(() => {
+    if (user) {
+      const { _id, firstname, lastname, avatar, email } = user
+      reset({
+        ...user,
+      })
     }
-    setTimeout(() => {
-      if (!hasConfirmationMessage) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'No se ha podido guardar cambios!',
-        })
-      }
-    }, 3000)
+  }, [user, reset])
+
+  const notification = async (text) => {
+    await MySwal.fire({
+      icon: 'success',
+      title: 'Genial',
+      text: 'usuario editado',
+    })
   }
 
-  const handleData = (data) => {
+  const errorNotify = async (text) => {
+    await MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'no se pudo editar el usuario',
+    })
+  }
+
+  const handleData = async (data) => {
     const userData = {
       id: user._id,
       firstname: data.firstname,
@@ -56,12 +75,33 @@ export default function Profile() {
       status: true,
       avatar: postImg || user.avatar,
     }
-    dispatch(updateUser(userData))
-    alert(confirmation.message)
+    try {
+      await dispatch(updateUser(userData)).finally(() =>
+        dispatch(getOtherUser(id))
+      )
+      return notification()
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteUser(user._id)).finally(() =>
+        dispatch(getAllUsers())
+      )
+      return navigate('/dashboard/cuentas')
+    } catch (error) {
+      return console.log(error)
+    }
+  }
+
   return (
     <>
       <h2>Editar Pefil</h2>
+      <button className="dashBtn" onClick={handleDelete}>
+        Eliminar usuario
+      </button>
       <ProfileBody>
         <form onSubmit={handleSubmit(handleData)}>
           <label>
@@ -118,7 +158,11 @@ export default function Profile() {
           <span>{confirmation.message}</span>
           <input type="submit" />
         </form>
-        <ResetPassword id={user._id} />
+
+        {user._id === user_id && <ResetPassword id={user._id} />}
+        {user_role === 'superadmin' && user._id !== user_id && (
+          <ResetPasswordSuper id={user._id} />
+        )}
       </ProfileBody>
     </>
   )
