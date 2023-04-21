@@ -7,6 +7,7 @@ import {
   IoImageOutline,
   IoMailUnreadOutline,
   IoNewspaperOutline,
+  IoPeopleOutline,
   IoSpeedometerOutline,
 } from 'react-icons/io5'
 import { Link, NavLink, useLocation } from 'react-router-dom'
@@ -16,6 +17,7 @@ import { ProfileMiniature, SideBarContent } from './sidebar.styled'
 export default function Sidebar({ user }) {
   const [expand, setExpand] = useState(false)
   const location = useLocation()
+  const user_role = localStorage.getItem('user_role')
 
   return (
     <>
@@ -172,6 +174,19 @@ export default function Sidebar({ user }) {
               Logos
             </NavLink>
           </li>
+          {user_role !== 'editor' && (
+            <li>
+              <NavLink
+                to="cuentas"
+                className={({ isActive }) => (isActive ? 'current' : '')}
+              >
+                <i>
+                  <IoPeopleOutline />
+                </i>
+                Usuarios
+              </NavLink>
+            </li>
+          )}
         </nav>
       </SideBarContent>
     </>

@@ -40,10 +40,10 @@ function PdfUploader({ register }) {
     setUploading(true)
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('upload_preset', 'e2fy8smu')
+    formData.append('upload_preset', 'huy1gm9a')
     try {
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/dhjfxxpja/image/upload',
+        'https://api.cloudinary.com/v1_1/dpisdt9i3/image/upload',
         formData
       )
       dispatch(setPdfUrl(response.data.secure_url))
