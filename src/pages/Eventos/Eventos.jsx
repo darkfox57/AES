@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import blogimg from '../../assets/About.webp'
-import Footer from '../../components/Footer/Footer'
-import Portada from '../../components/Portada/Portada'
+import { useDispatch, useSelector } from 'react-redux'
+import useConditionalRender from '../../Hooks/useConditionalRender'
 import usePagination from '../../Hooks/usePagination'
+import blogimg from '../../assets/About.webp'
 import BlogCardPage from '../../components/BlogCardPage/BlogCardPage'
+import Footer from '../../components/Footer/Footer'
 import Categorias from '../../components/MenuBlogPage/Categoria/Categorias'
 import EtiquetasPopular from '../../components/MenuBlogPage/Etiquetas/EtiquetasPopular'
 import NoticiaDestacada from '../../components/MenuBlogPage/Noticia/NoticiaDestacada'
 import SearchBlog from '../../components/MenuBlogPage/Search/SearchBlog'
 import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
-import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
+import Paginado from '../../components/Paginado/Paginado'
+import Portada from '../../components/Portada/Portada'
 import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 import { filterCategory } from '../../redux/actions/blog_actions'
-import useConditionalRender from '../../Hooks/useConditionalRender'
 import { getAllTags } from '../../redux/actions/event_actions'
-import Paginado from '../../components/Paginado/Paginado'
+import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
 
 export default function Eventos() {
   const dispatch = useDispatch()
@@ -56,25 +56,22 @@ export default function Eventos() {
         </div>
         <GridCardBlog>
           {paginatedData.map((post) => (
-              <BlogCardPage
-                EventPage={true}
-                slug={post.slug}
-                key={post._id}
-                count_view={post.count_view}
-                img={post.frontpage}
-                title={post.title}
-                tags={post.tags}
-                date={post.date_in}
-                dateOut={post?.date_out}
-                description={post.description}
-              />
-            ))}
+            <BlogCardPage
+              EventPage={true}
+              slug={post.slug}
+              key={post._id}
+              count_view={post.count_view}
+              img={post.frontpage}
+              title={post.title}
+              tags={post.tags}
+              date={post.date_in}
+              dateOut={post?.date_out}
+              description={post.description}
+            />
+          ))}
           {!paginatedData.length && <h1>No hay resultados</h1>}
           {totalPages !== 0 && (
-            <Paginado
-              totalPages={totalPages}
-              goToPage={goToPage}
-            />
+            <Paginado totalPages={totalPages} goToPage={goToPage} />
           )}
         </GridCardBlog>
         <ContainerMenuBlog>
@@ -82,7 +79,11 @@ export default function Eventos() {
             <SearchBlog Event={true} />
             {!showSelect && (
               <>
-                <NoticiaDestacada Noticia={posts} EventPage={true} />
+                <NoticiaDestacada
+                  Noticia={posts}
+                  EventPage={true}
+                  title={'Eventos destacados'}
+                />
                 <Categorias
                   category={category}
                   posts={posts}

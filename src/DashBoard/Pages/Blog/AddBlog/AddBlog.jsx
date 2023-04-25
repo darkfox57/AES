@@ -3,8 +3,6 @@ import { useForm } from 'react-hook-form'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import { addBlog, getAllBlogs } from '../../../../redux/actions/blog_actions'
 import FileUploader from '../../../../utils/FileUploader/FileUploader'
 import PdfUploader from '../../../../utils/FileUploader/pdfUploader'
@@ -18,7 +16,7 @@ export default function AddBlog() {
   const estado = useSelector((state) => state.blog.status)
   const postImg = useSelector((state) => state.file.fileUrl)
   const postPdf = useSelector((state) => state.file.pdfUrl)
-  const MySwal = withReactContent(Swal)
+
   const [sending, setSending] = useState(false)
 
   const [postContent, setPostContent] = useState('')
@@ -27,22 +25,6 @@ export default function AddBlog() {
     handleSubmit,
     formState: { errors },
   } = useForm()
-
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'La publicación se ha actualizado correctamente!',
-    })
-  }
-
-  const errorNotify = async () => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'No se ha podido guardar cambios!',
-    })
-  }
 
   const handleData = async (data) => {
     const post = {
@@ -62,9 +44,7 @@ export default function AddBlog() {
     try {
       setSending(true)
       await dispatch(addBlog(post)).finally(() => dispatch(getAllBlogs()))
-      return notification()
     } catch (error) {
-      errorNotify()
     } finally {
       setSending(false)
     }

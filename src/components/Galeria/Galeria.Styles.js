@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SectionContainer = styled.section`
-  width: 100%;
+  /* width: 100%; */
   padding: var(--section-padding);
   background: var(--primary-blue);
   color: var(--text-white);
@@ -12,8 +12,7 @@ export const SectionContainer = styled.section`
 `
 
 export const GalleryContainer = styled.div`
-  column-width: 400px;
-
+  column-width: 1400px;
 `
 
 export const ButtonContainer = styled.div`

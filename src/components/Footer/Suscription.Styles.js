@@ -6,6 +6,5 @@ export const FormContainer = styled.form`
   justify-content: center;
   align-items: center;
   gap: 15px;
-
   margin-top: 25px;
 `

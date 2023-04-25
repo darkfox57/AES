@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 const token = localStorage.getItem('access_token')
 
 export const getAllForms = createAsyncThunk('forms', async () => {
@@ -14,8 +15,8 @@ export const getAllForms = createAsyncThunk('forms', async () => {
 export const getAllCountries = createAsyncThunk(
   'form/getAllCountries',
   async () => {
-    const allCountries = await axios('country')
-    return allCountries.data
+    const response = await axios('country')
+    return response.data
   }
 )
 
@@ -27,51 +28,157 @@ export const getAreas = createAsyncThunk('form/areas', async () => {
 export const addFormSpecialist = createAsyncThunk(
   'forms/addFormSpecialist',
   async (form) => {
-    const createForm = await axios.post('specialist', form)
-    return createForm.data
+    try {
+
+      const response = await axios.post('specialist', form)
+      if (response.data.message) {
+
+        await Swal.fire({
+          icon: 'success',
+          title: 'Genial',
+          text: response.data.message,
+        })
+      }
+      return response.data
+    }
+    catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.error}`,
+      })
+    }
   }
 )
 
 export const addFormInstitution = createAsyncThunk(
   'forms/addFormInstitution',
   async (form) => {
-    const createForm = await axios.post('institution', form)
-    return createForm.data
+    try {
+
+      const response = await axios.post('institution', form)
+
+      if (response.data.message) {
+
+        await Swal.fire({
+          icon: 'success',
+          title: 'Genial',
+          text: response.data.message,
+        })
+      }
+      return response.data
+    }
+    catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.error}`,
+      })
+    }
   }
 )
 
 export const addFormAlliance = createAsyncThunk(
   'forms/addFormAlliance',
   async (form) => {
-    const createForm = await axios.post('organization', form)
-    return createForm.data
+    try {
+
+      const response = await axios.post('organization', form)
+      if (response.data.message) {
+
+        await Swal.fire({
+          icon: 'success',
+          title: 'Genial',
+          text: response.data.message,
+        })
+      }
+      return response.data
+    }
+    catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.error}`,
+      })
+    }
   }
 )
 
 export const addFormContact = createAsyncThunk(
   'forms/contact',
   async (form) => {
-    const response = await axios.post('contact', form)
-    return response.data
+    try {
+
+      const response = await axios.post('contact', form)
+      if (response.data.message) {
+
+        await Swal.fire({
+          icon: 'success',
+          title: 'Genial',
+          text: response.data.message,
+        })
+      }
+      return response.data
+    }
+    catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.error}`,
+      })
+    }
   }
 )
 
 export const addFormSuscription = createAsyncThunk(
   'forms/suscription',
   async (form) => {
-    const response = await axios.post('suscription', form)
-    return response.data
+    try {
+      const response = await axios.post('suscription', form)
+      if (response.data.message) {
+
+        await Swal.fire({
+          icon: 'success',
+          title: 'Genial',
+          text: response.data.message,
+        })
+      }
+      return response.data
+    }
+    catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.error}`,
+      })
+    }
+
   }
 )
 
 export const deleteFormSuscription = createAsyncThunk(
   'forms/desuscription',
   async (email) => {
-    const response = await axios.delete(`suscription/delete?email=${email}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    return response.data
+    try {
+
+      const response = await axios.delete(`suscription/delete?email=${email}`)
+      if (response.data.message) {
+
+        await Swal.fire({
+          icon: 'success',
+          title: 'Genial',
+          text: response.data.message,
+        })
+      }
+      return response.data
+    }
+    catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.response.data.error}`,
+      })
+    }
+
   }
 )

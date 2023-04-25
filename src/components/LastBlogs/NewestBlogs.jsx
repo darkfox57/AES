@@ -25,15 +25,15 @@ export default function NewestBlogs() {
               <img src={blog.image} alt="imagen" />
             </div>
             <div>
-              <span>
+              <span className="title">{blog.title}</span>
+              <br />
+              <span className="date">
                 {new Date(blog.createdAt).toLocaleString('es-ES', {
                   day: 'numeric',
                   month: 'long',
                   year: 'numeric',
                 })}
               </span>
-              <br />
-              <span>{blog.title}</span>
             </div>
           </BlogContainer>
         ))}

@@ -23,10 +23,11 @@ const QuienesSomos = () => {
             <span>y qué hacemos?</span>
           </h2>
           <p>
-            Patrocinios Somos una organización sin fines de lucro creada por
+            Patrocinios. Somos una organización sin fines de lucro creada por
             jóvenes multidisciplinarios, quienes en trabajo conjunto con
-            profesionales de la salud buscan formar una sólida cultura sanitaria
-            en los adolescentes del Perú a través de talleres dinámicos.
+            profesionales de la salud, buscan formar una sólida cultura
+            sanitaria en los adolescentes del Perú a través de talleres
+            dinámicos.
           </p>
         </QuienesInfo>
       </GridQuienes>

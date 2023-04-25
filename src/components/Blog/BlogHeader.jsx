@@ -12,7 +12,7 @@ const BlogHeader = () => {
           <h1>Puedes leer tambien</h1>
         ) : (
           <>
-            <span>Contenido de interes</span>
+            <span>Contenido de interés</span>
             <h1>Nuestro blog</h1>
           </>
         )}

@@ -5,6 +5,10 @@ export const SelectInputStyled = styled.label`
   flex-direction: column;
   align-items: center;
   gap: 5px;
-
+  min-width: 250px;
   font-size: 0.8rem;
+  input {
+    
+  min-width: 250px;
+  }
 `

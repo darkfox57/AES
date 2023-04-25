@@ -75,7 +75,7 @@ const dashSlice = createSlice({
         state.error = action.error.message
       })
       .addCase(getAllMessages.fulfilled, (state, action) => {
-        state.messages = action.payload
+        state.messages = action.payload.reverse()
       })
       .addCase(getAllMessages.rejected, (state, action) => {
         state.error = action.error.message

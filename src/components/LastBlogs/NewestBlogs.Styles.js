@@ -31,6 +31,15 @@ export const BlogContainer = styled.div`
     & > span:first-child {
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
+    .title {
+      display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    }
+    .date {
+      font-size: 0.8rem;
+    }
   }
 
   :hover {

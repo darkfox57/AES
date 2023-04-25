@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import {
   deleteFile,
   editFile,
@@ -18,7 +16,6 @@ export default function EditSlider() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
-  const MySwal = withReactContent(Swal)
   const slider = useSelector((state) => state.gallery.file)
   const { register, handleSubmit, reset } = useForm()
   const [sending, setSending] = useState(null)
@@ -45,22 +42,6 @@ export default function EditSlider() {
     }
   }, [slider, reset])
 
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'La publicación se ha actualizado correctamente!',
-    })
-  }
-
-  const errorNotify = async () => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'No se ha podido guardar cambios!',
-    })
-  }
-
   const handleData = async (data) => {
     const post = {
       _id: data._id,
@@ -72,9 +53,7 @@ export default function EditSlider() {
     try {
       setSending(true)
       await dispatch(editFile(post)).finally(() => dispatch(getAllFiles()))
-      return notification()
     } catch (error) {
-      errorNotify()
     } finally {
       setSending(false)
     }
@@ -130,11 +109,13 @@ export default function EditSlider() {
               </>
             )}
           </div>
-          <input
+          <button
             type="submit"
-            value="Actualizar publicación"
             disabled={sending ? true : false}
-          />
+            className="dashBtn"
+          >
+            Actualizar Slider
+          </button>
         </form>
       </FormBody>
     </div>

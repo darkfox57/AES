@@ -22,8 +22,13 @@ const CardDetail = ({ submition, setSelectedCard, type }) => {
             <span>{submition.phone}</span>
             <p>Email</p>
             <span>{submition.email}</span>
-            <p>N de asistentes</p>
-            <span>{submition.assistants ? submition.assistants : 0}</span>
+            {submition.area?.name ? (
+              <>
+                <p>Aréa:</p> <span>{submition.area.name}</span>
+              </>
+            ) : (
+              ''
+            )}
             <p>Pais</p>
             <span>{submition.country}</span>
             <p>Hoja de vida</p>

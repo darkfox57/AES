@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 const token = localStorage.getItem('access_token');
 
 
@@ -32,8 +33,22 @@ export const editEvent = createAsyncThunk('events/editEvent', async (post) => {
         'Authorization': `Bearer ${token}`
       }
     })
+    if (response.data.message) {
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Genial',
+        text: response.data.message,
+      })
+    }
     return response.data
-  } catch (error) {
+  }
+  catch (error) {
+    await Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+    })
     return error.response.data
   }
 })
@@ -58,8 +73,22 @@ export const addEvent = createAsyncThunk('events/addEvent', async (post) => {
         'Authorization': `Bearer ${token}`
       }
     })
+    if (response.data.message) {
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Genial',
+        text: response.data.message,
+      })
+    }
     return response.data
-  } catch (error) {
+  }
+  catch (error) {
+    await Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+    })
     return error.response.data
   }
 })
@@ -72,8 +101,17 @@ export const createEventSuscription = createAsyncThunk(
         'Authorization': `Bearer ${token}`
       }
     })
+    if (response.data.message) {
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Genial',
+        text: response.data.message,
+      })
+    }
     return response.data
   }
+
 )
 
 export const deleteEvent = createAsyncThunk('events/delete', async (id) => {

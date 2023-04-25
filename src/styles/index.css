@@ -138,7 +138,10 @@ input[type='submit']:hover {
     background-color: rgb(251, 99, 115);
     transition: scale 0.3s ease-in-out;
     text-align: center;
+
 }
+
+
 
 .dashBtn:hover {
     scale: 1.03;

@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import { ComoPagarQr, ContainerImg, PagoFaqContainer } from './PagoFaq.Styled'
-import YapeLogo from '../../assets/FaqPago/YapeLogo.png'
 import PlinLogo from '../../assets/FaqPago/PlinLogo.png'
-import Yape from '../../assets/Yape.png'
+import YapeLogo from '../../assets/FaqPago/YapeLogo.png'
 import Plins from '../../assets/Plin.png'
+import Yape from '../../assets/Yape.png'
+import { ComoPagarQr, ContainerImg, PagoFaqContainer } from './PagoFaq.Styled'
 import Plin from './Plin'
 
 const PagoFaq = () => {
-  const [typePago,setTypePago] = useState("")
+  const [typePago, setTypePago] = useState('')
   return (
     <PagoFaqContainer>
-      <h3>Seleccione la App sobre su duda</h3>
+      <h3>Selecciona la App con la que quieres donar</h3>
       <ContainerImg>
         <div className="card">
-          <img src={YapeLogo} alt="Yape" onClick={()=> setTypePago("Yape")}/>
+          <img src={YapeLogo} alt="Yape" onClick={() => setTypePago('Yape')} />
           <p>
             Yape es un aplicativo móvil con el que puedes enviar y recibir
             dinero de manera gratuita las 24 horas del día con tan solo el
@@ -22,7 +22,7 @@ const PagoFaq = () => {
           </p>
         </div>
         <div className="card">
-          <img src={PlinLogo} alt="Plin" onClick={()=> setTypePago("Plin")} />
+          <img src={PlinLogo} alt="Plin" onClick={() => setTypePago('Plin')} />
           <p>
             Es una funcionalidad en tu app Scotiabank que te permite pagar y
             cobrar con tu código QR o tu número de celular al instante y sin
@@ -30,11 +30,15 @@ const PagoFaq = () => {
           </p>
         </div>
       </ContainerImg>
-      {typePago && <ComoPagarQr>
-        <h3 style={{ textAlign: 'center' }}>¿Como pagar con QR {typePago} ?</h3>
-        <img src={typePago === "Yape" ? Yape : Plins} alt="Plin" />
-        <Plin typePago={typePago} />
-      </ComoPagarQr>}
+      {typePago && (
+        <ComoPagarQr>
+          <h3 style={{ textAlign: 'center' }}>
+            ¿Como pagar con QR {typePago} ?
+          </h3>
+          <img src={typePago === 'Yape' ? Yape : Plins} alt="Plin" />
+          <Plin typePago={typePago} />
+        </ComoPagarQr>
+      )}
     </PagoFaqContainer>
   )
 }

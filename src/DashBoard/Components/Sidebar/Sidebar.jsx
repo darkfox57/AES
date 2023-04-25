@@ -14,7 +14,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import logo from '../../../assets/logo-pups-color.webp'
 import { ProfileMiniature, SideBarContent } from './sidebar.styled'
 
-export default function Sidebar({ user }) {
+export default function Sidebar({ user, avatar }) {
   const [expand, setExpand] = useState(false)
   const location = useLocation()
   const user_role = localStorage.getItem('user_role')
@@ -25,7 +25,7 @@ export default function Sidebar({ user }) {
         <img src={logo} alt="" />
         <ProfileMiniature>
           <img
-            src={user.avatar}
+            src={avatar}
             alt="Avatar de perfil para usuario administrador - Por un Perú Sano"
           />
           <div>
@@ -64,7 +64,7 @@ export default function Sidebar({ user }) {
             >
               <NavLink to="blog/add-blog">Nuevo Blog</NavLink>
               <NavLink to="blog/categorias">Categorías</NavLink>
-              <NavLink to="blog/tags">Etiquedas</NavLink>
+              <NavLink to="blog/tags">Etiquetas</NavLink>
             </div>
           </li>
           <li>
@@ -84,7 +84,7 @@ export default function Sidebar({ user }) {
             >
               <NavLink to="eventos/add-event">Nuevo Evento</NavLink>
               <NavLink to="eventos/categorias">Categorías</NavLink>
-              <NavLink to="eventos/tags">Etiquedas</NavLink>
+              <NavLink to="eventos/tags">Etiquetas</NavLink>
               <NavLink to="eventos/participantes">Participantes</NavLink>
             </div>
           </li>
@@ -96,7 +96,7 @@ export default function Sidebar({ user }) {
               <i>
                 <IoHeartOutline />
               </i>
-              Involucrate
+              Involúcrate
             </NavLink>
             <div
               className={`menuItems ${
@@ -149,7 +149,7 @@ export default function Sidebar({ user }) {
               <i>
                 <IoImageOutline />
               </i>
-              Galleria Involucrate
+              Galería Involúcrate
             </NavLink>
           </li>
           <li>

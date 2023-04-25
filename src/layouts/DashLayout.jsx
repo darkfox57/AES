@@ -52,7 +52,7 @@ export default function DashLayout() {
     <>
       <DashBoardLayoutContainer>
         <SidebarContainer>
-          <Sidebar user={user} />
+          <Sidebar user={user} avatar={user.avatar} />
         </SidebarContainer>
         <HeaderContainer>
           <Header user={user} />

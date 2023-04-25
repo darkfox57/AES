@@ -5,6 +5,7 @@ import {
   getAllSpecialist,
   getSpecialist,
 } from '../../../../redux/actions/dash_forms_actions'
+import DescargarExcel from '../../../../utils/xlsx/descargarExcel'
 import Paginado from '../../../Components/Paginado/Paginado'
 import SpecialistCard from './SpecialistCard/SpecialistCard'
 import { SubmitList, Table } from './specialist.styles'
@@ -28,46 +29,52 @@ export default function Specialists() {
     usePagination(specialists, 10)
 
   return (
-    <>
-      <h2>Inscritos Especialistas</h2>
-      <SubmitList>
-        <Table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Teléfono</th>
-              <th>País</th>
-              <th>Fecha</th>
-            </tr>
-          </thead>
+    console.log(specialists),
+    (
+      <>
+        <h2>Inscritos Especialistas</h2>
+        <button className="dashBtn" onClick={() => DescargarExcel(specialists)}>
+          Descargar listado
+        </button>
+        <SubmitList>
+          <Table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>País</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {paginatedData.map((inst) => (
-              <SpecialistCard
-                key={inst._id}
-                id={inst._id}
-                name={inst.fullname}
-                email={inst.email}
-                phone={inst.phone}
-                submit={inst.createdAt}
-                country={inst.country}
-                view={inst.view}
-                submition={submition}
-                activeModal={selectedCard === inst._id}
-                captureIdModal={captureIdModal}
-                setSelectedCard={setSelectedCard}
-              />
-            ))}
-          </tbody>
-        </Table>
-        <Paginado
-          currentPage={currentPage}
-          totalPages={totalPages}
-          PreviousPage={PreviousPage}
-          NextPage={NextPage}
-        />
-      </SubmitList>
-    </>
+            <tbody>
+              {paginatedData.map((inst) => (
+                <SpecialistCard
+                  key={inst._id}
+                  id={inst._id}
+                  name={inst.fullname}
+                  email={inst.email}
+                  phone={inst.phone}
+                  submit={inst.createdAt}
+                  country={inst.country}
+                  view={inst.view}
+                  submition={submition}
+                  activeModal={selectedCard === inst._id}
+                  captureIdModal={captureIdModal}
+                  setSelectedCard={setSelectedCard}
+                />
+              ))}
+            </tbody>
+          </Table>
+          <Paginado
+            currentPage={currentPage}
+            totalPages={totalPages}
+            PreviousPage={PreviousPage}
+            NextPage={NextPage}
+          />
+        </SubmitList>
+      </>
+    )
   )
 }

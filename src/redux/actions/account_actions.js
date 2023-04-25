@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 const token = localStorage.getItem('access_token');
 
 export const login = createAsyncThunk('login/validate', async (userData) => {
@@ -78,9 +79,22 @@ export const createUser = createAsyncThunk('account/createUser', async (userData
     'Authorization': `Bearer ${token}`
    }
   })
+  if (response.data.message) {
+
+   await Swal.fire({
+    icon: 'success',
+    title: 'Genial',
+    text: response.data.message,
+   })
+  }
   return response.data
  }
  catch (error) {
+  await Swal.fire({
+   icon: 'error',
+   title: 'Oops...',
+   text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+  })
   return error.response.data
  }
 })
@@ -101,9 +115,22 @@ export const updateUser = createAsyncThunk('account/updateUser', async (userData
     'Authorization': `Bearer ${token}`
    }
   })
+  if (response.data.message) {
+
+   await Swal.fire({
+    icon: 'success',
+    title: 'Genial',
+    text: response.data.message,
+   })
+  }
   return response.data
  }
  catch (error) {
+  await Swal.fire({
+   icon: 'error',
+   title: 'Oops...',
+   text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+  })
   return error.response.data
  }
 })
@@ -125,9 +152,22 @@ export const resetPassword = createAsyncThunk('account/resetPassword', async (us
     'Authorization': `Bearer ${token}`
    }
   })
+  if (response.data.message) {
+
+   await Swal.fire({
+    icon: 'success',
+    title: 'Genial',
+    text: response.data.message,
+   })
+  }
   return response.data
  }
  catch (error) {
+  await Swal.fire({
+   icon: 'error',
+   title: 'Oops...',
+   text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+  })
   return error.response.data
  }
 })
@@ -145,11 +185,30 @@ export const newPassword = createAsyncThunk('account/resetPass', async (userData
  const user = {
   newpassword: userData.newpassword
  }
- const response = await axios.post(`auth/${userData.id}/change-password`, user, {
-  headers: {
-   'Authorization': `Bearer ${token}`
-  }
- })
+ try {
 
- return response.data
+  const response = await axios.post(`auth/${userData.id}/change-password`, user, {
+   headers: {
+    'Authorization': `Bearer ${token}`
+   }
+  })
+
+  if (response.data.message) {
+
+   await Swal.fire({
+    icon: 'success',
+    title: 'Genial',
+    text: response.data.message,
+   })
+  }
+  return response.data
+ }
+ catch (error) {
+  await Swal.fire({
+   icon: 'error',
+   title: 'Oops...',
+   text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+  })
+  return error.response.data
+ }
 })

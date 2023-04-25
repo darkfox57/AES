@@ -1,15 +1,16 @@
 import React from 'react'
 import {
+  ArrowIcon,
   BottomContainer,
+  Button_Styled,
   Interaction_Styled,
   TopContainer,
-  Button_Styled,
-  ArrowIcon,
 } from './Interacciones_Contacto.Styles'
 
 export default function Interacciones_Contacto({
   icon,
   subTitle,
+  cta,
   details1,
   details2,
 }) {
@@ -19,7 +20,7 @@ export default function Interacciones_Contacto({
         <div>{icon}</div>
         <div>
           <h4>{subTitle}</h4>
-          <span>Sent mail asap anytime</span>
+          <span>{cta}</span>
         </div>
       </TopContainer>
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
@@ -7,10 +7,10 @@ import TextInput from '../../utils/TextInput/TextInput'
 import Desenfoque from '../../utils/Div_Desenfoque/Div_Desenfoque.Styles'
 import {
   Form_Styled,
-  WorkShopContainer,
   RadioButtonContainer,
   SocialNetworksContainer,
   SubmitButton,
+  WorkShopContainer,
 } from '../../utils/Form_Involucrate/Form_Involucrate.Styles'
 
 import CloseButton from '../../utils/CloseButton/CloseButton_Styles'
@@ -82,7 +82,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
           />
 
           {/**Campo Mision (Texto) */}
-          <TextInput
+          {/* <TextInput
             register={register}
             name="work"
             label="Mision de su organizacion: "
@@ -90,7 +90,7 @@ const Form_Alianzas = ({ isOpen, setMainForm, areas }) => {
             required={true}
             pattern={regexLetras}
             errors={errors}
-          />
+          /> */}
 
           {/**Campo NombreInscriptor (Texto) */}
           <TextInput

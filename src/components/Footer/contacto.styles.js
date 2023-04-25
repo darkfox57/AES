@@ -50,6 +50,9 @@ export const ContactInfo = styled.div`
       font-size: 1.3rem;
       line-height: 1.4rem;
     }
+    span {
+      font-size: 0.8rem;
+    }
   }
 `
 
