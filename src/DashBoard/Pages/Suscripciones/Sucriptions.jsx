@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import usePagination from '../../../Hooks/usePagination'
 import { getAllPersons } from '../../../redux/actions/dash_forms_actions'
+import DescargarExcel from '../../../utils/xlsx/descargarExcel'
 import Paginado from '../../Components/Paginado/Paginado'
 import PersonCard from './PersonCard/PersonCard'
 import { SubmitList, Table } from './suscriptions.styles'
@@ -25,6 +26,12 @@ export default function Suscriptions() {
     <>
       <h2>Suscripciones a NewsLetter</h2>
       <SubmitList>
+        <button
+          className="dashBtn"
+          onClick={() => DescargarExcel(filteredPersons)}
+        >
+          Descargar listado
+        </button>
         <Table>
           <thead>
             <tr>

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 const token = localStorage.getItem('access_token');
 
 export const getAllFiles = createAsyncThunk('dash/gallery', async () => {
@@ -35,10 +36,22 @@ export const addFile = createAsyncThunk('gallery/add', async (post) => {
     'Authorization': `Bearer ${token}`
    }
   })
+  if (response.data.succes === true) {
+
+   await Swal.fire({
+    icon: 'success',
+    title: 'Genial',
+    text: 'Creado con Éxito!!',
+   })
+  }
   return response.data
  }
  catch (error) {
-  return error.response.data
+  await Swal.fire({
+   icon: 'error',
+   title: 'Oops...',
+   text: `${error.response.data.error}`,
+  })
  }
 })
 
@@ -50,10 +63,23 @@ export const editFile = createAsyncThunk('gallery/edit', async (post) => {
     'Authorization': `Bearer ${token}`
    }
   })
+
+
+
+  await Swal.fire({
+   icon: 'success',
+   title: 'Genial',
+   text: 'Actualizado con éxito!!',
+  })
   return response.data
+
  }
  catch (error) {
-  return error.response.data
+  await Swal.fire({
+   icon: 'error',
+   title: 'Oops...',
+   text: `${error.response.data.error}`,
+  })
  }
 })
 

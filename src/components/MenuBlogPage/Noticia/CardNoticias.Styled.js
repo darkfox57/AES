@@ -18,6 +18,10 @@ export const CardNoticiaFlex = styled.div`
       font-size: 0.9rem;
       text-transform: capitalize;
       margin-bottom: 5px;
+      display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
     }
    .flex{
     width: 100%;
@@ -27,6 +31,7 @@ export const CardNoticiaFlex = styled.div`
    }
     p {
       color: rgb(255, 81, 81);
+      font-size: 0.8rem;
     }
   }
   img {

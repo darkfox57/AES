@@ -6,8 +6,6 @@ import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import {
   deleteBlog,
   editBlog,
@@ -28,7 +26,6 @@ export default function EditBlog() {
   const postImg = useSelector((state) => state.file.fileUrl)
   const tags = useSelector((state) => state.blog.tags)
   const uploadedFile = useSelector((state) => state.file.pdfUrl)
-  const MySwal = withReactContent(Swal)
   const [newImg, setNewImg] = useState(false)
   const [newFile, setNewFile] = useState(false)
   const [sending, setSending] = useState(false)
@@ -85,22 +82,6 @@ export default function EditBlog() {
     setActive(active ? false : true)
   }
 
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'La publicación se ha actualizado correctamente!',
-    })
-  }
-
-  const errorNotify = async () => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'No se ha podido guardar cambios!',
-    })
-  }
-
   const handleData = async (data) => {
     const post = {
       ...blogPost,
@@ -115,9 +96,9 @@ export default function EditBlog() {
     try {
       setSending(true)
       await dispatch(editBlog(post)).finally(() => dispatch(getAllBlogs()))
-      return notification()
+      // return notification()
     } catch (error) {
-      errorNotify()
+      // errorNotify()
     } finally {
       setSending(false)
     }
@@ -255,11 +236,14 @@ export default function EditBlog() {
           </div>
           {/* <span>Cargar PDF:</span>
           <FileUploader folder="files" /> */}
-          <input
+          <button
             type="submit"
             value="Actualizar publicación"
             disabled={sending ? true : false}
-          />
+            className="dashBtn"
+          >
+            Actualizar Publicación
+          </button>
         </form>
       </FormBody>
     </>

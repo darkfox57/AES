@@ -5,6 +5,7 @@ import {
   getAllOrganizations,
   getOrganization,
 } from '../../../../redux/actions/dash_forms_actions'
+import DescargarExcel from '../../../../utils/xlsx/descargarExcel'
 import Paginado from '../../../Components/Paginado/Paginado'
 import OrganizationCard from './OrganizationCard/OrganizationCard'
 import { SubmitList, Table } from './organizations.styles'
@@ -30,6 +31,9 @@ export default function Organizations() {
   return (
     <>
       <h2>Inscritos Alianzas</h2>
+      <button className="dashBtn" onClick={() => DescargarExcel(organizations)}>
+        Descargar listado
+      </button>
       <SubmitList>
         <Table>
           <thead>

@@ -1,6 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 
 import TextInput from '../../utils/TextInput/TextInput'
 
@@ -35,6 +35,7 @@ export default function () {
         required={true}
         errors={errors}
         pattern={regexMail}
+        placeholder={'Ingresa tu correo eléctronico'}
       />
 
       <SubmitButton type="submit">Suscribirse</SubmitButton>

@@ -24,6 +24,10 @@ export const ContainerInfo = styled.div`
   }*/
   h3{
     text-transform: capitalize;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
   }
   & > span:first-child {
     color: white;

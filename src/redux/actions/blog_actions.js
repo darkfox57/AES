@@ -1,7 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+// import withReactContent from 'sweetalert2-react-content';
 const token = localStorage.getItem('access_token');
 
+// const MySwal = withReactContent(Swal)
 
 export const getAllBlogs = createAsyncThunk('blogs/getAllBlogs', async () => {
   const response = await axios.get('blogs')
@@ -35,10 +38,23 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (post) => {
         'Authorization': `Bearer ${token}`
       }
     })
+    if (response.data.message) {
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Genial',
+        text: response.data.message,
+      })
+    }
     return response.data
   }
   catch (error) {
-    error.response.data
+    await Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+    })
+    return error.response.data
   }
 })
 
@@ -61,9 +77,22 @@ export const editBlog = createAsyncThunk('blogs/editBlog', async (post) => {
         'Authorization': `Bearer ${token}`
       }
     })
+    if (response.data.message) {
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Genial',
+        text: response.data.message,
+      })
+    }
     return response.data
   }
   catch (error) {
+    await Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `${error.response.data.errors[0].msg} ${error.response.data.errors[0].param}`,
+    })
     return error.response.data
   }
 })

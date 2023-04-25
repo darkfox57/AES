@@ -1,20 +1,20 @@
-import React, { useEffect} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import blogimg from '../../assets/About.webp'
-import Footer from '../../components/Footer/Footer'
-import Portada from '../../components/Portada/Portada'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import useConditionalRender from '../../Hooks/useConditionalRender'
 import usePagination from '../../Hooks/usePagination'
+import blogimg from '../../assets/About.webp'
 import BlogCardPage from '../../components/BlogCardPage/BlogCardPage'
+import Footer from '../../components/Footer/Footer'
 import Categorias from '../../components/MenuBlogPage/Categoria/Categorias'
 import EtiquetasPopular from '../../components/MenuBlogPage/Etiquetas/EtiquetasPopular'
 import NoticiaDestacada from '../../components/MenuBlogPage/Noticia/NoticiaDestacada'
 import SearchBlog from '../../components/MenuBlogPage/Search/SearchBlog'
 import SiguenosRedes from '../../components/MenuBlogPage/Siguenos/SiguenosRedes'
-import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
+import Paginado from '../../components/Paginado/Paginado'
+import Portada from '../../components/Portada/Portada'
 import SelectOrder from '../../components/SelectBlogOrder/SelectOrder'
 import { filterCategory, getTags } from '../../redux/actions/blog_actions'
-import useConditionalRender from '../../Hooks/useConditionalRender'
-import Paginado from '../../components/Paginado/Paginado'
+import { BlogBody, ContainerMenuBlog, GridCardBlog } from './blog.styles'
 
 export default function Blog() {
   const dispatch = useDispatch()
@@ -68,7 +68,7 @@ export default function Blog() {
             <SearchBlog />
             {!showSelect && (
               <>
-                <NoticiaDestacada Noticia={posts} />
+                <NoticiaDestacada Noticia={posts} title="Noticias Destacadas" />
                 <Categorias category={category} posts={posts} />
                 <SiguenosRedes />
                 <EtiquetasPopular tags={tags} />

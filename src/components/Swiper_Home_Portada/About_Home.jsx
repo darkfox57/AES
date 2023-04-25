@@ -44,7 +44,9 @@ export default function About_Home() {
 
 export const InfoContent = () => (
   <InfoContainer>
-    <h2>¿QUIENES SOMOS?</h2>
+    <h2>
+      ¿QUIÉNES <span> SOMOS?</span>
+    </h2>
     <p>
       Somos una asociación sin fines de lucro, conformada por jóvenes
       multidisciplinarios que buscan promover la salud integral en los niños y

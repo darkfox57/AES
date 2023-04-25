@@ -1,14 +1,14 @@
 import React from 'react'
+import { ImNewspaper } from 'react-icons/im'
+import { useSelector } from 'react-redux'
 import CardNoticias from './CardNoticias'
 import { NoticiaContainer } from './NoticiaDestacada.Styled'
-import { useSelector } from 'react-redux'
-import { ImNewspaper } from 'react-icons/im'
-const NoticiaDestacada = ({Noticia , EventPage}) => {
-  const NewNoticia = Noticia.slice(0,5)
+const NoticiaDestacada = ({ Noticia, EventPage, title }) => {
+  const NewNoticia = Noticia.slice(0, 5)
   return (
     <NoticiaContainer>
       <h4>
-        <ImNewspaper className="icon-news" /> Noticias Destacadas
+        <ImNewspaper className="icon-news" /> {title}
       </h4>
       <div className="flex-card">
         {NewNoticia.map((noticia, i) => (

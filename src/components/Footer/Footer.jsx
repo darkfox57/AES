@@ -46,7 +46,7 @@ export default function Footer() {
               className={({ isActive }) => (isActive ? 'current' : 'navItem')}
               onClick={ScrollUp}
             >
-              Involucrate
+              Involúcrate
             </NavLink>
             <NavLink
               to="/blog"
@@ -67,7 +67,7 @@ export default function Footer() {
               className={({ isActive }) => (isActive ? 'current' : 'navItem')}
               onClick={ScrollUp}
             >
-              faqs
+              FAQs
             </NavLink>
             <NavLink
               to="/contacto"

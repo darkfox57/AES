@@ -4,8 +4,6 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import {
   deleteEvent,
   editEvent,
@@ -24,7 +22,6 @@ export default function EditEvent() {
   const categories = useSelector((state) => state.blog.categories)
   const postImg = useSelector((state) => state.file.fileUrl)
   const tags = useSelector((state) => state.blog.tags)
-  const MySwal = withReactContent(Swal)
   const [newImg, setNewImg] = useState(false)
   const [sending, setSending] = useState(false)
   const [postContent, setPostContent] = useState('')
@@ -95,22 +92,6 @@ export default function EditEvent() {
     setActive(active ? false : true)
   }
 
-  const notification = async () => {
-    await MySwal.fire({
-      icon: 'success',
-      title: 'Genial',
-      text: 'La publicación se ha actualizado correctamente!',
-    })
-  }
-
-  const errorNotify = async () => {
-    await MySwal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'No se ha podido guardar cambios!',
-    })
-  }
-
   const handleData = async (data) => {
     const post = {
       ...eventPost,
@@ -131,9 +112,7 @@ export default function EditEvent() {
       setSending(true)
       // console.log(post)
       await dispatch(editEvent(post)).finally(() => dispatch(getAllEvents()))
-      return notification()
     } catch (error) {
-      errorNotify()
     } finally {
       setSending(false)
     }
